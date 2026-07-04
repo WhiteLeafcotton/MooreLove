@@ -1,18 +1,28 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white; background: #000; }
 
-.hero { height: 100vh; width: 100%; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('home.jpg'); background-size: cover; background-position: center; transition: background 0.8s ease; display: flex; flex-direction: column; justify-content: flex-end; }
+.hero { 
+    height: calc(100vh - 160px); /* Leaves space for footer nav */
+    width: 100%; 
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('home.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    transition: background 0.8s ease; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-end; 
+}
 
-.top-nav { position: absolute; top: 30px; right: 50px; }
+.top-nav { position: absolute; top: 30px; right: 50px; z-index: 10; }
 .nav-links { display: flex; gap: 25px; }
 .nav-links a { color: white; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
 
-.hero-content { margin-bottom: 200px; margin-left: 10%; text-align: left; }
-.hero-content h1 { font-size: 3rem; font-weight: 300; letter-spacing: 4px; margin-bottom: 20px; }
+.hero-content { margin-bottom: 80px; margin-left: 10%; text-align: left; }
+.hero-content h1 { font-size: 2.8rem; font-weight: 300; letter-spacing: 4px; margin-bottom: 20px; }
 .cta-button { display: inline-block; border: 1px solid white; padding: 10px 25px; color: white; text-decoration: none; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; }
 .cta-button:hover { background: white; color: black; }
 
-.footer-nav { position: relative; padding: 25px 0; border-top: 1px solid rgba(255,255,255,0.2); }
+.footer-nav { height: 160px; padding: 25px 0; border-top: 1px solid rgba(255,255,255,0.2); background: #000; }
 .nav-container { display: flex; justify-content: center; gap: 80px; position: relative; }
 .nav-item { cursor: pointer; text-align: center; font-size: 1.5rem; opacity: 0.7; transition: 0.3s; }
 .nav-item:hover { opacity: 1; }
