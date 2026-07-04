@@ -1,26 +1,23 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white; background: #000; }
 
-.hero { 
-    height: 100vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('home.jpg');
-    background-size: cover; background-position: center; transition: background 0.8s ease;
-    display: flex; align-items: center; justify-content: center;
-}
+.hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('home.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; transition: 0.8s ease; }
+.hero-content h1 { font-size: 3rem; font-weight: 200; letter-spacing: 6px; text-align: center; }
 
-.hero-content h1 { font-size: 3rem; font-weight: 200; letter-spacing: 6px; text-align: center; text-transform: uppercase; }
-
-.top-nav { position: absolute; top: 40px; right: 50px; display: flex; align-items: center; gap: 30px; }
+.top-nav { position: absolute; top: 40px; right: 50px; display: flex; gap: 30px; }
 .top-nav a { color: white; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; }
 .btn-book { border: 1px solid white; padding: 8px 20px; }
 
-.footer-nav { position: absolute; bottom: 0; width: 100%; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.2); }
-.nav-container { display: flex; justify-content: center; gap: 80px; position: relative; }
-
-.nav-item { cursor: pointer; text-align: center; opacity: 0.6; transition: 0.4s; display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100px; }
+.footer-nav { position: relative; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.2); }
+.nav-container { display: flex; justify-content: center; gap: 80px; }
+.nav-item { cursor: pointer; opacity: 0.6; display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100px; }
 .nav-item:hover { opacity: 1; }
 .nav-item span { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; }
 
-.active-bar { 
-    position: absolute; bottom: 0; height: 2px; width: 60px; background: white; 
-    transition: left 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
+.active-bar { position: absolute; top: 0; height: 3px; width: 60px; background: white; transition: left 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+.content-block { padding: 100px 20%; text-align: center; background: #0a0a0a; }
+.content-block h2 { margin-bottom: 20px; font-weight: 300; }
+.secondary { background: #111; }
+
+footer { padding: 40px; text-align: center; font-size: 0.7rem; color: #666; }
