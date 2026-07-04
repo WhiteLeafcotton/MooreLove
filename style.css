@@ -1,0 +1,51 @@
+:root {
+    --deep-purple: #2E003E;
+    --white: #ffffff;
+    --light-grey: #f4f4f4;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', serif; /* Use a sophisticated font like Playfair Display if importing from Google Fonts */
+    color: #333;
+    line-height: 1.6;
+}
+
+.container { width: 85%; margin: auto; overflow: hidden; }
+
+/* Header */
+header {
+    background: var(--white);
+    padding: 2rem 0;
+    border-bottom: 2px solid var(--deep-purple);
+}
+
+.logo { font-size: 1.8rem; font-weight: bold; color: var(--deep-purple); float: left; }
+
+nav ul { float: right; list-style: none; }
+nav ul li { display: inline; margin-left: 20px; }
+nav ul li a { text-decoration: none; color: var(--deep-purple); font-weight: 600; }
+
+.cta-button {
+    background: var(--deep-purple);
+    color: var(--white) !important;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* Hero Section */
+.hero {
+    background: var(--deep-purple);
+    color: var(--white);
+    padding: 100px 0;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background: var(--deep-purple);
+    color: var(--white);
+    text-align: center;
+    padding: 40px 0;
+    margin-top: 50px;
+}
