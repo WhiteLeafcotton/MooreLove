@@ -9,7 +9,7 @@ function updateContent(item) {
     title.innerHTML = item.getAttribute('data-title');
     btn.innerText = item.getAttribute('data-btn');
     
-    // Calculate center of the item relative to the container
+    // Position the bar centered over the hovered icon
     const rect = item.getBoundingClientRect();
     const container = document.getElementById('navContainer').getBoundingClientRect();
     bar.style.left = `${rect.left - container.left + (rect.width/2) - 30}px`;
@@ -19,5 +19,4 @@ items.forEach(item => {
     item.addEventListener('mouseenter', () => updateContent(item));
 });
 
-// Set initial position
 updateContent(items[0]);
