@@ -1,25 +1,22 @@
+const items = document.querySelectorAll('.nav-item');
 const hero = document.getElementById('hero');
-const heroText = document.getElementById('heroText');
-const ctaBtn = document.getElementById('ctaBtn');
-const activeBar = document.getElementById('activeBar');
-const navItems = document.querySelectorAll('.nav-item');
+const bar = document.getElementById('activeBar');
+const title = document.getElementById('heroTitle');
+const btn = document.getElementById('ctaBtn');
 
-function updateHero(item) {
-    // Change background
-    hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('${item.getAttribute('data-img')}')`;
+function updateContent(item) {
+    hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('${item.getAttribute('data-img')}')`;
+    title.innerHTML = item.getAttribute('data-title');
+    btn.innerText = item.getAttribute('data-btn');
     
-    // Update text
-    heroText.querySelector('h1').innerHTML = item.getAttribute('data-title');
-    ctaBtn.innerText = item.getAttribute('data-btn');
-    
-    // Move Bar
-    const leftPos = item.offsetLeft + (item.offsetWidth / 2) - 40;
-    activeBar.style.left = `${leftPos}px`;
+    const rect = item.getBoundingClientRect();
+    const container = document.getElementById('navContainer').getBoundingClientRect();
+    bar.style.left = `${rect.left - container.left + (rect.width/2) - 30}px`;
 }
 
-// Initial state
-window.addEventListener('load', () => updateHero(navItems[0]));
-
-navItems.forEach(item => {
-    item.addEventListener('mouseenter', () => updateHero(item));
+items.forEach(item => {
+    item.addEventListener('mouseenter', () => updateContent(item));
 });
+
+// Init first state
+updateContent(items[0]);
