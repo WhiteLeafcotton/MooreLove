@@ -6,12 +6,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header>
-        <div class="top-nav">
-            <a href="#">Contact Us</a>
-            <a href="#">Book Now</a>
-        </div>
+    <header class="top-nav">
+        <a href="#">Contact Us</a>
+        <a href="#" class="btn-book">Book Now</a>
     </header>
 
     <main id="hero" class="hero">
@@ -21,14 +18,29 @@
     </main>
 
     <section class="footer-nav">
-        <div class="active-bar" id="activeBar"></div>
-        <div class="nav-container" id="navContainer">
-            <div class="nav-item" data-img="home.jpg" data-pos="10%">🏠<br><span>HOME</span></div>
-            <div class="nav-item" data-img="comm.jpg" data-pos="30%">🏢<br><span>COMMUNITIES</span></div>
-            <div class="nav-item" data-img="res.jpg" data-pos="50%">👤<br><span>RESIDENTS</span></div>
-            <div class="nav-item" data-img="about.jpg" data-pos="70%">ℹ️<br><span>ABOUT US</span></div>
-            <div class="nav-item" data-img="app.jpg" data-pos="90%">📝<br><span>APPLICATIONS</span></div>
+        <div class="nav-container">
+            <div class="nav-item" data-img="home.jpg">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <span>Home</span>
+            </div>
+            <div class="nav-item" data-img="comm.jpg">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none"><rect x="2" y="7" width="20" height="15" rx="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+                <span>Communities</span>
+            </div>
+            <div class="nav-item" data-img="res.jpg">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span>Residents</span>
+            </div>
+            <div class="nav-item" data-img="about.jpg">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span>About Us</span>
+            </div>
+            <div class="nav-item" data-img="app.jpg">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                <span>Applications</span>
+            </div>
         </div>
+        <div class="active-bar" id="activeBar"></div>
     </section>
 
     <script src="script.js"></script>
