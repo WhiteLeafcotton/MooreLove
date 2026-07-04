@@ -18,4 +18,5 @@ items.forEach(item => {
     item.addEventListener('mouseenter', () => updateContent(item));
 });
 
+// Init first state
 updateContent(items[0]);
