@@ -21,17 +21,38 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
     position: absolute; bottom: 0; width: 100%; padding-bottom: 40px;
     background: linear-gradient(transparent, rgba(0,0,0,0.8));
 }
-.nav-container { display: flex; justify-content: center; gap: 80px; position: relative; }
+
 .nav-item { cursor: pointer; text-align: center; font-size: 1.5rem; opacity: 0.7; transition: 0.3s; }
 .nav-item:hover { opacity: 1; }
 .nav-item span { display: block; font-size: 0.6rem; letter-spacing: 2px; margin-top: 10px; }
 
 /* The harsh line */
-.footer-nav::before { content: ""; display: block; width: 90%; height: 1px; background: white; margin: 0 auto 30px auto; }
+.nav-container { 
+    display: flex; 
+    justify-content: space-around; /* Spreads icons evenly */
+    align-items: center;
+    width: 80%; /* Constrains the width so icons aren't too far apart */
+    margin: 0 auto;
+    position: relative; 
+}
+
+.footer-nav::before { 
+    content: ""; 
+    display: block; 
+    width: 80%; /* Matches the container width */
+    height: 1px; 
+    background: white; 
+    margin: 0 auto 30px auto; 
+}
 
 .active-bar { 
-    position: absolute; top: -31px; height: 3px; width: 60px; background: white; 
+    position: absolute; 
+    top: 25px; /* This aligns the bar exactly with the line */
+    height: 3px; 
+    width: 80px; /* Increased slightly for better presence */
+    background: white; 
     transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: translateY(-50%); /* Centers bar perfectly on the line */
 }
 
 .content-block { padding: 100px 20%; text-align: center; background: #000; }
