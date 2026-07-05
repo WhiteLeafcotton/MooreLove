@@ -27,11 +27,14 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
 }
 
 /* Sticky State - pinned to the top */
+/* 1. Ensure the sticky state forces full width and correct alignment */
 .footer-nav.sticky {
     position: fixed !important; 
     top: 0 !important; 
-    bottom: auto !important;
-    background: rgba(0, 0, 0, 0.95);
+    left: 0 !important;      /* Essential for fixed positioning */
+    right: 0 !important;     /* Essential for fixed positioning */
+    width: 100% !important;  /* Ensures it doesn't collapse */
+    background: rgba(0, 0, 0, 0.95) !important;
     padding: 20px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     animation: slideDown 0.4s ease-out;
