@@ -22,11 +22,13 @@ function updateContent(item) {
     title.innerHTML = item.getAttribute('data-title');
     btn.innerText = item.getAttribute('data-btn');
     
+    // Bar position calculation
     const itemRect = item.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
     const offset = (itemRect.left + itemRect.width / 2) - (containerRect.left + containerRect.width / 2);
     
-    bar.style.left = `calc(50% + ${offset}px - 40px)`;
+    // Bar is 60px wide, offset accounts for it
+    bar.style.left = `calc(50% + ${offset}px - 30px)`;
 }
 
 items.forEach(item => {
