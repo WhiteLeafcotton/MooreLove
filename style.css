@@ -3,50 +3,32 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
 
 .hero { height: 100vh; width: 100%; position: relative; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('home.jpg'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: flex-end; }
 
-.top-nav { position: absolute; top: 30px; right: 50px; z-index: 10; }
-.nav-links { display: flex; gap: 25px; }
-.nav-links a { color: white; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
+/* Wrapper - Starts Absolute at bottom */
+.nav-wrapper { position: absolute; bottom: 0; width: 100%; z-index: 1000; transition: all 0.5s ease; }
 
-/* Initial Resting State: Absolute at bottom */
-.nav-wrapper { position: absolute; bottom: 0; width: 100%; z-index: 1000; transition: all 0.4s ease; }
-
-/* Scrolled State: Fixed at top */
-.nav-wrapper.fixed-top { position: fixed; top: 0; bottom: auto; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(10px); padding: 10px 0; }
+/* Sticky State - Fixed at top */
+.nav-wrapper.fixed-top { position: fixed; top: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); padding: 10px 0; }
 
 .footer-nav { width: 100%; padding: 20px 0; }
-.footer-nav::before { content: ""; display: block; width: 95%; height: 1px; background: rgba(255, 255, 255, 0.3); margin: 0 auto 30px auto; }
+.footer-nav::before { content: ""; display: block; width: 95%; height: 1px; background: rgba(255, 255, 255, 0.3); margin: 0 auto 30px auto; transition: opacity 0.3s; }
+.fixed-top .footer-nav::before { opacity: 0; }
 
 .nav-container { display: flex; justify-content: space-around; align-items: center; width: 95%; margin: 0 auto; position: relative; }
-.nav-item { cursor: pointer; text-align: center; font-size: 1.5rem; opacity: 0.7; transition: 0.3s; }
+.nav-item { cursor: pointer; text-align: center; font-size: 1.5rem; opacity: 0.7; transition: all 0.3s ease; }
 .nav-item:hover { opacity: 1; }
 .nav-item span { display: block; font-size: 0.6rem; letter-spacing: 2px; margin-top: 10px; }
 
+/* Hide Icons when Sticky */
+.fixed-top .nav-item { font-size: 0; }
+.fixed-top .nav-item span { font-size: 0.8rem; margin-top: 0; }
+
 .active-bar { position: absolute; top: 5px; height: 3px; width: 80px; background: white; transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
 
-/* Sliding Text Logic */
-.hero-content { margin-left: 10%; margin-bottom: 25vh; transition: transform 0.6s ease-out, opacity 0.4s ease; }
-.hero-content.faded { transform: translateY(-50px); opacity: 0; }
+/* Hero Content */
+.hero-content { margin-left: 10%; margin-bottom: 25vh; transition: all 0.5s ease; }
+.hero-content.faded { opacity: 0; transform: translateY(-20px); }
 .hero-content h1 { font-size: 3rem; font-weight: 300; letter-spacing: 4px; margin-bottom: 20px; }
-.cta-button { display: inline-block; border: 1px solid white; padding: 10px 25px; color: white; text-decoration: none; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; }
+.cta-button { border: 1px solid white; padding: 10px 25px; color: white; text-decoration: none; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; }
 
 .content-block { padding: 100px 20%; text-align: center; background: #000; min-height: 100vh; }
 footer { padding: 40px; text-align: center; font-size: 0.7rem; color: #666; background: #000; }
-
-
-
-/* When in fixed-top mode, hide the icons and adjust spacing */
-.nav-wrapper.fixed-top .nav-item {
-    font-size: 0; /* Hides the emoji/icon */
-    opacity: 1;
-}
-
-/* Ensure the span (the label) remains visible and moves up */
-.nav-wrapper.fixed-top .nav-item span {
-    font-size: 0.8rem; /* Make the label a bit more prominent */
-    margin-top: 0;
-}
-
-/* Hide the thin line at the top */
-.nav-wrapper.fixed-top .footer-nav::before {
-    display: none;
-}
