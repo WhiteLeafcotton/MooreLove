@@ -16,7 +16,7 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
 .hero-content h1 { font-size: 3rem; font-weight: 300; letter-spacing: 4px; margin-bottom: 20px; }
 .cta-button { display: inline-block; border: 1px solid white; padding: 10px 25px; color: white; text-decoration: none; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; }
 
-/* Footer Nav */
+/* Sticky Navigation Logic */
 .footer-nav { 
     position: absolute; bottom: 0; width: 100%; padding-bottom: 40px;
     background: linear-gradient(transparent, rgba(0,0,0,0.8));
@@ -24,11 +24,10 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
     z-index: 1000;
 }
 
-/* Sticky State */
 .footer-nav.sticky {
-    position: fixed; top: 0; bottom: auto;
+    position: fixed; top: 0;
     background: rgba(0, 0, 0, 0.95);
-    padding: 25px 0;
+    padding: 20px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
