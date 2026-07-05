@@ -27,11 +27,13 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
 .nav-item span { display: block; font-size: 0.6rem; letter-spacing: 2px; margin-top: 10px; }
 
 /* The harsh line */
+/* Update these two sections to increase width */
+
 .nav-container { 
     display: flex; 
-    justify-content: space-around; /* Spreads icons evenly */
+    justify-content: space-around; 
     align-items: center;
-    width: 80%; /* Constrains the width so icons aren't too far apart */
+    width: 95%; /* Increased from 80% to span wider across the screen */
     margin: 0 auto;
     position: relative; 
 }
@@ -39,7 +41,7 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
 .footer-nav::before { 
     content: ""; 
     display: block; 
-    width: 80%; /* Matches the container width */
+    width: 95%; /* Increased to match the wider container */
     height: 1px; 
     background: white; 
     margin: 0 auto 30px auto; 
