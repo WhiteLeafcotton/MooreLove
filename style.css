@@ -1,19 +1,21 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white; background: #000; }
 
-.hero { height: 85vh; width: 100%; position: relative; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('home.jpg'); background-size: cover; background-position: center; transition: background 0.8s ease; display: flex; flex-direction: column; justify-content: center; }
+.hero { height: 100vh; width: 100%; position: relative; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('home.jpg'); background-size: cover; background-position: center; transition: background 0.8s ease; display: flex; flex-direction: column; justify-content: center; }
 
 .top-nav { position: absolute; top: 30px; right: 50px; z-index: 10; }
 .nav-links { display: flex; gap: 25px; }
 .nav-links a { color: white; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
 
-.hero-content { margin-left: 10%; margin-top: -50px; transition: opacity 0.4s ease; }
-.hero-content h1 { font-size: 3rem; font-weight: 300; letter-spacing: 4px; margin-bottom: 20px; transition: transform 0.6s ease; }
+/* Content Sliding Logic */
+.hero-content { margin-left: 10%; transition: transform 0.6s ease-out, opacity 0.4s ease; will-change: transform, opacity; }
+.hero-content.scrolled { transform: translateY(-50px); opacity: 0; }
+.hero-content h1 { font-size: 3rem; font-weight: 300; letter-spacing: 4px; margin-bottom: 20px; }
 .cta-button { display: inline-block; border: 1px solid white; padding: 10px 25px; color: white; text-decoration: none; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; }
 
-/* Sticky Wrapper */
-.nav-wrapper { position: fixed; top: 0; width: 100%; z-index: 1000; transition: background 0.4s ease; }
-.nav-wrapper.scrolled { background: rgba(0, 0, 0, 0.95); }
+/* Sticky Navigation Wrapper */
+.nav-wrapper { position: fixed; top: 0; width: 100%; z-index: 1000; backdrop-filter: blur(10px); background: rgba(0, 0, 0, 0.2); transition: background 0.4s ease; }
+.nav-wrapper.scrolled { background: rgba(0, 0, 0, 0.8); }
 
 .footer-nav { width: 100%; padding: 20px 0; }
 .footer-nav::before { content: ""; display: block; width: 95%; height: 1px; background: rgba(255, 255, 255, 0.3); margin: 0 auto 30px auto; }
@@ -25,5 +27,5 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
 
 .active-bar { position: absolute; top: 5px; height: 3px; width: 80px; background: white; transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
 
-.content-block { padding: 100px 20%; text-align: center; background: #000; }
+.content-block { padding: 100px 20%; text-align: center; background: #000; min-height: 100vh; }
 footer { padding: 40px; text-align: center; font-size: 0.7rem; color: #666; background: #000; }
