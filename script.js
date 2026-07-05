@@ -3,15 +3,15 @@ const hero = document.getElementById('hero');
 const bar = document.getElementById('activeBar');
 const title = document.getElementById('heroTitle');
 const btn = document.getElementById('ctaBtn');
-const nav = document.getElementById('footerNav');
+const navWrapper = document.getElementById('navWrapper');
 const container = document.getElementById('navContainer');
 
-// Improved Sticky Logic: Trigger when scrolled more than 50px
+// Smooth scroll fade
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
-        nav.classList.add('sticky');
+        navWrapper.classList.add('scrolled');
     } else {
-        nav.classList.remove('sticky');
+        navWrapper.classList.remove('scrolled');
     }
 });
 
