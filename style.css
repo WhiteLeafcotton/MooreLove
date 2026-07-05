@@ -1,37 +1,28 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white; background: #000; }
 
-/* Top Right Links */
-.top-nav { position: absolute; top: 20px; right: 20px; z-index: 1001; }
-.nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.8rem; opacity: 0.8; }
-.nav-links a:hover { opacity: 1; }
+.top-nav { position: absolute; top: 20px; right: 40px; z-index: 1001; }
+.nav-links a { color: white; text-decoration: none; margin-left: 25px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
 
 .hero { height: 100vh; width: 100%; position: relative; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('home.jpg'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: flex-end; }
 
-/* Nav Wrapper Animation */
-.nav-wrapper { position: absolute; bottom: 0; width: 100%; z-index: 1000; transition: all 0.5s ease-in-out; }
-.nav-wrapper.fixed-top { position: fixed; top: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); padding: 10px 0; }
+.hero-content { margin-left: 8%; margin-bottom: 22vh; transition: opacity 0.6s ease, transform 0.6s ease; }
+.hero-content.faded { opacity: 0; transform: translateY(-30px); }
+.hero-content h1 { font-size: 3.5rem; font-weight: 300; letter-spacing: 2px; line-height: 1.1; margin-bottom: 30px; }
+.cta-button { border: 1px solid white; padding: 12px 30px; color: white; text-decoration: none; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; }
 
-.footer-nav { width: 100%; padding: 20px 0; }
-.footer-nav::before { content: ""; display: block; width: 95%; height: 1px; background: rgba(255, 255, 255, 0.3); margin: 0 auto 30px auto; transition: opacity 0.3s; }
-.fixed-top .footer-nav::before { opacity: 0; }
+.nav-wrapper { position: absolute; bottom: 0; width: 100%; z-index: 1000; transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.nav-wrapper.fixed-top { position: fixed; top: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); padding: 15px 0; }
 
-.nav-container { display: flex; justify-content: space-around; align-items: center; width: 95%; margin: 0 auto; position: relative; }
-.nav-item { cursor: pointer; text-align: center; font-size: 1.5rem; opacity: 0.7; transition: all 0.3s ease; }
+/* FIX: Icons disappear immediately when fixed-top is applied */
+.fixed-top .icon { display: none !important; }
+.fixed-top .text { font-size: 0.9rem; margin-top: 0; }
+
+.nav-container { display: flex; justify-content: space-around; align-items: center; width: 95%; margin: 0 auto; }
+.nav-item { cursor: pointer; text-align: center; font-size: 1.5rem; transition: all 0.4s ease; }
 .nav-item .text { display: block; font-size: 0.6rem; letter-spacing: 2px; margin-top: 10px; }
 
-/* Fixed Icon Logic */
-.fixed-top .nav-item .icon { display: none; }
-.fixed-top .nav-item .text { font-size: 0.8rem; margin-top: 0; }
+.active-bar { position: absolute; top: 0; height: 2px; width: 60px; background: white; transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
 
-.active-bar { position: absolute; top: 5px; height: 3px; width: 80px; background: white; transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
-
-/* Hero Content */
-.hero-content { margin-left: 10%; margin-bottom: 25vh; transition: all 0.5s ease; }
-.hero-content.faded { opacity: 0; transform: translateY(-20px); }
-.hero-content h1 { font-size: 3rem; font-weight: 300; letter-spacing: 4px; margin-bottom: 20px; }
-.cta-button { border: 1px solid white; padding: 10px 25px; color: white; text-decoration: none; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; }
-
-/* Sections */
-.content-block { padding: 100px 0; text-align: center; background: #000; min-height: 50vh; }
-.horizontal-card { width: 95%; height: 200px; margin: 20px auto; border: 1px solid #333; background: #111; display: flex; align-items: center; justify-content: center; color: #555; }
+.content-block { padding: 80px 0; background: #000; }
+.horizontal-card { width: 95%; height: 250px; margin: 0 auto; border: 1px solid #333; display: flex; align-items: center; justify-content: center; }
