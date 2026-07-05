@@ -7,14 +7,14 @@ const navWrapper = document.getElementById('navWrapper');
 const heroContent = document.getElementById('heroContent');
 const container = document.getElementById('navContainer');
 
+// Trigger transition when scrolled past 100px
 window.addEventListener('scroll', () => {
-    // Nav darkens on scroll
-    if (window.scrollY > 50) {
-        navWrapper.classList.add('scrolled');
-        heroContent.classList.add('scrolled');
+    if (window.scrollY > 100) {
+        navWrapper.classList.add('fixed-top');
+        heroContent.classList.add('faded');
     } else {
-        navWrapper.classList.remove('scrolled');
-        heroContent.classList.remove('scrolled');
+        navWrapper.classList.remove('fixed-top');
+        heroContent.classList.remove('faded');
     }
 });
 
