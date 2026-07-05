@@ -4,14 +4,17 @@ const bar = document.getElementById('activeBar');
 const title = document.getElementById('heroTitle');
 const btn = document.getElementById('ctaBtn');
 const navWrapper = document.getElementById('navWrapper');
+const heroContent = document.getElementById('heroContent');
 const container = document.getElementById('navContainer');
 
-// Smooth scroll fade
 window.addEventListener('scroll', () => {
+    // Nav darkens on scroll
     if (window.scrollY > 50) {
         navWrapper.classList.add('scrolled');
+        heroContent.classList.add('scrolled');
     } else {
         navWrapper.classList.remove('scrolled');
+        heroContent.classList.remove('scrolled');
     }
 });
 
@@ -22,12 +25,9 @@ function updateContent(item) {
     
     const itemRect = item.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
-    const itemCenter = itemRect.left + (itemRect.width / 2);
-    const containerCenter = containerRect.left + (containerRect.width / 2);
-    const offset = itemCenter - containerCenter;
+    const offset = (itemRect.left + itemRect.width / 2) - (containerRect.left + containerRect.width / 2);
     
-    const barWidth = 80;
-    bar.style.left = `calc(50% + ${offset}px - ${barWidth / 2}px)`;
+    bar.style.left = `calc(50% + ${offset}px - 40px)`;
 }
 
 items.forEach(item => {
