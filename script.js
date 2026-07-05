@@ -8,6 +8,7 @@ const heroContent = document.getElementById('heroContent');
 const container = document.getElementById('navContainer');
 
 window.addEventListener('scroll', () => {
+    // If scrolled past 100px, trigger sticky mode
     if (window.scrollY > 100) {
         navWrapper.classList.add('fixed-top');
         heroContent.classList.add('faded');
@@ -22,13 +23,11 @@ function updateContent(item) {
     title.innerHTML = item.getAttribute('data-title');
     btn.innerText = item.getAttribute('data-btn');
     
-    // Bar position calculation
     const itemRect = item.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
     const offset = (itemRect.left + itemRect.width / 2) - (containerRect.left + containerRect.width / 2);
     
-    // Bar is 60px wide, offset accounts for it
-    bar.style.left = `calc(50% + ${offset}px - 30px)`;
+    bar.style.left = `calc(50% + ${offset}px - 40px)`;
 }
 
 items.forEach(item => {
