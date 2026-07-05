@@ -8,7 +8,7 @@ const heroContent = document.getElementById('heroContent');
 const container = document.getElementById('navContainer');
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
+    if (window.scrollY > 50) {
         navWrapper.classList.add('fixed-top');
         heroContent.classList.add('faded');
     } else {
@@ -21,10 +21,12 @@ function updateContent(item) {
     hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('${item.getAttribute('data-img')}')`;
     title.innerHTML = item.getAttribute('data-title');
     btn.innerText = item.getAttribute('data-btn');
+    
+    // Position active bar
     const itemRect = item.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
-    const offset = (itemRect.left + itemRect.width / 2) - (containerRect.left + containerRect.width / 2);
-    bar.style.left = `calc(50% + ${offset}px - 40px)`;
+    const offset = item.offsetLeft + (item.offsetWidth / 2) - (bar.offsetWidth / 2);
+    bar.style.left = `${offset}px`;
 }
 
 items.forEach(item => {
