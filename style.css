@@ -31,3 +31,22 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
 
 .content-block { padding: 100px 20%; text-align: center; background: #000; min-height: 100vh; }
 footer { padding: 40px; text-align: center; font-size: 0.7rem; color: #666; background: #000; }
+
+
+
+/* When in fixed-top mode, hide the icons and adjust spacing */
+.nav-wrapper.fixed-top .nav-item {
+    font-size: 0; /* Hides the emoji/icon */
+    opacity: 1;
+}
+
+/* Ensure the span (the label) remains visible and moves up */
+.nav-wrapper.fixed-top .nav-item span {
+    font-size: 0.8rem; /* Make the label a bit more prominent */
+    margin-top: 0;
+}
+
+/* Hide the thin line at the top */
+.nav-wrapper.fixed-top .footer-nav::before {
+    display: none;
+}
