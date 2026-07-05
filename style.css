@@ -1,6 +1,8 @@
+/* --- Base Styles --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white; background: #000; }
 
+/* --- Hero Section --- */
 .hero { 
     height: 85vh; width: 100%; position: relative;
     background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('home.jpg'); 
@@ -16,23 +18,33 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
 .hero-content h1 { font-size: 3rem; font-weight: 300; letter-spacing: 4px; margin-bottom: 20px; }
 .cta-button { display: inline-block; border: 1px solid white; padding: 10px 25px; color: white; text-decoration: none; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; }
 
-/* Sticky Navigation Logic */
+/* --- Footer Nav & Sticky Logic --- */
 .footer-nav { 
     position: absolute; bottom: 0; width: 100%; padding-bottom: 40px;
     background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    transition: all 0.4s ease;
+    transition: all 0.5s ease;
     z-index: 1000;
 }
 
+/* Sticky State - pinned to the top */
 .footer-nav.sticky {
-    position: fixed; top: 0;
+    position: fixed !important; 
+    top: 0 !important; 
+    bottom: auto !important;
     background: rgba(0, 0, 0, 0.95);
     padding: 20px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
 }
 
 .footer-nav.sticky::before { display: none; }
 
+/* --- Nav Items --- */
 .nav-container { 
     display: flex; justify-content: space-around; align-items: center;
     width: 95%; margin: 0 auto; position: relative; 
@@ -42,16 +54,19 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
 .nav-item:hover { opacity: 1; }
 .nav-item span { display: block; font-size: 0.6rem; letter-spacing: 2px; margin-top: 10px; }
 
+/* The Line */
 .footer-nav::before { 
     content: ""; display: block; width: 95%; height: 1px; 
     background: white; margin: 0 auto 30px auto; 
 }
 
+/* The Sliding Bar */
 .active-bar { 
     position: absolute; top: 25px; height: 3px; width: 80px; 
     background: white; transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
     transform: translateY(-50%);
 }
 
+/* --- Content Blocks --- */
 .content-block { padding: 100px 20%; text-align: center; background: #000; }
 footer { padding: 40px; text-align: center; font-size: 0.7rem; color: #666; background: #000; }
