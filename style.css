@@ -1,8 +1,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white; background: #000; }
 
-/* Shortened hero section back to 85vh */
-.hero { height: 85vh; width: 100%; position: relative; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('home.jpg'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: flex-end; }
+.hero { height: 85vh; width: 100%; position: relative; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('home.jpg'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
 
 .top-nav { position: absolute; top: 30px; right: 50px; z-index: 10; }
 .nav-links { display: flex; gap: 25px; }
@@ -20,12 +19,14 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
 .nav-item:hover { opacity: 1; }
 .nav-item span { display: block; font-size: 0.6rem; letter-spacing: 2px; margin-top: 10px; }
 
-.fixed-top .nav-item { font-size: 0; }
-.fixed-top .nav-item span { font-size: 0.8rem; margin-top: 0; }
+/* Sticky Logic: Hide icons, show text */
+.fixed-top .nav-item { display: none; }
+.fixed-top .nav-item, .fixed-top .nav-item span { display: block !important; font-size: 0.8rem; margin-top: 0; }
+.fixed-top .nav-container { justify-content: center; gap: 40px; }
 
 .active-bar { position: absolute; top: 5px; height: 3px; width: 80px; background: white; transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
 
-.hero-content { margin-left: 10%; margin-bottom: 25vh; transition: all 0.5s ease; }
+.hero-content { margin-left: 10%; margin-bottom: 15vh; transition: all 0.5s ease; }
 .hero-content.faded { opacity: 0; transform: translateY(-20px); }
 .hero-content h1 { font-size: 3rem; font-weight: 300; letter-spacing: 4px; margin-bottom: 20px; }
 .cta-button { border: 1px solid white; padding: 10px 25px; color: white; text-decoration: none; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; }
