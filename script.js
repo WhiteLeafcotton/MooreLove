@@ -8,7 +8,6 @@ const heroContent = document.getElementById('heroContent');
 const container = document.getElementById('navContainer');
 
 window.addEventListener('scroll', () => {
-    // If scrolled past 100px, trigger sticky mode
     if (window.scrollY > 100) {
         navWrapper.classList.add('fixed-top');
         heroContent.classList.add('faded');
