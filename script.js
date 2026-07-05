@@ -6,7 +6,7 @@ const btn = document.getElementById('ctaBtn');
 const nav = document.getElementById('footerNav');
 const container = document.getElementById('navContainer');
 
-// Sticky Scroll Logic
+// Toggle sticky state based on hero height
 window.addEventListener('scroll', () => {
     if (window.scrollY > hero.offsetHeight) {
         nav.classList.add('sticky');
@@ -15,7 +15,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Bar Position Logic
 function updateContent(item) {
     hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('${item.getAttribute('data-img')}')`;
     title.innerHTML = item.getAttribute('data-title');
@@ -27,8 +26,7 @@ function updateContent(item) {
     const containerCenter = containerRect.left + (containerRect.width / 2);
     const offset = itemCenter - containerCenter;
     
-    const barWidth = 80; 
-    bar.style.left = `calc(50% + ${offset}px - ${barWidth / 2}px)`;
+    bar.style.left = `calc(50% + ${offset}px - 40px)`; // 40px is half of 80px bar
 }
 
 items.forEach(item => {
