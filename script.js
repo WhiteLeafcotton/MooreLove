@@ -1,7 +1,7 @@
 const navWrapper = document.getElementById('navWrapper');
 
 window.addEventListener('scroll', () => {
-    // Pins to top when hero is scrolled past
+    // Pins navigation when hero scrolls out of view
     if (window.scrollY > (window.innerHeight * 0.85)) {
         navWrapper.classList.add('pinned');
     } else {
