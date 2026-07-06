@@ -4,8 +4,9 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
 .top-nav { position: absolute; top: 20px; right: 40px; z-index: 1001; }
 .nav-links a { color: white; text-decoration: none; margin-left: 25px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.8; }
 
+/* 1. Change the hero height slightly */
 .hero { 
-    height: 100vh; /* Keep as 100vh so it fills the screen initially */
+    height: 90vh; /* This leaves 10% of the screen for the next section */
     width: 100%; 
     position: relative; 
     background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('home.jpg'); 
@@ -13,6 +14,12 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
     background-position: center; 
     display: flex; 
     flex-direction: column;
+}
+
+/* 2. Ensure the first content block can peek through */
+.content-block:first-of-type {
+    margin-top: 0; /* Ensures it starts right where the hero ends */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Optional visual divider */
 }
 
 .hero-content { 
