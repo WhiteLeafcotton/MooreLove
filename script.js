@@ -2,11 +2,20 @@ const navWrapper = document.getElementById('navWrapper');
 const bar = document.getElementById('activeBar');
 
 window.addEventListener('scroll', () => {
-    // Pin nav when it reaches the top of the viewport
-    if (navWrapper.getBoundingClientRect().top <= 0) {
+    const rect = navWrapper.getBoundingClientRect();
+    
+    // Pin nav when it reaches the top
+    if (rect.top <= 0) {
         navWrapper.classList.add('pinned');
-    } else {
-        navWrapper.classList.remove('pinned');
+        navWrapper.classList.remove('faded-out');
+    } 
+    // Fade out if we have started scrolling but haven't reached the top yet
+    else if (window.scrollY > 0) {
+        navWrapper.classList.add('faded-out');
+    } 
+    // Reset if at the very top
+    else {
+        navWrapper.classList.remove('pinned', 'faded-out');
     }
 });
 
