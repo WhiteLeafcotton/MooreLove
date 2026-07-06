@@ -1,11 +1,11 @@
 const hero = document.getElementById("hero");
 const nav = document.getElementById("navWrapper");
 
+const stickyPoint = hero.offsetHeight - nav.offsetHeight;
+
 window.addEventListener("scroll", () => {
 
-    const heroBottom = hero.getBoundingClientRect().bottom;
-
-    if (heroBottom <= nav.offsetHeight) {
+    if (window.scrollY >= stickyPoint) {
 
         nav.classList.add("sticky");
 
