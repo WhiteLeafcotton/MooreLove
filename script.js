@@ -1,7 +1,7 @@
 const navWrapper = document.getElementById('navWrapper');
 
 window.addEventListener('scroll', () => {
-    // Pins navigation when hero scrolls out of view
+    // Once the user scrolls past the hero section, lock the nav
     if (window.scrollY > (window.innerHeight * 0.85)) {
         navWrapper.classList.add('pinned');
     } else {
