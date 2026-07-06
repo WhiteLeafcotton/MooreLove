@@ -7,30 +7,56 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', sans-serif;
 }
 .top-nav-right a { color: #fff; text-decoration: none; }
 
-.hero { 
-    height: 85vh; /* This creates the 'peek' effect */
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('home.jpg') center/cover;
-    display: flex; align-items: center; padding-left: 8%;
+/* Hero sits at 85vh to allow the nav to "peek" */
+.hero {
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 8%;
+    background: url('home.jpg') center/cover;
 }
 
-.hero-content h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; }
-.cta-button { color: #fff; text-decoration: none; border: 1px solid #fff; padding: 10px 20px; display: inline-block; }
-
-.nav-wrapper { 
-    position: sticky; top: 0; width: 100%; z-index: 1000; 
-    padding: 30px 0;
-    background: transparent;
-    transition: all 0.4s ease;
-    border-top: 1px solid rgba(255,255,255,0.2);
-    border-bottom: 1px solid transparent;
+.hero-content {
+    max-width: 600px;
 }
 
-/* Pinned state when scrolling */
-.nav-wrapper.pinned { 
-    background: rgba(0, 0, 0, 0.95); 
+/* Navigation resting state */
+.nav-wrapper {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: #000; /* Solid black base */
+    z-index: 1000;
+    padding: 20px 0;
+    transition: background 0.4s ease;
+}
+
+/* Icons styling */
+.nav-container {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+}
+
+.nav-item img {
+    width: 25px; /* Adjust size to match Four Seasons */
+}
+
+/* Pinned state - changes look when scrolling */
+.nav-wrapper.pinned {
+    background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(10px);
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .nav-container { display: flex; justify-content: center; gap: 60px; }
