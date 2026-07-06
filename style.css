@@ -1,27 +1,28 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #000; color: #fff; font-family: sans-serif; }
+body { background: #000; color: #fff; font-family: 'Helvetica Neue', sans-serif; overflow-x: hidden; }
 
 .hero { 
-    height: 85vh; /* Leaves 15% visible for the 'peek' */
+    height: 85vh; 
+    position: relative; 
     display: flex; flex-direction: column; justify-content: space-between;
     background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('home.jpg');
     background-size: cover; background-position: center;
 }
 
-.hero-content { margin-left: 8%; margin-top: auto; margin-bottom: 100px; }
+.hero-content { margin-left: 8%; margin-bottom: 120px; transition: opacity 0.4s ease; }
+.hero-content.faded { opacity: 0; }
 
-/* Sticky Nav Bar */
 .nav-wrapper { 
     position: sticky; top: 0; 
     width: 100%; padding: 20px 0; z-index: 1000;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-/* Class added by JS when scrolled */
 .nav-wrapper.pinned { 
     background: rgba(0, 0, 0, 0.95); 
     backdrop-filter: blur(10px); 
     border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+    padding: 15px 0;
 }
 
 .nav-container { display: flex; justify-content: space-around; width: 80%; margin: 0 auto; position: relative; }
@@ -32,4 +33,4 @@ body { background: #000; color: #fff; font-family: sans-serif; }
     background: #fff; transition: 0.4s ease; 
 }
 
-.content-block { min-height: 100vh; padding: 100px 5%; }
+.content-block { min-height: 100vh; padding: 100px 5%; background: #000; }
