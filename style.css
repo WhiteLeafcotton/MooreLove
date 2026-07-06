@@ -1,41 +1,39 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #000; color: #fff; font-family: 'Helvetica Neue', sans-serif; overflow-x: hidden; }
+body { background: #000; color: #fff; font-family: 'Helvetica Neue', sans-serif; }
 
-/* Top Nav */
-.top-bar { position: absolute; top: 20px; right: 5%; z-index: 1001; }
-.top-nav-right { display: flex; gap: 25px; font-size: 0.7rem; letter-spacing: 1px; }
+.top-nav-right { 
+    position: absolute; top: 20px; right: 5%; z-index: 1001; 
+    display: flex; gap: 20px; font-size: 0.75rem; text-transform: uppercase;
+}
 .top-nav-right a { color: #fff; text-decoration: none; }
 
-/* Hero Section */
 .hero { 
-    height: 85vh; position: relative; 
-    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('home.jpg') center/cover;
+    height: 85vh; /* This creates the 'peek' effect */
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('home.jpg') center/cover;
     display: flex; align-items: center; padding-left: 8%;
 }
 
-.hero-content h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 30px; }
-.cta-button { 
-    color: #fff; text-decoration: none; border: 1px solid #fff; 
-    padding: 15px 30px; font-size: 0.7rem; letter-spacing: 2px;
-}
+.hero-content h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; }
+.cta-button { color: #fff; text-decoration: none; border: 1px solid #fff; padding: 10px 20px; display: inline-block; }
 
-/* Nav Wrapper */
 .nav-wrapper { 
-    position: absolute; bottom: 0; width: 100%; z-index: 1000; padding: 20px 0;
-    border-top: 1px solid rgba(255,255,255,0.2); transition: all 0.4s ease;
+    position: sticky; top: 0; width: 100%; z-index: 1000; 
+    padding: 30px 0;
+    background: transparent;
+    transition: all 0.4s ease;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid transparent;
 }
 
-.active-indicator { width: 100px; height: 3px; background: #fff; margin: -21px auto 20px auto; }
+/* Pinned state when scrolling */
+.nav-wrapper.pinned { 
+    background: rgba(0, 0, 0, 0.95); 
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
 
 .nav-container { display: flex; justify-content: center; gap: 60px; }
-.nav-item { 
-    display: flex; flex-direction: column; align-items: center; 
-    text-decoration: none; color: #fff; cursor: pointer; gap: 10px;
-}
-.nav-item img { width: 25px; height: 25px; filter: invert(1); }
-.nav-item span { font-size: 0.7rem; letter-spacing: 1.5px; }
+.nav-item { cursor: pointer; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
 
-/* Pinned State */
-.nav-wrapper.pinned { 
-    position: fixed; top: 0; bottom: auto; background: #000; padding: 15px 0; border-top: none;
-}
+.content-block { min-height: 100vh; padding: 100px 5%; background: #000; }
