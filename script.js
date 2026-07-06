@@ -1,33 +1,23 @@
-
-const items = document.querySelectorAll('.nav-item');
+const navWrapper = document.getElementById('navWrapper');
+const heroContent = document.getElementById('heroContent');
 const bar = document.getElementById('activeBar');
 
-let ticking = false;
-
-const navWrapper = document.getElementById('navWrapper');
-const hero = document.getElementById('hero');
-const heroContent = document.getElementById('heroContent');
-
 window.addEventListener('scroll', () => {
-    // When scroll passes the hero height, trigger the background effect
-    if (window.scrollY >= hero.offsetHeight) {
-        navWrapper.classList.add('fixed-top');
+    // Check if nav has reached top of viewport
+    const rect = navWrapper.getBoundingClientRect();
+    if (rect.top <= 0) {
+        navWrapper.classList.add('pinned');
         heroContent.classList.add('faded');
     } else {
-        navWrapper.classList.remove('fixed-top');
+        navWrapper.classList.remove('pinned');
         heroContent.classList.remove('faded');
     }
 });
 
-function updateContent(item) {
-    hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('${item.getAttribute('data-img')}')`;
-    const offset = item.offsetLeft + (item.offsetWidth / 2) - (bar.offsetWidth / 2);
-    bar.style.left = `${offset}px`;
-    window.lastActiveItem = item;
-}
-
-items.forEach(item => item.addEventListener('mouseenter', () => updateContent(item)));
-window.addEventListener('resize', () => { if (window.lastActiveItem) updateContent(window.lastActiveItem); });
-
-// Initialize
-updateContent(items[0]);
+// Bar animation
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('mouseenter', (e) => {
+        const offset = e.currentTarget.offsetLeft + (e.currentTarget.offsetWidth / 2) - (bar.offsetWidth / 2);
+        bar.style.left = `${offset}px`;
+    });
+});
