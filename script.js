@@ -1,10 +1,18 @@
-const navWrapper = document.getElementById('navWrapper');
+const hero = document.getElementById("hero");
+const nav = document.getElementById("navWrapper");
 
-window.addEventListener('scroll', () => {
-    // Pins the navigation once the user scrolls past the full height of the hero
-    if (window.scrollY > window.innerHeight) {
-        navWrapper.classList.add('pinned');
+window.addEventListener("scroll", () => {
+
+    const heroBottom = hero.getBoundingClientRect().bottom;
+
+    if (heroBottom <= nav.offsetHeight) {
+
+        nav.classList.add("sticky");
+
     } else {
-        navWrapper.classList.remove('pinned');
+
+        nav.classList.remove("sticky");
+
     }
+
 });
