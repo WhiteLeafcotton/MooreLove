@@ -1,20 +1,19 @@
 const navWrapper = document.getElementById('navWrapper');
-const heroContent = document.getElementById('heroContent');
-const bar = document.getElementById('activeBar');
 
-// Sticky Scroll Logic
 window.addEventListener('scroll', () => {
+    // Get distance of nav relative to top of viewport
     const rect = navWrapper.getBoundingClientRect();
+    
+    // Once the nav hits the top, pin it
     if (rect.top <= 0) {
         navWrapper.classList.add('pinned');
-        heroContent.classList.add('faded');
     } else {
         navWrapper.classList.remove('pinned');
-        heroContent.classList.remove('faded');
     }
 });
 
-// Bar animation
+// Bar animation logic
+const bar = document.getElementById('activeBar');
 document.querySelectorAll('.nav-item').forEach(item => {
     item.addEventListener('mouseenter', (e) => {
         const offset = e.currentTarget.offsetLeft + (e.currentTarget.offsetWidth / 2) - (bar.offsetWidth / 2);
