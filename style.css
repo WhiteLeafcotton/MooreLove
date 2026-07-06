@@ -2,8 +2,11 @@
 body { background: #000; color: #fff; font-family: 'Helvetica Neue', sans-serif; }
 
 /* Top Right Links */
-.top-header { position: absolute; top: 20px; right: 5%; z-index: 1000; display: flex; gap: 20px; }
-.top-header a { color: #fff; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; }
+.top-nav-right { 
+    position: absolute; top: 20px; right: 5%; z-index: 1001; 
+    display: flex; gap: 20px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+}
+.top-nav-right a { color: #fff; text-decoration: none; }
 
 .hero { 
     height: 85vh; position: relative; display: flex; flex-direction: column; justify-content: space-between;
@@ -11,24 +14,31 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', sans-serif;
     background-size: cover; background-position: center;
 }
 
-.hero-content { margin-left: 8%; margin-bottom: 100px; }
+.hero-content { margin-left: 8%; margin-bottom: 80px; }
 
-/* Nav Wrapper */
+/* Sticky Nav Wrapper */
 .nav-wrapper { 
-    position: absolute; bottom: 0; width: 100%; z-index: 1000; padding-bottom: 20px; transition: 0.3s;
+    position: sticky; top: 0; width: 100%; z-index: 1000; 
+    padding-bottom: 20px; transition: background 0.3s ease;
 }
 
-/* The elegant lines */
+/* Elegant top line */
 .nav-border-top { width: 90%; height: 1px; background: rgba(255,255,255,0.3); margin: 0 auto 20px auto; }
 
+/* Pinned state logic */
 .nav-wrapper.pinned { 
-    position: fixed; top: 0; bottom: auto; background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.95); 
+    backdrop-filter: blur(10px); 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+    padding-top: 10px;
 }
 
 .nav-container { display: flex; justify-content: space-around; width: 80%; margin: 0 auto; position: relative; }
-.nav-item { cursor: pointer; padding: 10px; font-size: 0.8rem; }
+.nav-item { cursor: pointer; padding: 10px; font-size: 0.8rem; letter-spacing: 1px; }
 
 .active-bar { 
-    position: absolute; top: -21px; height: 1px; width: 60px; background: #fff; transition: 0.4s ease; 
+    position: absolute; top: -15px; height: 1px; width: 60px; 
+    background: #fff; transition: 0.4s ease; 
 }
+
+.content-block { min-height: 100vh; padding: 100px 5%; }
