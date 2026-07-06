@@ -8,7 +8,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', sans-serif;
 .top-nav-right a { color: #fff; text-decoration: none; }
 
 .hero { 
-    height: 85vh; /* This creates the 'peek' effect */
+    height: 85vh; 
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('home.jpg') center/cover;
     display: flex; align-items: center; padding-left: 8%;
 }
@@ -17,7 +17,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', sans-serif;
 .cta-button { color: #fff; text-decoration: none; border: 1px solid #fff; padding: 10px 20px; display: inline-block; }
 
 .nav-wrapper { 
-    position: sticky; top: 0; width: 100%; z-index: 1000; 
+    position: absolute; top: 0; width: 100%; z-index: 1000; 
     padding: 30px 0;
     background: transparent;
     transition: all 0.4s ease;
@@ -27,10 +27,12 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', sans-serif;
 
 /* Pinned state when scrolling */
 .nav-wrapper.pinned { 
+    position: fixed; /* Switch to fixed so it stays at the top during scroll */
     background: rgba(0, 0, 0, 0.95); 
     backdrop-filter: blur(10px);
     padding: 15px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: none;
 }
 
 .nav-container { display: flex; justify-content: center; gap: 60px; }
