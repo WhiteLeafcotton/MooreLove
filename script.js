@@ -1,8 +1,8 @@
 const navWrapper = document.getElementById('navWrapper');
 
 window.addEventListener('scroll', () => {
-    // Once the user scrolls past the hero section, lock the nav
-    if (window.scrollY > (window.innerHeight * 0.85)) {
+    // If scroll position is greater than the hero height (set to 100vh)
+    if (window.scrollY > window.innerHeight) {
         navWrapper.classList.add('pinned');
     } else {
         navWrapper.classList.remove('pinned');
