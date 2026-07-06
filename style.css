@@ -1,28 +1,23 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Helvetica Neue', sans-serif; background: #000; color: #fff; }
+body { background: #000; color: #fff; font-family: sans-serif; }
 
 .hero { 
-    height: 85vh; 
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('home.jpg'); 
-    background-size: cover; 
-    background-position: center; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: space-between; 
+    height: 85vh; /* Leaves 15% visible for the 'peek' */
+    display: flex; flex-direction: column; justify-content: space-between;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('home.jpg');
+    background-size: cover; background-position: center;
 }
 
-.hero-content { margin-left: 8%; transition: opacity 0.5s ease; }
-.hero-content.faded { opacity: 0; }
+.hero-content { margin-left: 8%; margin-top: auto; margin-bottom: 100px; }
 
+/* Sticky Nav Bar */
 .nav-wrapper { 
-    position: sticky; 
-    top: 0; 
-    width: 100%; 
-    padding: 20px 0; 
-    z-index: 1000; 
-    transition: background 0.4s ease;
+    position: sticky; top: 0; 
+    width: 100%; padding: 20px 0; z-index: 1000;
+    transition: background 0.3s ease;
 }
 
+/* Class added by JS when scrolled */
 .nav-wrapper.pinned { 
     background: rgba(0, 0, 0, 0.95); 
     backdrop-filter: blur(10px); 
@@ -33,8 +28,8 @@ body { font-family: 'Helvetica Neue', sans-serif; background: #000; color: #fff;
 .nav-item { cursor: pointer; padding: 10px; }
 
 .active-bar { 
-    position: absolute; top: -20px; height: 1px; width: 60px; 
-    background: white; transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
+    position: absolute; top: -15px; height: 1px; width: 60px; 
+    background: #fff; transition: 0.4s ease; 
 }
 
-.content-block { height: 100vh; padding: 100px 5%; background: #000; }
+.content-block { min-height: 100vh; padding: 100px 5%; }
