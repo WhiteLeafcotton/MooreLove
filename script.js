@@ -1,25 +1,21 @@
-const navWrapper = document.getElementById('navWrapper');
-const hero = document.getElementById('hero');
-const heroContent = document.getElementById('heroContent');
+
 const items = document.querySelectorAll('.nav-item');
 const bar = document.getElementById('activeBar');
 
 let ticking = false;
 
+const navWrapper = document.getElementById('navWrapper');
+const hero = document.getElementById('hero');
+const heroContent = document.getElementById('heroContent');
+
 window.addEventListener('scroll', () => {
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            // Using scrollY directly to trigger pinning
-            if (window.scrollY >= hero.offsetHeight) {
-                navWrapper.classList.add('fixed-top');
-                heroContent.classList.add('faded');
-            } else {
-                navWrapper.classList.remove('fixed-top');
-                heroContent.classList.remove('faded');
-            }
-            ticking = false;
-        });
-        ticking = true;
+    // When scroll passes the hero height, trigger the background effect
+    if (window.scrollY >= hero.offsetHeight) {
+        navWrapper.classList.add('fixed-top');
+        heroContent.classList.add('faded');
+    } else {
+        navWrapper.classList.remove('fixed-top');
+        heroContent.classList.remove('faded');
     }
 });
 
