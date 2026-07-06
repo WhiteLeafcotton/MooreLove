@@ -1,11 +1,17 @@
+/* --- Base Reset --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white; background: #000; overflow-x: hidden; }
+body { 
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+    color: white; 
+    background: #000; 
+    overflow-x: hidden; 
+}
 
-/* Header Navigation */
+/* --- Top Navigation --- */
 .top-nav { position: absolute; top: 20px; right: 40px; z-index: 1001; }
 .nav-links a { color: white; text-decoration: none; margin-left: 25px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.8; }
 
-/* Hero - 85vh forces the content block to peek */
+/* --- Hero Section (85vh creates the peek) --- */
 .hero { 
     height: 85vh; 
     width: 100%; 
@@ -17,32 +23,50 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
     flex-direction: column;
 }
 
-.hero-content { margin: auto 0 auto 8%; z-index: 10; transition: opacity 0.4s ease; }
+.hero-content { 
+    margin: auto 0 auto 8%; 
+    z-index: 10; 
+    transition: opacity 0.4s ease; 
+}
 .hero-content.faded { opacity: 0; }
 
-/* Nav Wrapper */
+/* --- Navigation Wrapper --- */
 .nav-wrapper { 
     position: absolute; 
     bottom: 0; 
     width: 100%; 
     z-index: 1000; 
     padding-bottom: 20px; 
+    transition: all 0.3s ease;
 }
-/* Fixed state applied by JS */
+
+/* Fixed state locks the bar to the top */
 .nav-wrapper.fixed-top { 
     position: fixed !important; 
     top: 0; 
-    background: rgba(0, 0, 0, 0.95); 
-    backdrop-filter: blur(15px); 
-    padding: 20px 0; 
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Dark but allows some depth */
+    backdrop-filter: blur(10px); 
+    padding: 15px 0; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
 }
 
-.nav-container { display: flex; justify-content: space-around; width: 85%; margin: 0 auto; padding-top: 10px; }
-.nav-item { cursor: pointer; text-align: center; padding: 10px; }
+/* --- Nav Items --- */
+.nav-container { display: flex; justify-content: space-around; width: 85%; margin: 0 auto; }
+.nav-item { cursor: pointer; padding: 10px; text-align: center; }
 .nav-item .text { display: block; font-size: 0.65rem; letter-spacing: 2px; margin-top: 8px; }
-.active-bar { position: absolute; top: 0; height: 2px; width: 80px; background: white; transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
 
-/* Content Section - The "Peek" Section */
+.active-bar { 
+    position: absolute; 
+    top: 0; 
+    height: 2px; 
+    width: 80px; 
+    background: white; 
+    transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+
+/* --- Content Section --- */
 .content-block { 
     padding: 100px 5%; 
     background: #000; 
@@ -50,4 +74,12 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
     position: relative; 
     z-index: 5; 
 }
-.horizontal-card { width: 100%; height: 300px; border: 1px solid #222; display: flex; align-items: center; justify-content: center; color: #555; }
+.horizontal-card { 
+    width: 100%; 
+    height: 300px; 
+    border: 1px solid #222; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: #555; 
+}
