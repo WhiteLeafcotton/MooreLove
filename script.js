@@ -1,17 +1,20 @@
 const navWrapper = document.getElementById('navWrapper');
+const heroContent = document.getElementById('heroContent');
 const bar = document.getElementById('activeBar');
 
-// Toggle 'pinned' class for background blur
+// Sticky Scroll Logic
 window.addEventListener('scroll', () => {
     const rect = navWrapper.getBoundingClientRect();
     if (rect.top <= 0) {
         navWrapper.classList.add('pinned');
+        heroContent.classList.add('faded');
     } else {
         navWrapper.classList.remove('pinned');
+        heroContent.classList.remove('faded');
     }
 });
 
-// Bar animation logic
+// Bar animation
 document.querySelectorAll('.nav-item').forEach(item => {
     item.addEventListener('mouseenter', (e) => {
         const offset = e.currentTarget.offsetLeft + (e.currentTarget.offsetWidth / 2) - (bar.offsetWidth / 2);
