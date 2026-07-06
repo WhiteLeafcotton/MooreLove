@@ -1,40 +1,44 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #000; color: #fff; font-family: 'Helvetica Neue', sans-serif; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Living</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-.hero { 
-    height: 85vh; /* Sets the peek height */
-    position: relative; 
-    display: flex; align-items: center; padding-left: 8%;
-    background: url('home.jpg') center/cover;
-}
+    <header class="top-bar">
+        <div class="top-nav-right">
+            <a href="#">DOWNLOAD THE APP</a>
+            <a href="#">SIGN IN</a>
+            <a href="#">ENGLISH</a>
+        </div>
+    </header>
 
-.hero-content { margin-top: -100px; }
-.hero-content h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 30px; }
+    <main class="hero">
+        <div class="hero-content">
+            <h1>WHERE CARE MEETS<br>UNPARALLELED ELEGANCE</h1>
+            <a href="#" class="cta-button">DISCOVER OUR STORY</a>
+        </div>
 
-/* The button styling */
-.cta-button { 
-    color: #fff; text-decoration: none; border: 1px solid #fff; 
-    padding: 15px 30px; letter-spacing: 2px; font-size: 0.7rem;
-}
+        <nav class="nav-wrapper" id="navWrapper">
+            <div class="active-indicator"></div>
+            <div class="nav-container">
+                <a href="#" class="nav-item"><img src="hotel.svg" alt="Hotels"><span>ALL HOTELS</span></a>
+                <a href="#" class="nav-item"><img src="residence.svg" alt="Residences"><span>RESIDENCES</span></a>
+                <a href="#" class="nav-item"><img src="villa.svg" alt="Villas"><span>VILLA RENTALS</span></a>
+                <a href="#" class="nav-item"><img src="dining.svg" alt="Dining"><span>DINING</span></a>
+                <a href="#" class="nav-item"><img src="jet.svg" alt="Jet"><span>PRIVATE JET</span></a>
+                <a href="#" class="nav-item"><img src="yacht.svg" alt="Yachts"><span>YACHTS</span></div>
+            </div>
+        </nav>
+    </main>
 
-/* Nav positioning at bottom of hero */
-.nav-wrapper { 
-    position: absolute; bottom: 0; width: 100%; z-index: 1000;
-    padding-bottom: 40px; border-top: 1px solid rgba(255,255,255,0.2);
-}
+    <section class="content-block">
+        <h2>Experience Excellence</h2>
+    </section>
 
-/* The active white bar indicator */
-.active-indicator { 
-    width: 150px; height: 3px; background: #fff; 
-    margin: -2px auto 20px auto; 
-}
-
-.nav-container { display: flex; justify-content: center; gap: 60px; }
-.nav-item { display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer; }
-.nav-item img { width: 25px; }
-.nav-item span { font-size: 0.7rem; letter-spacing: 1.5px; }
-
-/* Sticky Pinned State */
-.nav-wrapper.pinned { 
-    position: fixed; top: 0; bottom: auto; background: #000; padding: 15px 0;
-}
+    <script src="script.js"></script>
+</body>
+</html>
