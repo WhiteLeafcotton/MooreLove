@@ -1,260 +1,422 @@
+/*==================================================
+HBCR Senior Living
+Luxury Landing Page
+PART 1 OF 2
+==================================================*/
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 html{
-    scroll-behavior:smooth;
+scroll-behavior:smooth;
 }
 
 body{
-    background:#000;
-    color:#fff;
-    font-family:Helvetica,Arial,sans-serif;
+background:#080808;
+font-family:"Inter",sans-serif;
+color:#fff;
+overflow-x:hidden;
 }
 
 
-/* ===========================
-TOP RIGHT LINKS
-=========================== */
+/*=========================================
+COLORS
+=========================================*/
 
-.top-nav-right{
+:root{
 
-    position:absolute;
+--gold:#d4b06a;
 
-    top:28px;
-    right:6%;
+--white:#ffffff;
 
-    display:flex;
-    gap:34px;
+--text:#d9d9d9;
 
-    z-index:3000;
+--glass:rgba(18,18,18,.72);
 
-    font-size:12px;
+--border:rgba(255,255,255,.15);
 
-    letter-spacing:2px;
-
-    text-transform:uppercase;
-
-}
-
-.top-nav-right a{
-
-    color:white;
-
-    text-decoration:none;
-
-    opacity:.9;
-
-    transition:.3s;
-
-}
-
-.top-nav-right a:hover{
-
-    opacity:1;
+--transition:.35s ease;
 
 }
 
 
-/* ===========================
+/*=========================================
+TOP BAR
+=========================================*/
+
+.top-bar{
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+padding:28px 7%;
+
+z-index:1000;
+
+display:flex;
+
+justify-content:flex-end;
+
+pointer-events:none;
+
+}
+
+.top-links{
+
+display:flex;
+
+gap:34px;
+
+pointer-events:auto;
+
+}
+
+.top-links a{
+
+text-decoration:none;
+
+color:white;
+
+font-size:12px;
+
+font-weight:400;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+opacity:.92;
+
+transition:var(--transition);
+
+}
+
+.top-links a:hover{
+
+opacity:1;
+
+color:var(--gold);
+
+}
+
+
+/*=========================================
 HERO
-=========================== */
+=========================================*/
 
 .hero{
 
-    position:relative;
+position:relative;
 
-    height:100vh;
+height:100vh;
 
-    overflow:hidden;
+min-height:820px;
 
-    display:flex;
+display:flex;
 
-    align-items:center;
+align-items:center;
 
-    padding-left:8%;
+padding-left:8%;
 
-    background:url("home.jpg") center center/cover no-repeat;
+background:
+linear-gradient(rgba(0,0,0,.20),rgba(0,0,0,.22)),
+url(home.jpg) center center/cover no-repeat;
+
+overflow:hidden;
 
 }
 
+.hero::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+right:0;
+
+bottom:0;
+
+height:220px;
+
+background:linear-gradient(to top,#080808,transparent);
+
+}
 
 .hero-overlay{
 
-    position:absolute;
+position:absolute;
 
-    inset:0;
+inset:0;
 
-    background:
-    linear-gradient(to bottom,
-    rgba(0,0,0,.25),
-    rgba(0,0,0,.25),
-    rgba(0,0,0,.45),
-    rgba(0,0,0,.65));
+background:
+linear-gradient(to bottom,
+rgba(0,0,0,.08),
+rgba(0,0,0,.18),
+rgba(0,0,0,.34),
+rgba(0,0,0,.55));
+
+z-index:1;
 
 }
 
+
+/*=========================================
+CONTENT
+=========================================*/
 
 .hero-content{
 
-    position:relative;
+position:relative;
 
-    z-index:5;
+z-index:5;
 
-    max-width:900px;
+max-width:760px;
+
+margin-top:-60px;
 
 }
 
+.hero-logo{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:22px;
+
+letter-spacing:10px;
+
+margin-bottom:45px;
+
+font-weight:400;
+
+}
 
 .hero-content h1{
 
-    font-size:5rem;
+font-family:"Cormorant Garamond",serif;
 
-    font-weight:200;
+font-weight:300;
 
-    line-height:1;
+font-size:88px;
 
-    letter-spacing:2px;
+line-height:.92;
 
-    margin-bottom:40px;
+letter-spacing:1px;
+
+margin-bottom:48px;
+
+}
+
+.hero-content h1 span{
+
+display:block;
+
+margin:18px 0;
+
+}
+
+.hero-button{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:18px 42px;
+
+border:1px solid rgba(255,255,255,.65);
+
+text-decoration:none;
+
+color:white;
+
+font-size:14px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+transition:var(--transition);
+
+}
+
+.hero-button:hover{
+
+background:white;
+
+color:black;
 
 }
 
 
-.cta-button{
+/*=========================================
+NAV PLACEHOLDER
+=========================================*/
 
-    display:inline-block;
+.nav-placeholder{
 
-    padding:15px 36px;
+height:78px;
 
-    color:white;
-
-    text-decoration:none;
-
-    border:1px solid rgba(255,255,255,.75);
-
-    transition:.35s;
-
-    letter-spacing:1px;
+display:none;
 
 }
 
-.cta-button:hover{
+.nav-placeholder.active{
 
-    background:white;
-
-    color:black;
+display:block;
 
 }
 
 
-/* ===========================
-NAVIGATION
-=========================== */
+/*=========================================
+MAIN NAV
+=========================================*/
 
-.nav-wrapper{
+.main-nav{
 
-    position:absolute;
+position:absolute;
 
-    bottom:0;
+left:0;
 
-    left:0;
+bottom:0;
 
-    width:100%;
+width:100%;
 
-    z-index:2000;
+padding:26px 0;
 
-    padding:28px 0;
+z-index:50;
 
-    border-top:1px solid rgba(255,255,255,.18);
+transition:
+background .35s,
+padding .35s,
+box-shadow .35s,
+backdrop-filter .35s,
+transform .35s;
 
-    background:transparent;
+border-top:1px solid rgba(255,255,255,.15);
 
-    transition:
-    background .35s,
-    backdrop-filter .35s,
-    padding .35s,
-    box-shadow .35s;
+}
+
+.nav-inner{
+
+max-width:1500px;
+
+margin:auto;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:58px;
+
+padding:0 30px;
+
+}
+
+.nav-inner a{
+
+text-decoration:none;
+
+font-size:12px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:white;
+
+transition:.3s;
+
+position:relative;
+
+}
+
+.nav-inner a::after{
+
+content:"";
+
+position:absolute;
+
+left:50%;
+
+bottom:-8px;
+
+width:0;
+
+height:1px;
+
+background:var(--gold);
+
+transition:.3s;
+
+transform:translateX(-50%);
+
+}
+
+.nav-inner a:hover{
+
+color:var(--gold);
+
+}
+
+.nav-inner a:hover::after{
+
+width:100%;
 
 }
 
 
-.nav-container{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:58px;
-
-    max-width:1600px;
-
-    margin:auto;
-
-}
-
-
-.nav-item{
-
-    color:white;
-
-    font-size:12px;
-
-    letter-spacing:2px;
-
-    font-weight:400;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-.nav-item:hover{
-
-    color:#d7b26d;
-
-}
-
-
-/* ===========================
+/*=========================================
 STICKY
-=========================== */
+=========================================*/
 
-.nav-wrapper.sticky{
+.main-nav.sticky{
 
-    position:fixed;
+position:fixed;
 
-    top:0;
+top:0;
 
-    left:0;
+left:0;
 
-    background:rgba(12,12,12,.88);
+right:0;
 
-    backdrop-filter:blur(18px);
+padding:18px 0;
 
-    -webkit-backdrop-filter:blur(18px);
+background:rgba(10,10,10,.82);
 
-    padding:18px 0;
+backdrop-filter:blur(22px);
 
-    border-top:none;
+-webkit-backdrop-filter:blur(22px);
 
-    border-bottom:1px solid rgba(255,255,255,.08);
+border-top:none;
 
-    box-shadow:0 15px 35px rgba(0,0,0,.45);
+border-bottom:1px solid rgba(255,255,255,.08);
 
-    animation:slideDown .35s ease;
+box-shadow:0 12px 30px rgba(0,0,0,.28);
+
+animation:slideDown .35s ease;
+
+z-index:5000;
 
 }
-
 
 @keyframes slideDown{
 
 from{
+
+opacity:0;
 
 transform:translateY(-100%);
 
@@ -262,51 +424,260 @@ transform:translateY(-100%);
 
 to{
 
+opacity:1;
+
 transform:translateY(0);
 
 }
 
 }
 
+/*==================================================
+PART 2 OF 2
+==================================================*/
 
-/* ===========================
-CONTENT
-=========================== */
 
-.content-block{
+/*=========================================
+PAGE SECTIONS
+=========================================*/
 
-    background:#050505;
+.section{
 
-    min-height:200vh;
+position:relative;
 
-    padding:120px 8%;
+padding:140px 8%;
 
-}
-
-.content-block h2{
-
-    font-size:52px;
-
-    margin-bottom:25px;
+background:#080808;
 
 }
 
-.content-block p{
+.section:nth-child(even){
 
-    max-width:700px;
+background:#0d0d0d;
 
-    color:#a5a5a5;
+}
 
-    line-height:2;
+.container{
+
+max-width:1300px;
+
+margin:auto;
+
+}
+
+.container h2{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:64px;
+
+font-weight:300;
+
+margin-bottom:30px;
+
+letter-spacing:1px;
+
+}
+
+.container p{
+
+max-width:760px;
+
+font-size:18px;
+
+line-height:2;
+
+color:#b9b9b9;
+
+font-weight:300;
+
+}
+
+.dark{
+
+background:#050505;
 
 }
 
 
-/* ===========================
-MOBILE
-=========================== */
+/*=========================================
+LUXURY DIVIDER
+=========================================*/
 
-@media(max-width:900px){
+.section::before{
+
+content:"";
+
+display:block;
+
+width:90px;
+
+height:1px;
+
+background:rgba(255,255,255,.12);
+
+margin-bottom:45px;
+
+}
+
+
+/*=========================================
+SCROLL ANIMATIONS
+=========================================*/
+
+.hero-content{
+
+animation:fadeUp 1.1s ease;
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(50px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.hero-button{
+
+transition:
+background .35s,
+color .35s,
+transform .35s,
+border-color .35s;
+
+}
+
+.hero-button:hover{
+
+transform:translateY(-3px);
+
+border-color:white;
+
+}
+
+
+/*=========================================
+NAVIGATION ANIMATION
+=========================================*/
+
+.main-nav{
+
+transform:translateY(0);
+
+}
+
+.main-nav.sticky{
+
+transform:translateY(0);
+
+}
+
+.main-nav.sticky .nav-inner{
+
+max-width:1450px;
+
+}
+
+
+/*=========================================
+PREVENT PAGE JUMP
+=========================================*/
+
+body.nav-active{
+
+padding-top:78px;
+
+}
+
+body.nav-active .nav-placeholder{
+
+display:block;
+
+}
+
+
+/*=========================================
+HERO IMAGE PARALLAX FEEL
+=========================================*/
+
+.hero{
+
+background-attachment:fixed;
+
+}
+
+
+/*=========================================
+HOVER EFFECTS
+=========================================*/
+
+.nav-inner a{
+
+padding-bottom:8px;
+
+}
+
+.nav-inner a:hover{
+
+letter-spacing:2.4px;
+
+}
+
+.hero-button{
+
+box-shadow:0 0 0 rgba(255,255,255,0);
+
+}
+
+.hero-button:hover{
+
+box-shadow:0 10px 30px rgba(255,255,255,.15);
+
+}
+
+
+/*=========================================
+RESPONSIVE
+=========================================*/
+
+@media(max-width:1400px){
+
+.hero-content h1{
+
+font-size:74px;
+
+}
+
+.nav-inner{
+
+gap:40px;
+
+}
+
+}
+
+
+@media(max-width:1200px){
+
+.hero-content h1{
+
+font-size:62px;
+
+}
 
 .hero{
 
@@ -314,32 +685,229 @@ padding-left:7%;
 
 }
 
-.hero-content h1{
+.container h2{
 
-font-size:2.8rem;
+font-size:54px;
 
 }
 
-.nav-container{
+}
+
+
+@media(max-width:992px){
+
+.hero{
+
+min-height:720px;
+
+padding-left:6%;
+
+}
+
+.hero-content{
+
+margin-top:-20px;
+
+}
+
+.hero-content h1{
+
+font-size:54px;
+
+line-height:1;
+
+}
+
+.nav-inner{
 
 gap:22px;
 
-padding:0 20px;
-
 flex-wrap:wrap;
 
-}
-
-.nav-item{
-
-font-size:11px;
+padding:0 20px;
 
 }
 
-.top-nav-right{
+.main-nav{
+
+padding:22px 0;
+
+}
+
+.top-links{
 
 display:none;
 
 }
+
+}
+
+
+@media(max-width:768px){
+
+.hero{
+
+height:92vh;
+
+min-height:650px;
+
+}
+
+.hero-content{
+
+max-width:100%;
+
+}
+
+.hero-content h1{
+
+font-size:42px;
+
+}
+
+.hero-logo{
+
+font-size:18px;
+
+letter-spacing:6px;
+
+margin-bottom:30px;
+
+}
+
+.hero-button{
+
+padding:15px 28px;
+
+font-size:12px;
+
+}
+
+.container h2{
+
+font-size:42px;
+
+}
+
+.container p{
+
+font-size:16px;
+
+line-height:1.9;
+
+}
+
+.section{
+
+padding:90px 7%;
+
+}
+
+.nav-inner{
+
+justify-content:center;
+
+gap:16px;
+
+}
+
+.nav-inner a{
+
+font-size:10px;
+
+letter-spacing:1.5px;
+
+}
+
+}
+
+
+@media(max-width:480px){
+
+.hero-content h1{
+
+font-size:34px;
+
+}
+
+.hero-button{
+
+width:100%;
+
+max-width:260px;
+
+}
+
+.container h2{
+
+font-size:34px;
+
+}
+
+.nav-inner{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+text-align:center;
+
+gap:18px;
+
+}
+
+.main-nav{
+
+padding:18px 15px;
+
+}
+
+}
+
+
+/*=========================================
+SMOOTH RENDERING
+=========================================*/
+
+body{
+
+-webkit-font-smoothing:antialiased;
+
+-moz-osx-font-smoothing:grayscale;
+
+text-rendering:optimizeLegibility;
+
+}
+
+img{
+
+max-width:100%;
+
+display:block;
+
+}
+
+a{
+
+-webkit-tap-highlight-color:transparent;
+
+}
+
+
+/*=========================================
+FINAL POLISH
+=========================================*/
+
+::selection{
+
+background:#d4b06a;
+
+color:white;
+
+}
+
+html{
+
+scroll-padding-top:78px;
 
 }
