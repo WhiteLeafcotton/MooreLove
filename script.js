@@ -1,8 +1,8 @@
 const navWrapper = document.getElementById('navWrapper');
 
 window.addEventListener('scroll', () => {
-    // Threshold set to 100px to trigger the sticky background transition
-    if (window.scrollY > 100) {
+    // Once the user scrolls past the hero section, lock the nav
+    if (window.scrollY > (window.innerHeight * 0.85)) {
         navWrapper.classList.add('pinned');
     } else {
         navWrapper.classList.remove('pinned');
