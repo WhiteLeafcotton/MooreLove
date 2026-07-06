@@ -909,3 +909,10 @@ html{
 scroll-padding-top:78px;
 
 }
+body.nav-active::before{
+content:none!important;
+}
+
+body.nav-active::after{
+content:none!important;
+}
