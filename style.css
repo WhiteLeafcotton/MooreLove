@@ -1,11 +1,19 @@
+/* Reset and Base */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white; background: #000; overflow-x: hidden; }
+body { 
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+    color: white; 
+    background: #000; 
+    overflow-x: hidden; 
+}
 
+/* Header */
 .top-nav { position: absolute; top: 20px; right: 40px; z-index: 1001; }
 .nav-links a { color: white; text-decoration: none; margin-left: 25px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.8; }
 
+/* Hero Section - The "Peek" Height */
 .hero { 
-    height: 75vh; 
+    height: 80vh; /* Reduced height ensures content below is visible */
     width: 100%; 
     position: relative; 
     background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('home.jpg'); 
@@ -13,21 +21,60 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white
     background-position: center; 
     display: flex; 
     flex-direction: column;
-    justify-content: space-between;
 }
 
-.hero-content { margin-left: 8%; flex: 1; display: flex; flex-direction: column; justify-content: center; z-index: 10; transition: opacity 0.6s ease; }
+.hero-content { 
+    margin: auto 0 auto 8%; 
+    z-index: 10; 
+    transition: opacity 0.6s ease; 
+}
+
 .hero-content.faded { opacity: 0; }
 .hero-content h1 { font-size: 3.5rem; font-weight: 300; letter-spacing: 2px; line-height: 1.1; margin-bottom: 30px; }
 .cta-button { border: 1px solid white; padding: 12px 30px; color: white; text-decoration: none; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; width: fit-content; }
 
-.nav-wrapper { position: absolute; bottom: 0; width: 100%; z-index: 1000; padding-bottom: 20px; }
-.nav-wrapper.fixed-top { position: fixed; top: 0; background: rgba(0, 0, 0, 0.98); backdrop-filter: blur(20px); padding: 20px 0 10px 0; }
+/* Navigation Wrapper - The Sticky Logic */
+.nav-wrapper { 
+    position: sticky; 
+    bottom: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    background: linear-gradient(transparent, rgba(0,0,0,0.4));
+    transition: all 0.3s ease;
+}
 
-.nav-container { display: flex; justify-content: space-around; align-items: center; width: 85%; margin: 0 auto; }
-.nav-item { cursor: pointer; text-align: center; padding: 10px; }
+/* Pinned State (Applied via JS) */
+.nav-wrapper.fixed-top { 
+    position: fixed; 
+    top: 0; 
+    background: rgba(0, 0, 0, 0.95); 
+    backdrop-filter: blur(15px); 
+    padding: 20px 0;
+}
+
+/* Navigation Layout */
+.nav-container { display: flex; justify-content: space-around; width: 85%; margin: 0 auto; padding-top: 10px; }
+.nav-item { cursor: pointer; text-align: center; padding: 10px; transition: 0.3s; }
 .nav-item .text { display: block; font-size: 0.65rem; letter-spacing: 2px; margin-top: 8px; }
+
+/* Active Bar */
 .active-bar { position: absolute; top: 0; height: 2px; width: 80px; background: white; transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
 
-.content-block { padding: 100px 5%; background: #000; min-height: 100vh; position: relative; z-index: 5; }
-.horizontal-card { width: 100%; height: 300px; border: 1px solid #222; display: flex; align-items: center; justify-content: center; color: #555; }
+/* Content Section - The "Peek" starts here */
+.content-block { 
+    padding: 100px 5%; 
+    background: #000; 
+    min-height: 100vh; 
+    position: relative; 
+    z-index: 5; 
+}
+
+.horizontal-card { 
+    width: 100%; 
+    height: 300px; 
+    border: 1px solid #222; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: #555; 
+}
