@@ -3,19 +3,21 @@ const bar = document.getElementById('activeBar');
 
 window.addEventListener('scroll', () => {
     const rect = navWrapper.getBoundingClientRect();
-    
-    // Pin nav when it reaches the top
-    if (rect.top <= 0) {
+    const scrollY = window.scrollY;
+
+    // If we have scrolled past the initial position (top > 0)
+    if (scrollY > 50 && rect.top > 0) {
+        navWrapper.classList.add('hidden');
+        navWrapper.classList.remove('pinned');
+    } 
+    // If it hits the top of the viewport
+    else if (rect.top <= 0) {
         navWrapper.classList.add('pinned');
-        navWrapper.classList.remove('faded-out');
+        navWrapper.classList.remove('hidden');
     } 
-    // Fade out if we have started scrolling but haven't reached the top yet
-    else if (window.scrollY > 0) {
-        navWrapper.classList.add('faded-out');
-    } 
-    // Reset if at the very top
+    // Default resting state at the top
     else {
-        navWrapper.classList.remove('pinned', 'faded-out');
+        navWrapper.classList.remove('hidden', 'pinned');
     }
 });
 
