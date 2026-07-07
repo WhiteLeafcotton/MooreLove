@@ -1,5 +1,5 @@
 /*==================================================
-HBCR Senior Living - Fixed CSS
+HBCR Senior Living - Updated CSS
 ==================================================*/
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 78px; }
@@ -13,8 +13,8 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; overf
 .top-links a { text-decoration: none; color: white; font-size: 12px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; opacity: .92; transition: var(--transition); }
 .top-links a:hover { opacity: 1; color: var(--gold); }
 
-/* HERO */
-.hero { position: relative; height: 100vh; min-height: 820px; display: flex; align-items: center; padding-left: 8%; background: linear-gradient(rgba(0,0,0,.20),rgba(0,0,0,.22)), url(home.jpg) center center/cover no-repeat; background-attachment: fixed; overflow: hidden; z-index: 1; }
+/* HERO - Updated to 85vh for shorter, luxury look */
+.hero { position: relative; height: 85vh; min-height: 600px; display: flex; align-items: center; padding-left: 8%; background: linear-gradient(rgba(0,0,0,.20),rgba(0,0,0,.22)), url(home.jpg) center center/cover no-repeat; background-attachment: fixed; overflow: hidden; z-index: 1; }
 .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 220px; background: linear-gradient(to top,#080808,transparent); }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,.08), rgba(0,0,0,.18), rgba(0,0,0,.34), rgba(0,0,0,.55)); z-index: 1; }
 
@@ -29,7 +29,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; overf
 /* NAV */
 .nav-placeholder { height: 78px; display: none; }
 .nav-placeholder.active { display: block; }
-.main-nav { position: absolute; left: 0; bottom: 0; width: 100%; padding: 26px 0; z-index: 50; border-top: 1px solid rgba(255,255,255,.15); transition: .35s; }
+.main-nav { position: relative; width: 100%; padding: 26px 0; z-index: 50; border-top: 1px solid rgba(255,255,255,.15); background: #080808; transition: .35s; }
 .nav-inner { max-width: 1500px; margin: auto; display: flex; justify-content: center; align-items: center; gap: 58px; padding: 0 30px; }
 .nav-inner a { text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: white; transition: .3s; position: relative; padding-bottom: 8px; }
 .nav-inner a:hover { color: var(--gold); letter-spacing: 2.4px; }
@@ -37,22 +37,11 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; overf
 .nav-inner a:hover::after { width: 100%; }
 
 /* STICKY NAV */
-.main-nav.sticky {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    padding: 18px 0 !important;
-    background: #080808 !important;
-    z-index: 9999 !important;
-    border: none;
-    box-shadow: 0 2px 10px rgba(0,0,0,.5);
-    animation: slideDown .35s ease;
-}
+.main-nav.sticky { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; padding: 18px 0 !important; background: #080808 !important; z-index: 9999 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 2px 10px rgba(0,0,0,.5); animation: slideDown .35s ease; }
 
 /* SECTIONS */
-.section { position: relative; padding: 140px 8%; background: #080808; z-index: 10; }
-.section:nth-child(even) { background: #0d0d0d; }
+.section { position: relative; padding: 120px 8%; background: #080808; z-index: 10; border-top: 1px solid rgba(255,255,255,0.05); }
+.section.dark { background: #050505; }
 .container { max-width: 1300px; margin: auto; }
 .container h2 { font-family: "Cormorant Garamond", serif; font-size: 64px; font-weight: 300; margin-bottom: 30px; letter-spacing: 1px; }
 .container p { max-width: 760px; font-size: 18px; line-height: 2; color: #b9b9b9; font-weight: 300; }
