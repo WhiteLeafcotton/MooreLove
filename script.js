@@ -1,58 +1,43 @@
-/*==================================================
-HBCR Senior Living - JS Functionality
-==================================================*/
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Sticky Navigation Logic
+    const hero = document.getElementById("hero");
+    const nav = document.getElementById("mainNav");
+    const placeholder = document.querySelector(".nav-placeholder");
 
-// 1. Sticky Navigation Logic
-const hero = document.getElementById("hero");
-const nav = document.getElementById("mainNav");
-const placeholder = document.querySelector(".nav-placeholder");
-
-function updateNav() {
-    if (!hero || !nav) return;
-    
-    // Check if user has scrolled past the hero section
-    if (window.scrollY >= hero.offsetHeight) {
-        nav.classList.add("sticky");
-        if (placeholder) placeholder.style.display = "block";
-    } else {
-        nav.classList.remove("sticky");
-        if (placeholder) placeholder.style.display = "none";
+    function updateNav() {
+        if (!hero || !nav) return;
+        if (window.scrollY >= hero.offsetHeight) {
+            nav.classList.add("sticky");
+            if (placeholder) placeholder.style.display = "block";
+        } else {
+            nav.classList.remove("sticky");
+            if (placeholder) placeholder.style.display = "none";
+        }
     }
-}
+    window.addEventListener("scroll", updateNav, { passive: true });
 
-// 2. Icon Bar Animation Logic
-function moveLine(percent) {
-    const line = document.getElementById("activeLine");
-    if (line) line.style.left = percent + "%";
-}
+    // 2. Hero Content & Line Swapping Logic
+    const iconItems = document.querySelectorAll('.icon-item');
+    const heroSection = document.querySelector('.hero');
+    const heroTitle = document.querySelector('.hero-content h1');
+    const heroBtn = document.querySelector('.hero-button');
+    const activeLine = document.getElementById("activeLine");
 
-// Attach scroll event for sticky nav
-window.addEventListener("scroll", updateNav, { passive: true });
+    function moveLine(percent) {
+        if (activeLine) activeLine.style.left = percent + "%";
+    }
 
-// Optional: Reset line position when mouse leaves the icon wrapper
-const iconWrapper = document.querySelector(".icon-wrapper");
-if (iconWrapper) {
-    iconWrapper.addEventListener("mouseleave", () => {
-        // You can choose to reset to 0 or leave it on the last item
-        // moveLine(0); 
-    });
-}
-// 3. Hero Content Swapping Logic
-const iconItems = document.querySelectorAll('.icon-item');
-const heroSection = document.querySelector('.hero');
-const heroTitle = document.querySelector('.hero-content h1');
-const heroBtn = document.querySelector('.hero-button');
-
-iconItems.forEach((item, index) => {
-    item.addEventListener('mouseenter', () => {
-        // 1. Update background image
-        heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)), url(${item.dataset.image})`;
-        
-        // 2. Update Title and Button
-        heroTitle.innerHTML = item.dataset.title;
-        heroBtn.innerText = item.dataset.cta;
-        
-        // 3. Move the indicator line (16.66% per item)
-        moveLine(index * 16.66);
+    iconItems.forEach((item, index) => {
+        item.addEventListener('mouseenter', () => {
+            // Update background image with an inline style
+            heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('${item.dataset.image}')`;
+            
+            // Update Title and Button
+            if (heroTitle) heroTitle.innerHTML = item.dataset.title;
+            if (heroBtn) heroBtn.innerText = item.dataset.cta;
+            
+            // Move the indicator line
+            moveLine(index * 16.66);
+        });
     });
 });
