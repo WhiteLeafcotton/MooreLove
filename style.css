@@ -57,24 +57,25 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; overf
 
 /* STICKY NAV */
 /* Update your .main-nav block to this */
+/* Update your .main-nav block */
 .main-nav { 
-    display: none;        /* Hide it by default so it takes up zero space */
-    position: fixed;      /* Set to fixed immediately */
-    top: -100px;          /* Keep it off-screen until the class is added */
+    position: fixed; 
+    top: -100px; /* Hidden above viewport */
+    left: 0;
     width: 100%; 
     padding: 26px 0; 
     z-index: 50; 
     background: #080808; 
-    transition: top 0.35s ease; /* Smooth slide-down animation */
+    transition: top 0.35s ease; /* Animate the position */
+    border-bottom: 1px solid transparent;
 }
 
-/* Update your .main-nav.sticky block to this */
+/* Update your .main-nav.sticky block */
 .main-nav.sticky { 
-    display: block !important; 
-    top: 0; 
+    top: 0; /* Slide into view */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
     box-shadow: 0 2px 10px rgba(0,0,0,.5); 
-}}
+}
 
 /* SECTIONS */
 .section { position: relative; padding: 120px 8%; background: #080808; z-index: 10; border-top: 1px solid rgba(255,255,255,0.05); }
