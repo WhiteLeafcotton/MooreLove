@@ -37,7 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (heroBtn) heroBtn.innerText = item.dataset.cta;
             
             // Move the indicator line
-            moveLine(index * 16.66);
+            // In your script.js, update this line:
+              moveLine(index * 25);
         });
     });
 });
