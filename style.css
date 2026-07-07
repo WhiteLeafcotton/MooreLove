@@ -1,5 +1,5 @@
 /*==================================================
-HBCR Senior Living - Updated CSS
+HBCR Senior Living - Full CSS
 ==================================================*/
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 78px; }
@@ -13,8 +13,8 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; overf
 .top-links a { text-decoration: none; color: white; font-size: 12px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; opacity: .92; transition: var(--transition); }
 .top-links a:hover { opacity: 1; color: var(--gold); }
 
-/* HERO - Updated to 85vh for shorter, luxury look */
-.hero { position: relative; height: 85vh; min-height: 600px; display: flex; align-items: center; padding-left: 8%; background: linear-gradient(rgba(0,0,0,.20),rgba(0,0,0,.22)), url(home.jpg) center center/cover no-repeat; background-attachment: fixed; overflow: hidden; z-index: 1; }
+/* HERO */
+.hero { position: relative; height: 85vh; min-height: 600px; display: flex; align-items: center; padding-left: 8%; background: linear-gradient(rgba(0,0,0,.20),rgba(0,0,0,.22)), url(home.jpg) center center/cover no-repeat; background-size: cover; z-index: 1; }
 .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 220px; background: linear-gradient(to top,#080808,transparent); }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,.08), rgba(0,0,0,.18), rgba(0,0,0,.34), rgba(0,0,0,.55)); z-index: 1; }
 
