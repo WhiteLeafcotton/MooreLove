@@ -3,17 +3,15 @@ const nav = document.getElementById("mainNav");
 const placeholder = document.querySelector(".nav-placeholder");
 
 function updateNav() {
-    // Calculate the point where the hero ends
-    const trigger = hero.offsetHeight - nav.offsetHeight;
+    // The nav now sticks exactly when the hero scrolls out of view
+    const trigger = hero.offsetHeight;
 
     if (window.scrollY >= trigger) {
         nav.classList.add("sticky");
         placeholder.classList.add("active");
-        // REMOVE body.classList.add("nav-active"); // <--- DELETE THIS LINE
     } else {
         nav.classList.remove("sticky");
         placeholder.classList.remove("active");
-        // REMOVE body.classList.remove("nav-active"); // <--- DELETE THIS LINE
     }
 }
 
