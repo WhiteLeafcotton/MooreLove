@@ -37,3 +37,22 @@ if (iconWrapper) {
         // moveLine(0); 
     });
 }
+// 3. Hero Content Swapping Logic
+const iconItems = document.querySelectorAll('.icon-item');
+const heroSection = document.querySelector('.hero');
+const heroTitle = document.querySelector('.hero-content h1');
+const heroBtn = document.querySelector('.hero-button');
+
+iconItems.forEach((item, index) => {
+    item.addEventListener('mouseenter', () => {
+        // 1. Update background image
+        heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)), url(${item.dataset.image})`;
+        
+        // 2. Update Title and Button
+        heroTitle.innerHTML = item.dataset.title;
+        heroBtn.innerText = item.dataset.cta;
+        
+        // 3. Move the indicator line (16.66% per item)
+        moveLine(index * 16.66);
+    });
+});
