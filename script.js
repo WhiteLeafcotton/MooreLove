@@ -20,8 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener("scroll", updateNav, { passive: true });
 
-    // 2. Hero Video & Content Swapping Logic
+    // 2. Hero Content & Swapping Logic
     const iconItems = document.querySelectorAll('.icon-item');
+    const heroSection = document.querySelector('.hero');
     const heroVideo = document.getElementById('heroVideo');
     const heroTitle = document.querySelector('.hero-content h1');
     const heroBtn = document.querySelector('.hero-button');
@@ -35,14 +36,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     iconItems.forEach((item) => {
         const updateHero = () => {
-            // Update Video Source
-            if (heroVideo && item.dataset.video) {
-                heroVideo.src = item.dataset.video;
-                heroVideo.load();
-                heroVideo.play();
+            // IF INTERACTING: Hide video, show background image
+            if (heroVideo) {
+                heroVideo.style.display = 'none';
+                heroVideo.pause();
             }
             
-            // Update Content
+            // Set the background image
+            heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('${item.dataset.image}')`;
+            heroSection.style.backgroundSize = 'cover';
+            heroSection.style.backgroundPosition = 'center';
+            
+            // Update Text
             if (heroTitle) heroTitle.innerHTML = item.dataset.title;
             if (heroBtn) heroBtn.innerText = item.dataset.cta;
             
@@ -56,6 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: false });
     });
 
-    // Initialize line
+    // Initialize line position
     setTimeout(() => { if (iconItems.length > 0) moveLine(iconItems[0]); }, 100);
 });
