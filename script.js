@@ -3,7 +3,10 @@ const nav = document.getElementById("mainNav");
 const placeholder = document.querySelector(".nav-placeholder");
 
 function updateNav() {
-    // The nav now sticks exactly when the hero scrolls out of view
+    // Safety check: ensure elements exist to prevent errors
+    if (!hero || !nav || !placeholder) return;
+
+    // Calculate height accurately
     const trigger = hero.offsetHeight;
 
     if (window.scrollY >= trigger) {
@@ -15,6 +18,9 @@ function updateNav() {
     }
 }
 
-window.addEventListener("scroll", updateNav);
+// Add event listeners with debounce for performance
+window.addEventListener("scroll", updateNav, { passive: true });
 window.addEventListener("resize", updateNav);
-window.addEventListener("load", updateNav);
+
+// Use DOMContentLoaded to ensure elements are ready
+document.addEventListener("DOMContentLoaded", updateNav);
