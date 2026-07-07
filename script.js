@@ -3,24 +3,19 @@ const nav = document.getElementById("mainNav");
 const placeholder = document.querySelector(".nav-placeholder");
 
 function updateNav() {
-    // Safety check: ensure elements exist to prevent errors
-    if (!hero || !nav || !placeholder) return;
-
-    // Calculate height accurately
-    const trigger = hero.offsetHeight;
-
-    if (window.scrollY >= trigger) {
+    if (!hero || !nav) return;
+    if (window.scrollY >= hero.offsetHeight) {
         nav.classList.add("sticky");
-        placeholder.classList.add("active");
+        placeholder.style.display = "block";
     } else {
         nav.classList.remove("sticky");
-        placeholder.classList.remove("active");
+        placeholder.style.display = "none";
     }
 }
 
-// Add event listeners with debounce for performance
-window.addEventListener("scroll", updateNav, { passive: true });
-window.addEventListener("resize", updateNav);
+function moveLine(percent) {
+    const line = document.getElementById("activeLine");
+    if (line) line.style.left = percent + "%";
+}
 
-// Use DOMContentLoaded to ensure elements are ready
-document.addEventListener("DOMContentLoaded", updateNav);
+window.addEventListener("scroll", updateNav, { passive: true });
