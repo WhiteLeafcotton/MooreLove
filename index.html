@@ -26,9 +26,21 @@
             <h1>WHERE CARE MEETS <span>UNPARALLELED</span> ELEGANCE</h1>
             <a href="#" class="hero-button">Discover Our Story</a>
         </div>
+
+        <!-- Interactive Icon Bar -->
+        <div class="icon-bar-container">
+            <div class="icon-bar-line"><div class="active-line" id="activeLine"></div></div>
+            <div class="icon-wrapper">
+                <div class="icon-item" onmouseover="moveLine(0)"><span>Hotels</span></div>
+                <div class="icon-item" onmouseover="moveLine(16.6)"><span>Residences</span></div>
+                <div class="icon-item" onmouseover="moveLine(33.3)"><span>Villas</span></div>
+                <div class="icon-item" onmouseover="moveLine(50)"><span>Dining</span></div>
+                <div class="icon-item" onmouseover="moveLine(66.6)"><span>Private Jet</span></div>
+                <div class="icon-item" onmouseover="moveLine(83.3)"><span>Yachts</span></div>
+            </div>
+        </div>
     </section>
 
-    <!-- Navigation and Placeholder are now OUTSIDE the hero -->
     <div class="nav-placeholder"></div>
     <nav class="main-nav" id="mainNav">
         <div class="nav-inner">
@@ -47,15 +59,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
     </section>
-<!-- Existing Section -->
-    <section class="section">
-        <div class="container">
-            <h2>Experience Excellence</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-    </section>
 
-    <!-- 3 NEW PLACEHOLDER SECTIONS -->
     <section class="section dark">
         <div class="container">
             <h2>Sophisticated Wellness</h2>
@@ -76,6 +80,7 @@
             <p>Where architectural brilliance meets timeless comfort.</p>
         </div>
     </section>
+
     <script src="script.js"></script>
 </body>
 </html>
