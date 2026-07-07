@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateNav() {
         if (!hero || !nav) return;
-        
         if (window.scrollY >= hero.offsetHeight) {
             nav.classList.add("sticky");
             if (placeholder) placeholder.style.display = "block";
@@ -21,47 +20,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener("scroll", updateNav, { passive: true });
 
-    // 2. Hero Content & Line Swapping Logic
+    // 2. Hero Video & Content Swapping Logic
     const iconItems = document.querySelectorAll('.icon-item');
-    const heroSection = document.querySelector('.hero');
+    const heroVideo = document.getElementById('heroVideo');
     const heroTitle = document.querySelector('.hero-content h1');
     const heroBtn = document.querySelector('.hero-button');
     const activeLine = document.getElementById("activeLine");
 
     function moveLine(item) {
         if (!activeLine) return;
-        // Use offsetLeft relative to the parent icon-wrapper
-        const width = item.offsetWidth;
-        const left = item.offsetLeft;
-        
-        activeLine.style.width = width + "px";
-        activeLine.style.left = left + "px";
+        activeLine.style.width = item.offsetWidth + "px";
+        activeLine.style.left = item.offsetLeft + "px";
     }
 
     iconItems.forEach((item) => {
         const updateHero = () => {
-            // Update background image
-            heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('${item.dataset.image}')`;
+            // Update Video Source
+            if (heroVideo && item.dataset.video) {
+                heroVideo.src = item.dataset.video;
+                heroVideo.load();
+                heroVideo.play();
+            }
             
-            // Update Title and Button
+            // Update Content
             if (heroTitle) heroTitle.innerHTML = item.dataset.title;
             if (heroBtn) heroBtn.innerText = item.dataset.cta;
             
-            // Move the line based on the icon element
             moveLine(item);
         };
 
         item.addEventListener('mouseenter', updateHero);
-        
         item.addEventListener('touchstart', (e) => {
+            e.preventDefault();
             updateHero();
-        }, { passive: true }); // Changed to true for better mobile scrolling performance
+        }, { passive: false });
     });
 
-    // Initialize line on load with a slight delay to ensure layout is calculated
-    setTimeout(() => {
-        if (iconItems.length > 0) {
-            moveLine(iconItems[0]);
-        }
-    }, 100);
+    // Initialize line
+    setTimeout(() => { if (iconItems.length > 0) moveLine(iconItems[0]); }, 100);
 });
