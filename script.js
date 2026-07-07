@@ -1,3 +1,7 @@
+/*==================================================
+HBCR Senior Living - JS Functionality
+==================================================*/
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Sticky Navigation Logic
     const hero = document.getElementById("hero");
@@ -6,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateNav() {
         if (!hero || !nav) return;
+        
         if (window.scrollY >= hero.offsetHeight) {
             nav.classList.add("sticky");
             if (placeholder) placeholder.style.display = "block";
@@ -28,17 +33,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     iconItems.forEach((item, index) => {
-        item.addEventListener('mouseenter', () => {
-            // Update background image with an inline style
+        // Shared update function for both hover and touch
+        const updateHero = () => {
+            // Update background image
             heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('${item.dataset.image}')`;
             
             // Update Title and Button
             if (heroTitle) heroTitle.innerHTML = item.dataset.title;
             if (heroBtn) heroBtn.innerText = item.dataset.cta;
             
-            // Move the indicator line
-            // In your script.js, update this line:
-              moveLine(index * 25);
-        });
+            // Move the indicator line (25% per item for 4 icons)
+            moveLine(index * 25);
+        };
+
+        // Desktop interaction
+        item.addEventListener('mouseenter', updateHero);
+        
+        // Mobile interaction
+        item.addEventListener('touchstart', (e) => {
+            e.preventDefault(); 
+            updateHero();
+        }, { passive: false });
     });
 });
