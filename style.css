@@ -14,6 +14,8 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .top-links a:hover { color: var(--gold); }
 
 /* HERO - Video Integrated */
+
+/* UPDATED HERO SECTION */
 .hero { 
     position: relative; 
     height: 70vh; 
@@ -22,8 +24,12 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     align-items: center; 
     padding-left: 8%; 
     overflow: hidden; 
+    /* These ensure the background image fits correctly when the video is hidden */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #080808;
 }
-
 #heroVideo {
     position: absolute;
     top: 50%;
