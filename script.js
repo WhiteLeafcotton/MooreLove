@@ -28,11 +28,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroBtn = document.querySelector('.hero-button');
     const activeLine = document.getElementById("activeLine");
 
-    function moveLine(percent) {
-        if (activeLine) activeLine.style.left = percent + "%";
+    // Move the line based on the hovered item's position
+    function moveLine(item) {
+        if (!activeLine) return;
+        // Calculate the width and position of the hovered icon
+        const width = item.offsetWidth;
+        const left = item.offsetLeft;
+        
+        // Apply the width and position to the line
+        activeLine.style.width = width + "px";
+        activeLine.style.left = left + "px";
     }
 
-    iconItems.forEach((item, index) => {
+    iconItems.forEach((item) => {
         // Shared update function for both hover and touch
         const updateHero = () => {
             // Update background image
@@ -42,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (heroTitle) heroTitle.innerHTML = item.dataset.title;
             if (heroBtn) heroBtn.innerText = item.dataset.cta;
             
-            // Move the indicator line (25% per item for 4 icons)
-            moveLine(index * 25);
+            // Move the line based on the icon element itself
+            moveLine(item);
         };
 
         // Desktop interaction
@@ -55,4 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
             updateHero();
         }, { passive: false });
     });
+
+    // Optional: Set initial line position on load if needed
+    if (iconItems.length > 0) {
+        moveLine(iconItems[0]);
+    }
 });
