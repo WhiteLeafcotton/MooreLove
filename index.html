@@ -1,66 +1,104 @@
-/*==================================================
-HBCR Senior Living - Full CSS
-==================================================*/
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
-body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBCR Senior Living</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-:root { --gold: #d4b06a; --transition: .4s ease; }
+    <header class="top-bar">
+        <div class="top-links">
+            <a href="#">Download the App</a>
+            <a href="#">Sign In</a>
+            <a href="#">English</a>
+        </div>
+    </header>
 
-/* TOP BAR */
-.top-bar { position: absolute; top: 0; left: 0; width: 100%; padding: 28px 8%; z-index: 1000; display: flex; justify-content: flex-end; }
-.top-links { display: flex; gap: 34px; }
-.top-links a { text-decoration: none; color: white; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: .9; transition: var(--transition); }
-.top-links a:hover { color: var(--gold); }
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-logo">HBCR</div>
+            <h1>WHERE CARE MEETS <span>UNPARALLELED</span> ELEGANCE</h1>
+            <a href="#" class="hero-button">Discover Our Story</a>
+        </div>
 
-/* HERO - Restored Blur/Overlay */
-.hero { 
-    position: relative; height: 70vh; min-height: 500px; display: flex; align-items: center; 
-    padding-left: 8%; background: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url(home.jpg) center/cover; 
-}
-.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 300px; background: linear-gradient(to top,#080808,transparent); }
-.hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.3); z-index: 1; }
+        <!-- Interactive Icon Bar -->
+        <div class="icon-bar-container">
+            <div class="icon-bar-line"><div class="active-line" id="activeLine"></div></div>
+            <div class="icon-wrapper">
+                <div class="icon-item" onmouseover="moveLine(0)">
+                    <i class="fa-solid fa-hotel"></i><span>Hotels</span>
+                </div>
+                <div class="icon-item" onmouseover="moveLine(16.6)">
+                    <i class="fa-solid fa-building"></i><span>Residences</span>
+                </div>
+                <div class="icon-item" onmouseover="moveLine(33.3)">
+                    <i class="fa-solid fa-house-chimney"></i><span>Villas</span>
+                </div>
+                <div class="icon-item" onmouseover="moveLine(50)">
+                    <i class="fa-solid fa-utensils"></i><span>Dining</span>
+                </div>
+                <div class="icon-item" onmouseover="moveLine(66.6)">
+                    <i class="fa-solid fa-plane"></i><span>Private Jet</span>
+                </div>
+                <div class="icon-item" onmouseover="moveLine(83.3)">
+                    <i class="fa-solid fa-sailboat"></i><span>Yachts</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-/* CONTENT */
-.hero-content { position: relative; z-index: 5; max-width: 700px; margin-top: -40px; animation: fadeUp 1s ease; }
-.hero-logo { font-family: "Cormorant Garamond", serif; font-size: 18px; letter-spacing: 8px; margin-bottom: 30px; opacity: 0.9; }
-.hero-content h1 { 
-    font-family: "Cormorant Garamond", serif; font-weight: 300; 
-    font-size: clamp(40px, 5vw, 70px); line-height: 0.95; 
-    letter-spacing: -0.5px; margin-bottom: 40px; text-transform: uppercase; 
-}
-.hero-button { 
-    display: inline-block; padding: 18px 45px; border: 1px solid rgba(255,255,255,.5); 
-    text-decoration: none; color: white; font-size: 12px; letter-spacing: 3px; 
-    text-transform: uppercase; transition: var(--transition); 
-}
-.hero-button:hover { background: #fff; color: #000; }
+    <!-- Navigation -->
+    <div class="nav-placeholder"></div>
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-inner">
+            <a href="#">Hotels</a>
+            <a href="#">Residences</a>
+            <a href="#">Villas</a>
+            <a href="#">Dining</a>
+            <a href="#">Private Jet</a>
+            <a href="#">Yachts</a>
+        </div>
+    </nav>
 
-/* ICON BAR */
-.icon-bar-container { position: absolute; bottom: 40px; left: 8%; right: 8%; z-index: 10; }
-.icon-bar-line { width: 100%; height: 1px; background: rgba(255,255,255,0.15); margin-bottom: 25px; position: relative; }
-.active-line { position: absolute; top: 0; left: 0; height: 1px; background: #fff; width: 16.66%; transition: .5s cubic-bezier(0.16, 1, 0.3, 1); }
-.icon-wrapper { display: flex; justify-content: space-between; }
-.icon-item { text-align: center; color: rgba(255,255,255,0.6); flex: 1; cursor: pointer; transition: .3s; }
-.icon-item i { display: block; font-size: 22px; margin-bottom: 12px; }
-.icon-item span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
-.icon-item:hover { color: #fff; }
+    <!-- Content Sections -->
+    <section class="section">
+        <div class="container">
+            <h2>Experience Excellence</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+    </section>
 
-/* STICKY NAV - Solid Black Restored */
-.main-nav { 
-    position: fixed; top: -100px; left: 0; width: 100%; z-index: 50; 
-    background: #080808; transition: top 0.4s ease; border-bottom: 1px solid transparent; 
-}
-.main-nav.sticky { top: 0; background: #080808; border-bottom: 1px solid rgba(255,255,255,0.1); box-shadow: 0 5px 20px rgba(0,0,0,0.8); }
-.nav-inner { display: flex; justify-content: center; gap: 50px; padding: 25px; }
-.nav-inner a { text-decoration: none; color: white; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; transition: .3s; }
-.nav-inner a:hover { color: var(--gold); }
+    <section class="section dark">
+        <div class="container">
+            <h2>Sophisticated Wellness</h2>
+            <p>Tailored programs designed to harmonize mind, body, and spirit.</p>
+        </div>
+    </section>
 
-/* SECTIONS */
-.section { padding: 120px 8%; background: #080808; border-top: 1px solid #1a1a1a; }
-.section.dark { background: #050505; }
-.container { max-width: 1100px; margin: auto; }
-.container h2 { font-family: "Cormorant Garamond", serif; font-size: 55px; font-weight: 300; margin-bottom: 30px; }
-.container p { font-size: 18px; line-height: 1.8; color: #aaa; max-width: 600px; }
 
-@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+      <section class="section dark">
+        <div class="container">
+            <h2>Sophisticated Wellness</h2>
+            <p>Tailored programs designed to harmonize mind, body, and spirit.</p>
+        </div>
+    </section>
+
+      <section class="section dark">
+        <div class="container">
+            <h2>Sophisticated Wellness</h2>
+            <p>Tailored programs designed to harmonize mind, body, and spirit.</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
