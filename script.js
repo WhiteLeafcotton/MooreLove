@@ -28,20 +28,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroBtn = document.querySelector('.hero-button');
     const activeLine = document.getElementById("activeLine");
 
-    // Move the line based on the hovered item's position
     function moveLine(item) {
         if (!activeLine) return;
-        // Calculate the width and position of the hovered icon
+        // Use offsetLeft relative to the parent icon-wrapper
         const width = item.offsetWidth;
         const left = item.offsetLeft;
         
-        // Apply the width and position to the line
         activeLine.style.width = width + "px";
         activeLine.style.left = left + "px";
     }
 
     iconItems.forEach((item) => {
-        // Shared update function for both hover and touch
         const updateHero = () => {
             // Update background image
             heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('${item.dataset.image}')`;
@@ -50,22 +47,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (heroTitle) heroTitle.innerHTML = item.dataset.title;
             if (heroBtn) heroBtn.innerText = item.dataset.cta;
             
-            // Move the line based on the icon element itself
+            // Move the line based on the icon element
             moveLine(item);
         };
 
-        // Desktop interaction
         item.addEventListener('mouseenter', updateHero);
         
-        // Mobile interaction
         item.addEventListener('touchstart', (e) => {
-            e.preventDefault(); 
             updateHero();
-        }, { passive: false });
+        }, { passive: true }); // Changed to true for better mobile scrolling performance
     });
 
-    // Optional: Set initial line position on load if needed
-    if (iconItems.length > 0) {
-        moveLine(iconItems[0]);
-    }
+    // Initialize line on load with a slight delay to ensure layout is calculated
+    setTimeout(() => {
+        if (iconItems.length > 0) {
+            moveLine(iconItems[0]);
+        }
+    }, 100);
 });
