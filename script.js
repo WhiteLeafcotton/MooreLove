@@ -20,8 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener("scroll", updateNav, { passive: true });
 
-    // 2. Hero Video & Content Swapping Logic
+    // 2. Hero Content & Image Swapping Logic
     const iconItems = document.querySelectorAll('.icon-item');
+    const heroSection = document.querySelector('.hero');
     const heroVideo = document.getElementById('heroVideo');
     const heroTitle = document.querySelector('.hero-content h1');
     const heroBtn = document.querySelector('.hero-button');
@@ -35,12 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     iconItems.forEach((item) => {
         const updateHero = () => {
-            // Update Video Source
-            if (heroVideo && heroVideo.getAttribute('src') !== item.dataset.video) {
-                heroVideo.src = item.dataset.video;
-                heroVideo.load(); // Reload the video with the new source
-                heroVideo.play();
+            // STOP VIDEO: Hide the video element and pause it when interaction happens
+            if (heroVideo) {
+                heroVideo.style.display = 'none';
+                heroVideo.pause();
             }
+
+            // SWITCH IMAGE: Set the background image based on the data-image attribute
+            heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('${item.dataset.image}')`;
             
             // Update Text
             if (heroTitle) heroTitle.innerHTML = item.dataset.title;
