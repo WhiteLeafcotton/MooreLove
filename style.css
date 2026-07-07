@@ -1,6 +1,4 @@
-Here is the full, refined, and paste-ready CSS file. I have cleaned up the code, optimized the typography to match the Four Seasons aesthetic, and finalized the navigation and icon bar styling for you.
 
-```css
 /*==================================================
 HBCR Senior Living - Full CSS
 ==================================================*/
@@ -68,4 +66,4 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; overf
 @media(max-width:992px) { .top-links { display: none; } .nav-inner { gap: 22px; flex-wrap: wrap; } }
 @media(max-width:768px) { .hero-content h1 { font-size: 42px; } .section { padding: 90px 7%; } }
 
-```
+
