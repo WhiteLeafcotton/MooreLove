@@ -20,67 +20,28 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     background-size: cover; background-position: center; 
     background-repeat: no-repeat; background-color: #080808;
 }
-#heroVideo {
-    position: absolute; top: 50%; left: 50%; width: 100%; height: 100%;
-    object-fit: cover; transform: translate(-50%, -50%); z-index: 0;
-}
+#heroVideo { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; object-fit: cover; transform: translate(-50%, -50%); z-index: 0; }
 .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 250px; background: linear-gradient(to top,#080808,transparent); z-index: 2; }
 .hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.4); z-index: 1; } 
 
-/* CONTENT */
-.hero-content { position: relative; z-index: 5; max-width: 800px; margin-top: -40px; animation: fadeUp 1s ease; }
-.hero-logo { font-family: "Cormorant Garamond", serif; font-size: 18px; letter-spacing: 8px; margin-bottom: 25px; opacity: 0.9; }
-.hero-content h1 { 
-    font-family: "Cormorant Garamond", serif; font-weight: 300; 
-    font-size: clamp(40px, 5vw, 68px); line-height: 1.05; 
-    letter-spacing: -0.5px; margin-bottom: 40px; text-transform: uppercase; 
+/* ICON BAR - Shortened white line */
+.icon-bar-container { 
+    position: absolute; bottom: 40px; 
+    left: 20%; right: 20%; /* Adjusted for medium line length */
+    z-index: 10; 
 }
-.hero-button { 
-    display: inline-block; padding: 16px 45px; border: 1px solid rgba(255,255,255,.4); 
-    text-decoration: none; color: white; font-size: 12px; letter-spacing: 3px; 
-    text-transform: uppercase; transition: var(--transition); 
-}
-.hero-button:hover { background: #fff; color: #000; }
+.icon-bar-line { width: 100%; height: 1px; background: rgba(255,255,255,0.2); margin-bottom: 25px; }
 
-/* ICON BAR */
-.icon-bar-container { position: absolute; bottom: 40px; left: 2%; right: 2%; z-index: 10; }
-.icon-bar-line { width: 100%; height: 1px; background: rgba(255,255,255,0.15); margin-bottom: 25px; position: relative; }
-.active-line { 
-    position: absolute; top: 0; left: 0; height: 1px; background: #fff; 
-    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), left 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
-}
-.icon-wrapper { display: flex; justify-content: space-between; position: relative; }
-.icon-item { text-align: center; color: rgba(255,255,255,0.6); flex: 1; cursor: pointer; transition: .3s; }
-.icon-item i { display: block; font-size: 20px; margin-bottom: 10px; }
-.icon-item span { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
-.icon-item:hover { color: #fff; }
-
-/* STICKY NAV */
-.main-nav { position: fixed; top: -100px; left: 0; width: 100%; z-index: 50; background: rgba(8, 8, 8, 0.8); backdrop-filter: blur(10px); transition: top 0.4s ease; }
-.main-nav.sticky { top: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
-.nav-inner { display: flex; justify-content: center; gap: 40px; padding: 20px; }
-.nav-inner a { text-decoration: none; color: white; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; transition: .3s; }
-.nav-inner a:hover { color: var(--gold); }
-
-/* SECTIONS */
-.section { padding: 100px 8%; background: #080808; }
-.section.dark { background: #050505; }
-.container { max-width: 1000px; margin: auto; }
-.container h2 { font-family: "Cormorant Garamond", serif; font-size: 48px; font-weight: 300; margin-bottom: 25px; }
-.container p { font-size: 16px; line-height: 1.7; color: #aaa; max-width: 550px; }
-
-/* MINIMAL CARDS */
-/* MINIMAL CARDS */
+/* MINIMAL CARDS - Wider and Thicker */
 .container-wide { 
-    max-width: 100%; /* Allows the container to use the full width of the screen */
-    margin: 0 auto; 
-    padding: 0 2%; /* Reduced padding so the card stretches further */
+    max-width: 100%; 
+    padding: 0 4%; /* Wider card coverage */
 }
 
 .minimal-card-bg {
     position: relative;
     width: 100%;
-    height: 300px; 
+    height: 450px; /* Thicker height */
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.1);
 }
@@ -89,19 +50,15 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .card-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 2; }
 
 .card-content-overlay {
-    position: relative; z-index: 3; 
-    padding: 40px; 
-    height: 100%;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    max-width: 1200px; /* Increased from 600px to allow text more room */
-    margin: 0 auto; /* Keeps the text content centered within the wide card */
+    position: relative; z-index: 3; padding: 60px; height: 100%;
+    display: flex; flex-direction: column; justify-content: center;
+    max-width: 1200px; margin: 0 auto;
 }
 
-.card-subtitle { display: block; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 18px; color: var(--gold); margin-bottom: 5px; }
-.card-title { font-family: "Cormorant Garamond", serif; font-size: 36px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
-.card-content-overlay p { color: #fff; margin-bottom: 20px; line-height: 1.4; font-size: 16px; }
-.card-button { align-self: flex-start; padding: 10px 30px; border: 1px solid #fff; color: #fff; text-decoration: none; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; transition: .3s; }
+.card-subtitle { display: block; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 20px; color: var(--gold); margin-bottom: 10px; }
+.card-title { font-family: "Cormorant Garamond", serif; font-size: 48px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
+.card-content-overlay p { color: #fff; margin-bottom: 30px; line-height: 1.6; font-size: 18px; max-width: 600px; }
+.card-button { align-self: flex-start; padding: 12px 35px; border: 1px solid #fff; color: #fff; text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: .3s; }
 .card-button:hover { background: #fff; color: #000; }
+
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
