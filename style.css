@@ -158,19 +158,18 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     position: relative;
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto; /* Centers the card */
+    margin: 0 auto;
     aspect-ratio: 2.15 / 1;
     
-    /* The Background Image */
-    background: url('exp.jpg') center/cover no-repeat;
+    /* Image and Tint */
+    background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0)), url('exp.jpg');
+    background-size: cover;
+    background-position: center;
     
     display: flex;
     align-items: center;
-    padding-left: 60px;
-    
-    /* This creates the dark tint so text is readable */
-    background-color: rgba(0, 0, 0, 0.4);
-    background-blend-mode: overlay;
+    padding-left: 80px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* INNER TEXT LAYOUT */
