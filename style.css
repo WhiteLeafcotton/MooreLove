@@ -156,10 +156,12 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* THE CARD: This is your framed rectangle */
 .featured-card {
     position: relative;
-    /* Fixed dimensions to match your reference site */
+    /* Wider: expands to cover more of the screen width */
     width: 100%;
-    max-width: 1400px; 
-    height: 600px; 
+    max-width: 1600px; 
+    
+    /* Thinner: lower height makes it more cinematic/letterbox */
+    height: 450px; 
     
     margin: 0 auto;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 70%), 
