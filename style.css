@@ -1,5 +1,5 @@
 /*==================================================
-HBCR Senior Living - Final CSS
+HBCR Senior Living - Fixed Layout
 ==================================================*/
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
@@ -14,52 +14,28 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .top-links a:hover { color: var(--gold); }
 
 /* HERO */
-.hero { 
-    position: relative; height: 70vh; min-height: 500px; display: flex; 
-    align-items: center; padding-left: 8%; overflow: hidden; 
-    background-size: cover; background-position: center; 
-    background-repeat: no-repeat; background-color: #080808;
-}
+.hero { position: relative; height: 100vh; display: flex; align-items: center; padding-left: 8%; overflow: hidden; }
 #heroVideo { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; object-fit: cover; transform: translate(-50%, -50%); z-index: 0; }
-.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 250px; background: linear-gradient(to top,#080808,transparent); z-index: 2; }
-.hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.4); z-index: 1; } 
+.hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.4); z-index: 1; }
+.hero-content { position: relative; z-index: 5; max-width: 800px; }
+.hero-logo { font-family: "Cormorant Garamond", serif; font-size: 18px; letter-spacing: 8px; margin-bottom: 25px; }
+.hero-content h1 { font-family: "Cormorant Garamond", serif; font-size: 68px; line-height: 1.05; text-transform: uppercase; margin-bottom: 40px; }
+.hero-button { display: inline-block; padding: 16px 45px; border: 1px solid #fff; color: white; text-decoration: none; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; }
 
-/* ICON BAR - Shortened white line via increased side margins */
-.icon-bar-container { 
-    position: absolute; bottom: 40px; 
-    left: 22%; right: 22%; 
-    z-index: 10; 
-}
-.icon-bar-line { width: 100%; height: 1px; background: rgba(255,255,255,0.2); margin-bottom: 25px; }
+/* ICON BAR */
+.icon-bar-container { position: absolute; bottom: 40px; left: 22%; right: 22%; z-index: 10; }
+.icon-bar-line { width: 100%; height: 1px; background: rgba(255,255,255,0.4); margin-bottom: 25px; }
+.icon-wrapper { display: flex; justify-content: space-between; }
+.icon-item { text-align: center; color: #fff; cursor: pointer; }
+.icon-item i { display: block; font-size: 20px; margin-bottom: 10px; }
+.icon-item span { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
 
-/* MINIMAL CARDS - Wider and Thicker */
-/* MINIMAL CARDS */
-.container-wide { 
-    max-width: 100%; 
-    padding: 0; /* Remove padding to allow the card to touch the edges */
-    margin: 0; 
-}
-
-.minimal-card-bg {
-    position: relative;
-    width: 100%; /* Spans full width */
-    height: 480px; 
-    overflow: hidden;
-    border-left: none; /* Removes side borders */
-    border-right: none;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.card-content-overlay {
-    position: relative; 
-    z-index: 3; 
-    padding: 60px 8%; /* Aligns text with the 8% padding used in your Hero */
-    height: 100%;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center;
-    max-width: 100%; 
-    margin: 0;
-}
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+/* MINIMAL CARD */
+.container-wide { width: 100%; }
+.minimal-card-bg { position: relative; width: 100%; height: 480px; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
+.bg-img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
+.card-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 2; }
+.card-content-overlay { position: relative; z-index: 3; padding: 60px 8%; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.card-subtitle { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 20px; color: var(--gold); }
+.card-title { font-family: "Cormorant Garamond", serif; font-size: 48px; text-transform: uppercase; margin: 10px 0; }
+.card-button { align-self: flex-start; padding: 12px 35px; border: 1px solid #fff; color: #fff; text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-top: 20px; }
