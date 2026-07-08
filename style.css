@@ -150,7 +150,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     max-width: 1200px;
     height: 500px; /* Adjust height as needed */
     margin: 100px auto;
-    background: url('your-image-url.jpg') center/cover no-repeat;
+    background: url('exp.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     padding: 0 80px;
