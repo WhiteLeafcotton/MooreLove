@@ -159,7 +159,9 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     position: relative;
     width: 100%;
     max-width: 1400px; /* Prevents the image from stretching edge-to-edge */
-    height: 550px; /* Standard premium card height ratio */
+    
+    /* Matches the exact luxury cinematic dimension ratio of your reference image */
+    aspect-ratio: 2.15 / 1; 
     
     /* Left-to-right gradient overlay to replicate the soft text shadowing */
     background: linear-gradient(to right, rgba(0, 0, 0, 0.75) 35%, rgba(0, 0, 0, 0.1) 100%), 
