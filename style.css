@@ -134,7 +134,24 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .nav-inner { display: flex; justify-content: center; gap: 40px; padding: 20px; }
 .nav-inner a { text-decoration: none; color: white; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; transition: .3s; }
 .nav-inner a:hover { color: var(--gold); }
-
+.featured-card {
+    position: relative;
+    /* This constraint keeps it from hitting the screen edges */
+    width: 90%; 
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    /* This creates the exact "thin and wide" look */
+    aspect-ratio: 2.8 / 1; 
+    
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 70%), 
+                url('exp.jpg') center/cover no-repeat;
+    
+    display: flex;
+    align-items: center;
+    padding-left: 80px;
+    box-sizing: border-box;
+}
 /* SECTIONS */
 .section { padding: 100px 8%; background: #080808; }
 .section.dark { background: #050505; }
