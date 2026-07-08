@@ -5,10 +5,10 @@ HBCR Senior Living - Final CSS
 html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
 body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
-:root { --gold: #d4b06a; --transition: .4s ease; --side-padding: 2%; }
+:root { --gold: #d4b06a; --transition: .4s ease; }
 
-/* TOP BAR - Wide */
-.top-bar { position: absolute; top: 0; left: 0; width: 100%; padding: 28px var(--side-padding); z-index: 1000; display: flex; justify-content: flex-end; }
+/* TOP BAR */
+.top-bar { position: absolute; top: 0; left: 0; width: 100%; padding: 28px 4%; z-index: 1000; display: flex; justify-content: flex-end; }
 .top-links { display: flex; gap: 34px; }
 .top-links a { text-decoration: none; color: white; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: .9; transition: var(--transition); }
 .top-links a:hover { color: var(--gold); }
@@ -16,33 +16,36 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* HERO */
 .hero { 
     position: relative; height: 70vh; min-height: 500px; display: flex; align-items: center; 
-    padding-left: var(--side-padding); overflow: hidden; background-size: cover; background-position: center;
+    padding-left: 4%; overflow: hidden; background-size: cover; background-position: center;
 }
 #heroVideo { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; object-fit: cover; transform: translate(-50%, -50%); z-index: 0; }
 .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 250px; background: linear-gradient(to top,#080808,transparent); z-index: 2; }
 
-/* ICON BAR - Wide */
-.icon-bar-container { position: absolute; bottom: 40px; left: var(--side-padding); right: var(--side-padding); z-index: 10; }
+/* ICON BAR */
+.icon-bar-container { position: absolute; bottom: 40px; left: 4%; right: 4%; z-index: 10; }
 .icon-bar-line { width: 100%; height: 1px; background: rgba(255,255,255,0.15); margin-bottom: 25px; position: relative; }
 
-/* SECTIONS - Wide */
-.section { padding: 100px var(--side-padding); background: #080808; }
+/* SECTIONS */
+.section { padding: 100px 4%; background: #080808; }
 
-/* FEATURED CARD SECTION - Cinematic Wide */
+/* FEATURED CARD SECTION - WIDE */
 .card-section {
     background: #080808;
-    padding: 60px var(--side-padding);
+    padding: 60px 4%; 
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .featured-card {
     position: relative;
     width: 100%;
-    /* Removed max-width restriction to allow full-width cinematic expansion */
-    aspect-ratio: 2.5 / 1; 
+    /* Increased max-width for wider appearance */
+    max-width: 1600px; 
+    aspect-ratio: 2.15 / 1; 
     
-    /* White framing border around the entire card */
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* White framing border around the card */
+    border: 1px solid rgba(255, 255, 255, 0.2); 
     
     background: linear-gradient(to right, rgba(0, 0, 0, 0.75) 35%, rgba(0, 0, 0, 0.1) 100%), 
                 url('exp.jpg') center/cover no-repeat;
@@ -66,3 +69,5 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     font-weight: 600; transition: 0.3s ease;
 }
 .card-button:hover { background: #000; color: #fff; outline: 1px solid #fff; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
