@@ -163,7 +163,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     
     /* Left-to-right gradient overlay to replicate the soft text shadowing */
     background: linear-gradient(to right, rgba(0, 0, 0, 0.75) 35%, rgba(0, 0, 0, 0.1) 100%), 
-                url('your-image-url.jpg') center/cover no-repeat;
+                url('exp.jpg') center/cover no-repeat;
                 
     display: flex;
     align-items: center;
