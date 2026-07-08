@@ -156,13 +156,16 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* THE CARD: This is your framed rectangle */
 .featured-card {
     position: relative;
-    /* This constraint keeps it from hitting the screen edges */
-    width: 90%; 
-    max-width: 1200px;
+    /* Remove the 90% constraint to allow it to fill the max-width space */
+    width: 95%; 
+    
+    /* Increase this to make it wider on large screens */
+    max-width: 1600px; 
     margin: 0 auto;
     
-    /* This creates the exact "thin and wide" look */
-    aspect-ratio: 2.8 / 1; 
+    /* Decrease the ratio value to make it "thinner" (more wide-angle) */
+    /* 3.5/1 is wider and thinner than 2.8/1 */
+    aspect-ratio: 3.5 / 1; 
     
     background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 70%), 
                 url('exp.jpg') center/cover no-repeat;
