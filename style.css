@@ -71,56 +71,47 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* MINIMAL CARDS */
 /* MINIMAL CARDS */
+/* FULL BACKGROUND CARD */
 .minimal-card-bg {
     position: relative;
     width: 100%;
-    height: 500px; /* Fixed height for the cinematic look */
+    height: 500px;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.1);
 }
-
 .bg-img {
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
+    position: absolute; top: 0; left: 0; z-index: 1;
 }
-
 .card-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.5); /* Adjust opacity for text readability */
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0.4); /* Darkens the image for text contrast */
     z-index: 2;
 }
-
 .card-content-overlay {
-    position: relative;
-    z-index: 3;
-    padding: 60px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 600px; /* Limits width of text */
+    position: relative; z-index: 3;
+    padding: 80px; height: 100%;
+    display: flex; flex-direction: column; justify-content: center;
+    max-width: 700px;
 }
-
-/* Re-using your existing styles for text elements */
 .card-subtitle { 
     display: block; font-family: "Cormorant Garamond", serif; 
     font-style: italic; font-size: 20px; color: var(--gold); margin-bottom: 15px; 
 }
-
 .card-title { 
     font-family: "Cormorant Garamond", serif; font-size: 48px; 
     letter-spacing: 2px; text-transform: uppercase; margin-bottom: 25px; 
 }
-
 .card-content-overlay p { 
     color: #fff; margin-bottom: 35px; line-height: 1.6; font-size: 18px; 
 }
+.card-button {
+    align-self: flex-start; padding: 15px 40px; border: 1px solid #fff;
+    color: #fff; text-decoration: none; font-size: 11px; 
+    letter-spacing: 3px; text-transform: uppercase; transition: .3s;
+}
+.card-button:hover { background: #fff; color: #000; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 768px) {
