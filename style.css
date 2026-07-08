@@ -146,32 +146,31 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* FEATURED CARD SECTION */
 /* FEATURED CARD SECTION */
 /* CONTAINER TO FRAME THE CARD */
+/* CONTAINER: The black outer area */
 .card-section {
     background: #080808;
-    padding: 60px 8%; /* Insets the card box from the screen edges */
+    padding: 60px 8%;
     width: 100%;
-    display: flex;
-    justify-content: center;
 }
 
-/* THE SELF-CONTAINED CARD BOX */
+/* THE CARD: This is your framed rectangle */
 .featured-card {
     position: relative;
     width: 100%;
-    max-width: 1400px; /* Prevents the image from stretching edge-to-edge */
+    max-width: 1200px;
+    margin: 0 auto; /* Centers the card */
+    aspect-ratio: 2.15 / 1;
     
-    /* Matches the exact luxury cinematic dimension ratio of your reference image */
-    aspect-ratio: 2.15 / 1; 
+    /* The Background Image */
+    background: url('exp.jpg') center/cover no-repeat;
     
-    /* Left-to-right gradient overlay to replicate the soft text shadowing */
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.75) 35%, rgba(0, 0, 0, 0.1) 100%), 
-                url('exp.jpg') center/cover no-repeat;
-                
     display: flex;
     align-items: center;
-    padding-left: 80px; /* Insets text fields cleanly from the card's left boundary */
-    border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle crisp framing border */
-    box-sizing: border-box;
+    padding-left: 60px;
+    
+    /* This creates the dark tint so text is readable */
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: overlay;
 }
 
 /* INNER TEXT LAYOUT */
