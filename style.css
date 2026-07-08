@@ -26,24 +26,31 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .icon-bar-line { width: 100%; height: 1px; background: rgba(255,255,255,0.15); margin-bottom: 25px; position: relative; }
 
 /* CARD SECTION - Fixed spacing and width */
+/*==================================================
+HBCR Senior Living - Card Section Refinement
+==================================================*/
+
+/* The outer container: Creates breathing room and applies global padding */
 .card-section {
     background: #080808;
-    padding: 60px 4%; 
-    margin-top: 50px; /* Added breathing room between hero and card */
+    padding: 60px 4%; /* Set to 4% for a wider, balanced look */
+    margin-top: 60px; /* Ensures separation from the Hero element */
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
+/* The Framed Card: Cinematic proportions and border */
 .featured-card {
     position: relative;
     width: 100%;
-    max-width: 1600px; 
+    max-width: 1800px; /* Allows the card to be much wider on large screens */
     aspect-ratio: 2.15 / 1; 
     
-    /* Subtle crisp framing border */
-    border: 1px solid rgba(255, 255, 255, 0.08); 
+    /* Thin white crisp framing border */
+    border: 1px solid rgba(255, 255, 255, 0.2); 
     
+    /* Background with gradient overlay */
     background: linear-gradient(to right, rgba(0, 0, 0, 0.75) 35%, rgba(0, 0, 0, 0.1) 100%), 
                 url('exp.jpg') center/cover no-repeat;
                 
@@ -51,6 +58,55 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     align-items: center;
     padding-left: 80px; 
     box-sizing: border-box;
+}
+
+/* Inner Text Styling */
+.card-content { 
+    max-width: 440px; 
+    z-index: 2; 
+}
+.overline { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: 18px; 
+    font-style: italic; 
+    margin-bottom: 12px; 
+    color: #fff; 
+}
+.card-content h2 { 
+    font-family: "Inter", sans-serif; 
+    font-size: 22px; 
+    font-weight: 500; 
+    letter-spacing: 3px; 
+    margin-bottom: 25px; 
+    text-transform: uppercase; 
+    color: #fff; 
+}
+.card-content p { 
+    font-family: "Inter", sans-serif; 
+    font-size: 14px; 
+    line-height: 1.7; 
+    margin-bottom: 35px; 
+    color: #ccc; 
+    font-weight: 300; 
+}
+
+/* CTA Button */
+.card-button {
+    display: inline-block; 
+    padding: 14px 38px; 
+    background: #fff; 
+    color: #000;
+    text-decoration: none; 
+    font-size: 11px; 
+    letter-spacing: 2.5px; 
+    text-transform: uppercase;
+    font-weight: 600; 
+    transition: 0.3s ease;
+}
+.card-button:hover { 
+    background: #000; 
+    color: #fff; 
+    outline: 1px solid #fff; 
 }
 
 /* INNER TEXT LAYOUT */
