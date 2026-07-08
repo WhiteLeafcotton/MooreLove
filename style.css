@@ -156,20 +156,19 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* THE CARD: This is your framed rectangle */
 .featured-card {
     position: relative;
+    /* Fixed dimensions to match your reference site */
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px; 
+    height: 600px; 
+    
     margin: 0 auto;
-    aspect-ratio: 2.15 / 1;
-    
-    /* Image and Tint */
-    background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0)), url('exp.jpg');
-    background-size: cover;
-    background-position: center;
-    
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 70%), 
+                url('exp.jpg') center/cover no-repeat;
+                
     display: flex;
     align-items: center;
     padding-left: 80px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
 }
 
 /* INNER TEXT LAYOUT */
