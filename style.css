@@ -13,7 +13,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .top-links a { text-decoration: none; color: white; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: .9; transition: var(--transition); }
 .top-links a:hover { color: var(--gold); }
 
-/* HERO - Video Integrated */
+/* HERO - Video Integratedd */
 .hero { 
     position: relative; 
     height: 70vh; 
