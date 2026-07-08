@@ -1,115 +1,479 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>HBCR Senior Living</title>
-    <!-- Fonts -->
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
-    <header class="top-bar">
-        <div class="top-links">
-            <a href="#">Download the App</a>
-            <a href="#">Sign In</a>
-            <a href="#">English</a>
-        </div>
-    </header>
+<header class="top-bar">
 
-    <section class="hero" id="hero">
-        <!-- The Video Background (Loeads initially) -->
-        <video id="heroVideo" autoplay loop muted playsinline poster="home-poster.jpg">
-            <source src="home-video.mp4" type="video/mp4">
-        </video>
-        
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-logo">HBCR</div>
-            <h1>WHERE CARE MEETS <span>UNPARALLELED</span> ELEGANCE</h1>
-            <a href="#" class="hero-button">Discover Our Story</a>
-        </div>
+    <div class="top-links">
 
-        <!-- Interactive Icon Bar (4 Icons) -->
-        <div class="icon-bar-container">
-            <div class="icon-bar-line"><div class="active-line" id="activeLine"></div></div>
-            <div class="icon-wrapper">
-                <div class="icon-item" data-image="residences.jpg" data-title="LUXURY <span>RESIDENCES</span> AWAIT" data-cta="View Residences">
-                    <i class="fa-solid fa-building"></i><span>Residences</span>
-                </div>
-                <div class="icon-item" data-image="villas.jpg" data-title="YOUR PRIVATE <span>SANCTUARY</span>" data-cta="Explore Villas">
-                    <i class="fa-solid fa-house-chimney"></i><span>Villas</span>
-                </div>
-                <div class="icon-item" data-image="dining.jpg" data-title="CULINARY <span>EXCELLENCE</span>" data-cta="View Dining">
-                    <i class="fa-solid fa-utensils"></i><span>Dining</span>
-                </div>
-                <div class="icon-item" data-image="yacht.jpg" data-title="THE ULTIMATE <span>SEA ESCAPE</span>" data-cta="View Yachts">
-                    <i class="fa-solid fa-sailboat"></i><span>Yachts</span>
-                </div>
-            </div>
-        </div>
-    </section>
+        <a href="#">Download the App</a>
 
-    <!-- Navigation -->
-    <div class="nav-placeholder"></div>
-    <nav class="main-nav" id="mainNav">
-        <div class="nav-inner">
-            <a href="#">Residences</a>
-            <a href="#">Villas</a>
-            <a href="#">Dining</a>
-            <a href="#">Yachts</a>
-        </div>
-    </nav>
+        <a href="#">Sign In</a>
 
-<section class="card-section">
-    <!-- Updated class to 'featured-card' to match the CSS requirements -->
-    <div class="featured-card">
-        <div class="card-content">
-            <p class="overline">Explore our Resorts in Asia</p>
-            <h2>EXPERIENCES TO REMEMBER</h2>
-            <p>Uncover Asia’s most sought-after destinations, where nature restores balance and jungle trails inspire adventure.</p>
-            <a href="#" class="card-button">Book Now</a>
-        </div>
+        <a href="#">English</a>
+
     </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="hero">
+
+    <video
+        id="heroVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="home-poster.jpg">
+
+        <source src="home-video.mp4" type="video/mp4">
+
+    </video>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <div class="hero-logo">
+            HBCR
+        </div>
+
+        <h1>
+            WHERE CARE MEETS
+            <span>UNPARALLELED</span>
+            ELEGANCE
+        </h1>
+
+        <a href="#" class="hero-button">
+            Discover Our Story
+        </a>
+
+    </div>
+
+
+    <!-- ICON BAR -->
+
+    <div class="icon-bar-container">
+
+        <div class="icon-bar-line">
+
+            <div class="active-line" id="activeLine"></div>
+
+        </div>
+
+        <div class="icon-wrapper">
+
+            <div
+                class="icon-item"
+                data-image="residences.jpg"
+                data-title="LUXURY <span>RESIDENCES</span> AWAIT"
+                data-cta="View Residences">
+
+                <i class="fa-solid fa-building"></i>
+
+                <span>Residences</span>
+
+            </div>
+
+            <div
+                class="icon-item"
+                data-image="villas.jpg"
+                data-title="YOUR PRIVATE <span>SANCTUARY</span>"
+                data-cta="Explore Villas">
+
+                <i class="fa-solid fa-house-chimney"></i>
+
+                <span>Villas</span>
+
+            </div>
+
+            <div
+                class="icon-item"
+                data-image="dining.jpg"
+                data-title="CULINARY <span>EXCELLENCE</span>"
+                data-cta="View Dining">
+
+                <i class="fa-solid fa-utensils"></i>
+
+                <span>Dining</span>
+
+            </div>
+
+            <div
+                class="icon-item"
+                data-image="yacht.jpg"
+                data-title="THE ULTIMATE <span>SEA ESCAPE</span>"
+                data-cta="View Yachts">
+
+                <i class="fa-solid fa-sailboat"></i>
+
+                <span>Yachts</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </section>
 
 
+<!-- STICKY NAV -->
 
-    
-    <!-- Content Sections -->
-    <section class="section">
-        <div class="container">
-            <h2>Experience Excellence</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<div class="nav-placeholder"></div>
+
+<nav class="main-nav" id="mainNav">
+
+    <div class="nav-inner">
+
+        <a href="#">Residences</a>
+
+        <a href="#">Villas</a>
+
+        <a href="#">Dining</a>
+
+        <a href="#">Yachts</a>
+
+    </div>
+
+</nav>
+<!-- ==========================================
+FOUR SEASONS STYLE FEATURE CARD
+========================================== -->
+
+<section class="experience-section">
+
+    <div class="experience-card">
+
+        <img src="asia-resort.jpg" alt="Luxury Resort">
+
+        <div class="experience-overlay"></div>
+
+        <div class="experience-content">
+
+            <div class="experience-kicker">
+                Explore our Resorts in Asia
+            </div>
+
+            <h2 class="experience-title">
+                EXPERIENCES TO REMEMBER
+            </h2>
+
+            <p class="experience-description">
+
+                Uncover Asia's most sought-after destinations,
+                where nature restores balance and jungle trails
+                inspire adventure.
+
+            </p>
+
+            <a href="#" class="experience-button">
+
+                BOOK NOW
+
+            </a>
+
         </div>
-    </section>
 
-    <section class="section dark">
-        <div class="container">
-            <h2>Sophisticated Wellness</h2>
-            <p>Tailored programs designed to harmonize mind, body, and spirit.</p>
+    </div>
+
+</section>
+
+<!-- ==========================================
+FEATURED PROPERTIES
+========================================== -->
+
+<section class="section dark">
+
+    <div class="container">
+
+        <h2>
+            Featured Properties
+        </h2>
+
+        <p>
+
+            Discover elegant residences thoughtfully designed
+            for comfort, independence, wellness and exceptional
+            service.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+WELLNESS
+========================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+        <h2>
+            Sophisticated Wellness
+        </h2>
+
+        <p>
+
+            Tailored wellness experiences, spa services,
+            rehabilitation and personalized care designed
+            to elevate every day.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+DINING
+========================================== -->
+
+<section class="section dark">
+
+    <div class="container">
+
+        <h2>
+            Exceptional Dining
+        </h2>
+
+        <p>
+
+            Chef-inspired seasonal cuisine prepared daily
+            with fresh ingredients in beautifully designed
+            dining spaces.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+CONCIERGE
+========================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+        <h2>
+            Concierge Services
+        </h2>
+
+        <p>
+
+            Transportation, event planning, housekeeping,
+            wellness coordination and personalized lifestyle
+            services available every day.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+LUXURY IMAGE
+========================================== -->
+
+<section class="experience-section">
+
+    <div class="experience-card">
+
+        <img src="villa.jpg" alt="Luxury Villa">
+
+        <div class="experience-overlay"></div>
+
+        <div class="experience-content">
+
+            <div class="experience-kicker">
+                Luxury Living
+            </div>
+
+            <h2 class="experience-title">
+                A HOME LIKE NO OTHER
+            </h2>
+
+            <p class="experience-description">
+
+                Beautiful architecture,
+                personalized hospitality,
+                elegant interiors and
+                breathtaking surroundings.
+
+            </p>
+
+            <a href="#" class="experience-button">
+
+                LEARN MORE
+
+            </a>
+
         </div>
-    </section>
 
-    <section class="section dark">
-        <div class="container">
-            <h2>Sophisticated Wellness</h2>
-            <p>Tailored programs designed to harmonize mind, body, and spirit.</p>
-        </div>
-    </section>
+    </div>
 
-    <section class="section dark">
-        <div class="container">
-            <h2>Sophisticated Wellness</h2>
-            <p>Tailored programs designed to harmonize mind, body, and spirit.</p>
-        </div>
-    </section>
+</section>
+<!-- ==========================================
+TESTIMONIAL
+========================================== -->
 
-    <script src="script.js"></script>
+<section class="section dark">
+
+    <div class="container" style="text-align:center; max-width:900px;">
+
+        <p style="
+            font-family:'Cormorant Garamond',serif;
+            font-size:42px;
+            line-height:1.5;
+            color:#fff;
+            margin-bottom:35px;
+            font-style:italic;">
+
+            "Luxury isn't measured by what surrounds you—
+            it's measured by how you feel every single day."
+
+        </p>
+
+        <span style="
+            letter-spacing:4px;
+            text-transform:uppercase;
+            font-size:11px;
+            color:#888;">
+
+            HBCR SENIOR LIVING
+
+        </span>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+CONTACT CTA
+========================================== -->
+
+<section class="section">
+
+    <div class="container"
+         style="text-align:center;">
+
+        <h2 style="margin-bottom:30px;">
+
+            Begin Your Journey
+
+        </h2>
+
+        <p style="
+            max-width:650px;
+            margin:0 auto 45px;
+            color:#b8b8b8;">
+
+            Schedule a private consultation and discover
+            why HBCR Senior Living delivers an unmatched
+            experience of comfort, elegance, and personalized care.
+
+        </p>
+
+        <a href="#"
+           class="hero-button">
+
+            Schedule A Tour
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+FOOTER
+========================================== -->
+
+<footer class="footer">
+
+    <div class="footer-logo">
+
+        HBCR
+
+    </div>
+
+    <div class="footer-title">
+
+        WHERE CARE MEETS UNPARALLELED ELEGANCE
+
+    </div>
+
+    <div class="footer-links">
+
+        <a href="#">Residences</a>
+
+        <a href="#">Wellness</a>
+
+        <a href="#">Dining</a>
+
+        <a href="#">Lifestyle</a>
+
+        <a href="#">Contact</a>
+
+    </div>
+
+    <div class="footer-social">
+
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+        <a href="#"><i class="fab fa-instagram"></i></a>
+
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+        <a href="#"><i class="fab fa-youtube"></i></a>
+
+    </div>
+
+    <div class="footer-copy">
+
+        © 2026 HBCR Senior Living. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+<script src="script.js"></script>
+
 </body>
+
 </html>
