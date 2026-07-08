@@ -156,23 +156,22 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* THE CARD: This is your framed rectangle */
 .featured-card {
     position: relative;
-    /* Remove the 90% constraint to allow it to fill the max-width space */
     width: 95%; 
-    
-    /* Increase this to make it wider on large screens */
-    max-width: 1600px; 
+    max-width: 1600px;
     margin: 0 auto;
     
-    /* Decrease the ratio value to make it "thinner" (more wide-angle) */
-    /* 3.5/1 is wider and thinner than 2.8/1 */
-    aspect-ratio: 3.5 / 1; 
+    /* Remove aspect-ratio to let padding define the height */
     
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 70%), 
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 70%), 
                 url('exp.jpg') center/cover no-repeat;
     
     display: flex;
     align-items: center;
-    padding-left: 80px;
+    
+    /* This creates the height by adding space above and below the button */
+    /* Adjust these two numbers to make it thinner or thicker */
+    padding: 80px 0 80px 80px; 
+    
     box-sizing: border-box;
 }
 
