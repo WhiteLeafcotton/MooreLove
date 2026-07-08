@@ -1,5 +1,5 @@
 /*==================================================
-HBCR Senior Living - JS Functionality
+HBCR Senior Living - JS Functionalityd
 ==================================================*/
 
 document.addEventListener('DOMContentLoaded', () => {
