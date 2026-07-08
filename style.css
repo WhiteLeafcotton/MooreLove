@@ -144,11 +144,14 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 
 /* FEATURED CARD SECTION */
+/* FEATURED CARD SECTION */
 .featured-card {
     position: relative;
     width: 100%;
-    height: 600px; /* Adjust height as needed */
-    background: url('your-image-url.jpg') center/cover no-repeat;
+    height: 600px; 
+    /* REPLACE 'your-image-url.jpg' with your actual filename */
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                url('exp.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     padding: 0 8%;
