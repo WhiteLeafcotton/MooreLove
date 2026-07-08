@@ -33,32 +33,33 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .icon-bar-line { width: 100%; height: 1px; background: rgba(255,255,255,0.2); margin-bottom: 25px; }
 
 /* MINIMAL CARDS - Wider and Thicker */
+/* MINIMAL CARDS */
 .container-wide { 
     max-width: 100%; 
-    padding: 0 4%; /* Wider spread */
+    padding: 0; /* Remove padding to allow the card to touch the edges */
+    margin: 0; 
 }
 
 .minimal-card-bg {
     position: relative;
-    width: 100%;
-    height: 480px; /* Thicker card */
+    width: 100%; /* Spans full width */
+    height: 480px; 
     overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.1);
+    border-left: none; /* Removes side borders */
+    border-right: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-
-.bg-img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1; }
-.card-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 2; }
 
 .card-content-overlay {
-    position: relative; z-index: 3; padding: 60px; height: 100%;
-    display: flex; flex-direction: column; justify-content: center;
-    max-width: 1400px; margin: 0 auto;
+    position: relative; 
+    z-index: 3; 
+    padding: 60px 8%; /* Aligns text with the 8% padding used in your Hero */
+    height: 100%;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    max-width: 100%; 
+    margin: 0;
 }
-
-.card-subtitle { display: block; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 20px; color: var(--gold); margin-bottom: 10px; }
-.card-title { font-family: "Cormorant Garamond", serif; font-size: 48px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
-.card-content-overlay p { color: #fff; margin-bottom: 30px; line-height: 1.6; font-size: 18px; max-width: 600px; }
-.card-button { align-self: flex-start; padding: 12px 35px; border: 1px solid #fff; color: #fff; text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: .3s; }
-.card-button:hover { background: #fff; color: #000; }
-
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
