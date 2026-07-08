@@ -1,3 +1,5 @@
+/*==================================================
+HBCR Senior Living - Final CSS
 ==================================================*/
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
@@ -154,16 +156,13 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* THE CARD: This is your framed rectangle */
 .featured-card {
     position: relative;
-    /* Remove the 90% constraint to allow it to fill the max-width space */
-    width: 95%; 
-    
-    /* Increase this to make it wider on large screens */
-    max-width: 1600px; 
+    /* This constraint keeps it from hitting the screen edges */
+    width: 90%; 
+    max-width: 1200px;
     margin: 0 auto;
     
-    /* Decrease the ratio value to make it "thinner" (more wide-angle) */
-    /* 3.5/1 is wider and thinner than 2.8/1 */
-    aspect-ratio: 3.5 / 1; 
+    /* This creates the exact "thin and wide" look */
+    aspect-ratio: 2.8 / 1; 
     
     background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 70%), 
                 url('exp.jpg') center/cover no-repeat;
@@ -229,4 +228,4 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     outline: 1px solid #fff;
 }
 
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } give paste ready code
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }is something stopping the card from being wider
