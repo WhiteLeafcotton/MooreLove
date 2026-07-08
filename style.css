@@ -142,4 +142,64 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .container h2 { font-family: "Cormorant Garamond", serif; font-size: 48px; font-weight: 300; margin-bottom: 25px; }
 .container p { font-size: 16px; line-height: 1.7; color: #aaa; max-width: 550px; }
 
+
+/* FEATURED CARD STYLE */
+.featured-card {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 500px; /* Adjust height as needed */
+    margin: 100px auto;
+    background: url('your-image-url.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+}
+
+.card-content {
+    max-width: 450px;
+    color: #fff;
+}
+
+.card-content i {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.card-content h3 {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.card-content p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 24px;
+    line-height: 1.4;
+    margin-bottom: 30px;
+    color: #fff;
+    max-width: 100%;
+}
+
+.card-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.card-btn:hover { background: #d4b06a; color: #fff; }
+
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
