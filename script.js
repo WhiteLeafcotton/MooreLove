@@ -94,65 +94,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  // --- Mosaic Grid Logic ---
-const grid = document.getElementById('mosaicGrid');
-const mainImage = 'exp.jpg'; 
-const randomImages = ['exp.jpg', 'res.jpg', 'com.jpg', 'img4.jpg']; 
-
-function initMosaic() {
+document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('mosaicGrid');
     if (!grid) return;
-    grid.innerHTML = ''; 
-    
-    for (let i = 0; i < 20; i++) {
-        const tile = document.createElement('div');
-        tile.className = 'tile';
-        
-        // Use a test image to verify it's working
-        tile.style.backgroundColor = '#1a1a1a'; // Temporary: gives boxes a dark grey color
-        tile.style.backgroundImage = `url('https://picsum.photos/800/600?random=${i}')`; 
-        
-        const col = i % 4;
-        const row = Math.floor(i / 4);
-        
-        tile.style.backgroundPosition = `${(col / 3) * 100}% ${(row / 4) * 100}%`;
-        tile.style.backgroundSize = "400% 500%"; 
-        
-        grid.appendChild(tile);
-    }
-}
 
-function flicker() {
-    const tiles = document.querySelectorAll('.tile');
-    let interval = setInterval(() => {
-        tiles.forEach(tile => {
-            if (Math.random() > 0.7) {
-                const randImg = randomImages[Math.floor(Math.random() * randomImages.length)];
-                tile.style.backgroundImage = `url(${randImg})`;
-            }
+    // Configuration
+    const CONFIG = {
+        mainImage: 'path/to/your-full-image.jpg',
+        flickerImages: ['img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg'],
+        totalTiles: 20
+    };
+
+    function initProfessionalMosaic() {
+        // Build Tiles
+        for (let i = 0; i < CONFIG.totalTiles; i++) {
+            const tile = document.createElement('div');
+            tile.className = 'tile';
+            const col = i % 4;
+            const row = Math.floor(i / 4);
+            
+            tile.style.backgroundPosition = `${(col / 3) * 100}% ${(row / 4) * 100}%`;
+            grid.appendChild(tile);
+        }
+
+        // Elegant Reveal Animation
+        const tiles = Array.from(document.querySelectorAll('.tile'));
+        
+        // Randomize the order of reveal
+        const shuffledTiles = [...tiles].sort(() => Math.random() - 0.5);
+
+        shuffledTiles.forEach((tile, index) => {
+            setTimeout(() => {
+                tile.style.backgroundImage = `url(${CONFIG.mainImage})`;
+                tile.classList.add('is-active');
+            }, index * 80); // Staggered reveal
         });
-    }, 200);
-
-    setTimeout(() => {
-        clearInterval(interval);
-        tiles.forEach(tile => {
-            tile.style.backgroundImage = `url(${mainImage})`;
-            tile.style.transition = "background-image 0.5s ease"; // Smooth final transition
-        });
-    }, 3000);
-}
-
-// Separate Observer to avoid conflict with the other one
-const mosaicObserver = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-        initMosaic();
-        flicker();
-        mosaicObserver.disconnect();
     }
-}, { threshold: 0.3 });
 
-const mosaicSection = document.getElementById('mosaicSection');
-if (mosaicSection) mosaicObserver.observe(mosaicSection);
+    // Intersection Observer for professional scroll-trigger
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            initProfessionalMosaic();
+            observer.disconnect();
+        }
+    }, { threshold: 0.2 });
 
+    const section = document.getElementById('mosaicSection');
+    if (section) observer.observe(section);
 });
-
 
