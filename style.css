@@ -217,36 +217,16 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 
-.services-section { padding: 100px 4%; background: #080808; }
-.section-title { font-family: "Cormorant Garamond", serif; font-size: 48px; margin-bottom: 60px; text-align: center; }
-
-.services-grid { 
+.mosaic-section { position: relative; height: 80vh; background: #080808; overflow: hidden; }
+.mosaic-grid { 
     display: grid; 
     grid-template-columns: repeat(4, 1fr); 
-    gap: 20px; 
+    grid-template-rows: repeat(5, 1fr); 
+    width: 100%; height: 100%; 
 }
-
-.service-card { position: relative; cursor: pointer; overflow: hidden; }
-.img-wrap { height: 500px; overflow: hidden; }
-.img-wrap img { 
-    width: 100%; height: 100%; object-fit: cover; 
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); 
+.tile { 
+    background-size: 400% 500%; /* Spreads the main image across the grid */
+    transition: background-image 0.2s; 
+    border: 1px solid rgba(0,0,0,0.5);
 }
-.service-card:hover .img-wrap img { transform: scale(1.05); }
-
-.text-wrap { margin-top: 20px; }
-.text-wrap h3 { 
-    font-family: "Cormorant Garamond", serif; 
-    font-size: 22px; 
-    margin-bottom: 10px; 
-    color: var(--gold);
-    /* Animation initial state */
-    opacity: 0; transform: translateY(20px); transition: all 0.6s ease;
-}
-.text-wrap p { font-size: 14px; color: #888; }
-
-/* Trigger animation on scroll */
-.service-card.is-visible .text-wrap h3 { opacity: 1; transform: translateY(0); }
-
-@media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
+.mosaic-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; }
