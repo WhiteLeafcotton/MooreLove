@@ -159,7 +159,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     width: 100%;
     max-width: 1200px;
     /* Reduced height to make the card thinner */
-    height: 400px; 
+    height: 300px; 
     background: url('exp.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
