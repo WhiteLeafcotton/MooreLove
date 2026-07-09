@@ -94,19 +94,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    const grid = document.getElementById('mosaicGrid');
-const mainImage = 'your-full-image.jpg'; // The big picture
-const randomImages = ['img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg']; // Flickering photos
+  // --- Mosaic Grid Logic ---
+const grid = document.getElementById('mosaicGrid');
+const mainImage = 'path/to/your-full-image.jpg'; 
+const randomImages = ['img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg']; 
 
 function initMosaic() {
+    if (!grid) return;
+    grid.innerHTML = ''; // Clear to prevent double-loading
     for (let i = 0; i < 20; i++) {
         const tile = document.createElement('div');
         tile.className = 'tile';
         
-        // Calculate background position for the main image
-        const x = (i % 4) * (100 / 3);
-        const y = Math.floor(i / 4) * (100 / 4);
-        tile.style.backgroundPosition = `${x}% ${y}%`;
+        // Correct Math for 4x5 Grid:
+        // Columns: 4 (index % 4). Spans 0 to 100% in 3 steps: 0, 33.3, 66.6, 100
+        // Rows: 5 (Math.floor(i / 4)). Spans 0 to 100% in 4 steps: 0, 25, 50, 75, 100
+        const col = i % 4;
+        const row = Math.floor(i / 4);
+        
+        tile.style.backgroundPosition = `${(col / 3) * 100}% ${(row / 4) * 100}%`;
+        tile.style.backgroundSize = "400% 500%"; // 4 columns, 5 rows
         
         grid.appendChild(tile);
     }
@@ -114,35 +121,35 @@ function initMosaic() {
 
 function flicker() {
     const tiles = document.querySelectorAll('.tile');
-    
-    // Randomly change images for a duration
     let interval = setInterval(() => {
         tiles.forEach(tile => {
             if (Math.random() > 0.7) {
-                tile.style.backgroundImage = `url(${randomImages[Math.floor(Math.random() * randomImages.length)]})`;
+                const randImg = randomImages[Math.floor(Math.random() * randomImages.length)];
+                tile.style.backgroundImage = `url(${randImg})`;
             }
         });
     }, 200);
 
-    // After 3 seconds, resolve to final image
     setTimeout(() => {
         clearInterval(interval);
         tiles.forEach(tile => {
             tile.style.backgroundImage = `url(${mainImage})`;
+            tile.style.transition = "background-image 0.5s ease"; // Smooth final transition
         });
     }, 3000);
 }
 
-// Trigger when section comes into view
-const observer = new IntersectionObserver((entries) => {
+// Separate Observer to avoid conflict with the other one
+const mosaicObserver = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
         initMosaic();
         flicker();
-        observer.disconnect();
+        mosaicObserver.disconnect();
     }
-}, { threshold: 0.5 });
+}, { threshold: 0.3 });
 
-observer.observe(document.getElementById('mosaicSection'));
+const mosaicSection = document.getElementById('mosaicSection');
+if (mosaicSection) mosaicObserver.observe(mosaicSection);
 
 });
 
