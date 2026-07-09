@@ -154,3 +154,31 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .card-btn:hover { background: #d4b06a; color: #fff; }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+
+
+/* MOBILE RESPONSIVE ADAPTATION */
+@media (max-width: 768px) {
+    .featured-card {
+        height: 450px; /* Taller for mobile */
+        /* Changed gradient to top-to-bottom for mobile readability */
+        background: linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.9) 100%), 
+                    url('exp.jpg') center/cover no-repeat;
+        text-align: center;
+        justify-content: center; /* Centers content horizontally */
+        padding: 0 20px;
+    }
+
+    .card-content {
+        max-width: 100%;
+    }
+
+    .card-content i {
+        font-size: 16px;
+    }
+
+    .card-content p {
+        font-size: 20px; /* Slightly smaller for mobile screens */
+        margin-bottom: 25px;
+    }
+}
