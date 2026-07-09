@@ -93,17 +93,20 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     position: relative;
     width: 100%;
     max-width: 1600px;
-    /* Reduced height to make the card thinner */
     height: 300px; 
-    background: url('exp.jpg') center/cover no-repeat;
+    /* This creates a gradient that darkens the sides/bottom while showing the image */
+    background: linear-gradient(to right, rgba(8,8,8,0.8) 0%, transparent 40%, transparent 100%), 
+                url('exp.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     padding: 0 5%;
-    /* Thinner border: 0.5px with light opacity */
     border: 0.5px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
 }
 
 .card-content {
+    position: relative;
+    z-index: 2; /* Keeps text above the gradient */
     max-width: 450px;
     color: #fff;
 }
