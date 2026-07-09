@@ -61,12 +61,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize line position
     setTimeout(() => { if (iconItems.length > 0) moveLine(iconItems[0]); }, 100);
+
+
+
+
+// 3. Slide-Up Masked Reveal Animation for Featured Card
+    const observerOptions = {
+        threshold: 0.3
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const title = entry.target.querySelector('.h3-mask h3');
+                if (title) {
+                    title.classList.add('is-visible');
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    const featuredCard = document.querySelector('.featured-card');
+    if (featuredCard) {
+        observer.observe(featuredCard);
+    }
+
 });
-
-
-
-
-
-
 
 
