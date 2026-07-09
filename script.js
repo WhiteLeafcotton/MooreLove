@@ -1,8 +1,5 @@
-/*==================================================
-HBCR Senior Living - JS Functionbbalityd
-==================================================*/
-
 document.addEventListener('DOMContentLoaded', () => {
+    
     // 1. Sticky Navigation Logic
     const hero = document.getElementById("hero");
     const nav = document.getElementById("mainNav");
@@ -36,22 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     iconItems.forEach((item) => {
         const updateHero = () => {
-            // STOP VIDEO: Hide the video element and pause it when interaction happens
             if (heroVideo) {
                 heroVideo.style.display = 'none';
                 heroVideo.pause();
             }
-
-            // SWITCH IMAGE: Set the background image based on the data-image attribute
             heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('${item.dataset.image}')`;
-            
-            // Update Text
             if (heroTitle) heroTitle.innerHTML = item.dataset.title;
             if (heroBtn) heroBtn.innerText = item.dataset.cta;
-            
             moveLine(item);
         };
-
         item.addEventListener('mouseenter', updateHero);
         item.addEventListener('touchstart', (e) => {
             e.preventDefault();
@@ -59,87 +49,60 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: false });
     });
 
-    // Initialize line position
     setTimeout(() => { if (iconItems.length > 0) moveLine(iconItems[0]); }, 100);
 
-
-
-
-// 3. Slide-Up Masked Reveal Animation for Featured Card
-    const observerOptions = {
-        threshold: 0.3
-    };
-
+    // 3. Featured Card Observer
+    const observerOptions = { threshold: 0.3 };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const title = entry.target.querySelector('.h3-mask h3');
-                if (title) {
-                    title.classList.add('is-visible');
-                }
+                if (title) title.classList.add('is-visible');
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
     const featuredCard = document.querySelector('.featured-card');
-    if (featuredCard) {
-        observer.observe(featuredCard);
-    }
+    if (featuredCard) observer.observe(featuredCard);
 
-
-
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
+    // 4. Professional Mosaic Reveal
     const grid = document.getElementById('mosaicGrid');
-    if (!grid) return;
+    if (grid) {
+        const CONFIG = {
+            mainImage: 'exp.jpg', // Ensure this file exists in your directory
+            totalTiles: 20
+        };
 
-    // Configuration
-    const CONFIG = {
-        mainImage: 'path/to/your-full-image.jpg',
-        flickerImages: ['img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg'],
-        totalTiles: 20
-    };
-
-    function initProfessionalMosaic() {
-        // Build Tiles
-        for (let i = 0; i < CONFIG.totalTiles; i++) {
-            const tile = document.createElement('div');
-            tile.className = 'tile';
-            const col = i % 4;
-            const row = Math.floor(i / 4);
-            
-            tile.style.backgroundPosition = `${(col / 3) * 100}% ${(row / 4) * 100}%`;
-            grid.appendChild(tile);
-        }
-
-        // Elegant Reveal Animation
-        const tiles = Array.from(document.querySelectorAll('.tile'));
-        
-        // Randomize the order of reveal
-        const shuffledTiles = [...tiles].sort(() => Math.random() - 0.5);
-
-        shuffledTiles.forEach((tile, index) => {
-            setTimeout(() => {
+        function initProfessionalMosaic() {
+            for (let i = 0; i < CONFIG.totalTiles; i++) {
+                const tile = document.createElement('div');
+                tile.className = 'tile';
                 tile.style.backgroundImage = `url(${CONFIG.mainImage})`;
-                tile.classList.add('is-active');
-            }, index * 80); // Staggered reveal
-        });
-    }
+                const col = i % 4;
+                const row = Math.floor(i / 4);
+                tile.style.backgroundPosition = `${(col / 3) * 100}% ${(row / 4) * 100}%`;
+                grid.appendChild(tile);
+            }
 
-    // Intersection Observer for professional scroll-trigger
-    const observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-            initProfessionalMosaic();
-            observer.disconnect();
+            const tiles = Array.from(document.querySelectorAll('.tile'));
+            const shuffledTiles = [...tiles].sort(() => Math.random() - 0.5);
+
+            shuffledTiles.forEach((tile, index) => {
+                setTimeout(() => {
+                    tile.classList.add('is-active');
+                }, index * 80);
+            });
         }
-    }, { threshold: 0.2 });
 
-    const section = document.getElementById('mosaicSection');
-    if (section) observer.observe(section);
+        const mosaicObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                initProfessionalMosaic();
+                mosaicObserver.disconnect();
+            }
+        }, { threshold: 0.2 });
+
+        const section = document.getElementById('mosaicSection');
+        if (section) mosaicObserver.observe(section);
+    }
 });
-
