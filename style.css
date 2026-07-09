@@ -208,6 +208,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
     .card-content i { font-size: 15px; margin-bottom: 10px; }
-    
+    .card-content h3 { font-size: 12px; margin-bottom: 15px; }
     .card-content p { font-size: 20px; margin-bottom: 25px; }
 }
