@@ -87,6 +87,29 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(featuredCard);
     }
 
+
+
+
+
+
+
+
+    const serviceCards = document.querySelectorAll('.service-card');
+
+const serviceObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            // Stagger the animation for each card
+            setTimeout(() => {
+                entry.target.classList.add('is-visible');
+            }, index * 150); 
+            serviceObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.2 });
+
+serviceCards.forEach(card => serviceObserver.observe(card));
+
 });
 
 
