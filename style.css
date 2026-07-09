@@ -162,6 +162,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* MOBILE RESPONSIVE: THIN IMAGE + TEXT BELOW */
 /* MOBILE RESPONSIVE: THIN IMAGE + TEXT BELOW WITH FADE & BORDER */
 /* MOBILE RESPONSIVE: THIN IMAGE + TEXT BELOW WITH FADE, BORDER & MASKED ANIMATION */
+/* MOBILE RESPONSIVE: THIN IMAGE + TEXT BELOW WITH FADE, BORDER & MASKED ANIMATION */
 @media (max-width: 768px) {
     .featured-card-wrapper {
         padding: 40px 4%;
@@ -172,44 +173,45 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         display: block;
         background: none;
         padding: 0;
-        border: none; /* We will apply the border to the image header instead */
+        border: none;
     }
 
-    /* The thin image rectangle with fade and outline */
+    /* The thin image rectangle */
     .featured-card::before {
         content: "";
         display: block;
         width: 100%;
         height: 140px;
-        /* The gradient fade + the image */
         background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), 
                     url('exp.jpg') center/cover no-repeat;
-        /* The white outline */
         border: 0.5px solid rgba(255, 255, 255, 0.2);
         margin-bottom: 25px;
     }
 
-
-     .card-content {
+    .card-content {
         max-width: 100%;
         text-align: left;
         padding: 0 5px;
     }
-    /* Animation State: Hidden */
-.card-content h3 {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), 
-                transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
 
-/* Animation State: Visible (Added by JS) */
-.card-content h3.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+    /* MASKED ANIMATION STYLES */
+    .h3-mask {
+        overflow: hidden;
+        display: block;
+    }
+
+    .card-content h3 {
+        display: block;
+        transform: translateY(100%);
+        transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+
+    .card-content h3.is-visible {
+        transform: translateY(0);
+    }
 
     .card-content i { font-size: 15px; margin-bottom: 10px; }
-    .card-content h3 { font-size: 12px; margin-bottom: 15px; }
     .card-content p { font-size: 20px; margin-bottom: 25px; }
 }
