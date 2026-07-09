@@ -94,21 +94,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    const serviceCards = document.querySelectorAll('.service-card');
+    const grid = document.getElementById('mosaicGrid');
+const mainImage = 'your-full-image.jpg'; // The big picture
+const randomImages = ['img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg']; // Flickering photos
 
-const serviceObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-            // Stagger the animation for each card
-            setTimeout(() => {
-                entry.target.classList.add('is-visible');
-            }, index * 150); 
-            serviceObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.2 });
+function initMosaic() {
+    for (let i = 0; i < 20; i++) {
+        const tile = document.createElement('div');
+        tile.className = 'tile';
+        
+        // Calculate background position for the main image
+        const x = (i % 4) * (100 / 3);
+        const y = Math.floor(i / 4) * (100 / 4);
+        tile.style.backgroundPosition = `${x}% ${y}%`;
+        
+        grid.appendChild(tile);
+    }
+}
 
-serviceCards.forEach(card => serviceObserver.observe(card));
+function flicker() {
+    const tiles = document.querySelectorAll('.tile');
+    
+    // Randomly change images for a duration
+    let interval = setInterval(() => {
+        tiles.forEach(tile => {
+            if (Math.random() > 0.7) {
+                tile.style.backgroundImage = `url(${randomImages[Math.floor(Math.random() * randomImages.length)]})`;
+            }
+        });
+    }, 200);
+
+    // After 3 seconds, resolve to final image
+    setTimeout(() => {
+        clearInterval(interval);
+        tiles.forEach(tile => {
+            tile.style.backgroundImage = `url(${mainImage})`;
+        });
+    }, 3000);
+}
+
+// Trigger when section comes into view
+const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+        initMosaic();
+        flicker();
+        observer.disconnect();
+    }
+}, { threshold: 0.5 });
+
+observer.observe(document.getElementById('mosaicSection'));
 
 });
 
