@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
     // 1. Sticky Navigation Logic
     const hero = document.getElementById("hero");
     const nav = document.getElementById("mainNav");
@@ -51,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(() => { if (iconItems.length > 0) moveLine(iconItems[0]); }, 100);
 
-    // 3. Featured Card Observer
+    // 3. Slide-Up Masked Reveal Animation for Featured Card
     const observerOptions = { threshold: 0.3 };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -69,10 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Professional Mosaic Reveal
     const grid = document.getElementById('mosaicGrid');
     if (grid) {
-        const CONFIG = {
-            mainImage: 'exp.jpg', // Ensure this file exists in your directory
-            totalTiles: 20
-        };
+        // Change 'exp.jpg' to your actual image file name
+        const CONFIG = { mainImage: 'exp.jpg', totalTiles: 20 };
 
         function initProfessionalMosaic() {
             for (let i = 0; i < CONFIG.totalTiles; i++) {
@@ -89,9 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const shuffledTiles = [...tiles].sort(() => Math.random() - 0.5);
 
             shuffledTiles.forEach((tile, index) => {
-                setTimeout(() => {
-                    tile.classList.add('is-active');
-                }, index * 80);
+                setTimeout(() => { tile.classList.add('is-active'); }, index * 80);
             });
         }
 
