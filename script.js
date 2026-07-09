@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Mosaic Grid Logic ---
 const grid = document.getElementById('mosaicGrid');
-const mainImage = 'path/to/your-full-image.jpg'; 
+const mainImage = 'exp.jpg'; 
 const randomImages = ['exp.jpg', 'res.jpg', 'com.jpg', 'img4.jpg']; 
 
 function initMosaic() {
