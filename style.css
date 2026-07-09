@@ -157,14 +157,14 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .featured-card {
     position: relative;
     width: 100%;
-    max-width: 1200px; /* Adjust this to match your site's container width */
-    height: 500px; /* Fixed height for consistent cinematic aspect ratio */
+    max-width: 1200px;
+    height: 500px;
     background: url('exp.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     padding: 0 5%;
-    /* The white border */
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    /* Thinner border: 0.5px with lower opacity */
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
 }
 
 .card-content {
