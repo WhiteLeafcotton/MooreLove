@@ -101,19 +101,21 @@ const randomImages = ['exp.jpg', 'res.jpg', 'com.jpg', 'img4.jpg'];
 
 function initMosaic() {
     if (!grid) return;
-    grid.innerHTML = ''; // Clear to prevent double-loading
+    grid.innerHTML = ''; 
+    
     for (let i = 0; i < 20; i++) {
         const tile = document.createElement('div');
         tile.className = 'tile';
         
-        // Correct Math for 4x5 Grid:
-        // Columns: 4 (index % 4). Spans 0 to 100% in 3 steps: 0, 33.3, 66.6, 100
-        // Rows: 5 (Math.floor(i / 4)). Spans 0 to 100% in 4 steps: 0, 25, 50, 75, 100
+        // Use a test image to verify it's working
+        tile.style.backgroundColor = '#1a1a1a'; // Temporary: gives boxes a dark grey color
+        tile.style.backgroundImage = `url('https://picsum.photos/800/600?random=${i}')`; 
+        
         const col = i % 4;
         const row = Math.floor(i / 4);
         
         tile.style.backgroundPosition = `${(col / 3) * 100}% ${(row / 4) * 100}%`;
-        tile.style.backgroundSize = "400% 500%"; // 4 columns, 5 rows
+        tile.style.backgroundSize = "400% 500%"; 
         
         grid.appendChild(tile);
     }
