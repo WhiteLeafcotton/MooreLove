@@ -62,3 +62,33 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize line position
     setTimeout(() => { if (iconItems.length > 0) moveLine(iconItems[0]); }, 100);
 });
+
+
+
+
+
+
+
+ // Intitle section 1 titl,e annimation
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const observerOptions = {
+        threshold: 0.5 // Trigger when 50% of the card is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const title = entry.target.querySelector('.card-content h3');
+                title.classList.add('is-visible');
+                observer.unobserve(entry.target); // Run only once
+            }
+        });
+    }, observerOptions);
+
+    const card = document.querySelector('.featured-card');
+    if (card) {
+        observer.observe(card);
+    }
+});
+</script>
