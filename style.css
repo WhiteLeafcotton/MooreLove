@@ -172,20 +172,23 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         display: block;
         background: none;
         padding: 0;
-        border: none;
+        border: none; /* We will apply the border to the image header instead */
     }
 
-    /* The thin image rectangle */
+    /* The thin image rectangle with fade and outline */
     .featured-card::before {
         content: "";
         display: block;
         width: 100%;
         height: 140px;
+        /* The gradient fade + the image */
         background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), 
                     url('exp.jpg') center/cover no-repeat;
+        /* The white outline */
         border: 0.5px solid rgba(255, 255, 255, 0.2);
         margin-bottom: 25px;
     }
+
 
      .card-content {
         max-width: 100%;
