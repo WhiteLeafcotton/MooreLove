@@ -158,12 +158,13 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     position: relative;
     width: 100%;
     max-width: 1200px;
-    height: 500px;
+    /* Reduced height to make the card thinner */
+    height: 400px; 
     background: url('exp.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     padding: 0 5%;
-    /* Thinner border: 0.5px with lower opacity */
+    /* Thinner border: 0.5px with light opacity */
     border: 0.5px solid rgba(255, 255, 255, 0.2);
 }
 
