@@ -228,26 +228,26 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 .mosaic-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5x4 grid for better flow */
-    grid-template-rows: repeat(4, 1fr);
+    /* 10 columns by 10 rows = 100 tiles */
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
     width: 100%;
     max-width: 900px;
-    aspect-ratio: 16 / 9;
-    gap: 0px; /* No gap makes it feel like one unified image */
-    overflow: hidden;
+    height: 600px; /* Fixed height for consistency */
+    gap: 1px;      /* Slight gap creates the 'mosaic' look */
+    background: #000;
 }
 
 .tile {
-    background-size: 500% 400%; /* Must match grid dimensions */
+    /* Set background-size to 1000% 1000% because we have 10x10 tiles */
+    background-size: 1000% 1000%;
     background-repeat: no-repeat;
     opacity: 0;
-    transform: scale(0.8) translateY(20px);
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-    filter: blur(10px);
+    transform: scale(0.5); /* Smaller start scale for better effect */
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .tile.is-active {
     opacity: 1;
-    transform: scale(1) translateY(0);
-    filter: blur(0px);
+    transform: scale(1);
 }
