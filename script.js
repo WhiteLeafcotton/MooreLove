@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.getElementById('mosaicGrid');
     if (grid) {
         // Change 'exp.jpg' to your actual image file name
-        const CONFIG = { mainImage: 'exp.jpg', totalTiles: 20 };
+        const CONFIG = { mainImage: 'man.jpg', totalTiles: 20 };
 
         function initProfessionalMosaic() {
             for (let i = 0; i < CONFIG.totalTiles; i++) {
