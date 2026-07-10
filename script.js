@@ -67,51 +67,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Professional Mosaic Reveal
     const grid = document.getElementById('mosaicGrid');
-    if (grid) {
-        const CONFIG = { 
-            mainImage: 'man.jpg', 
-            cols: 5, 
-            rows: 4 
-        };
-
-        function initProfessionalMosaic() {
-            const totalTiles = CONFIG.cols * CONFIG.rows;
+    
+    function initProfessionalMosaic() {
+        if (!grid) return;
+        
+        const CONFIG = { mainImage: 'man.jpg', cols: 5, rows: 4 };
+        const totalTiles = CONFIG.cols * CONFIG.rows;
+        
+        for (let i = 0; i < totalTiles; i++) {
+            const tile = document.createElement('div');
+            tile.className = 'tile';
+            tile.style.backgroundImage = `url('${CONFIG.mainImage}')`;
             
-            for (let i = 0; i < totalTiles; i++) {
-                const tile = document.createElement('div');
-                tile.className = 'tile';
-                tile.style.backgroundImage = `url(${CONFIG.mainImage})`;
-                
-                // Calculate position for the slice
-                const col = i % CONFIG.cols;
-                const row = Math.floor(i / CONFIG.cols);
-                
-                tile.style.backgroundPosition = `${(col / (CONFIG.cols - 1)) * 100}% ${(row / (CONFIG.rows - 1)) * 100}%`;
-                grid.appendChild(tile);
-            }
-
-            const tiles = document.querySelectorAll('.tile');
+            const col = i % CONFIG.cols;
+            const row = Math.floor(i / CONFIG.cols);
             
-            // Staggered Diagonal Animation
-            tiles.forEach((tile, index) => {
-                const col = index % CONFIG.cols;
-                const row = Math.floor(index / CONFIG.cols);
-                const delay = (col + row) * 100; // 100ms increment for "wave" effect
-                
-                setTimeout(() => {
-                    tile.classList.add('is-active');
-                }, delay);
-            });
+            tile.style.backgroundPosition = `${(col / (CONFIG.cols - 1)) * 100}% ${(row / (CONFIG.rows - 1)) * 100}%`;
+            grid.appendChild(tile);
         }
 
-        const mosaicObserver = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                initProfessionalMosaic();
-                mosaicObserver.disconnect();
-            }
-        }, { threshold: 0.2 });
-
-        const section = document.getElementById('mosaicSection');
-        if (section) mosaicObserver.observe(section);
+        const tiles = document.querySelectorAll('.tile');
+        tiles.forEach((tile, index) => {
+            const col = index % CONFIG.cols;
+            const row = Math.floor(index / CONFIG.cols);
+            const delay = (col + row) * 100;
+            setTimeout(() => { tile.classList.add('is-active'); }, delay);
+        });
     }
+
+    const mosaicObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            initProfessionalMosaic();
+            mosaicObserver.disconnect();
+        }
+    }, { threshold: 0.2 });
+
+    const section = document.getElementById('mosaicSection');
+    if (section) mosaicObserver.observe(section);
 });
