@@ -219,32 +219,35 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* Container adjusted to match your 4% site padding */
 .mosaic-section {
-    padding: 60px 4%;
+    padding: 100px 4%;
     background: #080808;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .mosaic-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 1fr); /* 5x4 grid for better flow */
+    grid-template-rows: repeat(4, 1fr);
     width: 100%;
-    max-width: 800px; /* Smaller, demure size */
-    aspect-ratio: 4 / 5; /* Keeps the square/rectangle aesthetic */
-    gap: 2px; /* Subtle lines between tiles */
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+    gap: 0px; /* No gap makes it feel like one unified image */
+    overflow: hidden;
 }
 
 .tile {
-    background-size: 400% 500%;
-    background-position: center;
-    transition: background-image 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    background-size: 500% 400%; /* Must match grid dimensions */
+    background-repeat: no-repeat;
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.8) translateY(20px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    filter: blur(10px);
 }
 
-/* Class added via JS to trigger elegant reveal */
 .tile.is-active {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translateY(0);
+    filter: blur(0px);
 }
