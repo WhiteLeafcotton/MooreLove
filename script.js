@@ -65,13 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const featuredCard = document.querySelector('.featured-card');
     if (featuredCard) observer.observe(featuredCard);
 
-    // 4. Professional Mosaic Reveal
+    // 4. Professional High-Density Mosaic Reveal (100 Tiles)
     const grid = document.getElementById('mosaicGrid');
     
     function initProfessionalMosaic() {
         if (!grid) return;
         
-        const CONFIG = { mainImage: 'man.jpg', cols: 5, rows: 4 };
+        // Configuration for high density
+        const CONFIG = { mainImage: 'man.jpg', cols: 10, rows: 10 };
         const totalTiles = CONFIG.cols * CONFIG.rows;
         
         for (let i = 0; i < totalTiles; i++) {
@@ -86,11 +87,13 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.appendChild(tile);
         }
 
+        // Trigger animation
         const tiles = document.querySelectorAll('.tile');
         tiles.forEach((tile, index) => {
             const col = index % CONFIG.cols;
             const row = Math.floor(index / CONFIG.cols);
-            const delay = (col + row) * 100;
+            // Faster stagger for 100 tiles (30ms per tile)
+            const delay = (col + row) * 30; 
             setTimeout(() => { tile.classList.add('is-active'); }, delay);
         });
     }
