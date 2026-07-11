@@ -100,43 +100,49 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     align-items: center; 
 }
 
-.mosaic-section::before { 
-    content: ""; 
-    position: absolute; 
-    inset: 0; 
-    background: rgba(8, 8, 8, 0.7); 
-    z-index: 1; 
+.mosaic-section { 
+    position: relative; 
+    padding: 40px 4%; /* Reduced vertical padding from 80px to 40px */
+    background: url('man.jpg') center/cover no-repeat fixed; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
 }
 
-/* Updated Grid to match Featured Card width */
+/* Updated Grid */
 .mosaic-grid { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
-    gap: 40px; 
+    gap: 20px; /* Reduced gap from 40px to 20px for density */
     width: 100%; 
-    max-width: 1600px; /* Changed from 1400px to 1600px to match card */
+    max-width: 1600px; 
     z-index: 2; 
-    margin-bottom: 60px; 
+    margin-bottom: 30px; /* Reduced bottom margin */
 }
 
 .tile-card { 
     border: 1px solid rgba(255, 255, 255, 0.2); 
-    padding: 80px 40px; 
+    /* Reduced top/bottom padding by 35% to make tiles thinner */
+    padding: 52px 40px; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    gap: 25px; 
+    gap: 15px; /* Tighter gap inside the tile */
     background: rgba(255, 255, 255, 0.05); 
     backdrop-filter: blur(12px); 
     transition: var(--transition); 
     cursor: pointer; 
 }
+
+.tile-card i { font-size: 32px; color: #fff; transition: var(--transition); }
+.tile-card span { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #fff; }
 /* ... keep the rest of the styles as they were ... */
 
 
 .tile-card:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--gold); }
-.tile-card i { font-size: 40px; color: #fff; transition: var(--transition); }
-.tile-card span { font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: #fff; }
+
+
 
 /* Large Title & CTA */
 /* Tightened Mosaic Footer */
