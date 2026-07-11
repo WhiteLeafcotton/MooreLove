@@ -281,7 +281,8 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     position: relative;
     padding: 100px 4%;
     min-height: 100vh;
-    background: url('your-background.jpg') center/cover no-repeat fixed;
+    /* CHANGE 'your-background.jpg' to your actual file name like 'man.jpg' */
+    background: url('man.jpg') center/cover no-repeat fixed; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -322,6 +323,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .tile-card:hover { background: rgba(255, 255, 255, 0.1); }
 .tile-card i { font-size: 24px; color: #fff; }
 .tile-card span { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
+
 
 /* Footer Footer (Bottom Half) */
 .mosaic-footer {
