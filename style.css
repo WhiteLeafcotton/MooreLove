@@ -91,6 +91,22 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     position: relative;
 }
 
+/* NAVIGATION LINKS */
+.nav-inner a,
+.nav-inner a:visited { 
+    text-decoration: none; 
+    color: #fff; 
+    font-size: 11px; 
+    letter-spacing: 1.5px; 
+    text-transform: uppercase; 
+    transition: var(--transition);
+}
+
+.nav-inner a:hover,
+.nav-inner a:active { 
+    color: var(--gold); 
+}
+
 /* LOGO ICON STYLING */
 /* LOGO ICON STYLING */
 
