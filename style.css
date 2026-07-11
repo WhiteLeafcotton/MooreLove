@@ -276,20 +276,16 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* Container adjusted to match your 4% site padding */
 /* New 7-Square Mosaic Section */
-.mosaic-section {
-    padding: 100px 4%;
-    background: #080808;
-    text-align: center;
-}
-
 .mosaic-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr); /* Exactly 7 columns */
-    gap: 15px; 
+    /* 7 columns, 2 rows */
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(2, 1fr); 
     width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
-    height: 400px; /* Adjust height as needed for larger squares */
+    height: 500px; /* Adjust height as needed */
+    gap: 10px;
 }
 
 .tile {
@@ -297,7 +293,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     background-position: center;
     background-repeat: no-repeat;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: background-image 0.1s ease; /* Keeps the flash effect fast */
+    transition: background-image 0.1s ease;
 }
 /* MOBILE STICKY NAV ADJUSTMENTS */
 
