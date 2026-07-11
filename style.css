@@ -88,10 +88,10 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* MOSAIC SECTION */
 /* MOSAIC SECTION - UPDATED FOR SIZE AND SPACING */
+/* MOSAIC SECTION */
 .mosaic-section {
     position: relative;
-    padding: 60px 4%; /* Reduced vertical padding */
-    min-height: auto; /* Removed 100vh to stop it from feeling like a cutout */
+    padding: 80px 4%; /* Adjusted padding for better spacing */
     background: url('man.jpg') center/cover no-repeat fixed; 
     display: flex;
     flex-direction: column;
@@ -103,7 +103,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(8, 8, 8, 0.6);
+    background: rgba(8, 8, 8, 0.7); /* Slightly darker for better contrast */
     z-index: 1;
 }
 
@@ -111,20 +111,20 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .mosaic-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px; /* Increased gap */
+    gap: 40px; /* Increased gap */
     width: 100%;
-    max-width: 1200px; /* Wider container */
+    max-width: 1400px; /* Increased max-width */
     z-index: 2;
     margin-bottom: 60px;
 }
 
 .tile-card {
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 60px 30px; /* Increased padding for larger tiles */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 80px 40px; /* Larger tiles */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(12px);
     transition: var(--transition);
@@ -132,10 +132,10 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 .tile-card:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--gold); }
-.tile-card i { font-size: 32px; color: #fff; transition: var(--transition); }
-.tile-card span { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #eee; }
+.tile-card i { font-size: 40px; color: #fff; transition: var(--transition); }
+.tile-card span { font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: #fff; }
 
-/* Larger Title & CTA */
+/* Large Title & CTA */
 .mosaic-footer {
     text-align: center;
     z-index: 2;
@@ -143,11 +143,12 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 .mosaic-title {
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(48px, 6vw, 72px); /* Much larger title */
+    font-size: clamp(56px, 8vw, 96px); /* Very large title */
     font-weight: 300;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     margin-bottom: 20px;
     color: #fff;
+    line-height: 1;
 }
 
 .cta-arrow {
@@ -155,21 +156,15 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     align-items: center;
     justify-content: center;
     gap: 20px;
-    font-size: 14px; /* Larger CTA text */
+    font-size: 16px; 
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 6px;
     color: var(--gold);
     cursor: pointer;
     transition: var(--transition);
 }
 
 .cta-arrow:hover { gap: 30px; opacity: 0.8; }
-
-.mosaic-footer { text-align: center; z-index: 2; }
-.mosaic-title { font-family: "Cormorant Garamond", serif; font-size: clamp(32px, 5vw, 56px); font-weight: 300; letter-spacing: 2px; margin-bottom: 10px; }
-.cta-arrow { display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 20px; font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--gold); cursor: pointer; transition: var(--transition); }
-.cta-arrow:hover { gap: 25px; opacity: 0.8; }
-
 /* MOBILE RESPONSIVE ADAPTATION */
 @media (max-width: 768px) {
     .featured-card-wrapper { padding: 40px 4%; }
