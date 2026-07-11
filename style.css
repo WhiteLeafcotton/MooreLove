@@ -74,7 +74,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     background: rgba(8, 8, 8, 0.8); 
     backdrop-filter: blur(10px); 
     transition: top 0.4s ease; 
-    border-bottom: none; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Added subtle border */
 }
 
 .main-nav.sticky { 
@@ -87,20 +87,8 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     align-items: center; 
     justify-content: center; 
     gap: 40px; 
-    padding: 20px; 
-}
-
-.nav-inner a { 
-    text-decoration: none; 
-    color: white; 
-    font-size: 11px; 
-    letter-spacing: 1.5px; 
-    text-transform: uppercase; 
-    transition: .3s; 
-}
-
-.nav-inner a:hover { 
-    color: var(--gold); 
+    padding: 15px 20px; /* Slight reduction for tighter look */
+    position: relative;
 }
 
 /* LOGO ICON STYLING */
@@ -110,14 +98,30 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     justify-content: center;
     color: #fff;
     font-size: 20px; 
-    width: 40px;      /* Force width */
-    height: 40px;     /* Force height */
+    width: 40px;      
+    height: 40px;     
     text-decoration: none;
     transition: var(--transition);
+    /* Ensures the icon isn't squeezed by the nav links */
+    flex-shrink: 0; 
 }
 
 .nav-logo:hover {
     color: var(--gold);
+}
+
+/* NAVIGATION LINKS */
+.nav-inner a { 
+    text-decoration: none; 
+    color: white; 
+    font-size: 11px; 
+    letter-spacing: 1.5px; 
+    text-transform: uppercase; 
+    transition: var(--transition);
+}
+
+.nav-inner a:hover { 
+    color: var(--gold); 
 }
 
 /* SECTIONS */
