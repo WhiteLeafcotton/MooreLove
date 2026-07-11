@@ -276,70 +276,54 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* MOSAIC SECTION */
 /* MOSAIC SECTION */
-.mosaic-section { 
-    position: relative; 
-    padding: 100px 4%; 
-    background-color: #080808; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    gap: 40px;
-    overflow: hidden;
+/* MOSAIC SECTION - Styled to match Featured Card */
+.mosaic-section {
+    position: relative;
+    padding: 100px 4%;
+    background: url('your-background-image.jpg') center/cover no-repeat fixed; /* Matches the blurred look */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    min-height: 80vh;
 }
 
-/* The Dark Overlay Fader */
+/* Dark Overlay to match the blur effect */
 .mosaic-section::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.3) 100%);
-    pointer-events: none;
+    inset: 0;
+    background: rgba(8, 8, 8, 0.85); /* Heavy dark overlay */
+    backdrop-filter: blur(8px);      /* The blur effect */
     z-index: 1;
 }
 
-.mosaic-grid { 
-    display: grid; 
-    grid-template-columns: repeat(10, 1fr); 
-    grid-template-rows: repeat(10, 1fr); 
-    width: 100%; 
-    max-width: 1200px; 
-    height: 600px; 
-    gap: 2px; 
+/* Grid & Content Layer */
+.mosaic-grid, .mosaic-content {
     position: relative;
     z-index: 2;
 }
 
-.tile { 
-    background-image: url('man.jpg'); /* Ensure this path is correct */
-    background-size: 1000% 1000%; 
-    opacity: 0; 
-    transform: scale(0.8); 
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tile.is-active { 
-    opacity: 1; 
-    transform: scale(1); 
-}
-
-/* Footer Title Positioning */
-.mosaic-footer {
-    position: relative;
-    z-index: 2;
+.mosaic-content {
     text-align: center;
-    margin-top: 20px;
+    max-width: 800px;
 }
 
-.extra-large { 
-    font-family: "Cormorant Garamond", serif; 
-    font-size: clamp(60px, 8vw, 120px); 
-    color: #fff; 
-    font-weight: 300; 
-    line-height: 1;
-    letter-spacing: -2px;
+.extra-large {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(40px, 5vw, 70px);
+    color: #fff;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.mosaic-subtitle {
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 10px;
 }
 /* MOBILE STICKY NAV ADJUSTMENTS */
 
