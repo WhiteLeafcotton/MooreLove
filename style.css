@@ -124,6 +124,35 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     color: var(--gold); 
 }
 
+
+
+
+
+
+
+
+
+
+/* FORCE VISIBILITY */
+.nav-logo {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    color: #d4b06a !important; /* Gold color */
+    font-size: 24px !important;
+    background: rgba(255, 255, 255, 0.1); /* Temporary: will show a faint box if it's there */
+    border-radius: 50%;
+    margin-right: 20px; /* Space between logo and first link */
+}
+
+
+
+
+
+
+
 /* SECTIONS */
 .section { padding: 100px 4%; background: #080808; }
 .section.dark { background: #050505; }
