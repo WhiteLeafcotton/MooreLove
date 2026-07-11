@@ -279,39 +279,49 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* MOSAIC SECTION - Styled to match Featured Card */
 .mosaic-section {
     position: relative;
-    padding: 100px 4%;
-    background: url('your-background-image.jpg') center/cover no-repeat fixed; /* Matches the blurred look */
+    padding: 60px 4% 100px 4%; /* Extra padding at bottom */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-between; /* This pushes grid to top, title to bottom */
     align-items: center;
-    gap: 50px;
-    min-height: 80vh;
+    background: url('your-background.jpg') center/cover no-repeat fixed;
 }
 
-/* Dark Overlay to match the blur effect */
+/* Dark Overlay */
 .mosaic-section::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(8, 8, 8, 0.85); /* Heavy dark overlay */
-    backdrop-filter: blur(8px);      /* The blur effect */
+    background: rgba(8, 8, 8, 0.85);
+    backdrop-filter: blur(8px);
     z-index: 1;
 }
 
-/* Grid & Content Layer */
-.mosaic-grid, .mosaic-content {
+/* Ensure Grid and Footer stay above overlay */
+.mosaic-grid, .mosaic-footer {
     position: relative;
     z-index: 2;
+    width: 100%;
 }
 
-.mosaic-content {
+.mosaic-grid {
+    max-width: 1200px;
+    height: 400px; /* Adjust height as needed for top half */
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 1px;
+}
+
+.mosaic-footer {
     text-align: center;
-    max-width: 800px;
+    margin-top: 50px;
 }
 
 .extra-large {
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(40px, 5vw, 70px);
+    font-size: clamp(50px, 8vw, 120px);
     color: #fff;
     font-weight: 300;
     text-transform: uppercase;
