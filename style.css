@@ -277,24 +277,8 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Container adjusted to match your 4% site padding */
 /* New 7-Square Mosaic Section */
 /* Updated Mosaic Section */
-/* Mosaic Section */
-.mosaic-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr); 
-    grid-template-rows: repeat(2, 1fr); 
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    height: 400px;
-    gap: 0px; /* Set to 0 to make the image look seamless */
-}
-
-.tile {
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    border: 0px solid rgba(255, 255, 255, 0.1);
-}
+/* Mosaic Section
+/* Mosaic Section Layout */
 .mosaic-section {
     position: relative;
     padding: 100px 8%;
@@ -302,32 +286,31 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     align-items: center;
     gap: 60px;
     background: url('your-bg-image.jpg') center/cover no-repeat;
+    min-height: 600px;
 }
 
-/* Heavy Black Blur Overlay */
 .mosaic-section::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, #080808 30%, rgba(8,8,8,0.4) 100%);
+    background: linear-gradient(to right, #080808 40%, rgba(8,8,8,0.2) 100%);
     z-index: 1;
 }
 
 .mosaic-content { position: relative; z-index: 2; flex: 1; }
-.mosaic-content h2 { font-family: "Cormorant Garamond", serif; font-size: 60px; }
+.mosaic-content h2 { font-family: "Cormorant Garamond", serif; font-size: 60px; margin-bottom: 10px; }
+.mosaic-content p.description { color: #aaa; margin-top: 10px; }
 
+/* The Grid */
 .mosaic-grid {
     position: relative;
     z-index: 2;
     flex: 1;
     display: grid;
-    /* This creates the 3 columns */
     grid-template-columns: repeat(3, 1fr);
-    /* This ensures they stack nicely */
+    grid-template-rows: repeat(4, 1fr);
     gap: 15px;
-    /* Give it a set width/height so it doesn't collapse */
-    min-width: 400px;
-    min-height: 400px;
+    height: 500px;
 }
 
 .tile {
@@ -343,7 +326,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 .tile.visible { opacity: 1; transform: translateY(0); }
-.tile i { font-size: 24px; margin-bottom: 8px; color: var(--gold); }
+.tile i { font-size: 24px; margin-bottom: 8px; color: #d4b06a; }
 .tile span { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
 
 /* Corrected Mobile Media Query */
