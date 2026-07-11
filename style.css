@@ -87,14 +87,83 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 /* MOSAIC SECTION */
-.mosaic-section { position: relative; padding: 100px 4%; min-height: 100vh; background: url('man.jpg') center/cover no-repeat fixed; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-.mosaic-section::before { content: ""; position: absolute; inset: 0; background: rgba(8, 8, 8, 0.6); z-index: 1; }
-.mosaic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; max-width: 1000px; z-index: 2; margin-bottom: 80px; }
-.tile-card { border: 1px solid rgba(255, 255, 255, 0.1); padding: 40px 20px; display: flex; flex-direction: column; align-items: center; gap: 15px; background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); transition: var(--transition); cursor: pointer; }
-.tile-card:hover { background: rgba(255, 255, 255, 0.08); border-color: var(--gold); }
-.tile-card i { font-size: 24px; color: #fff; transition: var(--transition); }
-.tile-card span { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #ccc; }
-.tile-card:hover i { color: var(--gold); }
+/* MOSAIC SECTION - UPDATED FOR SIZE AND SPACING */
+.mosaic-section {
+    position: relative;
+    padding: 60px 4%; /* Reduced vertical padding */
+    min-height: auto; /* Removed 100vh to stop it from feeling like a cutout */
+    background: url('man.jpg') center/cover no-repeat fixed; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mosaic-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 8, 8, 0.6);
+    z-index: 1;
+}
+
+/* Larger, Wider Grid */
+.mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px; /* Increased gap */
+    width: 100%;
+    max-width: 1200px; /* Wider container */
+    z-index: 2;
+    margin-bottom: 60px;
+}
+
+.tile-card {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 60px 30px; /* Increased padding for larger tiles */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.tile-card:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--gold); }
+.tile-card i { font-size: 32px; color: #fff; transition: var(--transition); }
+.tile-card span { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #eee; }
+
+/* Larger Title & CTA */
+.mosaic-footer {
+    text-align: center;
+    z-index: 2;
+}
+
+.mosaic-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(48px, 6vw, 72px); /* Much larger title */
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.cta-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 14px; /* Larger CTA text */
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.cta-arrow:hover { gap: 30px; opacity: 0.8; }
 
 .mosaic-footer { text-align: center; z-index: 2; }
 .mosaic-title { font-family: "Cormorant Garamond", serif; font-size: clamp(32px, 5vw, 56px); font-weight: 300; letter-spacing: 2px; margin-bottom: 10px; }
