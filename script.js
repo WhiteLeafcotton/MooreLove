@@ -87,7 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
             tile.style.backgroundPosition = `${(col / (CONFIG.cols - 1)) * 100}% ${(row / (CONFIG.rows - 1)) * 100}%`;
             grid.appendChild(tile);
         }
-
+// ... inside initProfessionalMosaic() ...
+// Ensure the class name being added matches the CSS
+setTimeout(() => { tile.classList.add('is-active'); }, delay);
         // Trigger animation
         const tiles = grid.querySelectorAll('.tile');
         tiles.forEach((tile, index) => {
