@@ -92,59 +92,23 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 /* LOGO ICON STYLING */
+/* LOGO ICON STYLING */
 .nav-logo {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 40px !important;
-    height: 40px !important;
-    color: #fff !important; /* Changed to white so it's visible */
-    font-size: 20px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    font-size: 20px;
     text-decoration: none;
     transition: var(--transition);
+    flex-shrink: 0;
 }
 
 .nav-logo:hover {
-    color: var(--gold) !important;
+    color: var(--gold);
 }
-
-/* NAVIGATION LINKS */
-.nav-inner a { 
-    text-decoration: none; 
-    color: white; 
-    font-size: 11px; 
-    letter-spacing: 1.5px; 
-    text-transform: uppercase; 
-    transition: var(--transition);
-}
-
-.nav-inner a:hover { 
-    color: var(--gold); 
-}
-
-
-
-
-
-
-
-
-
-
-/* FORCE VISIBILITY */
-.nav-logo {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 40px !important;
-    height: 40px !important;
-    color: #d4b06a !important; /* Gold color */
-    font-size: 24px !important;
-    background: rgba(255, 255, 255, 0.1); /* Temporary: will show a faint box if it's there */
-    border-radius: 50%;
-    margin-right: 20px; /* Space between logo and first link */
-}
-
 
 
 
