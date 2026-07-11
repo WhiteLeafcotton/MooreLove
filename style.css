@@ -139,28 +139,31 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .tile-card span { font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: #fff; }
 
 /* Large Title & CTA */
+/* Tightened Mosaic Footer */
 .mosaic-footer {
     text-align: center;
     z-index: 2;
+    margin-top: 20px; /* Reduced space from the grid */
 }
 
 .mosaic-title {
     font-family: "Cormorant Garamond", serif;
-    /* This clamp makes it scale between 70px and 120px depending on screen width */
-    font-size: clamp(70px, 10vw, 120px); 
+    font-size: clamp(80px, 12vw, 150px); /* Massive title */
     font-weight: 300;
-    letter-spacing: 4px;
-    margin-bottom: 20px;
+    letter-spacing: 2px;
+    margin: 0; /* Removing top/bottom margins */
+    padding: 0;
     color: #fff;
-    line-height: 1;
+    line-height: 0.9; /* Tightens the vertical footprint */
 }
 
 .cta-arrow {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    font-size: 16px; 
+    gap: 15px;
+    margin-top: 5px; /* Extremely tight spacing below title */
+    font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 6px;
     color: var(--gold);
