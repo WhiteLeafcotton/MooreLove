@@ -69,22 +69,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function initTVReveal() {
     const grid = document.getElementById('mosaicGrid');
     if (!grid) return;
+    grid.innerHTML = ''; 
 
-    // Use just two main images instead of 28 slices
-    const finalImages = ['final-master-1.jpg', 'final-master-2.jpg'];
+    // ONLY 2 MASTER IMAGES NEEDED (e.g., 'final1.jpg' and 'final2.jpg')
+    const finalImages = ['final1.jpg', 'final2.jpg'];
+    const flashImages = ['senior1.jpg', 'senior2.jpg', 'senior3.jpg', 'senior4.jpg']; 
 
     for (let i = 0; i < 14; i++) {
         const tile = document.createElement('div');
         tile.className = 'tile';
-        // Set the background image for each tile
-        tile.style.backgroundImage = `url('${finalImages[0]}')`;
-        // This math automatically crops the background to the right piece
-        tile.style.backgroundPosition = `${(i % 7) * (100 / 6)}% ${Math.floor(i / 7) * 100}%`;
-        tile.style.backgroundSize = '700% 200%';
         grid.appendChild(tile);
     }
-    // ... rest of your logic
-
     
     const tiles = document.querySelectorAll('.tile');
     let cycleIndex = 0;
@@ -92,17 +87,24 @@ document.addEventListener('DOMContentLoaded', () => {
     function runCycle() {
         if (cycleIndex >= 2) return;
 
+        // Flash Phase
         const flashInterval = setInterval(() => {
             tiles.forEach(tile => {
                 tile.style.backgroundImage = `url('${flashImages[Math.floor(Math.random() * flashImages.length)]}')`;
+                tile.style.backgroundSize = 'cover';
             });
         }, 100);
 
+        // Final Image Phase
         setTimeout(() => {
             clearInterval(flashInterval);
             tiles.forEach((tile, i) => {
-                tile.style.backgroundImage = `url('${finalSets[cycleIndex][i]}')`;
-                tile.style.backgroundSize = 'cover'; // Ensure images fill the tiles
+                // Set the image
+                tile.style.backgroundImage = `url('${finalImages[cycleIndex]}')`;
+                // This math automatically positions the slice for that specific tile
+                // 7 columns = 100% / 6, 2 rows = 100% / 1
+                tile.style.backgroundSize = '700% 200%';
+                tile.style.backgroundPosition = `${(i % 7) * (100 / 6)}% ${Math.floor(i / 7) * 100}%`;
             });
 
             cycleIndex++;
