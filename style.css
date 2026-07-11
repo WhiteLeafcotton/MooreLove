@@ -90,24 +90,28 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* MOSAIC SECTION - UPDATED FOR SIZE AND SPACING */
 /* MOSAIC SECTION */
 /* MOSAIC SECTION */
-.mosaic-section { 
-    position: relative; 
-    padding: 80px 4%; 
-    background: url('man.jpg') center/cover no-repeat fixed; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
+
+
+/* MOSAIC SECTION - With Blurred Edges */
+.mosaic-section {
+    position: relative;
+    padding: 40px 4%;
+    background: url('man.jpg') center/cover no-repeat fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* This adds a soft fade to the top and bottom edges */
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
 }
 
-.mosaic-section { 
-    position: relative; 
-    padding: 40px 4%; /* Reduced vertical padding from 80px to 40px */
-    background: url('man.jpg') center/cover no-repeat fixed; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
+.mosaic-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 8, 8, 0.7);
+    z-index: 1;
 }
 
 /* Updated Grid */
