@@ -1,68 +1,256 @@
 /*==================================================
-HBCR Senior Living - Final CSS (Wiggle Fixed)
+MOSAIC SECTION
 ==================================================*/
-* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* FIX: Lock viewport to prevent horizontal wiggle */
-html, body { 
-    scroll-behavior: smooth; 
-    overflow-x: hidden; 
-    width: 100%; 
-    background: #080808; 
-    font-family: "Inter", sans-serif; 
-    color: #fff; 
+.mosaic-section{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+    padding:120px 5%;
+    background:url("man.jpg") center center / cover no-repeat;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
 }
 
-:root { --gold: #d4b06a; --transition: .4s ease; }
+/* Remove mobile wiggle */
+@media (max-width:900px){
 
-/* TOP BAR */
-.top-bar { position: absolute; top: 0; left: 0; width: 100%; padding: 28px 8%; z-index: 1000; display: flex; justify-content: flex-end; }
-.top-links { display: flex; gap: 34px; }
-.top-links a { text-decoration: none; color: white; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: .9; transition: var(--transition); }
-.top-links a:hover { color: var(--gold); }
-
-/* HERO */
-.hero { position: relative; height: 70vh; min-height: 500px; display: flex; align-items: center; padding-left: 8%; overflow: hidden; background-size: cover; background-position: center; background-repeat: no-repeat; background-color: #080808; }
-#heroVideo { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; object-fit: cover; transform: translate(-50%, -50%); z-index: 0; }
-.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 250px; background: linear-gradient(to top,#080808,transparent); z-index: 2; }
-.hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.4); z-index: 1; } 
-
-/* CONTENT */
-.hero-content { position: relative; z-index: 5; max-width: 700px; margin-top: -40px; animation: fadeUp 1s ease; }
-.hero-content h1 { font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: clamp(30px, 3.5vw, 48px); line-height: 1.1; letter-spacing: -0.2px; margin-bottom: 30px; text-transform: uppercase; }
-.hero-button { display: inline-block; padding: 12px 30px; border: 1px solid rgba(255,255,255,.4); text-decoration: none; color: white; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); }
-.hero-button:hover { background: #fff; color: #000; }
-
-/* STICKY NAV */
-.main-nav { position: fixed; top: -100px; left: 0; width: 100%; z-index: 50; background: rgba(8, 8, 8, 0.8); backdrop-filter: blur(10px); transition: top 0.4s ease; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-.main-nav.sticky { top: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
-.nav-inner { display: flex; align-items: center; justify-content: center; gap: 40px; padding: 15px 20px; }
-.nav-link { text-decoration: none !important; color: #fff !important; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; transition: var(--transition); }
-.nav-link:hover { color: var(--gold) !important; }
-
-/* FEATURED CARD */
-.featured-card-wrapper { padding: 60px 4%; background: #080808; display: flex; justify-content: center; width: 100%; }
-.featured-card { position: relative; width: 100%; max-width: 1600px; height: 300px; background: linear-gradient(to right, rgba(8,8,8,0.8) 0%, transparent 40%, transparent 100%), url('exp.jpg') center/cover no-repeat; display: flex; align-items: center; padding: 0 5%; border: 0.5px solid rgba(255, 255, 255, 0.2); overflow: hidden; }
-.card-content { position: relative; z-index: 2; max-width: 450px; color: #fff; }
-.card-content h3 { font-family: "Inter", sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; }
-.card-content p { font-family: "Cormorant Garamond", serif; font-size: 24px; line-height: 1.3; margin-bottom: 30px; }
-
-/* MOSAIC SECTION */
-.mosaic-section { position: relative; padding: 80px 4%; background: url('man.jpg') center/cover no-repeat fixed; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; }
-.mosaic-section::before { content: ""; position: absolute; inset: 0; background: rgba(8, 8, 8, 0.7); z-index: 1; }
-.mosaic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; width: 100%; max-width: 1600px; z-index: 2; margin-bottom: 60px; }
-.tile-card { border: 1px solid rgba(255, 255, 255, 0.2); padding: 80px 40px; display: flex; flex-direction: column; align-items: center; gap: 25px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); transition: var(--transition); cursor: pointer; }
-.tile-card:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--gold); }
-.mosaic-title { display: block; width: 100%; font-family: "Cormorant Garamond", serif; font-size: clamp(80px, 12vw, 150px); font-weight: 300; letter-spacing: 2px; margin: 0; text-align: center; color: #fff; }
-
-/* RESPONSIVE - WIGGLE PROTECTION */
-@media (max-width: 768px) {
-    .featured-card { height: auto; display: block; background: none; padding: 20px; border: none; }
-    .mosaic-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.mosaic-section{
+    background-attachment:scroll;
 }
 
-@media (max-width: 480px) {
-    .mosaic-grid { grid-template-columns: 1fr; }
 }
 
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.mosaic-section::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(8,8,8,.72);
+    z-index:1;
+}
+
+.mosaic-grid{
+
+    position:relative;
+    z-index:2;
+
+    width:100%;
+    max-width:1400px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,minmax(0,1fr));
+
+    gap:26px;
+
+    margin-bottom:90px;
+
+}
+
+.mosaic-grid>*{
+    min-width:0;
+}
+
+.tile-card{
+
+    position:relative;
+
+    padding:65px 35px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    gap:22px;
+
+    border:1px solid rgba(255,255,255,.18);
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(14px);
+
+    transition:
+    transform .35s ease,
+    border-color .35s ease,
+    background .35s ease;
+
+    overflow:hidden;
+
+}
+
+.tile-card::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.10),
+    transparent 55%);
+
+    opacity:0;
+
+    transition:.35s;
+
+}
+
+.tile-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:var(--gold);
+
+    background:rgba(255,255,255,.09);
+
+}
+
+.tile-card:hover::before{
+    opacity:1;
+}
+
+.tile-card i{
+
+    font-size:42px;
+
+    color:var(--gold);
+
+}
+
+.tile-card span{
+
+    font-size:14px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+}
+
+.mosaic-footer{
+
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+
+    max-width:1400px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-end;
+
+    gap:40px;
+
+}
+
+.mosaic-title{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-weight:300;
+
+    line-height:.9;
+
+    font-size:clamp(56px,9vw,145px);
+
+    white-space:normal;
+
+    overflow-wrap:anywhere;
+
+}
+
+.cta-arrow{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+}
+
+.cta-arrow i{
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:1px solid rgba(255,255,255,.25);
+
+    transition:.35s;
+
+}
+
+.cta-arrow:hover i{
+
+    background:var(--gold);
+
+    color:#111;
+
+}
+/*==================================================
+TABLET
+==================================================*/
+
+@media (max-width:991px){
+
+.mosaic-section{
+
+    padding:90px 22px;
+
+}
+
+.mosaic-grid{
+
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+    gap:18px;
+
+}
+
+.tile-card{
+
+    padding:55px 25px;
+
+}
+
+.mosaic-footer{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+}
+
+.mosaic-title{
+
+    font-size:70px;
+
+}
+
+}
