@@ -66,9 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (featuredCard) observer.observe(featuredCard);
 
     // 4. Professional High-Density Mosaic Reveal (100 Tiles)
-    const grid = document.getElementById('mosaicGrid');
-    
     function initProfessionalMosaic() {
+        const grid = document.getElementById('mosaicGrid');
         if (!grid) return;
         
         // Configuration for high density
