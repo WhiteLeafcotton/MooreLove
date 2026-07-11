@@ -69,36 +69,39 @@ document.addEventListener('DOMContentLoaded', () => {
     if (featuredCard) observer.observe(featuredCard);
 
     // --- 4. HIGH-DENSITY MOSAIC ANIMATION ---
-    function initProfessionalMosaic() {
-        const grid = document.getElementById('mosaicGrid');
-        if (!grid || grid.children.length > 0) return; // Prevent double initialization
+    // --- 4. HIGH-DENSITY MOSAIC ANIMATION ---
+function initProfessionalMosaic() {
+    const grid = document.getElementById('mosaicGrid');
+    if (!grid || grid.children.length > 0) return; 
+    
+    const CONFIG = { mainImage: 'man.jpg', cols: 10, rows: 10 };
+    const totalTiles = CONFIG.cols * CONFIG.rows;
+    
+    for (let i = 0; i < totalTiles; i++) {
+        const tile = document.createElement('div');
+        tile.className = 'tile';
+        tile.style.backgroundImage = `url('${CONFIG.mainImage}')`;
         
-        const CONFIG = { mainImage: 'man.jpg', cols: 10, rows: 10 };
-        const totalTiles = CONFIG.cols * CONFIG.rows;
+        const col = i % CONFIG.cols;
+        const row = Math.floor(i / CONFIG.cols);
         
-        for (let i = 0; i < totalTiles; i++) {
-            const tile = document.createElement('div');
-            tile.className = 'tile';
-            tile.style.backgroundImage = `url('${CONFIG.mainImage}')`;
-            
-            const col = i % CONFIG.cols;
-            const row = Math.floor(i / CONFIG.cols);
-            
-            tile.style.backgroundPosition = `${(col / (CONFIG.cols - 1)) * 100}% ${(row / (CONFIG.rows - 1)) * 100}%`;
-            grid.appendChild(tile);
-        }
-// ... inside initProfessionalMosaic() ...
-// Ensure the class name being added matches the CSS
-setTimeout(() => { tile.classList.add('is-active'); }, delay);
-        // Trigger animation
-        const tiles = grid.querySelectorAll('.tile');
-        tiles.forEach((tile, index) => {
-            const col = index % CONFIG.cols;
-            const row = Math.floor(index / CONFIG.cols);
-            const delay = (col + row) * 20; // Slightly faster stagger
-            setTimeout(() => { tile.classList.add('is-active'); }, delay);
-        });
+        // Sets the background slice for each tile
+        tile.style.backgroundPosition = `${(col / (CONFIG.cols - 1)) * 100}% ${(row / (CONFIG.rows - 1)) * 100}%`;
+        grid.appendChild(tile);
     }
+
+    // Trigger animation with stagger effect
+    const tiles = grid.querySelectorAll('.tile');
+    tiles.forEach((tile, index) => {
+        const col = index % CONFIG.cols;
+        const row = Math.floor(index / CONFIG.cols);
+        const delay = (col + row) * 20; 
+        
+        setTimeout(() => {
+            tile.classList.add('is-active');
+        }, delay);
+    });
+}
 
     const mosaicObserver = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
