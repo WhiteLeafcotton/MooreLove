@@ -279,50 +279,69 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Updated Mosaic Section */
 /* Mosaic Section
 /* Mosaic Section Layout */
+/* Updated Mosaic Section */
 .mosaic-section {
     position: relative;
     padding: 100px 8%;
     display: flex;
     align-items: center;
-    gap: 60px;
+    gap: 80px; /* Increased gap for better balance */
     background: url('your-bg-image.jpg') center/cover no-repeat;
-    min-height: 600px;
+    min-height: 700px;
 }
 
 .mosaic-section::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, #080808 40%, rgba(8,8,8,0.2) 100%);
+    background: linear-gradient(to right, #080808 50%, rgba(8,8,8,0.1) 100%);
     z-index: 1;
 }
 
-.mosaic-content { position: relative; z-index: 2; flex: 1; }
-/* Text & CTA */
-.mosaic-content h2.extra-large { 
-    font-size: 80px; 
-    line-height: 0.9; 
-    margin-bottom: 30px; 
+.mosaic-content { 
+    position: relative; 
+    z-index: 2; 
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
 }
+
+/* Extra Large Brown Title */
+.mosaic-content h2.extra-large { 
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(70px, 9vw, 130px); 
+    line-height: 0.85; 
+    color: #b89868; /* The requested brown/gold tone */
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
 .cta-arrow { 
-    color: var(--gold); 
+    color: #fff; 
     text-transform: uppercase; 
-    letter-spacing: 3px; 
+    letter-spacing: 4px; 
     font-size: 11px; 
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
+    transition: opacity 0.3s;
 }
+
+.cta-arrow:hover { opacity: 0.7; }
+.cta-arrow i { font-size: 16px; color: #b89868; }
 
 /* The 3x3 Grid */
 .mosaic-grid {
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 20px;
-    height: 550px; /* Larger height for larger tiles */
-    flex: 1.2;     /* Gives the grid slightly more space */
+    height: 550px; 
+    flex: 1.2;
 }
 
 .tile {
@@ -333,13 +352,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     align-items: center;
     justify-content: center;
     transition: all 0.6s ease;
-}
-
-.tile i { font-size: 32px; margin-bottom: 12px; color: var(--gold); }
-.tile span { font-size: 12px; }
-
-.tile {
-    /* ... your existing tile styles ... */
     opacity: 0;
     transform: translateY(20px);
 }
@@ -348,6 +360,9 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     opacity: 1; 
     transform: translateY(0); 
 }
+
+.tile i { font-size: 32px; margin-bottom: 12px; color: var(--gold); }
+.tile span { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
 
 /* Corrected Mobile Media Query */
 @media (max-width: 768px) {
