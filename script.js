@@ -65,31 +65,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const featuredCard = document.querySelector('.featured-card');
     if (featuredCard) observer.observe(featuredCard);
 
-    // 4. TV Television Style 7-Square Reveal (2 Cycles)
+    // 4. TV Television Style 14-Tile Reveal (2 Rows of 7)
     function initTVReveal() {
         const grid = document.getElementById('mosaicGrid');
         if (!grid) return;
 
-        // Configuration
         const flashImages = ['senior1.jpg', 'senior2.jpg', 'senior3.jpg', 'senior4.jpg']; 
-        const finalImagesSet1 = ['f1-1.jpg', 'f1-2.jpg', 'f1-3.jpg', 'f1-4.jpg', 'f1-5.jpg', 'f1-6.jpg', 'f1-7.jpg'];
-        const finalImagesSet2 = ['f2-1.jpg', 'f2-2.jpg', 'f2-3.jpg', 'f2-4.jpg', 'f2-5.jpg', 'f2-6.jpg', 'f2-7.jpg'];
-        const finalSets = [finalImagesSet1, finalImagesSet2];
+        // Ensure these arrays have 14 entries each to fill the 14 tiles
+        const finalSet1 = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg','11.jpg','12.jpg','13.jpg','14.jpg'];
+        const finalSet2 = ['15.jpg','16.jpg','17.jpg','18.jpg','19.jpg','20.jpg','21.jpg','22.jpg','23.jpg','24.jpg','25.jpg','26.jpg','27.jpg','28.jpg'];
+        const finalSets = [finalSet1, finalSet2];
 
-        // Create 7 tiles
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 14; i++) {
             const tile = document.createElement('div');
             tile.className = 'tile';
             grid.appendChild(tile);
         }
         const tiles = document.querySelectorAll('.tile');
-
         let cycleIndex = 0;
 
         function runCycle() {
-            if (cycleIndex >= 2) return; // Only 2 cycles
+            if (cycleIndex >= 2) return;
 
-            // Fast flash phase (5 seconds)
             const flashInterval = setInterval(() => {
                 tiles.forEach(tile => {
                     tile.style.backgroundImage = `url('${flashImages[Math.floor(Math.random() * flashImages.length)]}')`;
@@ -98,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setTimeout(() => {
                 clearInterval(flashInterval);
-                // Pause on final image phase (3 seconds)
                 tiles.forEach((tile, i) => {
                     tile.style.backgroundImage = `url('${finalSets[cycleIndex][i]}')`;
                 });
@@ -109,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 5000);
         }
-
         runCycle();
     }
 
