@@ -93,27 +93,20 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* LOGO ICON STYLING */
 /* LOGO ICON STYLING */
-.nav-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    color: #fff;
-    font-size: 20px;
-    text-decoration: none;
+
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    /* This filter makes the SVG white by default */
+    filter: brightness(0) invert(1); 
     transition: var(--transition);
-    stroke: currentColor;
-    flex-shrink: 0;
 }
 
-
-
-.nav-logo:hover svg {
-    stroke: var(--gold);
+.nav-logo:hover .nav-icon {
+    /* This filter makes the SVG your gold color on hover */
+    filter: invert(72%) sepia(21%) saturate(1478%) hue-rotate(345deg) brightness(90%) contrast(88%);
 }
-
-
 
 
 /* SECTIONS */
