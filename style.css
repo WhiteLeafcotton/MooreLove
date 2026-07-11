@@ -168,16 +168,11 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* MOBILE RESPONSIVE ADAPTATION */
 /* MOBILE RESPONSIVE ADAPTATION */
 @media (max-width: 768px) {
-    /* Top Bar */
     .top-bar { padding: 20px 4%; }
     .top-links { gap: 15px; }
-
-    /* Nav */
     .nav-inner { gap: 20px; padding: 10px; }
-    .nav-icon { width: 20px; height: 20px; }
     .nav-link { font-size: 9px; letter-spacing: 1px; }
 
-    /* Featured Card */
     .featured-card-wrapper { padding: 40px 4%; }
     .featured-card { 
         height: auto; 
@@ -195,15 +190,11 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         border: 0.5px solid rgba(255, 255, 255, 0.2); 
         margin-bottom: 25px; 
     }
-    .card-content { max-width: 100%; text-align: left; padding: 0 5px; }
-
-    /* Mosaic Grid */
-    .mosaic-grid { grid-template-columns: 1fr; gap: 15px; }
+    
+    /* Simplified Mobile Mosaic */
+    .mosaic-grid { grid-template-columns: 1fr; gap: 15px; margin-bottom: 30px; }
     .tile-card { padding: 30px; }
-    .mosaic-bg-overlay { background-attachment: scroll; } 
-    .mosaic-section {
-        background-attachment: scroll; /* Prevents jumping/wiggle on mobile */
-    }
+    .mosaic-section { padding: 40px 4%; }
 }
 
 
