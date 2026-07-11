@@ -69,17 +69,28 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .nav-inner { display: flex; justify-content: center; gap: 40px; padding: 20px; }
 .nav-inner a { text-decoration: none; color: white; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; transition: .3s; }
 .nav-inner a:hover { color: var(--gold); }
-.nav-logo img {
-    height: 40px; /* Adjust size as needed */
-    width: auto;
-    vertical-align: middle;
-    margin-right: 20px; /* Space between logo and first link */
+/* Update this specific block in your CSS */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 20px; /* Adjust size to match your navigation text */
+    margin-right: 25px; /* Spacing between logo and links */
+    text-decoration: none;
+    transition: var(--transition);
 }
 
+.nav-logo:hover {
+    color: var(--gold); /* Matches your gold hover theme */
+}
+
+/* Ensure the nav-inner is clean */
 .nav-inner {
     display: flex;
     align-items: center;
-    justify-content: center; /* Keeps everything centered */
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
 }
 
 /* SECTIONS */
