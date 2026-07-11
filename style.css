@@ -201,6 +201,9 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     .mosaic-grid { grid-template-columns: 1fr; gap: 15px; }
     .tile-card { padding: 30px; }
     .mosaic-bg-overlay { background-attachment: scroll; } 
+    .mosaic-section {
+        background-attachment: scroll; /* Prevents jumping/wiggle on mobile */
+    }
 }
 
 
