@@ -338,6 +338,17 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .tile i { font-size: 32px; margin-bottom: 12px; color: var(--gold); }
 .tile span { font-size: 12px; }
 
+.tile {
+    /* ... your existing tile styles ... */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.tile.visible { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
 /* Corrected Mobile Media Query */
 @media (max-width: 768px) {
     .featured-card-wrapper { padding: 40px 4%; }
