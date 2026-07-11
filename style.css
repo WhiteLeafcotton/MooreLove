@@ -279,75 +279,47 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* MOSAIC SECTION - Styled to match Featured Card */
 .mosaic-section {
     position: relative;
-    padding: 60px 4% 100px 4%; /* Extra padding at bottom */
+    padding: 100px 4%;
     min-height: 100vh;
+    background: url('your-background.jpg') center/cover no-repeat fixed;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* This pushes grid to top, title to bottom */
+    justify-content: space-between;
     align-items: center;
-    background: url('your-background.jpg') center/cover no-repeat fixed;
 }
 
-/* Dark Overlay */
-.mosaic-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(8, 8, 8, 0.85);
-    backdrop-filter: blur(8px);
-    z-index: 1;
-}
-
-/* Ensure Grid and Footer stay above overlay */
-.mosaic-grid, .mosaic-footer {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-}
-
+/* Glassy Grid */
 .mosaic-grid {
-    max-width: 1200px;
-    height: 400px; /* Adjust height as needed for top half */
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(10, 1fr);
-    gap: 1px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    z-index: 2;
 }
 
+.tile-card {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.tile-card:hover { background: rgba(255, 255, 255, 0.1); }
+.tile-card i { font-size: 24px; color: #fff; }
+.tile-card span { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
+
+/* Footer Footer (Bottom Half) */
 .mosaic-footer {
     text-align: center;
-    margin-top: 50px;
-}
-
-.extra-large {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(50px, 8vw, 120px);
-    color: #fff;
-    font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-}
-
-.mosaic-subtitle {
-    color: var(--gold);
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-top: 10px;
-}
-.tile {
-    background-size: 1000% 1000%; /* Spreads the image across the grid */
-    background-repeat: no-repeat;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    background-color: #111; /* Fallback color */
-    border: 1px solid rgba(255,255,255,0.05); /* Adds the visual grid lines */
-}
-
-.tile.is-active {
-    opacity: 1;
-    transform: scale(1);
+    margin-top: 100px;
+    z-index: 2;
 }
 /* MOBILE STICKY NAV ADJUSTMENTS */
 
