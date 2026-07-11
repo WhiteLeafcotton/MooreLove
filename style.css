@@ -175,7 +175,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     .nav-inner { gap: 20px; padding: 10px; }
     .nav-icon { width: 20px; height: 20px; }
     .nav-link { font-size: 9px; letter-spacing: 1px; }
-    @media (max-width: 768px) {
+    
     .top-bar { padding: 20px 4%; }
     .top-links { gap: 15px; }
     .mosaic-grid { grid-template-columns: 1fr; gap: 15px; }
@@ -184,5 +184,5 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     .card-content { max-width: 100%; }
     .mosaic-bg-overlay { background-attachment: scroll; } /* Fix for mobile background jumping */
 }
-}
+
 
