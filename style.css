@@ -308,3 +308,20 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     opacity: 1;
     transform: scale(1);
 }
+/* MOBILE STICKY NAV ADJUSTMENTS */
+
+    .nav-inner {
+        gap: 20px; /* Reduces spacing between items to prevent overflow */
+        padding: 10px;
+    }
+
+    .nav-icon {
+        width: 20px; /* Slightly smaller icon for mobile screens */
+        height: 20px;
+    }
+
+    .nav-link {
+        font-size: 9px; /* Smaller font for tighter mobile navigation */
+        letter-spacing: 1px;
+    }
+}
