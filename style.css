@@ -75,50 +75,59 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 
 /* 2. The pseudo-element now acts as the 'fader' from black to image */
+/* 1. Widen the grid and the container */
+.mosaic-section {
+    position: relative;
+    padding: 100px 2%; /* Reduced padding to let the grid span wider */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #080808; /* Solid black base */
+    min-height: 900px;
+    gap: 80px;
+}
+
+/* 2. Heavy black overlay extending behind the full grid */
 .mosaic-section::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    /* The image is applied here, with a gradient that fades it to transparent at the top */
-    background: linear-gradient(to bottom, #080808 0%, rgba(8, 8, 8, 0.4) 40%, transparent 100%),
-                url('your-bg-image.jpg') center/cover no-repeat;
-    /* Blur the image only, not the solid black top */
-    backdrop-filter: blur(20px); 
-    -webkit-backdrop-filter: blur(20px);
+    height: 100%; /* Covers the entire section height */
+    /* Gradient remains heavy black through the grid area, fading only at the very bottom */
+    background: linear-gradient(to bottom, 
+        #080808 0%, 
+        #080808 75%, 
+        rgba(8, 8, 8, 0.6) 90%, 
+        transparent 100%
+    ), url('your-bg-image.jpg') center/cover no-repeat;
+    
+    backdrop-filter: blur(30px); 
+    -webkit-backdrop-filter: blur(30px);
     z-index: 1;
     pointer-events: none;
 }
 
-/* Ensure Grid and Content appear on top */
-.mosaic-grid, .mosaic-content {
+/* 3. Widen the Grid */
+.mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 30px;
+    width: 95%;        /* Takes up more horizontal space */
+    max-width: 1500px; /* Increased max-width for wider tiles */
+    height: 600px;
     position: relative;
     z-index: 2;
 }
-/* Increased width and tile scaling */
-.mosaic-grid {
-    display: grid;
-    /* Keeps 3 columns, but allows them to grow larger */
-    grid-template-columns: repeat(3, 1fr); 
-    grid-template-rows: repeat(3, 1fr);
-    gap: 30px;
-    width: 92%;        /* Allows the grid to stretch closer to the screen edges */
-    max-width: 1400px; /* Increased from 1100px to expand the grid horizontally */
-    height: 600px;     /* Slightly increased height to maintain tile aspect ratio */
-}
 
-/* Ensure the parent section allows the grid to center correctly */
-.mosaic-section {
+/* Ensure content stays on top */
+.mosaic-content {
     position: relative;
-    padding: 100px 2%; /* Reduced horizontal padding to give the grid more breathing room */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #080808;
-    min-height: 900px;
-    gap: 80px;
+    z-index: 2;
+    width: 100%;
+    padding: 0 4%;
 }
 .mosaic-content h2.extra-large { font-family: "Cormorant Garamond", serif; font-size: clamp(60px, 8vw, 120px); color: #b89868; margin-bottom: 20px; font-weight: 300; letter-spacing: -2px; }
 
