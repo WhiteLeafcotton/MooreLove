@@ -293,13 +293,18 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 /* Background Blur applied to the whole section */
+/* Heavy Black Blur on the top 45% only */
 .mosaic-section::before {
     content: "";
     position: absolute;
-    inset: 0;
-    background: rgba(8, 8, 8, 0.75); 
-    backdrop-filter: blur(8px); 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45%; /* Limits the effect to the top 45% */
+    background: linear-gradient(to bottom, rgba(8, 8, 8, 0.9) 0%, rgba(8, 8, 8, 0) 100%);
+    backdrop-filter: blur(10px); /* Heavy blur */
     z-index: 1;
+    pointer-events: none; /* Allows interactions with the grid */
 }
 
 /* Ensure Grid and Content appear on top of blur */
