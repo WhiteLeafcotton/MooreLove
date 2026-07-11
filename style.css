@@ -76,58 +76,62 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* 2. The pseudo-element now acts as the 'fader' from black to image */
 /* 1. Widen the grid and the container */
+/* MOSAIC SECTION - WIDE & ELEGANT */
 .mosaic-section {
     position: relative;
-    padding: 100px 2%; /* Reduced padding to let the grid span wider */
+    padding: 100px 2%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #080808; /* Solid black base */
+    background-color: #080808;
     min-height: 900px;
     gap: 80px;
+    overflow: hidden;
 }
 
-/* 2. Heavy black overlay extending behind the full grid */
+/* Heavy black overlay extending behind the full grid */
 .mosaic-section::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; /* Covers the entire section height */
-    /* Gradient remains heavy black through the grid area, fading only at the very bottom */
-    background: linear-gradient(to bottom, 
-        #080808 0%, 
-        #080808 75%, 
-        rgba(8, 8, 8, 0.6) 90%, 
-        transparent 100%
-    ), url('your-bg-image.jpg') center/cover no-repeat;
-    
-    backdrop-filter: blur(30px); 
+    height: 100%;
+    background: linear-gradient(to bottom, #080808 0%, #080808 75%, rgba(8,8,8,0.4) 100%), url('your-bg-image.jpg') center/cover no-repeat;
+    backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     z-index: 1;
     pointer-events: none;
 }
 
-/* 3. Widen the Grid */
 .mosaic-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 30px;
-    width: 95%;        /* Takes up more horizontal space */
-    max-width: 1500px; /* Increased max-width for wider tiles */
+    grid-template-columns: repeat(10, 1fr); /* 10 columns for high density */
+    grid-template-rows: repeat(10, 1fr);
+    gap: 4px; /* Tight, elegant gaps */
+    width: 95%;
+    max-width: 1500px;
     height: 600px;
     position: relative;
     z-index: 2;
 }
 
-/* Ensure content stays on top */
+.tile {
+    background-size: 1000% 1000%;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tile.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
 .mosaic-content {
     position: relative;
     z-index: 2;
-    width: 100%;
-    padding: 0 4%;
+    text-align: center;
 }
 .mosaic-content h2.extra-large { font-family: "Cormorant Garamond", serif; font-size: clamp(60px, 8vw, 120px); color: #b89868; margin-bottom: 20px; font-weight: 300; letter-spacing: -2px; }
 
