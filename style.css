@@ -1,3 +1,4 @@
+```css
 /*==================================================
 HBCR Senior Living - Final CSS
 ==================================================*/
@@ -85,85 +86,107 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-/* MOSAIC SECTION - ULTRA COMPACT */
-.mosaic-section {
-    position: relative;
-    padding: 10px 4%;
-    background: url('man.jpg') center/cover no-repeat fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
-    mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+/* MOSAIC SECTION */
+/* MOSAIC SECTION - UPDATED FOR SIZE AND SPACING */
+/* MOSAIC SECTION */
+/* MOSAIC SECTION */
+.mosaic-section { 
+    position: relative; 
+    padding: 80px 4%; 
+    background: url('man.jpg') center/cover no-repeat fixed; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
 }
-.mosaic-section::before { content: ""; position: absolute; inset: 0; background: rgba(8, 8, 8, 0.7); z-index: 1; }
 
+.mosaic-section { 
+    position: relative; 
+    padding: 40px 4%; /* Reduced vertical padding from 80px to 40px */
+    background: url('man.jpg') center/cover no-repeat fixed; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+/* Updated Grid */
 .mosaic-grid { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
-    gap: 10px; 
+    gap: 20px; /* Reduced gap from 40px to 20px for density */
     width: 100%; 
     max-width: 1600px; 
     z-index: 2; 
-    margin-bottom: 10px; 
+    margin-bottom: 30px; /* Reduced bottom margin */
 }
+
 .tile-card { 
     border: 1px solid rgba(255, 255, 255, 0.2); 
-    padding: 20px 30px; 
+    /* Reduced top/bottom padding by 35% to make tiles thinner */
+    padding: 52px 40px; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    gap: 5px; 
+    gap: 15px; /* Tighter gap inside the tile */
     background: rgba(255, 255, 255, 0.05); 
     backdrop-filter: blur(12px); 
     transition: var(--transition); 
     cursor: pointer; 
 }
+
+.tile-card i { font-size: 32px; color: #fff; transition: var(--transition); }
+.tile-card span { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #fff; }
+/* ... keep the rest of the styles as they were ... */
+
+
 .tile-card:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--gold); }
-.tile-card i { font-size: 26px; color: #fff; transition: var(--transition); }
-.tile-card span { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: #fff; }
 
-.mosaic-footer { text-align: center; z-index: 2; margin-top: 20px; width: 100%; max-width: 1600px; }
-.mosaic-title { 
-    display: block; 
-    width: 100%; 
-    font-family: "Cormorant Garamond", serif; 
-    font-size: clamp(80px, 12vw, 150px); 
-    font-weight: 300; 
-    letter-spacing: 2px; 
-    margin: 0; 
-    padding: 0; 
-    color: #fff; 
-    line-height: 0.9; 
-    text-align: center; 
+
+
+/* Large Title & CTA */
+/* Tightened Mosaic Footer */
+.mosaic-footer {
+    text-align: center;
+    z-index: 2;
+    margin-top: 20px; /* Reduced space from the grid */
 }
-.cta-arrow { 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    gap: 15px; 
-    margin-top: 5px; 
-    font-size: 14px; 
-    text-transform: uppercase; 
-    letter-spacing: 6px; 
-    color: var(--gold); 
-    cursor: pointer; 
+
+/* Ensure the footer container stretches */
+.mosaic-footer {
+    text-align: center;
+    z-index: 2;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1600px; /* Matches the grid width */
 }
+
+/* Force title to behave as a block-level element */
+.mosaic-title {
+    display: block;
+    width: 100%;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(80px, 12vw, 150px);
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    line-height: 0.9;
+    text-align: center; /* Keeps the text centered */
+}
+
 .cta-arrow:hover { gap: 30px; opacity: 0.8; }
-
 /* MOBILE RESPONSIVE ADAPTATION */
 @media (max-width: 768px) {
-    .mosaic-section {
-        -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-        mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-    }
     .featured-card-wrapper { padding: 40px 4%; }
-    .featured-card { height: auto; display: block; background: none; padding: 20px; border: none; }
-    .featured-card::before { content: ""; display: block; width: 100%; height: 140px; background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), url('exp.jpg') center/cover no-repeat; border: 0.5px solid rgba(255, 255, 255, 0.2); margin-bottom: 25px; }
+    .featured-card { height: auto; display: block; background: none; padding: 0; border: none; }
+    .featured-card::before { content: ""; display: block; width: 100%; height: 140px; background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), url('man.jpg') center/cover no-repeat; border: 0.5px solid rgba(255, 255, 255, 0.2); margin-bottom: 25px; }
     .card-content { max-width: 100%; text-align: left; padding: 0 5px; }
     .mosaic-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .nav-inner { gap: 20px; padding: 10px; }
     .nav-icon { width: 20px; height: 20px; }
     .nav-link { font-size: 9px; letter-spacing: 1px; }
 }
+
+```
