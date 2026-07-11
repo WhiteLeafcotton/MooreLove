@@ -90,18 +90,14 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* MOSAIC SECTION - UPDATED FOR SIZE AND SPACING */
 /* MOSAIC SECTION */
 /* MOSAIC SECTION */
-/* MOSAIC SECTION - COMPACT & CUTOUT */
 .mosaic-section { 
     position: relative; 
-    padding: 40px 4%; /* Reduced vertical padding */
+    padding: 80px 4%; 
     background: url('man.jpg') center/cover no-repeat fixed; 
     display: flex; 
     flex-direction: column; 
     justify-content: center; 
-    align-items: center;
-    /* Apply cutout effect to all views */
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
-    mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+    align-items: center; 
 }
 
 .mosaic-section::before { 
@@ -112,46 +108,79 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     z-index: 1; 
 }
 
+/* Updated Grid to match Featured Card width */
 .mosaic-grid { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
-    gap: 20px; /* Tighter gap */
+    gap: 40px; 
     width: 100%; 
-    max-width: 1600px; 
+    max-width: 1600px; /* Changed from 1400px to 1600px to match card */
     z-index: 2; 
-    margin-bottom: 30px; 
+    margin-bottom: 60px; 
 }
 
 .tile-card { 
     border: 1px solid rgba(255, 255, 255, 0.2); 
-    padding: 40px 20px; /* Thinner tiles */
+    padding: 80px 40px; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    gap: 15px; 
+    gap: 25px; 
     background: rgba(255, 255, 255, 0.05); 
     backdrop-filter: blur(12px); 
     transition: var(--transition); 
+    cursor: pointer; 
+}
+/* ... keep the rest of the styles as they were ... */
+
+
+.tile-card:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--gold); }
+.tile-card i { font-size: 40px; color: #fff; transition: var(--transition); }
+.tile-card span { font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: #fff; }
+
+/* Large Title & CTA */
+/* Tightened Mosaic Footer */
+.mosaic-footer {
+    text-align: center;
+    z-index: 2;
+    margin-top: 20px; /* Reduced space from the grid */
 }
 
+/* Ensure the footer container stretches */
+.mosaic-footer {
+    text-align: center;
+    z-index: 2;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1600px; /* Matches the grid width */
+}
+
+/* Force title to behave as a block-level element */
+.mosaic-title {
+    display: block;
+    width: 100%;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(80px, 12vw, 150px);
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    line-height: 0.9;
+    text-align: center; /* Keeps the text centered */
+}
+
+.cta-arrow:hover { gap: 30px; opacity: 0.8; }
 /* MOBILE RESPONSIVE ADAPTATION */
 @media (max-width: 768px) {
-    /* Ensure no horizontal overflow */
-    body { overflow-x: hidden; width: 100vw; }
-    
-    .mosaic-section {
-        padding: 20px 4%; /* Even smaller on mobile */
-    }
-    
     .featured-card-wrapper { padding: 40px 4%; }
     .featured-card { height: auto; display: block; background: none; padding: 0; border: none; }
-    
-    .mosaic-grid { 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 10px; 
-    }
-    
-    .tile-card { padding: 20px 10px; }
-    
+    .featured-card::before { content: ""; display: block; width: 100%; height: 140px; background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), url('man.jpg') center/cover no-repeat; border: 0.5px solid rgba(255, 255, 255, 0.2); margin-bottom: 25px; }
+    .card-content { max-width: 100%; text-align: left; padding: 0 5px; }
+    .mosaic-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .nav-inner { gap: 20px; padding: 10px; }
+    .nav-icon { width: 20px; height: 20px; }
+    .nav-link { font-size: 9px; letter-spacing: 1px; }
 }
+
+```
