@@ -89,47 +89,50 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* MOSAIC SECTION */
 /* MOSAIC SECTION - UPDATED FOR SIZE AND SPACING */
 /* MOSAIC SECTION */
-.mosaic-section {
-    position: relative;
-    padding: 80px 4%; /* Adjusted padding for better spacing */
+/* MOSAIC SECTION */
+.mosaic-section { 
+    position: relative; 
+    padding: 80px 4%; 
     background: url('man.jpg') center/cover no-repeat fixed; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
 }
 
-.mosaic-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(8, 8, 8, 0.7); /* Slightly darker for better contrast */
-    z-index: 1;
+.mosaic-section::before { 
+    content: ""; 
+    position: absolute; 
+    inset: 0; 
+    background: rgba(8, 8, 8, 0.7); 
+    z-index: 1; 
 }
 
-/* Larger, Wider Grid */
-.mosaic-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px; /* Increased gap */
-    width: 100%;
-    max-width: 1400px; /* Increased max-width */
-    z-index: 2;
-    margin-bottom: 60px;
+/* Updated Grid to match Featured Card width */
+.mosaic-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px; 
+    width: 100%; 
+    max-width: 1600px; /* Changed from 1400px to 1600px to match card */
+    z-index: 2; 
+    margin-bottom: 60px; 
 }
 
-.tile-card {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 80px 40px; /* Larger tiles */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(12px);
-    transition: var(--transition);
-    cursor: pointer;
+.tile-card { 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    padding: 80px 40px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 25px; 
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(12px); 
+    transition: var(--transition); 
+    cursor: pointer; 
 }
+/* ... keep the rest of the styles as they were ... */
+
 
 .tile-card:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--gold); }
 .tile-card i { font-size: 40px; color: #fff; transition: var(--transition); }
