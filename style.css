@@ -107,9 +107,11 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .nav-logo {
     display: flex;
     align-items: center;
+    justify-content: center;
     color: #fff;
     font-size: 20px; 
-    margin-right: 15px; /* Adjusted spacing for better centering */
+    width: 40px;      /* Force width */
+    height: 40px;     /* Force height */
     text-decoration: none;
     transition: var(--transition);
 }
