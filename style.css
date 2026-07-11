@@ -92,19 +92,21 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 /* NAVIGATION LINKS */
-.nav-inner a,
-.nav-inner a:visited { 
-    text-decoration: none; 
-    color: #fff; 
+/* NAVIGATION LINKS */
+.nav-link,
+.nav-link:visited,
+.nav-link:link { 
+    text-decoration: none !important; 
+    color: #fff !important; 
     font-size: 11px; 
     letter-spacing: 1.5px; 
     text-transform: uppercase; 
     transition: var(--transition);
 }
 
-.nav-inner a:hover,
-.nav-inner a:active { 
-    color: var(--gold); 
+.nav-link:hover,
+.nav-link:active { 
+    color: var(--gold) !important; 
 }
 
 /* LOGO ICON STYLING */
