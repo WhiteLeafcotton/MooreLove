@@ -50,12 +50,12 @@ function initDemureReveal() {
 
     // Exactly 9 items for the 3x3 grid
     const tileData = [
-        {icon: 'fa-leaf', title: 'Nature'}, {icon: 'fa-spa', title: 'Wellness'},
-        {icon: 'fa-bed', title: 'Rest'}, {icon: 'fa-wine-glass', title: 'Dining'},
-        {icon: 'fa-anchor', title: 'Yachts'}, {icon: 'fa-compass', title: 'Explore'},
-        {icon: 'fa-user', title: 'Service'}, {icon: 'fa-star', title: 'Quality'},
-        {icon: 'fa-heart', title: 'Care'}
-    ];
+    {icon: 'fa-leaf', title: 'Nature'}, {icon: 'fa-spa', title: 'Wellness'},
+    {icon: 'fa-bed', title: 'Rest'}, {icon: 'fa-wine-glass', title: 'Dining'},
+    {icon: 'fa-anchor', title: 'Yachts'}, {icon: 'fa-compass', title: 'Explore'},
+    {icon: 'fa-user', title: 'Service'}, {icon: 'fa-star', title: 'Quality'},
+    {icon: 'fa-heart', title: 'Care'} // Exactly 9 items
+];
 
     const shuffled = tileData.sort(() => 0.5 - Math.random());
     
