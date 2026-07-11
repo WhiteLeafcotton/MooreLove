@@ -1,6 +1,7 @@
 /*==================================================
-HBCR Senior Living - Fbase22inal CSS
+HBCR Senior Living - Final CSS
 ==================================================*/
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
 body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
@@ -13,7 +14,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .top-links a { text-decoration: none; color: white; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: .9; transition: var(--transition); }
 .top-links a:hover { color: var(--gold); }
 
-/* HERO - Video Intiiegrated */
+/* HERO */
 .hero { 
     position: relative; 
     height: 70vh; 
@@ -37,346 +38,65 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     transform: translate(-50%, -50%);
     z-index: 0;
 }
-
 .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 250px; background: linear-gradient(to top,#080808,transparent); z-index: 2; }
 .hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.4); z-index: 1; } 
-
 
 /* CONTENT */
 .hero-content { position: relative; z-index: 5; max-width: 700px; margin-top: -40px; animation: fadeUp 1s ease; }
 .hero-logo { font-family: "Cormorant Garamond", serif; font-size: 16px; letter-spacing: 6px; margin-bottom: 25px; opacity: 0.8; }
-.hero-content h1 { font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: clamp(30px, 3.5vw, 48px); line-height: 1.1; letter-spacing: -0.2px; margin-bottom: 30px; text-transform: uppercase; transition: opacity 0.3s ease; }
+.hero-content h1 { font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: clamp(30px, 3.5vw, 48px); line-height: 1.1; letter-spacing: -0.2px; margin-bottom: 30px; text-transform: uppercase; }
 .hero-button { display: inline-block; padding: 12px 30px; border: 1px solid rgba(255,255,255,.4); text-decoration: none; color: white; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); }
 .hero-button:hover { background: #fff; color: #000; }
 
-/* ICON BAR */
-.icon-bar-container { position: absolute; bottom: 40px; left: 4%; right: 4%; z-index: 10; }
-.icon-bar-line { width: 100%; height: 1px; background: rgba(255,255,255,0.15); margin-bottom: 25px; position: relative; }
-.active-line { 
-    position: absolute; top: 0; left: 0; height: 1px; background: #fff; 
-    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                left 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
-}
-.icon-wrapper { display: flex; justify-content: space-between; position: relative; }
-.icon-item { text-align: center; color: rgba(255,255,255,0.6); flex: 1; cursor: pointer; transition: .3s; }
-.icon-item i { display: block; font-size: 20px; margin-bottom: 10px; }
-.icon-item span { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
-.icon-item:hover { color: #fff; }
-
-/* STICKY NAV */
 /* STICKY NAV */
 .main-nav { 
-    position: fixed; 
-    top: -100px; 
-    left: 0; 
-    width: 100%; 
-    z-index: 50; 
-    background: rgba(8, 8, 8, 0.8); 
-    backdrop-filter: blur(10px); 
-    transition: top 0.4s ease; 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Added subtle border */
+    position: fixed; top: -100px; left: 0; width: 100%; z-index: 50; 
+    background: rgba(8, 8, 8, 0.8); backdrop-filter: blur(10px); 
+    transition: top 0.4s ease; border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
 }
+.main-nav.sticky { top: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
+.nav-inner { display: flex; align-items: center; justify-content: center; gap: 40px; padding: 15px 20px; }
+.nav-link { text-decoration: none !important; color: #fff !important; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; transition: var(--transition); }
+.nav-link:hover { color: var(--gold) !important; }
+.nav-icon { width: 24px; height: 24px; filter: brightness(0) invert(1); transition: var(--transition); }
+.nav-logo:hover .nav-icon { filter: invert(72%) sepia(21%) saturate(1478%) hue-rotate(345deg) brightness(90%) contrast(88%); }
 
-.main-nav.sticky { 
-    top: 0; 
-    box-shadow: 0 5px 20px rgba(0,0,0,0.5); 
-}
-
-.nav-inner { 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    gap: 40px; 
-    padding: 15px 20px; /* Slight reduction for tighter look */
-    position: relative;
-}
-
-/* NAVIGATION LINKS */
-/* NAVIGATION LINKS */
-.nav-link,
-.nav-link:visited,
-.nav-link:link { 
-    text-decoration: none !important; 
-    color: #fff !important; 
-    font-size: 11px; 
-    letter-spacing: 1.5px; 
-    text-transform: uppercase; 
-    transition: var(--transition);
-}
-
-.nav-link:hover,
-.nav-link:active { 
-    color: var(--gold) !important; 
-}
-
-/* LOGO ICON STYLING */
-/* LOGO ICON STYLING */
-
-
-.nav-icon {
-    width: 24px;
-    height: 24px;
-    /* This filter makes the SVG white by default */
-    filter: brightness(0) invert(1); 
-    transition: var(--transition);
-}
-
-.nav-logo:hover .nav-icon {
-    /* This filter makes the SVG your gold color on hover */
-    filter: invert(72%) sepia(21%) saturate(1478%) hue-rotate(345deg) brightness(90%) contrast(88%);
-}
-
-
-/* SECTIONS */
-.section { padding: 100px 4%; background: #080808; }
-.section.dark { background: #050505; }
-.container { max-width: 1300px; margin: auto; }
-.container h2 { font-family: "Cormorant Garamond", serif; font-size: 48px; font-weight: 300; margin-bottom: 25px; }
-.container p { font-size: 16px; line-height: 1.7; color: #aaa; max-width: 550px; }
-
-
-/* FEATURED CARD STYLE */
-/* FEATURED CARD STYLE */
-/* FEATURED CARD STYLE */
-/* FEATURED CARD STYLE */
-.featured-card-wrapper {
-    padding: 60px 4%;
-    background: #080808;
-    display: flex;
-    justify-content: center;
-}
-
+/* FEATURED CARD */
+.featured-card-wrapper { padding: 60px 4%; background: #080808; display: flex; justify-content: center; }
 .featured-card {
-    position: relative;
-    width: 100%;
-    max-width: 1600px;
-    height: 300px; 
-    /* This creates a gradient that darkens the sides/bottom while showing the image */
-    background: linear-gradient(to right, rgba(8,8,8,0.8) 0%, transparent 40%, transparent 100%), 
-                url('exp.jpg') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    padding: 0 5%;
-    border: 0.5px solid rgba(255, 255, 255, 0.2);
-    overflow: hidden;
+    position: relative; width: 100%; max-width: 1600px; height: 300px;
+    background: linear-gradient(to right, rgba(8,8,8,0.8) 0%, transparent 40%), url('exp.jpg') center/cover;
+    display: flex; align-items: center; padding: 0 5%; border: 0.5px solid rgba(255, 255, 255, 0.2); overflow: hidden;
 }
+.card-content p { font-family: "Cormorant Garamond", serif; font-size: 24px; line-height: 1.3; margin-bottom: 30px; }
+.card-btn { display: inline-block; padding: 12px 35px; background: #fff; color: #000; text-decoration: none; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; transition: 0.3s; }
 
-.card-content {
-    position: relative;
-    z-index: 2; /* Keeps text above the gradient */
-    max-width: 450px;
-    color: #fff;
-}
-
-.card-content i {
-    font-family: "Cormorant Garamond", serif;
-    font-style: italic;
-    font-size: 18px;
-    margin-bottom: 15px;
-    display: block;
-    opacity: 0.9;
-}
-
-.card-content h3 {
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    margin-bottom: 20px;
-    font-weight: 500;
-}
-
-.card-content p {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 24px;
-    line-height: 1.3;
-    margin-bottom: 30px;
-    color: #fff;
-    opacity: 0.9;
-}
-
-.card-btn {
-    display: inline-block;
-    padding: 12px 35px;
-    background: #fff;
-    color: #000;
-    text-decoration: none;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.card-btn:hover { background: #d4b06a; color: #fff; }
-
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-
-
-/* MOBILE RESPONSIVE ADAPTATION */
-/* MOBILE RESPONSIVE VERTICAL CARD */
-/* MOBILE RESPONSIVE: THIN IMAGE + TEXT BELOW */
-/* MOBILE RESPONSIVE: THIN IMAGE + TEXT BELOW WITH FADE & BORDER */
-/* MOBILE RESPONSIVE: THIN IMAGE + TEXT BELOW WITH FADE, BORDER & MASKED ANIMATION */
-/* MOBILE RESPONSIVE: THIN IMAGE + TEXT BELOW WITH FADE, BORDER & MASKED ANIMATION */
-@media (max-width: 768px) {
-    .featured-card-wrapper {
-        padding: 40px 4%;
-    }
-
-    .featured-card {
-        height: auto;
-        display: block;
-        background: none;
-        padding: 0;
-        border: none;
-    }
-
-    /* The thin image rectangle */
-    .featured-card::before {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 140px;
-        background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), 
-                    url('exp.jpg') center/cover no-repeat;
-        border: 0.5px solid rgba(255, 255, 255, 0.2);
-        margin-bottom: 25px;
-    }
-
-    .card-content {
-        max-width: 100%;
-        text-align: left;
-        padding: 0 5px;
-    }
-
-    /* MASKED ANIMATION STYLES */
-    .h3-mask {
-        overflow: hidden;
-        display: block;
-    }
-
-    .card-content h3 {
-        display: block;
-        transform: translateY(100%);
-        transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-        font-size: 12px;
-        margin-bottom: 15px;
-    }
-
-    .card-content h3.is-visible {
-        transform: translateY(0);
-    }
-
-    .card-content i { font-size: 15px; margin-bottom: 10px; }
-    .card-content p { font-size: 20px; margin-bottom: 25px; }
-}
-
-
-/* Container adjusted to match your 4% site padding */
-/* New 7-Square Mosaic Section */
-/* Updated Mosaic Section */
-/* Mosaic Section
-/* Mosaic Section Layout */
-/* Updated Mosaic Section */
-/* Vertical Stack Section */
+/* MOSAIC SECTION */
 .mosaic-section {
-    position: relative;
-    padding: 100px 4%;
-    display: flex;
-    flex-direction: column; /* Vertical stack */
-    align-items: center;
-    background: url('your-bg-image.jpg') center/cover no-repeat;
-    min-height: 900px;
-    gap: 80px; /* Space between Grid and Title */
+    position: relative; padding: 100px 4%; display: flex; flex-direction: column; align-items: center;
+    background: #080808 url('your-bg-image.jpg') center/cover no-repeat;
+    background-blend-mode: multiply; min-height: 900px; gap: 80px;
 }
-
-/* Background Blur applied to the whole section */
-/* Heavy Black Blur on the top 45% only */
 .mosaic-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 45%; /* Limits the effect to the top 45% */
-    background: linear-gradient(to bottom, rgba(8, 8, 8, 0.9) 0%, rgba(8, 8, 8, 0) 100%);
-    backdrop-filter: blur(10px); /* Heavy blur */
-    z-index: 1;
-    pointer-events: none; /* Allows interactions with the grid */
+    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 60%;
+    background: linear-gradient(to bottom, #080808 20%, rgba(8, 8, 8, 0.4) 70%, transparent 100%);
+    backdrop-filter: blur(12px); z-index: 1; pointer-events: none;
 }
+.mosaic-grid, .mosaic-content { position: relative; z-index: 2; }
+.mosaic-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 30px; width: 100%; max-width: 1100px; height: 550px; }
+.mosaic-content h2.extra-large { font-family: "Cormorant Garamond", serif; font-size: clamp(60px, 8vw, 120px); color: #b89868; margin-bottom: 20px; font-weight: 300; letter-spacing: -2px; }
 
-/* Ensure Grid and Content appear on top of blur */
-.mosaic-grid, .mosaic-content {
-    position: relative;
-    z-index: 2;
-}
-
-/* Grid on Top */
-.mosaic-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 30px;
-    width: 100%;
-    max-width: 1100px;
-    height: 550px;
-}
-
-/* Content on Bottom */
-.mosaic-content { 
-    position: relative; 
-    z-index: 2; 
-    width: 100%;       /* Ensure it fills the container width */
-    max-width: 100%;   /* Remove constraints */
-    padding: 0 4%;     /* Enforce 4% side padding */
-    text-align: left;  /* Change to left to make it feel more rectangular/structural */
-    margin-bottom: 80px; 
-}
-
-.mosaic-content h2.extra-large { 
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(60px, 8vw, 120px); 
-    line-height: 0.9; 
-    color: #b89868; 
-    margin-bottom: 20px;
-    font-weight: 300;
-    letter-spacing: -2px; /* Tightens the look to feel more block-like */
-}
-
-/* Adjust the CTA to align with the text */
-.cta-arrow { 
-    color: #fff; 
-    text-transform: uppercase; 
-    letter-spacing: 6px; 
-    font-size: 12px; 
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    padding-left: 5px; /* Aligns with the edge of the text */
-}
-
-/* Tile styling remains the same */
-.tile {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.15);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.6s ease;
-    opacity: 0;
-    transform: translateY(20px);
-}
+/* ANIMATIONS & UTILS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.tile { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.15); opacity: 0; transition: all 0.6s ease; }
 .tile.visible { opacity: 1; transform: translateY(0); }
-/* Corrected Mobile Media Query */
+
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
-    .featured-card-wrapper { padding: 40px 4%; }
     .featured-card { height: auto; display: block; background: none; padding: 0; border: none; }
-    
-    .nav-inner { gap: 20px; padding: 10px; }
-    .nav-icon { width: 20px; height: 20px; }
-    .nav-link { font-size: 9px; letter-spacing: 1px; }
+    .featured-card::before {
+        content: ""; display: block; width: 100%; height: 140px; margin-bottom: 25px;
+        background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), url('exp.jpg') center/cover;
+    }
+    .nav-inner { gap: 20px; }
 }
