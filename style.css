@@ -72,17 +72,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .card-btn { display: inline-block; padding: 12px 35px; background: #fff; color: #000; text-decoration: none; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; transition: 0.3s; }
 
 /* MOSAIC SECTION */
-.mosaic-section {
-    position: relative;
-    padding: 100px 4%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* 1. Set a solid black base color */
-    background-color: #080808; 
-    min-height: 900px;
-    gap: 80px;
-}
+
 
 /* 2. The pseudo-element now acts as the 'fader' from black to image */
 .mosaic-section::before {
@@ -107,7 +97,29 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     position: relative;
     z-index: 2;
 }
-.mosaic-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 30px; width: 100%; max-width: 1100px; height: 550px; }
+/* Increased width and tile scaling */
+.mosaic-grid {
+    display: grid;
+    /* Keeps 3 columns, but allows them to grow larger */
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(3, 1fr);
+    gap: 30px;
+    width: 92%;        /* Allows the grid to stretch closer to the screen edges */
+    max-width: 1400px; /* Increased from 1100px to expand the grid horizontally */
+    height: 600px;     /* Slightly increased height to maintain tile aspect ratio */
+}
+
+/* Ensure the parent section allows the grid to center correctly */
+.mosaic-section {
+    position: relative;
+    padding: 100px 2%; /* Reduced horizontal padding to give the grid more breathing room */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #080808;
+    min-height: 900px;
+    gap: 80px;
+}
 .mosaic-content h2.extra-large { font-family: "Cormorant Garamond", serif; font-size: clamp(60px, 8vw, 120px); color: #b89868; margin-bottom: 20px; font-weight: 300; letter-spacing: -2px; }
 
 /* ANIMATIONS & UTILS */
