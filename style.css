@@ -325,6 +325,20 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     text-transform: uppercase;
     margin-top: 10px;
 }
+.tile {
+    background-size: 1000% 1000%; /* Spreads the image across the grid */
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    background-color: #111; /* Fallback color */
+    border: 1px solid rgba(255,255,255,0.05); /* Adds the visual grid lines */
+}
+
+.tile.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
 /* MOBILE STICKY NAV ADJUSTMENTS */
 
     .nav-inner {
