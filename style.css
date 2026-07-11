@@ -275,38 +275,29 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 
 /* Container adjusted to match your 4% site padding */
+/* New 7-Square Mosaic Section */
 .mosaic-section {
     padding: 100px 4%;
     background: #080808;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
 }
 
 .mosaic-grid {
     display: grid;
-    /* 10 columns by 10 rows = 100 tiles */
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(7, 1fr); /* Exactly 7 columns */
+    gap: 15px; 
     width: 100%;
-    max-width: 900px;
-    height: 600px; /* Fixed height for consistency */
-    gap: 1px;      /* Slight gap creates the 'mosaic' look */
-    background: #000;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 400px; /* Adjust height as needed for larger squares */
 }
 
 .tile {
-    /* Set background-size to 1000% 1000% because we have 10x10 tiles */
-    background-size: 1000% 1000%;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    opacity: 0;
-    transform: scale(0.5); /* Smaller start scale for better effect */
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.tile.is-active {
-    opacity: 1;
-    transform: scale(1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-image 0.1s ease; /* Keeps the flash effect fast */
 }
 /* MOBILE STICKY NAV ADJUSTMENTS */
 
