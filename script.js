@@ -2,13 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 1. Sticky Navigation ---
     const hero = document.getElementById("hero");
     const nav = document.getElementById("mainNav");
+    const placeholder = document.querySelector(".nav-placeholder");
 
     function updateNav() {
         if (!hero || !nav) return;
         if (window.scrollY >= hero.offsetHeight) {
             nav.classList.add("sticky");
+            if (placeholder) placeholder.style.display = "block";
         } else {
             nav.classList.remove("sticky");
+            if (placeholder) placeholder.style.display = "none";
         }
     }
     window.addEventListener("scroll", updateNav, { passive: true });
@@ -53,27 +56,36 @@ document.addEventListener('DOMContentLoaded', () => {
             {icon: 'fa-book', title: 'Story'}, {icon: 'fa-clock', title: 'Timeless'}
         ];
 
+        // Shuffle logic
         const shuffled = tileData.sort(() => 0.5 - Math.random());
         
         shuffled.forEach((data, index) => {
             const tile = document.createElement('div');
             tile.className = 'tile';
+            // Explicitly adding icon and title span
             tile.innerHTML = `<i class="fa-solid ${data.icon}"></i><span>${data.title}</span>`;
             grid.appendChild(tile);
 
+            // Staggered reveal
             setTimeout(() => {
                 tile.classList.add('visible');
             }, index * 100);
         });
     }
 
+    const section = document.getElementById('mosaicSection');
     const mosaicObserver = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
             initDemureReveal();
             mosaicObserver.disconnect();
         }
-    }, { threshold: 0.3 });
+    }, { threshold: 0.1 });
 
-    const section = document.getElementById('mosaicSection');
-    if (section) mosaicObserver.observe(section);
+    if (section) {
+        mosaicObserver.observe(section);
+        // Fallback: Trigger if already in view
+        if (section.getBoundingClientRect().top < window.innerHeight) {
+            initDemureReveal();
+        }
+    }
 });
