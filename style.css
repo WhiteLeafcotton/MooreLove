@@ -64,33 +64,58 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .icon-item:hover { color: #fff; }
 
 /* STICKY NAV */
-.main-nav { position: fixed; top: -100px; left: 0; width: 100%; z-index: 50; background: rgba(8, 8, 8, 0.8); backdrop-filter: blur(10px); transition: top 0.4s ease; border-bottom: none; }
-.main-nav.sticky { top: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
-.nav-inner { display: flex; justify-content: center; gap: 40px; padding: 20px; }
-.nav-inner a { text-decoration: none; color: white; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; transition: .3s; }
-.nav-inner a:hover { color: var(--gold); }
-/* Update this specific block in your CSS */
+/* STICKY NAV */
+.main-nav { 
+    position: fixed; 
+    top: -100px; 
+    left: 0; 
+    width: 100%; 
+    z-index: 50; 
+    background: rgba(8, 8, 8, 0.8); 
+    backdrop-filter: blur(10px); 
+    transition: top 0.4s ease; 
+    border-bottom: none; 
+}
+
+.main-nav.sticky { 
+    top: 0; 
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5); 
+}
+
+.nav-inner { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 40px; 
+    padding: 20px; 
+}
+
+.nav-inner a { 
+    text-decoration: none; 
+    color: white; 
+    font-size: 11px; 
+    letter-spacing: 1.5px; 
+    text-transform: uppercase; 
+    transition: .3s; 
+}
+
+.nav-inner a:hover { 
+    color: var(--gold); 
+}
+
+/* LOGO ICON STYLING */
 .nav-logo {
     display: flex;
     align-items: center;
     color: #fff;
-    font-size: 20px; /* Adjust size to match your navigation text */
-    margin-right: 25px; /* Spacing between logo and links */
+    font-size: 20px; 
+    margin-right: 15px; /* Adjusted spacing for better centering */
     text-decoration: none;
     transition: var(--transition);
 }
 
 .nav-logo:hover {
-    color: var(--gold); /* Matches your gold hover theme */
-}
-
-/* Ensure the nav-inner is clean */
-.nav-inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    padding: 20px;
+    color: var(--gold);
 }
 
 /* SECTIONS */
