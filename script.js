@@ -42,36 +42,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- 3. Mosaic Reveal (Demure 3x4 Grid) ---
-    function initDemureReveal() {
-        const grid = document.getElementById('mosaicGrid');
-        if (!grid) return;
-        grid.innerHTML = ''; 
+    // Inside your initDemureReveal function:
+function initDemureReveal() {
+    const grid = document.getElementById('mosaicGrid');
+    if (!grid) return;
+    grid.innerHTML = ''; 
 
-        const tileData = [
-            {icon: 'fa-leaf', title: 'Nature'}, {icon: 'fa-spa', title: 'Wellness'},
-            {icon: 'fa-bed', title: 'Rest'}, {icon: 'fa-wine-glass', title: 'Dining'},
-            {icon: 'fa-anchor', title: 'Yachts'}, {icon: 'fa-compass', title: 'Explore'},
-            {icon: 'fa-user', title: 'Service'}, {icon: 'fa-star', title: 'Quality'},
-            {icon: 'fa-heart', title: 'Care'}, {icon: 'fa-mountain', title: 'Views'},
-            {icon: 'fa-book', title: 'Story'}, {icon: 'fa-clock', title: 'Timeless'}
-        ];
+    // Exactly 9 items for the 3x3 grid
+    const tileData = [
+        {icon: 'fa-leaf', title: 'Nature'}, {icon: 'fa-spa', title: 'Wellness'},
+        {icon: 'fa-bed', title: 'Rest'}, {icon: 'fa-wine-glass', title: 'Dining'},
+        {icon: 'fa-anchor', title: 'Yachts'}, {icon: 'fa-compass', title: 'Explore'},
+        {icon: 'fa-user', title: 'Service'}, {icon: 'fa-star', title: 'Quality'},
+        {icon: 'fa-heart', title: 'Care'}
+    ];
 
-        // Shuffle logic
-        const shuffled = tileData.sort(() => 0.5 - Math.random());
-        
-        shuffled.forEach((data, index) => {
-            const tile = document.createElement('div');
-            tile.className = 'tile';
-            // Explicitly adding icon and title span
-            tile.innerHTML = `<i class="fa-solid ${data.icon}"></i><span>${data.title}</span>`;
-            grid.appendChild(tile);
+    const shuffled = tileData.sort(() => 0.5 - Math.random());
+    
+    shuffled.forEach((data, index) => {
+        const tile = document.createElement('div');
+        tile.className = 'tile';
+        tile.innerHTML = `<i class="fa-solid ${data.icon}"></i><span>${data.title}</span>`;
+        grid.appendChild(tile);
 
-            // Staggered reveal
-            setTimeout(() => {
-                tile.classList.add('visible');
-            }, index * 100);
-        });
-    }
+        setTimeout(() => { tile.classList.add('visible'); }, index * 100);
+    });
+}
 
     const section = document.getElementById('mosaicSection');
     const mosaicObserver = new IntersectionObserver((entries) => {
