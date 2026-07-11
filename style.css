@@ -277,43 +277,31 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Container adjusted to match your 4% site padding */
 /* New 7-Square Mosaic Section */
 /* Updated Mosaic Section */
+/* Mosaic Section */
 .mosaic-grid {
     display: grid;
-    /* This forces exactly 7 columns */
     grid-template-columns: repeat(7, 1fr); 
-    /* This forces exactly 2 rows */
     grid-template-rows: repeat(2, 1fr); 
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    height: 400px; /* Adjust as needed */
-    gap: 5px;
+    height: 400px;
+    gap: 0px; /* Set to 0 to make the image look seamless */
 }
 
 .tile {
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
     background-repeat: no-repeat;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Important: Ensure tiles don't stretch content */
-    background-size: 700% 200%; /* If using one large image, or 'cover' for individual slices */
+    border: 0px solid rgba(255, 255, 255, 0.1);
 }
-/* MOBILE STICKY NAV ADJUSTMENTS */
 
-    .nav-inner {
-        gap: 20px; /* Reduces spacing between items to prevent overflow */
-        padding: 10px;
-    }
-
-    .nav-icon {
-        width: 20px; /* Slightly smaller icon for mobile screens */
-        height: 20px;
-    }
-
-    .nav-link {
-        font-size: 9px; /* Smaller font for tighter mobile navigation */
-        letter-spacing: 1px;
-    }
+/* Corrected Mobile Media Query */
+@media (max-width: 768px) {
+    .featured-card-wrapper { padding: 40px 4%; }
+    .featured-card { height: auto; display: block; background: none; padding: 0; border: none; }
+    
+    .nav-inner { gap: 20px; padding: 10px; }
+    .nav-icon { width: 20px; height: 20px; }
+    .nav-link { font-size: 9px; letter-spacing: 1px; }
 }
