@@ -283,65 +283,69 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Vertical Stack Section */
 .mosaic-section {
     position: relative;
-    padding: 100px 4%; /* 4% Padding as requested */
+    padding: 100px 4%;
     display: flex;
-    flex-direction: column; /* Stacked Vertically */
-    align-items: center;    /* Centered */
-    gap: 60px;
+    flex-direction: column; /* Vertical stack */
+    align-items: center;
     background: url('your-bg-image.jpg') center/cover no-repeat;
     min-height: 900px;
+    gap: 80px; /* Space between Grid and Title */
 }
 
-/* Heavy Blur Overlay */
+/* Background Blur applied to the whole section */
 .mosaic-section::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(8,8,8,0.7); /* Heavier black overlay */
-    backdrop-filter: blur(5px);
+    background: rgba(8, 8, 8, 0.75); 
+    backdrop-filter: blur(8px); 
     z-index: 1;
 }
 
+/* Ensure Grid and Content appear on top of blur */
+.mosaic-grid, .mosaic-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Grid on Top */
+.mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px;
+    height: 550px;
+}
+
+/* Content on Bottom */
 .mosaic-content { 
-    position: relative; 
-    z-index: 2; 
-    text-align: center; /* Center the title and CTA */
+    text-align: center; 
     width: 100%;
 }
 
 .mosaic-content h2.extra-large { 
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(70px, 10vw, 150px); 
-    line-height: 0.9; 
+    font-size: clamp(80px, 10vw, 140px); 
+    line-height: 1; 
     color: #b89868; 
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    font-weight: 300;
 }
 
 .cta-arrow { 
     color: #fff; 
     text-transform: uppercase; 
-    letter-spacing: 4px; 
-    font-size: 11px; 
+    letter-spacing: 6px; 
+    font-size: 12px; 
     text-decoration: none;
-    display: flex;
-    justify-content: center; /* Center the CTA */
+    display: inline-flex;
     align-items: center;
     gap: 15px;
 }
 
-/* The Horizontal Grid */
-.mosaic-grid {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
-    grid-template-rows: repeat(3, 1fr);
-    gap: 20px;
-    width: 100%;
-    max-width: 1000px; /* Keep it balanced */
-    height: 600px; 
-}
-
+/* Tile styling remains the same */
 .tile {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.15);
@@ -349,14 +353,11 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: all 0.6s ease;
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.6s ease;
 }
-
 .tile.visible { opacity: 1; transform: translateY(0); }
-.tile i { font-size: 32px; margin-bottom: 15px; color: var(--gold); }
-.tile span { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
 /* Corrected Mobile Media Query */
 @media (max-width: 768px) {
     .featured-card-wrapper { padding: 40px 4%; }
