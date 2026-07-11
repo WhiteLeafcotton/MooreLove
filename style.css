@@ -177,7 +177,71 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     .featured-card { height: auto; display: block; background: none; padding: 0; border: none; }
     .featured-card::before { content: ""; display: block; width: 100%; height: 140px; background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), url('man.jpg') center/cover no-repeat; border: 0.5px solid rgba(255, 255, 255, 0.2); margin-bottom: 25px; }
     .card-content { max-width: 100%; text-align: left; padding: 0 5px; }
-    .mosaic-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    /* MOSAIC SECTION - COMPACT & CUTOUT */
+.mosaic-section { 
+    position: relative; 
+    padding: 40px 4%; /* Reduced vertical padding */
+    background: url('man.jpg') center/cover no-repeat fixed; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    /* Apply cutout effect to all views */
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+}
+
+.mosaic-section::before { 
+    content: ""; 
+    position: absolute; 
+    inset: 0; 
+    background: rgba(8, 8, 8, 0.7); 
+    z-index: 1; 
+}
+
+.mosaic-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; /* Tighter gap */
+    width: 100%; 
+    max-width: 1600px; 
+    z-index: 2; 
+    margin-bottom: 30px; 
+}
+
+.tile-card { 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    padding: 40px 20px; /* Thinner tiles */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 15px; 
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(12px); 
+    transition: var(--transition); 
+}
+
+/* MOBILE RESPONSIVE ADAPTATION */
+@media (max-width: 768px) {
+    /* Ensure no horizontal overflow */
+    body { overflow-x: hidden; width: 100vw; }
+    
+    .mosaic-section {
+        padding: 20px 4%; /* Even smaller on mobile */
+    }
+    
+    .featured-card-wrapper { padding: 40px 4%; }
+    .featured-card { height: auto; display: block; background: none; padding: 0; border: none; }
+    
+    .mosaic-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px; 
+    }
+    
+    .tile-card { padding: 20px 10px; }
+    
+    .nav-inner { gap: 20px; padding: 10px; }
+}
     .nav-inner { gap: 20px; padding: 10px; }
     .nav-icon { width: 20px; height: 20px; }
     .nav-link { font-size: 9px; letter-spacing: 1px; }
