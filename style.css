@@ -73,34 +73,40 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* MOSAIC SECTION */
 .mosaic-section {
-    position: relative; padding: 100px 4%; display: flex; flex-direction: column; align-items: center;
-    background: #080808 url('your-bg-image.jpg') center/cover no-repeat;
-    background-blend-mode: multiply; min-height: 900px; gap: 80px;
+    position: relative;
+    padding: 100px 4%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 1. Set a solid black base color */
+    background-color: #080808; 
+    min-height: 900px;
+    gap: 80px;
 }
-/* Enhanced Heavy Black Blur */
-/* Heavy Black Blur that covers the entire grid area */
+
+/* 2. The pseudo-element now acts as the 'fader' from black to image */
 .mosaic-section::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    /* Set to 100% to ensure it covers the area behind the entire grid */
-    height: 100%; 
-    /* Deep black fade: Starts solid black, stays dark, fades at the very bottom */
-    background: linear-gradient(to bottom, 
-        #080808 0%, 
-        #080808 60%, 
-        rgba(8, 8, 8, 0.4) 85%, 
-        transparent 100%
-    );
-    /* Heavy blur intensity */
-    backdrop-filter: blur(30px); 
-    -webkit-backdrop-filter: blur(30px);
+    height: 100%;
+    /* The image is applied here, with a gradient that fades it to transparent at the top */
+    background: linear-gradient(to bottom, #080808 0%, rgba(8, 8, 8, 0.4) 40%, transparent 100%),
+                url('your-bg-image.jpg') center/cover no-repeat;
+    /* Blur the image only, not the solid black top */
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px);
     z-index: 1;
     pointer-events: none;
 }
-.mosaic-grid, .mosaic-content { position: relative; z-index: 2; }
+
+/* Ensure Grid and Content appear on top */
+.mosaic-grid, .mosaic-content {
+    position: relative;
+    z-index: 2;
+}
 .mosaic-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 30px; width: 100%; max-width: 1100px; height: 550px; }
 .mosaic-content h2.extra-large { font-family: "Cormorant Garamond", serif; font-size: clamp(60px, 8vw, 120px); color: #b89868; margin-bottom: 20px; font-weight: 300; letter-spacing: -2px; }
 
