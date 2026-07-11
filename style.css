@@ -78,20 +78,25 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     background-blend-mode: multiply; min-height: 900px; gap: 80px;
 }
 /* Enhanced Heavy Black Blur */
+/* Heavy Black Blur that covers the entire grid area */
 .mosaic-section::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 65%; /* Extended coverage */
-    /* This creates a transition from solid black to a blurred black fade */
-    background: linear-gradient(to bottom, #080808 30%, rgba(8, 8, 8, 0.8) 60%, rgba(8, 8, 8, 0) 100%);
-    /* The blur affects the background image underneath */
-    backdrop-filter: blur(25px); 
-    /* This adds a second layer of darkening to ensure it feels "heavy" */
-    -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+    /* Set to 100% to ensure it covers the area behind the entire grid */
+    height: 100%; 
+    /* Deep black fade: Starts solid black, stays dark, fades at the very bottom */
+    background: linear-gradient(to bottom, 
+        #080808 0%, 
+        #080808 60%, 
+        rgba(8, 8, 8, 0.4) 85%, 
+        transparent 100%
+    );
+    /* Heavy blur intensity */
+    backdrop-filter: blur(30px); 
+    -webkit-backdrop-filter: blur(30px);
     z-index: 1;
     pointer-events: none;
 }
