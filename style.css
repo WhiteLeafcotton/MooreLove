@@ -168,6 +168,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* MOBILE RESPONSIVE ADAPTATION */
 /* MOBILE RESPONSIVE ADAPTATION */
 @media (max-width: 768px) {
+    /* Existing tweaks */
     .top-bar { padding: 20px 4%; }
     .top-links { gap: 15px; }
     .nav-inner { gap: 20px; padding: 10px; }
@@ -191,10 +192,20 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         margin-bottom: 25px; 
     }
     
-    /* Simplified Mobile Mosaic */
-    .mosaic-grid { grid-template-columns: 1fr; gap: 15px; margin-bottom: 30px; }
-    .tile-card { padding: 30px; }
+    /* NEW: 2-Column Compact Mosaic */
     .mosaic-section { padding: 40px 4%; }
+    .mosaic-grid { 
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 Columns */
+        gap: 10px; /* Compact gap */
+        margin-bottom: 30px; 
+    }
+    .tile-card { 
+        padding: 20px 10px; /* Reduced padding for compactness */
+        gap: 10px; 
+    }
+    .tile-card i { font-size: 24px; } /* Smaller icons for compact look */
+    .tile-card span { font-size: 8px; } /* Smaller text */
 }
 
 
