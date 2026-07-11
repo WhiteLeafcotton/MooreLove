@@ -110,36 +110,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // 4. High-Density Mosaic Animation
-const initMosaic = () => {
+// --- Mosaic Initialization ---
+const initProfessionalMosaic = () => {
     const grid = document.getElementById('mosaicGrid');
-    if (!grid || grid.children.length > 0) return;
+    if (!grid || grid.children.length > 0) return; 
 
-    const cols = 10;
-    const rows = 10;
+    const CONFIG = { mainImage: 'man.jpg', cols: 10, rows: 10 };
+    const totalTiles = CONFIG.cols * CONFIG.rows;
     
-    for (let i = 0; i < cols * rows; i++) {
+    for (let i = 0; i < totalTiles; i++) {
         const tile = document.createElement('div');
         tile.className = 'tile';
-        const col = i % cols;
-        const row = Math.floor(i / cols);
-        tile.style.backgroundPosition = `${(col / (cols - 1)) * 100}% ${(row / (rows - 1)) * 100}%`;
+        tile.style.backgroundImage = `url('${CONFIG.mainImage}')`;
+        
+        const col = i % CONFIG.cols;
+        const row = Math.floor(i / CONFIG.cols);
+        
+        tile.style.backgroundPosition = `${(col / (CONFIG.cols - 1)) * 100}% ${(row / (CONFIG.rows - 1)) * 100}%`;
         grid.appendChild(tile);
     }
 
     const tiles = grid.querySelectorAll('.tile');
     tiles.forEach((tile, index) => {
-        const col = index % cols;
-        const row = Math.floor(index / cols);
+        const col = index % CONFIG.cols;
+        const row = Math.floor(index / CONFIG.cols);
         setTimeout(() => {
             tile.classList.add('is-active');
-        }, (col + row) * 15); // Stagger effect
+        }, (col + row) * 20); 
     });
 };
 
-// Intersection Observer to trigger when scrolled into view
+// Observer to trigger when scrolled into view
 const mosaicObserver = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
-        initMosaic();
+        initProfessionalMosaic();
         mosaicObserver.disconnect();
     }
 }, { threshold: 0.2 });
