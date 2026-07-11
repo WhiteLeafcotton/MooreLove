@@ -166,23 +166,41 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 .cta-arrow:hover { gap: 30px; opacity: 0.8; }
 /* MOBILE RESPONSIVE ADAPTATION */
+/* MOBILE RESPONSIVE ADAPTATION */
 @media (max-width: 768px) {
-    .featured-card-wrapper { padding: 40px 4%; }
-    .featured-card { height: auto; display: block; background: none; padding: 0; border: none; }
-    .featured-card::before { content: ""; display: block; width: 100%; height: 140px; background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), url('final2.jpg) center/cover no-repeat; border: 0.5px solid rgba(255, 255, 255, 0.2); margin-bottom: 25px; }
-    .card-content { max-width: 100%; text-align: left; padding: 0 5px; }
-    .mosaic-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    /* Top Bar */
+    .top-bar { padding: 20px 4%; }
+    .top-links { gap: 15px; }
+
+    /* Nav */
     .nav-inner { gap: 20px; padding: 10px; }
     .nav-icon { width: 20px; height: 20px; }
     .nav-link { font-size: 9px; letter-spacing: 1px; }
-    
-    .top-bar { padding: 20px 4%; }
-    .top-links { gap: 15px; }
+
+    /* Featured Card */
+    .featured-card-wrapper { padding: 40px 4%; }
+    .featured-card { 
+        height: auto; 
+        display: block; 
+        background: none; 
+        padding: 0; 
+        border: none; 
+    }
+    .featured-card::before { 
+        content: ""; 
+        display: block; 
+        width: 100%; 
+        height: 140px; 
+        background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), url('final2.jpg') center/cover no-repeat; 
+        border: 0.5px solid rgba(255, 255, 255, 0.2); 
+        margin-bottom: 25px; 
+    }
+    .card-content { max-width: 100%; text-align: left; padding: 0 5px; }
+
+    /* Mosaic Grid */
     .mosaic-grid { grid-template-columns: 1fr; gap: 15px; }
     .tile-card { padding: 30px; }
-    .featured-card { padding: 30px; background-position: center; }
-    .card-content { max-width: 100%; }
-    .mosaic-bg-overlay { background-attachment: scroll; } /* Fix for mobile background jumping */
+    .mosaic-bg-overlay { background-attachment: scroll; } 
 }
 
 
