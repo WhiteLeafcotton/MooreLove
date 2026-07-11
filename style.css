@@ -321,10 +321,13 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     z-index: 2;
     flex: 1;
     display: grid;
+    /* This creates the 3 columns */
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    /* This ensures they stack nicely */
     gap: 15px;
-    height: 500px;
+    /* Give it a set width/height so it doesn't collapse */
+    min-width: 400px;
+    min-height: 400px;
 }
 
 .tile {
