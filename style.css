@@ -321,19 +321,26 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* Content on Bottom */
 .mosaic-content { 
-    text-align: center; 
-    width: 100%;
+    position: relative; 
+    z-index: 2; 
+    width: 100%;       /* Ensure it fills the container width */
+    max-width: 100%;   /* Remove constraints */
+    padding: 0 4%;     /* Enforce 4% side padding */
+    text-align: left;  /* Change to left to make it feel more rectangular/structural */
+    margin-bottom: 80px; 
 }
 
 .mosaic-content h2.extra-large { 
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(80px, 10vw, 140px); 
-    line-height: 1; 
+    font-size: clamp(60px, 8vw, 120px); 
+    line-height: 0.9; 
     color: #b89868; 
     margin-bottom: 20px;
     font-weight: 300;
+    letter-spacing: -2px; /* Tightens the look to feel more block-like */
 }
 
+/* Adjust the CTA to align with the text */
 .cta-arrow { 
     color: #fff; 
     text-transform: uppercase; 
@@ -343,6 +350,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     display: inline-flex;
     align-items: center;
     gap: 15px;
+    padding-left: 5px; /* Aligns with the edge of the text */
 }
 
 /* Tile styling remains the same */
