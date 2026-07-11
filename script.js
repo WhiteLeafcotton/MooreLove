@@ -70,21 +70,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.getElementById('mosaicGrid');
     if (!grid) return;
 
-    // Clear existing tiles to prevent duplication
-    grid.innerHTML = ''; 
-
-    const flashImages = ['senior1.jpg', 'senior2.jpg', 'senior3.jpg', 'senior4.jpg']; 
-    
-    // Ensure these contain 14 items each
-    const finalSet1 = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg','11.jpg','12.jpg','13.jpg','14.jpg'];
-    const finalSet2 = ['15.jpg','16.jpg','17.jpg','18.jpg','19.jpg','20.jpg','21.jpg','22.jpg','23.jpg','24.jpg','25.jpg','26.jpg','27.jpg','28.jpg'];
-    const finalSets = [finalSet1, finalSet2];
+    // Use just two main images instead of 28 slices
+    const finalImages = ['final-master-1.jpg', 'final-master-2.jpg'];
 
     for (let i = 0; i < 14; i++) {
         const tile = document.createElement('div');
         tile.className = 'tile';
+        // Set the background image for each tile
+        tile.style.backgroundImage = `url('${finalImages[0]}')`;
+        // This math automatically crops the background to the right piece
+        tile.style.backgroundPosition = `${(i % 7) * (100 / 6)}% ${Math.floor(i / 7) * 100}%`;
+        tile.style.backgroundSize = '700% 200%';
         grid.appendChild(tile);
     }
+    // ... rest of your logic
+
     
     const tiles = document.querySelectorAll('.tile');
     let cycleIndex = 0;
