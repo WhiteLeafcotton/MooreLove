@@ -192,20 +192,40 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         margin-bottom: 25px; 
     }
     
-    /* NEW: 2-Column Compact Mosaic */
-    .mosaic-section { padding: 40px 4%; }
+    /* MODIFIED: Mosaic Section with smooth top fade */
+    .mosaic-section { 
+        padding: 40px 4%; 
+        position: relative; /* Ensure the before element anchors here */
+    }
+    
+    /* This creates the smooth fade-in from the top */
+    .mosaic-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Gradient fades from pure black at the very top to your overlay tone */
+        background: linear-gradient(to bottom, #080808 0%, rgba(8,8,8,0.85) 20%, rgba(8,8,8,0.85) 100%);
+        z-index: 1;
+        pointer-events: none; /* Allows clicks to pass through to tiles */
+    }
+
     .mosaic-grid { 
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 Columns */
-        gap: 10px; /* Compact gap */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
         margin-bottom: 30px; 
+        position: relative;
+        z-index: 2; /* Ensures grid sits above the fade */
     }
     .tile-card { 
-        padding: 20px 10px; /* Reduced padding for compactness */
+        padding: 20px 10px; 
         gap: 10px; 
     }
-    .tile-card i { font-size: 24px; } /* Smaller icons for compact look */
-    .tile-card span { font-size: 8px; } /* Smaller text */
+    .tile-card i { font-size: 24px; }
+    .tile-card span { font-size: 8px; }
 }
 
 
