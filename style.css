@@ -287,7 +287,15 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     justify-content: space-between;
     align-items: center;
 }
-
+.mosaic-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* Reduced the 0.85 to 0.4 so the image shows through the darkness */
+    background: rgba(8, 8, 8, 0.4); 
+    backdrop-filter: blur(4px);      
+    z-index: 1;
+}
 /* Glassy Grid */
 .mosaic-grid {
     display: grid;
