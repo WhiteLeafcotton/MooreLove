@@ -146,29 +146,28 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     margin-top: 20px; /* Reduced space from the grid */
 }
 
-.mosaic-title {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(80px, 12vw, 150px); /* Massive title */
-    font-weight: 300;
-    letter-spacing: 2px;
-    margin: 0; /* Removing top/bottom margins */
-    padding: 0;
-    color: #fff;
-    line-height: 0.9; /* Tightens the vertical footprint */
+/* Ensure the footer container stretches */
+.mosaic-footer {
+    text-align: center;
+    z-index: 2;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1600px; /* Matches the grid width */
 }
 
-.cta-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 5px; /* Extremely tight spacing below title */
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 6px;
-    color: var(--gold);
-    cursor: pointer;
-    transition: var(--transition);
+/* Force title to behave as a block-level element */
+.mosaic-title {
+    display: block;
+    width: 100%;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(80px, 12vw, 150px);
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    line-height: 0.9;
+    text-align: center; /* Keeps the text centered */
 }
 
 .cta-arrow:hover { gap: 30px; opacity: 0.8; }
