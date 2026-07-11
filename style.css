@@ -15,29 +15,8 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .top-links a:hover { color: var(--gold); }
 
 /* HERO */
-.hero { 
-    position: relative; 
-    height: 70vh; 
-    min-height: 500px; 
-    display: flex; 
-    align-items: center; 
-    padding-left: 8%; 
-    overflow: hidden; 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #080808;
-}
-#heroVideo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    transform: translate(-50%, -50%);
-    z-index: 0;
-}
+.hero { position: relative; height: 70vh; min-height: 500px; display: flex; align-items: center; padding-left: 8%; overflow: hidden; background-size: cover; background-position: center; background-repeat: no-repeat; background-color: #080808; }
+#heroVideo { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; object-fit: cover; transform: translate(-50%, -50%); z-index: 0; }
 .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 250px; background: linear-gradient(to top,#080808,transparent); z-index: 2; }
 .hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.4); z-index: 1; } 
 
@@ -49,103 +28,37 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .hero-button:hover { background: #fff; color: #000; }
 
 /* STICKY NAV */
-.main-nav { 
-    position: fixed; top: -100px; left: 0; width: 100%; z-index: 50; 
-    background: rgba(8, 8, 8, 0.8); backdrop-filter: blur(10px); 
-    transition: top 0.4s ease; border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
-}
+.main-nav { position: fixed; top: -100px; left: 0; width: 100%; z-index: 50; background: rgba(8, 8, 8, 0.8); backdrop-filter: blur(10px); transition: top 0.4s ease; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 .main-nav.sticky { top: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
 .nav-inner { display: flex; align-items: center; justify-content: center; gap: 40px; padding: 15px 20px; }
 .nav-link { text-decoration: none !important; color: #fff !important; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; transition: var(--transition); }
 .nav-link:hover { color: var(--gold) !important; }
 .nav-icon { width: 24px; height: 24px; filter: brightness(0) invert(1); transition: var(--transition); }
-.nav-logo:hover .nav-icon { filter: invert(72%) sepia(21%) saturate(1478%) hue-rotate(345deg) brightness(90%) contrast(88%); }
 
 /* FEATURED CARD */
 .featured-card-wrapper { padding: 60px 4%; background: #080808; display: flex; justify-content: center; }
-.featured-card {
-    position: relative; width: 100%; max-width: 1600px; height: 300px;
-    background: linear-gradient(to right, rgba(8,8,8,0.8) 0%, transparent 40%), url('exp.jpg') center/cover;
-    display: flex; align-items: center; padding: 0 5%; border: 0.5px solid rgba(255, 255, 255, 0.2); overflow: hidden;
-}
+.featured-card { position: relative; width: 100%; max-width: 1600px; height: 300px; background: linear-gradient(to right, rgba(8,8,8,0.8) 0%, transparent 40%), url('exp.jpg') center/cover; display: flex; align-items: center; padding: 0 5%; border: 0.5px solid rgba(255, 255, 255, 0.2); overflow: hidden; }
 .card-content p { font-family: "Cormorant Garamond", serif; font-size: 24px; line-height: 1.3; margin-bottom: 30px; }
 .card-btn { display: inline-block; padding: 12px 35px; background: #fff; color: #000; text-decoration: none; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; transition: 0.3s; }
 
 /* MOSAIC SECTION */
+.mosaic-section { position: relative; padding: 100px 2%; display: flex; flex-direction: column; align-items: center; background-color: #080808; min-height: 900px; gap: 80px; overflow: hidden; }
+.mosaic-section::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, #080808 0%, #080808 75%, rgba(8,8,8,0.4) 100%), url('your-bg-image.jpg') center/cover no-repeat; backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); z-index: 1; pointer-events: none; }
 
+.mosaic-grid { display: grid; grid-template-columns: repeat(10, 1fr); grid-template-rows: repeat(10, 1fr); gap: 4px; width: 95%; max-width: 1500px; height: 600px; position: relative; z-index: 2; }
 
-/* 2. The pseudo-element now acts as the 'fader' from black to image */
-/* 1. Widen the grid and the container */
-/* MOSAIC SECTION - WIDE & ELEGANT */
-.mosaic-section {
-    position: relative;
-    padding: 100px 2%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #080808;
-    min-height: 900px;
-    gap: 80px;
-    overflow: hidden;
-}
+/* REFINED TILE STYLES */
+.tile { background-size: 1000% 1000%; opacity: 0; transform: scale(0.8); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid rgba(255,255,255,0.05); }
+.tile.is-active { opacity: 1; transform: scale(1); }
 
-/* Heavy black overlay extending behind the full grid */
-.mosaic-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, #080808 0%, #080808 75%, rgba(8,8,8,0.4) 100%), url('your-bg-image.jpg') center/cover no-repeat;
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    z-index: 1;
-    pointer-events: none;
-}
-
-.mosaic-grid {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr); /* 10 columns for high density */
-    grid-template-rows: repeat(10, 1fr);
-    gap: 4px; /* Tight, elegant gaps */
-    width: 95%;
-    max-width: 1500px;
-    height: 600px;
-    position: relative;
-    z-index: 2;
-}
-
-.tile {
-    background-size: 1000% 1000%;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tile.is-active {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.mosaic-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-}
+.mosaic-content { position: relative; z-index: 2; text-align: center; }
 .mosaic-content h2.extra-large { font-family: "Cormorant Garamond", serif; font-size: clamp(60px, 8vw, 120px); color: #b89868; margin-bottom: 20px; font-weight: 300; letter-spacing: -2px; }
 
-/* ANIMATIONS & UTILS */
+/* ANIMATIONS & RESPONSIVE */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.tile { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.15); opacity: 0; transition: all 0.6s ease; }
-.tile.visible { opacity: 1; transform: translateY(0); }
 
-/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
     .featured-card { height: auto; display: block; background: none; padding: 0; border: none; }
-    .featured-card::before {
-        content: ""; display: block; width: 100%; height: 140px; margin-bottom: 25px;
-        background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), url('exp.jpg') center/cover;
-    }
+    .featured-card::before { content: ""; display: block; width: 100%; height: 140px; margin-bottom: 25px; background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), url('exp.jpg') center/cover; }
     .nav-inner { gap: 20px; }
 }
