@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. Sticky Navigation ---
+    
+    // --- 1. STICKY NAVIGATION ---
     const hero = document.getElementById("hero");
     const nav = document.getElementById("mainNav");
     const placeholder = document.querySelector(".nav-placeholder");
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener("scroll", updateNav, { passive: true });
 
-    // --- 2. Hero Image Swapping ---
+    // --- 2. HERO IMAGE SWAPPING ---
     const iconItems = document.querySelectorAll('.icon-item');
     const heroSection = document.querySelector('.hero');
     const heroVideo = document.getElementById('heroVideo');
@@ -32,56 +33,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
     iconItems.forEach((item) => {
         const updateHero = () => {
-            if (heroVideo) { heroVideo.style.display = 'none'; heroVideo.pause(); }
+            if (heroVideo) {
+                heroVideo.style.display = 'none';
+                heroVideo.pause();
+            }
+            // Update Background and Text
             heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('${item.dataset.image}')`;
             if (heroTitle) heroTitle.innerHTML = item.dataset.title;
             if (heroBtn) heroBtn.innerText = item.dataset.cta;
             moveLine(item);
         };
+        
         item.addEventListener('mouseenter', updateHero);
+        item.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            updateHero();
+        }, { passive: false });
     });
 
-    // --- 3. Mosaic Reveal (Demure 3x4 Grid) ---
-    // Inside your initDemureReveal function:
-function initDemureReveal() {
-    const grid = document.getElementById('mosaicGrid');
-    if (!grid) return;
-    grid.innerHTML = ''; 
+    // Set initial position
+    setTimeout(() => { if (iconItems.length > 0) moveLine(iconItems[0]); }, 500);
 
-    // Exactly 9 items for the 3x3 grid
-    const tileData = [
-    {icon: 'fa-leaf', title: 'Nature'}, {icon: 'fa-spa', title: 'Wellness'},
-    {icon: 'fa-bed', title: 'Rest'}, {icon: 'fa-wine-glass', title: 'Dining'},
-    {icon: 'fa-anchor', title: 'Yachts'}, {icon: 'fa-compass', title: 'Explore'},
-    {icon: 'fa-user', title: 'Service'}, {icon: 'fa-star', title: 'Quality'},
-    {icon: 'fa-heart', title: 'Care'} // Exactly 9 items
-];
+    // --- 3. MASKED REVEAL ANIMATION ---
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const title = entry.target.querySelector('.h3-mask h3');
+                if (title) title.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
 
-    const shuffled = tileData.sort(() => 0.5 - Math.random());
-    
-    shuffled.forEach((data, index) => {
-        const tile = document.createElement('div');
-        tile.className = 'tile';
-        tile.innerHTML = `<i class="fa-solid ${data.icon}"></i><span>${data.title}</span>`;
-        grid.appendChild(tile);
+    const featuredCard = document.querySelector('.featured-card');
+    if (featuredCard) observer.observe(featuredCard);
 
-        setTimeout(() => { tile.classList.add('visible'); }, index * 100);
-    });
-}
+    // --- 4. HIGH-DENSITY MOSAIC ANIMATION ---
+    function initProfessionalMosaic() {
+        const grid = document.getElementById('mosaicGrid');
+        if (!grid || grid.children.length > 0) return; // Prevent double initialization
+        
+        const CONFIG = { mainImage: 'man.jpg', cols: 10, rows: 10 };
+        const totalTiles = CONFIG.cols * CONFIG.rows;
+        
+        for (let i = 0; i < totalTiles; i++) {
+            const tile = document.createElement('div');
+            tile.className = 'tile';
+            tile.style.backgroundImage = `url('${CONFIG.mainImage}')`;
+            
+            const col = i % CONFIG.cols;
+            const row = Math.floor(i / CONFIG.cols);
+            
+            tile.style.backgroundPosition = `${(col / (CONFIG.cols - 1)) * 100}% ${(row / (CONFIG.rows - 1)) * 100}%`;
+            grid.appendChild(tile);
+        }
 
-    const section = document.getElementById('mosaicSection');
+        // Trigger animation
+        const tiles = grid.querySelectorAll('.tile');
+        tiles.forEach((tile, index) => {
+            const col = index % CONFIG.cols;
+            const row = Math.floor(index / CONFIG.cols);
+            const delay = (col + row) * 20; // Slightly faster stagger
+            setTimeout(() => { tile.classList.add('is-active'); }, delay);
+        });
+    }
+
     const mosaicObserver = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
-            initDemureReveal();
+            initProfessionalMosaic();
             mosaicObserver.disconnect();
         }
     }, { threshold: 0.1 });
 
-    if (section) {
-        mosaicObserver.observe(section);
-        // Fallback: Trigger if already in view
-        if (section.getBoundingClientRect().top < window.innerHeight) {
-            initDemureReveal();
-        }
-    }
+    const section = document.getElementById('mosaicSection');
+    if (section) mosaicObserver.observe(section);
 });
