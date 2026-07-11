@@ -69,6 +69,18 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .nav-inner { display: flex; justify-content: center; gap: 40px; padding: 20px; }
 .nav-inner a { text-decoration: none; color: white; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; transition: .3s; }
 .nav-inner a:hover { color: var(--gold); }
+.nav-logo img {
+    height: 40px; /* Adjust size as needed */
+    width: auto;
+    vertical-align: middle;
+    margin-right: 20px; /* Space between logo and first link */
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Keeps everything centered */
+}
 
 /* SECTIONS */
 .section { padding: 100px 4%; background: #080808; }
