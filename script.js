@@ -108,22 +108,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const cards = Array.from(document.querySelectorAll('.loc-card'));
     let currentIndex = 1; // Start with the second card in center
 
-    function updateCarousel() {
-        const centerOffset = (window.innerWidth / 2) - 150; // 150 is half of card width
-        cards.forEach((card, index) => {
-            const offset = (index - currentIndex) * 320; // 320 is width + margin
-            card.style.transform = `translateX(${centerOffset + offset}px)`;
-            
-            if (index === currentIndex) {
-                card.classList.add('active');
-                // Update background image
-                const bg = card.getAttribute('data-bg');
-                if (gallery) gallery.style.background = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${bg}') center/cover no-repeat`;
-            } else {
-                card.classList.remove('active');
-            }
-        });
-    }
+   function updateCarousel() {
+    const cardWidth = 320; // 300px width + 20px gap
+    const containerCenter = window.innerWidth / 2;
+
+    cards.forEach((card, index) => {
+        // Calculate position relative to current index
+        const offset = (index - currentIndex) * cardWidth;
+        card.style.transform = `translateX(${containerCenter - (cardWidth / 2) + offset}px) scale(${index === currentIndex ? 1 : 0.9})`;
+        card.style.opacity = index === currentIndex ? 1 : 0.5;
+        
+        if (index === currentIndex) {
+            card.classList.add('active');
+            // Background update...
+        } else {
+            card.classList.remove('active');
+        }
+    });
+}
 
     // Click to slide
     cards.forEach((card, index) => {
