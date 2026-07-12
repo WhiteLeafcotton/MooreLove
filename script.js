@@ -67,27 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Professional High-Density Mosaic Reveal (100 Tiles)
    // 4. Staggered Mosaic Tile Reveal
-const mosaicSection = document.getElementById('mosaicSection');
-const tiles = document.querySelectorAll('.tile-card');
 
-const revealTiles = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            tiles.forEach((tile, index) => {
-                // Stagger delay by 150ms per tile
-                setTimeout(() => {
-                    tile.classList.add('is-visible');
-                }, index * 150);
-            });
-            // Stop observing once triggered
-            observer.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.2 });
-
-if (mosaicSection) {
-    revealTiles.observe(mosaicSection);
-}
 
         // Trigger animation
         const tiles = document.querySelectorAll('.tile');
