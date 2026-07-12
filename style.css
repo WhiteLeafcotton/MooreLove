@@ -334,6 +334,18 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 
+#mainNav {
+    position: fixed; /* More stable than sticky */
+    top: -100px; /* Start hidden */
+    width: 100%;
+    z-index: 9999;
+    transition: top 0.4s ease;
+}
+
+#mainNav.sticky {
+    top: 0;
+}
+
 
 
 
