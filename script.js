@@ -111,3 +111,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 4. High-Density Mosaic Animation
 // --- Mosaic Initialization ---
+
+
+
+
+
+
+
+const cards = document.querySelectorAll('.location-card');
+
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+        // Remove active class from all
+        cards.forEach(c => c.classList.remove('active'));
+        // Add to the one clicked
+        card.classList.add('active');
+        
+        // Optional: Scroll the container so the active card is centered
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    });
+});
