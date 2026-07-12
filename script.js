@@ -117,23 +117,19 @@ no dont change my entire code just fix the section we are working on like this?d
 
 
 
+const gallery = document.getElementById('locationsGallery');
+const locCards = document.querySelectorAll('.loc-card');
 
-// 5. Locations Carousel (Click Logic)
-    const locationCards = document.querySelectorAll('.location-card');
-    locationCards.forEach(card => {
-        card.addEventListener('click', () => {
-            locationCards.forEach(c => c.classList.remove('active'));
-            card.classList.add('active');
-            card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        });
-    });
-
-    // 6. Locations Gallery (Hover/Accordion Logic)
-    const galleryCards = document.querySelectorAll('.loc-card');
-    galleryCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            galleryCards.forEach(c => c.classList.remove('active'));
-            card.classList.add('active');
-        });
+locCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        // 1. Remove active state from others
+        locCards.forEach(c => c.classList.remove('active'));
+        
+        // 2. Set this one to active
+        card.classList.add('active');
+        
+        // 3. Swap the background of the section
+        const bg = card.getAttribute('data-bg');
+        gallery.style.background = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${bg}') center/cover no-repeat`;
     });
 });
