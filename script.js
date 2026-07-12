@@ -3,24 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const hero = document.getElementById("hero");
     const nav = document.getElementById("mainNav");
     const placeholder = document.querySelector(".nav-placeholder");
-    // 5. Demure Tile Animation
-    const tileObserverOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px' // Starts slightly before the element is fully visible
-    };
-
-    const tileObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                tileObserver.unobserve(entry.target); // Only animate once
-            }
-        });
-    }, tileObserverOptions);
-
-    document.querySelectorAll('.tile-card').forEach(card => {
-        tileObserver.observe(card);
-    });
 
     function updateNav() {
         if (!hero || !nav) return;
@@ -34,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener("scroll", updateNav, { passive: true });
 
-    // 2. Hero Content & Image Swappggging Logic
+    // 2. Hero Content & Image Swapping Logic
     const iconItems = document.querySelectorAll('.icon-item');
     const heroSection = document.querySelector('.hero');
     const heroVideo = document.getElementById('heroVideo');
@@ -88,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const grid = document.getElementById('mosaicGrid');
         if (!grid) return;
         
-        // Configuration for high density
         const CONFIG = { mainImage: 'man.jpg', cols: 10, rows: 10 };
         const totalTiles = CONFIG.cols * CONFIG.rows;
         
@@ -104,22 +85,19 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.appendChild(tile);
         }
 
-      
-    // ... (inside initProfessionalMosaic function)
-        
-        // Trigger animation
         const tiles = document.querySelectorAll('.tile');
         tiles.forEach((tile, index) => {
             const col = index % CONFIG.cols;
             const row = Math.floor(index / CONFIG.cols);
             const delay = (col + row) * 30; 
             
-            // Add the 'is-visible' class after the stagger delay
+            // Add both classes for the mosaic grid
             setTimeout(() => { 
                 tile.classList.add('is-active'); 
-                tile.classList.add('is-visible'); // Add this to trigger your demure CSS
+                tile.classList.add('is-visible'); 
             }, delay);
         });
+    }
 
     const mosaicObserver = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
@@ -130,8 +108,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const section = document.getElementById('mosaicSection');
     if (section) mosaicObserver.observe(section);
+
+    // 5. Demure Tile Animation for standard cards
+    const tileObserverOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const tileObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                tileObserver.unobserve(entry.target);
+            }
+        });
+    }, tileObserverOptions);
+
+    document.querySelectorAll('.tile-card').forEach(card => {
+        tileObserver.observe(card);
+    });
 });
-
-
-// 4. High-Density Mosaic Animation
-// --- Mosaic Initialization ---
