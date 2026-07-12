@@ -165,6 +165,35 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 .cta-arrow:hover { gap: 30px; opacity: 0.8; }
+
+
+
+
+
+.locations-section { padding: 100px 0; background: #080808; overflow: hidden; }
+.carousel-container { display: flex; align-items: center; justify-content: center; gap: 40px; }
+
+.location-card {
+    width: 350px; /* Non-active width */
+    height: 500px;
+    transition: all 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+    filter: brightness(0.4); /* Dims the inactive ones */
+    transform: scale(0.9);
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+}
+
+/* THE ACTIVE STATE (The Center Card) */
+.location-card.active {
+    width: 450px; /* Enlarge when active */
+    filter: brightness(1);
+    transform: scale(1.1);
+    border-color: var(--gold);
+}
+
+.card-inner { padding: 40px; color: #fff; }
+.card-inner h3 { font-family: "Cormorant Garamond", serif; margin-bottom: 20px; }
 /* MOBILE RESPONSIVE ADAPTATION */
 /* MOBILE RESPONSIVE ADAPTATION */
 @media (max-width: 768px) {
@@ -247,3 +276,8 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     .tile-card i { font-size: 24px; }
     .tile-card span { font-size: 8px; }
 }
+
+
+
+
+
