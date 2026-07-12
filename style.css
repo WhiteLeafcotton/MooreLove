@@ -118,34 +118,37 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     margin-bottom: 60px;
 }
 
+
+
+
+/* Cleaned up Tile Styles */
 .tile-card {
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 80px 40px; /* Larger tiles */
+    padding: 80px 40px; 
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 25px;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(12px);
-    transition: var(--transition);
     cursor: pointer;
+    /* Consolidate animations here */
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out, background 0.4s ease;
 }
 
-
 .tile-card:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--gold); }
-.tile-card i { font-size: 40px; color: #fff; transition: var(--transition); }
-.tile-card span { font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: #fff; }
-/* Initial hidden state */
 
-
-/* Class added by JavaScript when visible */
-.tile-card.is-visible {
+/* Animation Trigger State (Keeps both .tile and .tile-card working) */
+.tile.is-visible, .tile-card.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Icons/Text */
+.tile-card i { font-size: 40px; color: #fff; transition: var(--transition); }
+.tile-card span { font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: #fff; }
 
 /* Large Title & CTA */
 .mosaic-footer {
