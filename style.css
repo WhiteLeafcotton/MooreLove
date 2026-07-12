@@ -207,7 +207,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     .mosaic-section { 
         padding: 40px 4%; 
         position: relative;
-        background-color: #080808;  /* Remove background from section */
+        background: transparent; /* Remove background from section */
     }
     
     .mosaic-section::before {
