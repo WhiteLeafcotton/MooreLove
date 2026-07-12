@@ -8,7 +8,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 :root { --gold: #d4b06a; --transition: .4s ease; }
 
-/* TOP BAR */
+/* TOP BjhjAR */
 .top-bar { position: absolute; top: 0; left: 0; width: 100%; padding: 28px 8%; z-index: 1000; display: flex; justify-content: flex-end; }
 .top-links { display: flex; gap: 34px; }
 .top-links a { text-decoration: none; color: white; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: .9; transition: var(--transition); }
