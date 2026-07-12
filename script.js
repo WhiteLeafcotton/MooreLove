@@ -103,18 +103,41 @@ document.addEventListener('DOMContentLoaded', () => {
     if (section) mosaicObserver.observe(section);
 
     // 5. Locations Gallery Logic
+  // 5. Infinite Carousel Logic
     const gallery = document.getElementById('locationsGallery');
-    const locCards = document.querySelectorAll('.loc-card');
+    const cards = Array.from(document.querySelectorAll('.loc-card'));
+    let currentIndex = 1; // Start with the second card in center
 
-    locCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            locCards.forEach(c => c.classList.remove('active'));
-            card.classList.add('active');
+    function updateCarousel() {
+        const centerOffset = (window.innerWidth / 2) - 150; // 150 is half of card width
+        cards.forEach((card, index) => {
+            const offset = (index - currentIndex) * 320; // 320 is width + margin
+            card.style.transform = `translateX(${centerOffset + offset}px)`;
             
-            const bg = card.getAttribute('data-bg');
-            if (gallery && bg) {
-                gallery.style.background = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${bg}') center/cover no-repeat`;
+            if (index === currentIndex) {
+                card.classList.add('active');
+                // Update background image
+                const bg = card.getAttribute('data-bg');
+                if (gallery) gallery.style.background = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${bg}') center/cover no-repeat`;
+            } else {
+                card.classList.remove('active');
             }
         });
+    }
+
+    // Click to slide
+    cards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+            currentIndex = index;
+            updateCarousel();
+        });
     });
-});
+
+    // Handle Infinite Wrap
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % cards.length;
+        updateCarousel();
+    }
+
+    // Initialize
+    updateCarousel();
