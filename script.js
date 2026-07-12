@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener("scroll", updateNav, { passive: true });
 
-    // 2. Hero Content & Image Swapping Logic
+    // 2. Hero Content & Image Swappggging Logic
     const iconItems = document.querySelectorAll('.icon-item');
     const heroSection = document.querySelector('.hero');
     const heroVideo = document.getElementById('heroVideo');
@@ -65,24 +65,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const featuredCard = document.querySelector('.featured-card');
     if (featuredCard) observer.observe(featuredCard);
 
-    // 4. Staggered Mosaic Tile Reveal
-    const mosaicSection = document.getElementById('mosaicSection');
-    const tiles = document.querySelectorAll('.tile-card');
+    // 4. Professional High-Density Mosaic Reveal (100 Tiles)
+    function initProfessionalMosaic() {
+        const grid = document.getElementById('mosaicGrid');
+        if (!grid) return;
+        
+        // Configuration for high density
+        const CONFIG = { mainImage: 'man.jpg', cols: 10, rows: 10 };
+        const totalTiles = CONFIG.cols * CONFIG.rows;
+        
+        for (let i = 0; i < totalTiles; i++) {
+            const tile = document.createElement('div');
+            tile.className = 'tile';
+            tile.style.backgroundImage = `url('${CONFIG.mainImage}')`;
+            
+            const col = i % CONFIG.cols;
+            const row = Math.floor(i / CONFIG.cols);
+            
+            tile.style.backgroundPosition = `${(col / (CONFIG.cols - 1)) * 100}% ${(row / (CONFIG.rows - 1)) * 100}%`;
+            grid.appendChild(tile);
+        }
 
-    const revealTiles = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                tiles.forEach((tile, index) => {
-                    setTimeout(() => {
-                        tile.classList.add('is-visible');
-                    }, index * 150);
-                });
-                obs.unobserve(entry.target);
-            }
+        // Trigger animation
+        const tiles = document.querySelectorAll('.tile');
+        tiles.forEach((tile, index) => {
+            const col = index % CONFIG.cols;
+            const row = Math.floor(index / CONFIG.cols);
+            // Faster stagger for 100 tiles (30ms per tile)
+            const delay = (col + row) * 30; 
+            setTimeout(() => { tile.classList.add('is-active'); }, delay);
         });
+    }
+
+    const mosaicObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            initProfessionalMosaic();
+            mosaicObserver.disconnect();
+        }
     }, { threshold: 0.2 });
 
-    if (mosaicSection) {
-        revealTiles.observe(mosaicSection);
-    }
+    const section = document.getElementById('mosaicSection');
+    if (section) mosaicObserver.observe(section);
 });
+
+
+// 4. High-Density Mosaic Animation
+// --- Mosaic Initialization ---
