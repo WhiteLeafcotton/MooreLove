@@ -227,16 +227,17 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 /* Hide content by default, show on active */
+/* Hide content by default */
 .card-reveal {
     opacity: 0;
-    transition: opacity 0.4s;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    transition: opacity 0.5s;
+    pointer-events: none; /* Prevents accidental clicks on hidden stuff */
 }
 
+/* Show content only when active */
 .loc-card.active .card-reveal {
     opacity: 1;
+    pointer-events: all;
 }
 
 /* Inactive State: Just the Title */
