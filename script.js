@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener("scroll", updateNav, { passive: true });
 
-    // 2. Hero Content & Image Swapping Logic
+    // 2. Hero Content & Image Swappggging Logic
     const iconItems = document.querySelectorAll('.icon-item');
     const heroSection = document.querySelector('.hero');
     const heroVideo = document.getElementById('heroVideo');
@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const grid = document.getElementById('mosaicGrid');
         if (!grid) return;
         
+        // Configuration for high density
         const CONFIG = { mainImage: 'man.jpg', cols: 10, rows: 10 };
         const totalTiles = CONFIG.cols * CONFIG.rows;
         
@@ -85,17 +86,14 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.appendChild(tile);
         }
 
+        // Trigger animation
         const tiles = document.querySelectorAll('.tile');
         tiles.forEach((tile, index) => {
             const col = index % CONFIG.cols;
             const row = Math.floor(index / CONFIG.cols);
+            // Faster stagger for 100 tiles (30ms per tile)
             const delay = (col + row) * 30; 
-            
-            // Add both classes for the mosaic grid
-            setTimeout(() => { 
-                tile.classList.add('is-active'); 
-                tile.classList.add('is-visible'); 
-            }, delay);
+            setTimeout(() => { tile.classList.add('is-active'); }, delay);
         });
     }
 
@@ -108,19 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const section = document.getElementById('mosaicSection');
     if (section) mosaicObserver.observe(section);
-
-    // 5. Demure Tile Animation for standard cards
-    const tileObserverOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-    const tileObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                tileObserver.unobserve(entry.target);
-            }
-        });
-    }, tileObserverOptions);
-
-    document.querySelectorAll('.tile-card').forEach(card => {
-        tileObserver.observe(card);
-    });
 });
+
+
+// 4. High-Density Mosaic Animation
+// --- Mosaic Initialization ---
