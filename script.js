@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener("scroll", updateNav, { passive: true });
 
-    // 2. Hero Chjhjontent & Image Swappggging Logic
+    // 2. Hero Content Logic
     const iconItems = document.querySelectorAll('.icon-item');
     const heroSection = document.querySelector('.hero');
     const heroVideo = document.getElementById('heroVideo');
@@ -48,10 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: false });
     });
 
-    setTimeout(() => { if (iconItems.length > 0) moveLine(iconItems[0]); }, 100);
-
-    // 3. Slide-Up Masked Reveal Animation for Featured Card
-    const observerOptions = { threshold: 0.3 };
+    // 3. Featured Card Observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -60,84 +57,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.3 });
 
     const featuredCard = document.querySelector('.featured-card');
     if (featuredCard) observer.observe(featuredCard);
 
-    // 4. Professional High-Density Mosaic Reveal (100 Tiles)
-    function initProfessionalMosaic() {
-        const grid = document.getElementById('mosaicGrid');
-        if (!grid) return;
-        
-        // Configuration for high density
-        const CONFIG = { mainImage: 'man.jpg', cols: 10, rows: 10 };
-        const totalTiles = CONFIG.cols * CONFIG.rows;
-        
-        for (let i = 0; i < totalTiles; i++) {
-            const tile = document.createElement('div');
-            tile.className = 'tile';
-            tile.style.backgroundImage = `url('${CONFIG.mainImage}')`;
-            
-            const col = i % CONFIG.cols;
-            const row = Math.floor(i / CONFIG.cols);
-            
-            tile.style.backgroundPosition = `${(col / (CONFIG.cols - 1)) * 100}% ${(row / (CONFIG.rows - 1)) * 100}%`;
-            grid.appendChild(tile);
-        }
-
-        // Trigger animation
-        const tiles = document.querySelectorAll('.tile');
-        tiles.forEach((tile, index) => {
-            const col = index % CONFIG.cols;
-            const row = Math.floor(index / CONFIG.cols);
-            // Faster stagger for 100 tiles (30ms per tile)
-            const delay = (col + row) * 30; 
-            setTimeout(() => { tile.classList.add('is-active'); }, delay);
+    // 4. Locations Gallery (Accordion Expansion)
+    const locCards = document.querySelectorAll('.loc-card');
+    locCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            locCards.forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
         });
-    }
-
-    const mosaicObserver = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-            initProfessionalMosaic();
-            mosaicObserver.disconnect();
-        }
-    }, { threshold: 0.2 });
-
-    const section = document.getElementById('mosaicSection');
-    if (section) mosaicObserver.observe(section);
-});
-
-
-// 4. High-Density Mosaic Animation
-// --- Mosaic Initialization ---
-
-
-
-
-
-
-
-const cards = document.querySelectorAll('.location-card');
-
-cards.forEach(card => {
-    card.addEventListener('click', () => {
-        // Remove active class from all
-        cards.forEach(c => c.classList.remove('active'));
-        // Add to the one clicked
-        card.classList.add('active');
-        
-        // Optional: Scroll the container so the active card is centered
-        card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    });
-});
-
-
-const cards = document.querySelectorAll('.loc-card');
-
-cards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        cards.forEach(c => c.classList.remove('active'));
-        card.classList.add('active');
     });
 });
