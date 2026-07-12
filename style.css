@@ -193,7 +193,17 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     }
     
     /* NEW: Dedicated background layer logic for Mobile */
+   
+/* Update this in your style.css */
+
+    .mosaic-section {
+        padding: 40px 4%;
+        position: relative;
+        background: transparent !important; /* Forces transparency so the bg-layer shows */
+    }
+    
     .mosaic-bg-layer {
+        display: block; /* Ensures it is visible */
         position: fixed;
         top: 0;
         left: 0;
@@ -201,14 +211,8 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         height: 100%;
         background: url('final2.jpg') center/cover no-repeat;
         z-index: -1;
-        will-change: transform;
     }
 
-    .mosaic-section { 
-        padding: 40px 4%; 
-        position: relative;
-        background-color: #080808;  /* Remove background from section */
-    }
     
     .mosaic-section::before {
         content: "";
