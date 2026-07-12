@@ -207,7 +207,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     .mosaic-section { 
         padding: 40px 4%; 
         position: relative;
-        background: transparent; /* Remove background from section */
+        background-color: #080808;  /* Remove background from section */
     }
     
     .mosaic-section::before {
@@ -222,6 +222,8 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         z-index: 1;
         pointer-events: none;
     }
+    /* Ensure the section content is opaque so it covers the fixed background */
+
 
     .mosaic-grid { 
         display: grid;
