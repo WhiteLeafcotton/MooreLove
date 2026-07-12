@@ -204,24 +204,26 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 .locations-gallery {
     display: flex;
-    height: 70vh;
-    padding: 0 4%;
-    gap: 10px;
-    background: #000; /* Default dark */
-    transition: background 0.8s ease; /* The background image will fade */
+    overflow: hidden; /* Keeps things contained */
+    width: 100%;
+    position: relative;
+    padding: 20px 0;
 }
 
 .loc-card {
-    flex: 1;
-    border: 1px solid rgba(255,255,255,0.2);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    padding: 20px;
+    min-width: 300px; /* Force consistent size */
+    height: 400px;
+    margin: 0 10px;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s;
+    /* Styles for the unselected dimmed look */
+    opacity: 0.5;
+    transform: scale(0.9);
+}
+
+.loc-card.active {
+    opacity: 1;
+    transform: scale(1);
+    /* No flex-grow here, so it stays the same width as others */
 }
 
 /* Inactive State: Just the Title */
@@ -229,12 +231,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .card-reveal { display: none; text-align: center; }
 
 /* Active State: Expand and Show Content */
-.loc-card.active {
-    flex: 2.5;
-    background: #fff; /* The white card box */
-    color: #000;
-    justify-content: flex-start;
-}
+
 
 .loc-card.active .card-reveal { display: block; }
 .loc-card.active .card-title { margin-top: 40px; margin-bottom: 20px; }
