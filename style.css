@@ -224,33 +224,33 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         background: transparent; /* Remove background from section */
     }
     
-    .mosaic-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%; /* Covers entire section */
-        /* Fade from black at top to dark overlay at bottom */
-        background: linear-gradient(to bottom, #080808 0%, rgba(8,8,8,0.85) 30%);
-        z-index: 1;
-        pointer-events: none;
-    }
-    /* Ensure the section content is opaque so it covers the fixed background */
+        .mosaic-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; /* Covers entire section */
+        /* Fade from black at top to dark overlay at bottom */
+        background: linear-gradient(to bottom, #080808 0%, rgba(8,8,8,0.85) 30%);
+        z-index: 1;
+        pointer-events: none;
+    }
+    /* Ensure the section content is opaque so it covers the fixed background */
 
 
-    .mosaic-grid { 
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        margin-bottom: 30px; 
-        position: relative;
-        z-index: 2; 
-    }
-    .tile-card { 
-        padding: 20px 10px; 
-        gap: 10px; 
-    }
-    .tile-card i { font-size: 24px; }
-    .tile-card span { font-size: 8px; }
+    .mosaic-grid { 
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-bottom: 30px; 
+        position: relative;
+        z-index: 2; 
+    }
+    .tile-card { 
+        padding: 20px 10px; 
+        gap: 10px; 
+    }
+    .tile-card i { font-size: 24px; }
+    .tile-card span { font-size: 8px; }
 }
