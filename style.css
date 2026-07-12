@@ -129,11 +129,23 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     backdrop-filter: blur(12px);
     transition: var(--transition);
     cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
+
 
 .tile-card:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--gold); }
 .tile-card i { font-size: 40px; color: #fff; transition: var(--transition); }
 .tile-card span { font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: #fff; }
+/* Initial hidden state */
+
+
+/* Class added by JavaScript when visible */
+.tile-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 /* Large Title & CTA */
 .mosaic-footer {
