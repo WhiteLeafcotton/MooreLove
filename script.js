@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener("scroll", updateNav, { passive: true });
 
-    // 2. Hero Content & Image Swappggging Logic
+    // 2. Hero Chjhjontent & Image Swappggging Logic
     const iconItems = document.querySelectorAll('.icon-item');
     const heroSection = document.querySelector('.hero');
     const heroVideo = document.getElementById('heroVideo');
