@@ -129,11 +129,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Click to slide
     cards.forEach((card, index) => {
-        card.addEventListener('click', () => {
-            currentIndex = index;
-            updateCarousel();
-        });
+    card.addEventListener('click', () => {
+        // Remove active class from all
+        cards.forEach(c => c.classList.remove('active'));
+        
+        // Add to clicked
+        card.classList.add('active');
+        
+        // Update background
+        const bg = card.getAttribute('data-bg');
+        gallery.style.background = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${bg}') center/cover no-repeat`;
     });
+});
 
     // Handle Infinite Wrap
     function nextSlide() {
