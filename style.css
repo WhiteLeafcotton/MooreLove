@@ -1,4 +1,4 @@
-
+like this ? 
 /*==================================================
 HBCR Senior Living - Final CSS
 ==================================================*/
@@ -15,31 +15,31 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .top-links a:hover { color: var(--gold); }
 
 /* HERO - Video Integrated */
-.hero { 
-    position: relative; 
-    height: 70vh; 
-    min-height: 500px; 
-    display: flex; 
-    align-items: center; 
-    padding-left: 8%; 
-    overflow: hidden; 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #080808;
+.hero { 
+    position: relative; 
+    height: 70vh; 
+    min-height: 500px; 
+    display: flex; 
+    align-items: center; 
+    padding-left: 8%; 
+    overflow: hidden; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #080808;
 }
 #heroVideo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    transform: translate(-50%, -50%);
-    z-index: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transform: translate(-50%, -50%);
+    z-index: 0;
 }
 .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 250px; background: linear-gradient(to top,#080808,transparent); z-index: 2; }
-.hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.4); z-index: 1; } 
+.hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.4); z-index: 1; } 
 
 /* CONTENT */
 .hero-content { position: relative; z-index: 5; max-width: 700px; margin-top: -40px; animation: fadeUp 1s ease; }
@@ -90,168 +90,172 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* MOSAIC SECTION - UPDATED FOR SIZE AND SPACING */
 /* MOSAIC SECTION */
 .mosaic-section {
-    position: relative;
-    padding: 80px 4%; /* Adjusted padding for better spacing */
-    background: url('final2.jpg') center/cover no-repeat fixed; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    padding: 80px 4%; /* Adjusted padding for better spacing */
+    background: url('final2.jpg') center/cover no-repeat fixed; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .mosaic-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(8, 8, 8, 0.7); /* Slightly darker for better contrast */
-    z-index: 1;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 8, 8, 0.7); /* Slightly darker for better contrast */
+    z-index: 1;
 }
 
 /* Larger, Wider Grid */
 .mosaic-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px; /* Increased gap */
-    width: 100%;
-    max-width: 1400px; /* Increased max-width */
-    z-index: 2;
-    margin-bottom: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px; /* Increased gap */
+    width: 100%;
+    max-width: 1400px; /* Increased max-width */
+    z-index: 2;
+    margin-bottom: 60px;
 }
 
-
-
-
-/* Cleaned up Tile Styles */
 .tile-card {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 80px 40px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(12px);
-    cursor: pointer;
-    /* Consolidate animations here */
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out, background 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 80px 40px; /* Larger tiles */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    transition: var(--transition);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
+
 
 .tile-card:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--gold); }
-
-/* Animation Trigger State (Keeps both .tile and .tile-card working) */
-.tile.is-visible, .tile-card.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Icons/Text */
 .tile-card i { font-size: 40px; color: #fff; transition: var(--transition); }
 .tile-card span { font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: #fff; }
+/* Initial hidden state */
+
+
+/* Animation Base States */
+.tile, .tile-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+/* Animation Trigger State */
+.tile.is-visible, .tile-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 /* Large Title & CTA */
 .mosaic-footer {
-    text-align: center;
-    z-index: 2;
+    text-align: center;
+    z-index: 2;
 }
 
 .mosaic-title {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(56px, 8vw, 96px); /* Very large title */
-    font-weight: 300;
-    letter-spacing: 4px;
-    margin-bottom: 20px;
-    color: #fff;
-    line-height: 1;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(56px, 8vw, 96px); /* Very large title */
+    font-weight: 300;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    color: #fff;
+    line-height: 1;
 }
 
 .cta-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    font-size: 16px; 
-    text-transform: uppercase;
-    letter-spacing: 6px;
-    color: var(--gold);
-    cursor: pointer;
-    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 16px; 
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    color: var(--gold);
+    cursor: pointer;
+    transition: var(--transition);
 }
 
 .cta-arrow:hover { gap: 30px; opacity: 0.8; }
 /* MOBILE RESPONSIVE ADAPTATION */
 /* MOBILE RESPONSIVE ADAPTATION */
 @media (max-width: 768px) {
-    /* Existing tweaks */
-    .top-bar { padding: 20px 4%; }
-    .top-links { gap: 15px; }
-    .nav-inner { gap: 20px; padding: 10px; }
-    .nav-link { font-size: 9px; letter-spacing: 1px; }
+    /* Existing tweaks */
+    .top-bar { padding: 20px 4%; }
+    .top-links { gap: 15px; }
+    .nav-inner { gap: 20px; padding: 10px; }
+    .nav-link { font-size: 9px; letter-spacing: 1px; }
 
-    .featured-card-wrapper { padding: 40px 4%; }
-    .featured-card { 
-        height: auto; 
-        display: block; 
-        background: none; 
-        padding: 0; 
-        border: none; 
-    }
-    .featured-card::before { 
-        content: ""; 
-        display: block; 
-        width: 100%; 
-        height: 140px; 
-        background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), url('final2.jpg') center/cover no-repeat; 
-        border: 0.5px solid rgba(255, 255, 255, 0.2); 
-        margin-bottom: 25px; 
-    }
-    
-    /* NEW: Dedicated background layer logic for Mobile */
-    .mosaic-bg-layer {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url('final2.jpg') center/cover no-repeat;
-        z-index: -1;
-        will-change: transform;
-    }
+    .featured-card-wrapper { padding: 40px 4%; }
+    .featured-card { 
+        height: auto; 
+        display: block; 
+        background: none; 
+        padding: 0; 
+        border: none; 
+    }
+    .featured-card::before { 
+        content: ""; 
+        display: block; 
+        width: 100%; 
+        height: 140px; 
+        background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), url('final2.jpg') center/cover no-repeat; 
+        border: 0.5px solid rgba(255, 255, 255, 0.2); 
+        margin-bottom: 25px; 
+    }
+    
+    /* NEW: Dedicated background layer logic for Mobile */
+    .mosaic-bg-layer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('final2.jpg') center/cover no-repeat;
+        z-index: -1;
+        will-change: transform;
+    }
 
-    .mosaic-section { 
-        padding: 40px 4%; 
-        position: relative;
-        background: transparent; /* Remove background from section */
-    }
-    
-    .mosaic-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%; /* Covers entire section */
-        /* Fade from black at top to dark overlay at bottom */
-        background: linear-gradient(to bottom, #080808 0%, rgba(8,8,8,0.85) 30%);
-        z-index: 1;
-        pointer-events: none;
-    }
-    /* Ensure the section content is opaque so it covers the fixed background */
+    .mosaic-section { 
+        padding: 40px 4%; 
+        position: relative;
+        background: transparent; /* Remove background from section */
+    }
+    
+    .mosaic-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; /* Covers entire section */
+        /* Fade from black at top to dark overlay at bottom */
+        background: linear-gradient(to bottom, #080808 0%, rgba(8,8,8,0.85) 30%);
+        z-index: 1;
+        pointer-events: none;
+    }
+    /* Ensure the section content is opaque so it covers the fixed background */
 
 
-    .mosaic-grid { 
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        margin-bottom: 30px; 
-        position: relative;
-        z-index: 2; 
-    }
-    .tile-card { 
-        padding: 20px 10px; 
-        gap: 10px; 
-    }
-    .tile-card i { font-size: 24px; }
-    .tile-card span { font-size: 8px; }
+    .mosaic-grid { 
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-bottom: 30px; 
+        position: relative;
+        z-index: 2; 
+    }
+    .tile-card { 
+        padding: 20px 10px; 
+        gap: 10px; 
+    }
+    .tile-card i { font-size: 24px; }
+    .tile-card span { font-size: 8px; }
 }
