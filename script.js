@@ -3,6 +3,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const hero = document.getElementById("hero");
     const nav = document.getElementById("mainNav");
     const placeholder = document.querySelector(".nav-placeholder");
+    // 5. Demure Tile Animation
+    const tileObserverOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px' // Starts slightly before the element is fully visible
+    };
+
+    const tileObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                tileObserver.unobserve(entry.target); // Only animate once
+            }
+        });
+    }, tileObserverOptions);
+
+    document.querySelectorAll('.tile-card').forEach(card => {
+        tileObserver.observe(card);
+    });
 
     function updateNav() {
         if (!hero || !nav) return;
@@ -66,19 +84,42 @@ document.addEventListener('DOMContentLoaded', () => {
     if (featuredCard) observer.observe(featuredCard);
 
     // 4. Professional High-Density Mosaic Reveal (100 Tiles)
-   // 4. Staggered Mosaic Tile Reveal
+    function initProfessionalMosaic() {
+        const grid = document.getElementById('mosaicGrid');
+        if (!grid) return;
+        
+        // Configuration for high density
+        const CONFIG = { mainImage: 'man.jpg', cols: 10, rows: 10 };
+        const totalTiles = CONFIG.cols * CONFIG.rows;
+        
+        for (let i = 0; i < totalTiles; i++) {
+            const tile = document.createElement('div');
+            tile.className = 'tile';
+            tile.style.backgroundImage = `url('${CONFIG.mainImage}')`;
+            
+            const col = i % CONFIG.cols;
+            const row = Math.floor(i / CONFIG.cols);
+            
+            tile.style.backgroundPosition = `${(col / (CONFIG.cols - 1)) * 100}% ${(row / (CONFIG.rows - 1)) * 100}%`;
+            grid.appendChild(tile);
+        }
 
-
+      
+    // ... (inside initProfessionalMosaic function)
+        
         // Trigger animation
         const tiles = document.querySelectorAll('.tile');
         tiles.forEach((tile, index) => {
             const col = index % CONFIG.cols;
             const row = Math.floor(index / CONFIG.cols);
-            // Faster stagger for 100 tiles (30ms per tile)
             const delay = (col + row) * 30; 
-            setTimeout(() => { tile.classList.add('is-active'); }, delay);
+            
+            // Add the 'is-visible' class after the stagger delay
+            setTimeout(() => { 
+                tile.classList.add('is-active'); 
+                tile.classList.add('is-visible'); // Add this to trigger your demure CSS
+            }, delay);
         });
-    }
 
     const mosaicObserver = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
