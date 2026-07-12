@@ -66,25 +66,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (featuredCard) observer.observe(featuredCard);
 
     // 4. Professional High-Density Mosaic Reveal (100 Tiles)
-    function initProfessionalMosaic() {
-        const grid = document.getElementById('mosaicGrid');
-        if (!grid) return;
-        
-        // Configuration for high density
-        const CONFIG = { mainImage: 'man.jpg', cols: 10, rows: 10 };
-        const totalTiles = CONFIG.cols * CONFIG.rows;
-        
-        for (let i = 0; i < totalTiles; i++) {
-            const tile = document.createElement('div');
-            tile.className = 'tile';
-            tile.style.backgroundImage = `url('${CONFIG.mainImage}')`;
-            
-            const col = i % CONFIG.cols;
-            const row = Math.floor(i / CONFIG.cols);
-            
-            tile.style.backgroundPosition = `${(col / (CONFIG.cols - 1)) * 100}% ${(row / (CONFIG.rows - 1)) * 100}%`;
-            grid.appendChild(tile);
+   // 4. Staggered Mosaic Tile Reveal
+const mosaicSection = document.getElementById('mosaicSection');
+const tiles = document.querySelectorAll('.tile-card');
+
+const revealTiles = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            tiles.forEach((tile, index) => {
+                // Stagger delay by 150ms per tile
+                setTimeout(() => {
+                    tile.classList.add('is-visible');
+                }, index * 150);
+            });
+            // Stop observing once triggered
+            observer.unobserve(entry.target);
         }
+    });
+}, { threshold: 0.2 });
+
+if (mosaicSection) {
+    revealTiles.observe(mosaicSection);
+}
 
         // Trigger animation
         const tiles = document.querySelectorAll('.tile');
