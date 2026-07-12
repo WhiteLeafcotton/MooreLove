@@ -195,23 +195,26 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     /* NEW: Dedicated background layer logic for Mobile */
    
 /* Update this in your style.css */
-
+/* 1. Ensure the section is transparent */
     .mosaic-section {
         padding: 40px 4%;
         position: relative;
-        background: transparent !important; /* Forces transparency so the bg-layer shows */
+        background: transparent !important; 
     }
-    
+
+    /* 2. Style the background layer specifically */
     .mosaic-bg-layer {
-        display: block; /* Ensures it is visible */
-        position: fixed;
+        display: block;
+        position: fixed; /* This now works because it's a separate div, not a background property */
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
+        height: 100vh; /* Use 100vh to ensure it covers the viewport */
         background: url('final2.jpg') center/cover no-repeat;
         z-index: -1;
+        pointer-events: none; /* Allows clicks to pass through to content */
     }
+
 
     
     .mosaic-section::before {
