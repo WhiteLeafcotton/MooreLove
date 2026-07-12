@@ -204,11 +204,17 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         will-change: transform;
     }
 
-    .mosaic-section { 
-        padding: 40px 4%; 
-        position: relative;
-        background: transparent; /* Remove background from section */
-    }
+    /* Ensure the section content is opaque so it covers the fixed background */
+.mosaic-section {
+    position: relative;
+    padding: 80px 4%;
+    background-color: #080808; /* ADD THIS: A solid color prevents the layer from peeking through */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
     
     .mosaic-section::before {
         content: "";
