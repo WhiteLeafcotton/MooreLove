@@ -103,18 +103,38 @@ document.addEventListener('DOMContentLoaded', () => {
     if (section) mosaicObserver.observe(section);
 
     // 5. Locations Gallery Logic
-    const gallery = document.getElementById('locationsGallery');
-    const locCards = document.querySelectorAll('.loc-card');
+   // 5. Locations Gallery Swipe Logic
+const gallery = document.getElementById('locationsGallery');
 
-    locCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            locCards.forEach(c => c.classList.remove('active'));
-            card.classList.add('active');
-            
-            const bg = card.getAttribute('data-bg');
-            if (gallery && bg) {
-                gallery.style.background = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${bg}') center/cover no-repeat`;
-            }
-        });
-    });
+let isDown = false;
+let startX;
+let scrollLeft;
+
+gallery.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - gallery.offsetLeft;
+    scrollLeft = gallery.scrollLeft;
+});
+
+gallery.addEventListener('mouseleave', () => isDown = false);
+gallery.addEventListener('mouseup', () => isDown = false);
+
+gallery.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - gallery.offsetLeft;
+    const walk = (x - startX) * 2; 
+    gallery.scrollLeft = scrollLeft - walk;
+});
+
+// Touch support for swiping
+gallery.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].pageX - gallery.offsetLeft;
+    scrollLeft = gallery.scrollLeft;
+});
+
+gallery.addEventListener('touchmove', (e) => {
+    const x = e.touches[0].pageX - gallery.offsetLeft;
+    const walk = (x - startX) * 2;
+    gallery.scrollLeft = scrollLeft - walk;
 });
