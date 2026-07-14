@@ -109,17 +109,13 @@ const gallery = document.getElementById('locationsGallery');
 const locCards = document.querySelectorAll('.loc-card');
 
 locCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        // Reset all cards
+    card.addEventListener('click', () => {
+        // Update active class
         locCards.forEach(c => c.classList.remove('active'));
-        
-        // Activate current card
         card.classList.add('active');
         
-        // Update gallery background
+        // Update background
         const bg = card.getAttribute('data-bg');
-        if (gallery && bg) {
-            gallery.style.background = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${bg}') center/cover no-repeat`;
-        }
+        gallery.style.background = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${bg}') center/cover no-repeat`;
     });
 });
