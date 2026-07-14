@@ -70,6 +70,10 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     backdrop-filter: blur(10px); 
     transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Smoother animation */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+   
+    /* ... your existing styles ... */
+    z-index: 9999 !important; /* Force this above the new mosaic-bg-layer */
+
 }
 
 .main-nav.sticky { 
