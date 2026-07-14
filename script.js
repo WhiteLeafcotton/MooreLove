@@ -105,25 +105,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Locations Gallery Logic
    // 5. Locations Gallery Swipe Logic
 // 5. Locations Gallery Logic
+// 5. Locations Gallery Logic
 const gallery = document.getElementById('locationsGallery');
 const locCards = document.querySelectorAll('.loc-card');
 
-locCards.forEach(card => {
-    card.addEventListener('click', () => {
-        // Update active class
-        locCards.forEach(c => c.classList.remove('active'));
-        card.classList.add('active');
-        
-        // Update background
-        const bg = card.getAttribute('data-bg');
-        gallery.style.background = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${bg}') center/cover no-repeat`;
-    
-
-    // Add this after your loop to set the initial background on page load
-const initialActive = document.querySelector('.loc-card.active');
-if (initialActive) {
-    const initialBg = initialActive.getAttribute('data-bg');
+// Set initial background if a card is active
+const activeCard = document.querySelector('.loc-card.active');
+if (activeCard) {
+    const initialBg = activeCard.getAttribute('data-bg');
     gallery.style.background = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${initialBg}') center/cover no-repeat`;
 }
-        });
+
+locCards.forEach(card => {
+    card.addEventListener('click', () => {
+        // 1. Remove active class from all
+        locCards.forEach(c => c.classList.remove('active'));
+        
+        // 2. Add active class to clicked
+        card.classList.add('active');
+        
+        // 3. Update the gallery background
+        const bg = card.getAttribute('data-bg');
+        if (bg) {
+            gallery.style.background = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${bg}') center/cover no-repeat`;
+        }
+    });
 });
