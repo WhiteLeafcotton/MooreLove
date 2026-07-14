@@ -349,4 +349,15 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     }
     .tile-card i { font-size: 24px; }
     .tile-card span { font-size: 8px; }
+
+
+    .locations-gallery {
+        overflow-x: auto; /* Allows the container to scroll */
+        scroll-snap-type: x mandatory; /* Snaps cards into view */
+        justify-content: flex-start;
+        padding-left: 10%;
+    }
+    .loc-card {
+        scroll-snap-align: center;
+        flex: 0 0 80vw; /* Takes up 80% of screen width */
 }
