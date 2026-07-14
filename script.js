@@ -1,21 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Sticky Navigation Lgggogic
-    const hero = document.getElementById("hero");
-    const nav = document.getElementById("mainNav");
-    const placeholder = document.querySelector(".nav-placeholder");
+// 1. Sticky Navigation Logic
+const hero = document.getElementById("hero");
+const nav = document.getElementById("mainNav");
 
-    function updateNav() {
-        if (!hero || !nav) return;
-        if (window.scrollY >= hero.offsetHeight) {
-            nav.classList.add("sticky");
-            if (placeholder) placeholder.style.display = "block";
-        } else {
-            nav.classList.remove("sticky");
-            if (placeholder) placeholder.style.display = "none";
-        }
+function updateNav() {
+    if (!hero || !nav) return;
+
+    // Get the bottom position of the hero section
+    const heroBottom = hero.getBoundingClientRect().bottom;
+
+    // If the bottom of the hero is above the top of the viewport (<= 0), 
+    // it means the hero has been scrolled past.
+    if (heroBottom <= 0) {
+        nav.classList.add("sticky");
+    } else {
+        nav.classList.remove("sticky");
     }
-    window.addEventListener("scroll", updateNav, { passive: true });
-
+}
+window.addEventListener("scroll", updateNav, { passive: true });
     // 2. Hero Content & Image Swapping Logic
     const iconItems = document.querySelectorAll('.icon-item');
     const heroSection = document.querySelector('.hero');
