@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const section = document.getElementById('mosaicSection');
     if (section) mosaicObserver.observe(section);
 
+  
     // 5. Locations Gallery Logic
    // 5. Locations Gallery Swipe Logic
 // 5. Locations Gallery Logic
