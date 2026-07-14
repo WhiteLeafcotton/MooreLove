@@ -200,53 +200,64 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 
 
-
-
-/* Update these sections in your CSS .locations-gallery {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 40px 4%;
-    background: #000;
-    transition: background 0.5s ease; /* Smooth transition for background image */
 }
+
 .locations-gallery {
     display: flex;
     justify-content: center;
     gap: 20px;
     padding: 40px 4%;
     background: #000;
-    transition: background 0.5s ease;
-}
+    transition: background 0.5s ease; /* Smooth tran.locations-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 60px 4%;
+    background: #000;
+    
+} 
+    
 
-.loc-card {
-    flex: 0 0 300px; /* Forces cards to stay the same size */
-    height: 500px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    .loc-card {
+    flex: 0 0 320px; /* Fixed width */
+    height: 480px;   /* Fixed height */
+    border: 1px solid rgba(255, 255, 255, 0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Dimmed state */
     cursor: pointer;
     transition: all 0.4s ease;
-    padding: 20px;
-    text-align: center;
 }
 
-/* Inactive State: Translucent, just the title */
-.card-reveal { display: none; }
-.card-title { opacity: 0.5; }
-
-/* Active State: Opaque, show all content */
+/* Active State: The White Card Look */
 .loc-card.active {
-    border-color: #fff;
     background: #fff;
     color: #000;
-    opacity: 1;
+    border-color: #fff;
 }
+
+/* Image styling inside the card */
+.loc-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin: 20px 0;
+    display: none; /* Hidden by default */
+}
+
+.loc-card.active img { display: block; }
+
+/* Hide content by default, show on active */
+.card-reveal { display: none; text-align: center; }
 .loc-card.active .card-reveal { display: block; }
-.loc-card.active .card-title { opacity: 1; color: #000; margin-bottom: 20px; }
-.loc-card.active img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 20px; }
+
+.card-title { letter-spacing: 2px; font-size: 14px; }
+.loc-card.active .card-title { color: #000; }
+}
 
 /* MOBILE RESPONSIVE ADAPTATION */
 /* MOBILE RESPONSIVE ADAPTATION */
