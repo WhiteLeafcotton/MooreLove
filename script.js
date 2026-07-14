@@ -6,18 +6,15 @@ const nav = document.getElementById("mainNav");
 
 function updateNav() {
     if (!hero || !nav) return;
-
-    // Get the bottom position of the hero section
-    const heroBottom = hero.getBoundingClientRect().bottom;
-
-    // If the bottom of the hero is above the top of the viewport (<= 0), 
-    // it means the hero has been scrolled past.
-    if (heroBottom <= 0) {
+    
+    // Trigger sticky once the user scrolls past the height of the hero section
+    if (window.scrollY >= hero.offsetHeight) {
         nav.classList.add("sticky");
     } else {
         nav.classList.remove("sticky");
     }
 }
+window.addEventListener("scroll", updateNav, { passive: true });
 window.addEventListener("scroll", updateNav, { passive: true });
     // 2. Hero Content & Image Swapping Logic
     const iconItems = document.querySelectorAll('.icon-item');
