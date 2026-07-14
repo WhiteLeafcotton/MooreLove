@@ -103,50 +103,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (section) mosaicObserver.observe(section);
 
     // 5. Locations Gallery Logic
-  // 5. Infinite Carousel Logic
     const gallery = document.getElementById('locationsGallery');
-    const cards = Array.from(document.querySelectorAll('.loc-card'));
-    let currentIndex = 1; // Start with the second card in center
+    const locCards = document.querySelectorAll('.loc-card');
 
-   function updateCarousel() {
-    const cardWidth = 320; // 300px width + 20px gap
-    const containerCenter = window.innerWidth / 2;
-
-    cards.forEach((card, index) => {
-        // Calculate position relative to current index
-        const offset = (index - currentIndex) * cardWidth;
-        card.style.transform = `translateX(${containerCenter - (cardWidth / 2) + offset}px) scale(${index === currentIndex ? 1 : 0.9})`;
-        card.style.opacity = index === currentIndex ? 1 : 0.5;
-        
-        if (index === currentIndex) {
+    locCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            locCards.forEach(c => c.classList.remove('active'));
             card.classList.add('active');
-            // Background update...
-        } else {
-            card.classList.remove('active');
-        }
-    });
-}
-
-    // Click to slide
-    cards.forEach((card, index) => {
-    card.addEventListener('click', () => {
-        // Remove active class from all
-        cards.forEach(c => c.classList.remove('active'));
-        
-        // Add to clicked
-        card.classList.add('active');
-        
-        // Update background
-        const bg = card.getAttribute('data-bg');
-        gallery.style.background = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${bg}') center/cover no-repeat`;
+            
+            const bg = card.getAttribute('data-bg');
+            if (gallery && bg) {
+                gallery.style.background = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${bg}') center/cover no-repeat`;
+            }
+        });
     });
 });
-
-    // Handle Infinite Wrap
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % cards.length;
-        updateCarousel();
-    }
-
-    // Initialize
-    updateCarousel();
