@@ -306,7 +306,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     /* 2. Style the background layer specifically */
     .mosaic-bg-layer {
         display: block;
-        position: fixed; /* This now works because it's a separate div, not a background property */
+         /* This now works because it's a separate div, not a background property */
         top: 0;
         left: 0;
         width: 100%;
