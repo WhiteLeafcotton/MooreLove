@@ -60,23 +60,20 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* STICKY NAV */
 /* STICKY NAV */
-.main-nav { 
+/* Update your CSS to target the ID specifically */
+#mainNav { 
     position: fixed; 
-    top: -120px; /* Ensure this is far enough off-screen */
+    top: -120px; 
     left: 0; 
     width: 100%; 
-    z-index: 9999; /* Higher than top-bar (1000) */
-    background: rgba(8, 8, 8, 0.95); /* Slightly more opaque for readability */
+    z-index: 99999 !important; /* Force above all mosaic layers */
+    background: rgba(8, 8, 8, 0.95); 
     backdrop-filter: blur(10px); 
-    transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Smoother animation */
+    transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
     border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
-   
-    /* ... your existing styles ... */
-    z-index: 9999 !important; /* Force this above the new mosaic-bg-layer */
-
 }
 
-.main-nav.sticky { 
+#mainNav.sticky { 
     top: 0; 
     box-shadow: 0 5px 20px rgba(0,0,0,0.5); 
 }
