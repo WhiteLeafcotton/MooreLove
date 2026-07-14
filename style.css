@@ -202,38 +202,40 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 
 
+/* Update these sections in your CSS */
 .locations-gallery {
     display: flex;
-    height: 70vh;
     padding: 0 4%;
-    gap: 10px;
-    background: #000; /* Default dark */
-    transition: background 0.8s ease; /* The background image will fade */
+    gap: 20px;
+    background: #000;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    scrollbar-width: none; /* Hides scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hides scrollbar in IE/Edge */
+}
+
+.locations-gallery::-webkit-scrollbar {
+    display: none; /* Hides scrollbar in Chrome/Safari */
 }
 
 .loc-card {
-    flex: 1;
+    flex: 0 0 300px; /* Fixed width, won't grow/shrink */
+    height: 450px;
     border: 1px solid rgba(255,255,255,0.2);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: grab;
+    transition: all 0.3s ease;
     position: relative;
     padding: 20px;
 }
 
-/* Inactive State: Just the Title */
-.card-title { font-size: 18px; letter-spacing: 2px; transition: opacity 0.3s; }
-.card-reveal { display: none; text-align: center; }
-
-/* Active State: Expand and Show Content */
+/* Remove the active state growth */
 .loc-card.active {
-    flex: 2.5;
-    background: #fff; /* The white card box */
-    color: #000;
-    justify-content: flex-start;
+    flex: 0 0 300px;
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .loc-card.active .card-reveal { display: block; }
