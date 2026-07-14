@@ -117,5 +117,13 @@ locCards.forEach(card => {
         // Update background
         const bg = card.getAttribute('data-bg');
         gallery.style.background = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${bg}') center/cover no-repeat`;
-    });
+    
+
+    // Add this after your loop to set the initial background on page load
+const initialActive = document.querySelector('.loc-card.active');
+if (initialActive) {
+    const initialBg = initialActive.getAttribute('data-bg');
+    gallery.style.background = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${initialBg}') center/cover no-repeat`;
+}
+        });
 });
