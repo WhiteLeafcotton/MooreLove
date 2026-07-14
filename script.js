@@ -130,5 +130,32 @@ locCards.forEach(card => {
         if (bg) {
             gallery.style.background = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${bg}') center/cover no-repeat`;
         }
+
+
+        // Mobile Swipe Logic for Locations Gallery
+let touchStartX = 0;
+let touchEndX = 0;
+
+gallery.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+gallery.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, { passive: true });
+
+function handleSwipe() {
+    const activeIndex = Array.from(locCards).indexOf(document.querySelector('.loc-card.active'));
+    
+    // Swipe Left (Go to next)
+    if (touchEndX < touchStartX - 50 && activeIndex < locCards.length - 1) {
+        locCards[activeIndex + 1].click();
+    }
+    // Swipe Right (Go to previous)
+    if (touchEndX > touchStartX + 50 && activeIndex > 0) {
+        locCards[activeIndex - 1].click();
+    }
+
     });
 });
