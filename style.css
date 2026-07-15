@@ -105,9 +105,12 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* MOSAIC SECTION */
 /* MOSAIC SECTION - UPDATED FOR SIZE AND SPACING */
 /* MOSAIC SECTION */
+/* ==================================================
+   MOSAIC SECTION - CLEANED & CONSOLIDATED
+   ================================================== */
 .mosaic-section {
     position: relative;
-    padding: 80px 4%; /* Adjusted padding for better spacing */
+    padding: 40px 4%; 
     background: url('final2.jpg') center/cover no-repeat fixed; 
     display: flex;
     flex-direction: column;
@@ -119,67 +122,44 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(8, 8, 8, 0.7); /* Slightly darker for better contrast */
+    background: rgba(8, 8, 8, 0.7);
     z-index: 1;
 }
 
-/* Larger, Wider Grid */
+/* 2x2 Grid Layout */
 .mosaic-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px; /* Increased gap */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
     width: 100%;
-    max-width: 1400px; /* Increased max-width */
+    max-width: 800px; 
     z-index: 2;
-    margin-bottom: 60px;
-
-    
+    margin-bottom: 30px;
 }
 
-/* Add this to style.css */
-#mosaicGrid {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    width: 100%;
-    height: 500px; /* Adjust height as needed */
-    position: relative;
-    z-index: 2;
-}
-
-.tile {
-    width: 100%;
-    height: 100%;
-    background-size: 1000% 1000%; /* Spreads the image across the grid */
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
+/* Optimized Card Styling */
 .tile-card {
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 80px 40px; /* Larger tiles */
+    padding: 40px 20px; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 15px; 
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(12px);
-    transition: var(--transition);
     cursor: pointer;
-}
-
-.tile-card i { font-size: 40px; color: #fff; transition: var(--transition); }
-.tile-card span { font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: #fff; }
-
-.tile-card {
-    opacity: 0; /* Initially invisible */
+    opacity: 0; 
     transform: translateY(20px);
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tile-card.is-active {
-    opacity: 1; /* Fades in when JS adds this class */
+    opacity: 1; 
     transform: translateY(0);
 }
+
+.tile-card i { font-size: 32px; color: #fff; transition: var(--transition); }
+.tile-card span { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: #fff; }
 
 /* Large Title & CTA */
 .mosaic-footer {
@@ -189,7 +169,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 .mosaic-title {
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(56px, 8vw, 96px); /* Very large title */
+    font-size: clamp(40px, 6vw, 72px); /* Slightly reduced for better balance */
     font-weight: 300;
     letter-spacing: 4px;
     margin-bottom: 20px;
@@ -202,7 +182,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     align-items: center;
     justify-content: center;
     gap: 20px;
-    font-size: 16px; 
+    font-size: 14px; 
     text-transform: uppercase;
     letter-spacing: 6px;
     color: var(--gold);
@@ -211,8 +191,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 .cta-arrow:hover { gap: 30px; opacity: 0.8; }
-
-
 
 
 /* ==================================================
