@@ -86,7 +86,6 @@ const mosaicObserver = new IntersectionObserver((entries) => {
 
 const section = document.getElementById('mosaicSection');
 if (section) mosaicObserver.observe(section);
-// 5. Locations Gallery Logic (Desktop & Swipe)
     // 5. Locations Gallery Logic (Desktop & Swipe)
     const gallery = document.getElementById('locationsGallery');
     const locCards = document.querySelectorAll('.loc-card');
