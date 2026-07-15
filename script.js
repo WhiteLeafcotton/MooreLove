@@ -60,14 +60,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Professional High-Density Mosaic Reveal
     // 4. Professional High-Density Mosaic Reveal
 
+// 4. Professional Card Reveal Animation
+function initProfessionalMosaic() {
+    const grid = document.getElementById('mosaicGrid');
+    if (!grid) return;
 
-    // Trigger Animation
-    const tiles = grid.querySelectorAll('.tile');
-    tiles.forEach((tile, index) => {
-        const col = index % CONFIG.cols;
-        const row = Math.floor(index / CONFIG.cols);
-        const delay = (col + row) * 30; 
-        setTimeout(() => { tile.classList.add('is-active'); }, delay);
+    // Grab your 6 existing cards
+    const cards = grid.querySelectorAll('.tile-card');
+    
+    // Add the class 'is-active' to them one by one for a staggered reveal
+    cards.forEach((card, index) => {
+        setTimeout(() => {
+            card.classList.add('is-active');
+        }, index * 150); // 150ms delay between each card
     });
 }
 
@@ -75,14 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
 const mosaicObserver = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
         initProfessionalMosaic();
-        // Disconnect so it doesn't re-run if you scroll up and down
-        mosaicObserver.disconnect();
+        mosaicObserver.disconnect(); // Runs only once
     }
 }, { threshold: 0.2 });
 
 const section = document.getElementById('mosaicSection');
 if (section) mosaicObserver.observe(section);
-
     // 5. Locations Gallery Logic (Desktop & Swipe)
     const gallery = document.getElementById('locationsGallery');
     const locCards = document.querySelectorAll('.loc-card');
