@@ -412,12 +412,14 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 
     .locations-gallery {
-        overflow-x: auto; /* Allows the container to scroll */
-        scroll-snap-type: x mandatory; /* Snaps cards into view */
+        overflow-x: auto; 
+        scroll-snap-type: x mandatory;
         justify-content: flex-start;
         padding-left: 10%;
+        /* The relative positioning is already handled above */
     }
+    
     .loc-card {
         scroll-snap-align: center;
-        flex: 0 0 80vw; /* Takes up 80% of screen width */
-}
+        flex: 0 0 80vw;
+    }
