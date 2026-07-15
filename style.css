@@ -111,16 +111,21 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* ==================================================
    MOSAIC SECTION - UPDATED FOR 2x3 LAYOUT
    ================================================== */
+/* ==================================================
+   MOSAIC SECTION - UPDATED 2x3 LAYOUT & BLURS
+   ================================================== */
 .mosaic-section {
     position: relative;
-    padding: 30px 4%; /* Reduced top/bottom padding to tighten section height */
+    padding: 60px 4%; /* Increased padding to give space for blur effects */
     background: url('final2.jpg') center/cover no-repeat fixed; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden; /* Clips the blur gradients */
 }
 
+/* Base dark overlay */
 .mosaic-section::before {
     content: "";
     position: absolute;
@@ -129,25 +134,51 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     z-index: 1;
 }
 
-/* 2x3 Grid Layout */
-.mosaic-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 Columns */
-    gap: 15px; /* Tightened gap */
+/* Top Edge Blur */
+.mosaic-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 1000px; /* Wider max-width to distribute 6 cards horizontally */
+    height: 100px;
+    background: linear-gradient(to bottom, #080808, transparent);
     z-index: 2;
-    margin-bottom: 30px;
+    pointer-events: none;
 }
 
-/* Compact Tile Card Styling */
+/* Bottom Edge Blur */
+.mosaic-bottom-blur {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #080808, transparent);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* 2 Row x 3 Column Grid */
+.mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+    grid-template-rows: repeat(2, auto);    /* 2 Rows */
+    gap: 15px; 
+    width: 100%;
+    max-width: 1200px;
+    z-index: 3; /* Elevated above blurs */
+    margin: 30px 0;
+}
+
+/* Tile Card Styling */
 .tile-card {
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 30px 20px; /* Reduced vertical padding to shrink card height */
+    padding: 30px 20px; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px; /* Reduced internal gap */
+    gap: 10px; 
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(12px);
     cursor: pointer;
@@ -167,12 +198,12 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Large Title & CTA */
 .mosaic-footer {
     text-align: center;
-    z-index: 2;
+    z-index: 3; /* Elevated above blurs */
 }
 
 .mosaic-title {
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(36px, 5vw, 60px); /* Slightly smaller for a tighter section */
+    font-size: clamp(36px, 5vw, 60px);
     font-weight: 300;
     letter-spacing: 4px;
     margin-bottom: 15px;
@@ -194,7 +225,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 .cta-arrow:hover { gap: 30px; opacity: 0.8; }
-
 /* ==================================================
    LOCATIONS GALLERY
    ================================================== */
