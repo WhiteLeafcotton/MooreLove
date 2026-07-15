@@ -108,9 +108,12 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* ==================================================
    MOSAIC SECTION - CLEANED & CONSOLIDATED
    ================================================== */
+/* ==================================================
+   MOSAIC SECTION - UPDATED FOR 2x3 LAYOUT
+   ================================================== */
 .mosaic-section {
     position: relative;
-    padding: 40px 4%; 
+    padding: 30px 4%; /* Reduced top/bottom padding to tighten section height */
     background: url('final2.jpg') center/cover no-repeat fixed; 
     display: flex;
     flex-direction: column;
@@ -126,25 +129,25 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     z-index: 1;
 }
 
-/* 2x2 Grid Layout */
+/* 2x3 Grid Layout */
 .mosaic-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 20px; 
+    grid-template-columns: repeat(2, 1fr); /* 2 Columns */
+    gap: 15px; /* Tightened gap */
     width: 100%;
-    max-width: 800px; 
+    max-width: 1000px; /* Wider max-width to distribute 6 cards horizontally */
     z-index: 2;
     margin-bottom: 30px;
 }
 
-/* Optimized Card Styling */
+/* Compact Tile Card Styling */
 .tile-card {
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 40px 20px; 
+    padding: 30px 20px; /* Reduced vertical padding to shrink card height */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px; 
+    gap: 10px; /* Reduced internal gap */
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(12px);
     cursor: pointer;
@@ -158,8 +161,8 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     transform: translateY(0);
 }
 
-.tile-card i { font-size: 32px; color: #fff; transition: var(--transition); }
-.tile-card span { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: #fff; }
+.tile-card i { font-size: 24px; color: #fff; transition: var(--transition); }
+.tile-card span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
 
 /* Large Title & CTA */
 .mosaic-footer {
@@ -169,10 +172,10 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 .mosaic-title {
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(40px, 6vw, 72px); /* Slightly reduced for better balance */
+    font-size: clamp(36px, 5vw, 60px); /* Slightly smaller for a tighter section */
     font-weight: 300;
     letter-spacing: 4px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     color: #fff;
     line-height: 1;
 }
@@ -182,7 +185,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     align-items: center;
     justify-content: center;
     gap: 20px;
-    font-size: 14px; 
+    font-size: 12px; 
     text-transform: uppercase;
     letter-spacing: 6px;
     color: var(--gold);
@@ -191,7 +194,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 .cta-arrow:hover { gap: 30px; opacity: 0.8; }
-
 
 /* ==================================================
    LOCATIONS GALLERY
