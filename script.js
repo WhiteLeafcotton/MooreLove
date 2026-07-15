@@ -59,32 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Professional High-Density Mosaic Reveal
     // 4. Professional High-Density Mosaic Reveal
-function initProfessionalMosaic() {
-    const grid = document.getElementById('mosaicGrid');
-    if (!grid) {
-        console.warn("Mosaic grid element not found!");
-        return;
-    }
-    
-    // Clear existing to prevent double-loading
-    grid.innerHTML = '';
-    
-    const CONFIG = { mainImage: 'man.jpg', cols: 10, rows: 10 };
-    const totalTiles = CONFIG.cols * CONFIG.rows;
-    
-    // Create tiles
-    for (let i = 0; i < totalTiles; i++) {
-        const tile = document.createElement('div');
-        tile.className = 'tile';
-        tile.style.backgroundImage = `url('${CONFIG.mainImage}')`;
-        
-        // Calculate background position for the image "slice"
-        const col = i % CONFIG.cols;
-        const row = Math.floor(i / CONFIG.cols);
-        tile.style.backgroundPosition = `${(col / (CONFIG.cols - 1)) * 100}% ${(row / (CONFIG.rows - 1)) * 100}%`;
-        
-        grid.appendChild(tile);
-    }
+
 
     // Trigger Animation
     const tiles = grid.querySelectorAll('.tile');
