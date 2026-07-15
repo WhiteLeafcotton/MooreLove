@@ -58,31 +58,55 @@ document.addEventListener('DOMContentLoaded', () => {
     if (featuredCard) observer.observe(featuredCard);
 
     // 4. Professional High-Density Mosaic Reveal
-    function initProfessionalMosaic() {
-        const grid = document.getElementById('mosaicGrid');
-        if (!grid) return;
-        const CONFIG = { mainImage: 'man.jpg', cols: 10, rows: 10 };
-        for (let i = 0; i < (CONFIG.cols * CONFIG.rows); i++) {
-            const tile = document.createElement('div');
-            tile.className = 'tile';
-            tile.style.backgroundImage = `url('${CONFIG.mainImage}')`;
-            tile.style.backgroundPosition = `${(i % CONFIG.cols) * (100/(CONFIG.cols-1))}% ${Math.floor(i / CONFIG.cols) * (100/(CONFIG.rows-1))}%`;
-            grid.appendChild(tile);
-        }
-        document.querySelectorAll('.tile').forEach((tile, index) => {
-            setTimeout(() => { tile.classList.add('is-active'); }, (index % CONFIG.cols + Math.floor(index / CONFIG.cols)) * 30);
-        });
+    // 4. Professional High-Density Mosaic Reveal
+function initProfessionalMosaic() {
+    const grid = document.getElementById('mosaicGrid');
+    if (!grid) {
+        console.warn("Mosaic grid element not found!");
+        return;
+    }
+    
+    // Clear existing to prevent double-loading
+    grid.innerHTML = '';
+    
+    const CONFIG = { mainImage: 'man.jpg', cols: 10, rows: 10 };
+    const totalTiles = CONFIG.cols * CONFIG.rows;
+    
+    // Create tiles
+    for (let i = 0; i < totalTiles; i++) {
+        const tile = document.createElement('div');
+        tile.className = 'tile';
+        tile.style.backgroundImage = `url('${CONFIG.mainImage}')`;
+        
+        // Calculate background position for the image "slice"
+        const col = i % CONFIG.cols;
+        const row = Math.floor(i / CONFIG.cols);
+        tile.style.backgroundPosition = `${(col / (CONFIG.cols - 1)) * 100}% ${(row / (CONFIG.rows - 1)) * 100}%`;
+        
+        grid.appendChild(tile);
     }
 
-    const mosaicSection = document.getElementById('mosaicSection');
-    if (mosaicSection) {
-        new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                initProfessionalMosaic();
-                entries[0].target.style.display = 'none'; // Optional: stop observing
-            }
-        }, { threshold: 0.2 }).observe(mosaicSection);
+    // Trigger Animation
+    const tiles = grid.querySelectorAll('.tile');
+    tiles.forEach((tile, index) => {
+        const col = index % CONFIG.cols;
+        const row = Math.floor(index / CONFIG.cols);
+        const delay = (col + row) * 30; 
+        setTimeout(() => { tile.classList.add('is-active'); }, delay);
+    });
+}
+
+// Observer for the grid
+const mosaicObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+        initProfessionalMosaic();
+        // Disconnect so it doesn't re-run if you scroll up and down
+        mosaicObserver.disconnect();
     }
+}, { threshold: 0.2 });
+
+const section = document.getElementById('mosaicSection');
+if (section) mosaicObserver.observe(section);
 
     // 5. Locations Gallery Logic (Desktop & Swipe)
     const gallery = document.getElementById('locationsGallery');
