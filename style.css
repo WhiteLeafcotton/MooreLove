@@ -228,6 +228,9 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* ==================================================
    LOCATIONS GALLERY
    ================================================== */
+/* ==================================================
+   LOCATIONS GALLERY - UPDATED WITH TOP BLUR
+   ================================================== */
 .locations-gallery {
     display: flex;
     justify-content: center;
@@ -236,6 +239,21 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     padding: 60px 4%;
     background: #000;
     transition: background 0.5s ease;
+    position: relative; /* Required for the blur positioning */
+    overflow: hidden;   /* Keeps blur contained */
+}
+
+/* Add the top blur edge */
+.locations-gallery::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px; /* Adjust height as needed */
+    background: linear-gradient(to bottom, #000000, transparent);
+    z-index: 10; /* Keeps it above the cards */
+    pointer-events: none; /* Allows mouse interaction with cards below */
 }
 
 .loc-card {
