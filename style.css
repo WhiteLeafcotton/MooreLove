@@ -344,14 +344,17 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     /* Ensure the section content is opaque so it covers the fixed background */
 
 
-    .mosaic-grid { 
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        margin-bottom: 30px; 
-        position: relative;
-        z-index: 2; 
-    }
+    /* 2 Rows, 3 Columns Grid Layout */
+.mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+    grid-template-rows: repeat(2, auto);    /* 2 Rows */
+    gap: 15px; 
+    width: 100%;
+    max-width: 1200px; /* Wider to accommodate 3 columns */
+    z-index: 2;
+    margin-bottom: 30px;
+}
     .tile-card { 
         padding: 20px 10px; 
         gap: 10px; 
