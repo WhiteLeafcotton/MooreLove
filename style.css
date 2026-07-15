@@ -416,10 +416,11 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         scroll-snap-type: x mandatory;
         justify-content: flex-start;
         padding-left: 10%;
-        /* The relative positioning is already handled above */
+        padding-top: 80px; /* Gives the blur space to sit without covering content */
     }
     
     .loc-card {
         scroll-snap-align: center;
         flex: 0 0 80vw;
     }
+}
