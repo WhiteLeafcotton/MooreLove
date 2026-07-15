@@ -86,14 +86,19 @@ const mosaicObserver = new IntersectionObserver((entries) => {
 
 const section = document.getElementById('mosaicSection');
 if (section) mosaicObserver.observe(section);
-    // 5. Locations Gallery Logic (Desktop & Swipe)
+// 5. Locations Gallery Logic (Desktop & Swipe)
     const gallery = document.getElementById('locationsGallery');
     const locCards = document.querySelectorAll('.loc-card');
 
     locCards.forEach(card => {
         card.addEventListener('click', () => {
+            // Remove 'active' from all cards
             locCards.forEach(c => c.classList.remove('active'));
+            
+            // Add 'active' to the clicked card
             card.classList.add('active');
+            
+            // Update the background image of the gallery
             const bg = card.getAttribute('data-bg');
             if (gallery && bg) {
                 gallery.style.background = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${bg}') center/cover no-repeat`;
@@ -101,7 +106,7 @@ if (section) mosaicObserver.observe(section);
         });
     });
 
-    // Swipe Logic for Mobile
+    // Swipe Logic for Mobile (Keep this as you had it)
     let touchStartX = 0;
     gallery?.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, { passive: true });
     gallery?.addEventListener('touchend', e => {
@@ -112,4 +117,3 @@ if (section) mosaicObserver.observe(section);
             else if (diff < 0 && activeIndex > 0) locCards[activeIndex - 1].click();
         }
     }, { passive: true });
-});
