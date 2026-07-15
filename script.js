@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     // 1. Sticky Navigation Logic
     const hero = document.getElementById("hero");
     const nav = document.getElementById("mainNav");
 
     function updateNav() {
         if (!hero || !nav) return;
+        // Use pageYOffset for better compatibility
         if (window.scrollY >= hero.offsetHeight) {
             nav.classList.add("sticky");
         } else {
@@ -28,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     iconItems.forEach((item) => {
-        const updateHero = () => {
+        item.addEventListener('mouseenter', () => {
             if (heroVideo) {
                 heroVideo.style.display = 'none';
                 heroVideo.pause();
@@ -37,8 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (heroTitle) heroTitle.innerHTML = item.dataset.title;
             if (heroBtn) heroBtn.innerText = item.dataset.cta;
             moveLine(item);
-        };
-        item.addEventListener('mouseenter', updateHero);
+        });
     });
 
     setTimeout(() => { if (iconItems.length > 0) moveLine(iconItems[0]); }, 100);
@@ -58,35 +59,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (featuredCard) observer.observe(featuredCard);
 
     // 4. Professional High-Density Mosaic Reveal
-    // 4. Professional High-Density Mosaic Reveal
+    const mosaicGrid = document.getElementById('mosaicGrid');
+    const mosaicObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            const cards = mosaicGrid.querySelectorAll('.tile-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => card.classList.add('is-active'), index * 150);
+            });
+            mosaicObserver.disconnect();
+        }
+    }, { threshold: 0.2 });
 
-// 4. Professional Card Reveal Animation
-function initProfessionalMosaic() {
-    const grid = document.getElementById('mosaicGrid');
-    if (!grid) return;
+    const mosaicSection = document.getElementById('mosaicSection');
+    if (mosaicSection) mosaicObserver.observe(mosaicSection);
 
-    // Grab your 6 existing cards
-    const cards = grid.querySelectorAll('.tile-card');
-    
-    // Add the class 'is-active' to them one by one for a staggered reveal
-    cards.forEach((card, index) => {
-        setTimeout(() => {
-            card.classList.add('is-active');
-        }, index * 150); // 150ms delay between each card
-    });
-}
-
-// Observer for the grid
-const mosaicObserver = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-        initProfessionalMosaic();
-        mosaicObserver.disconnect(); // Runs only once
-    }
-}, { threshold: 0.2 });
-
-const section = document.getElementById('mosaicSection');
-if (section) mosaicObserver.observe(section);
-    // 5. Locations Gallery Logic (Desktop & Swipe)
+    // 5. Locations Gallery Logic
     const gallery = document.getElementById('locationsGallery');
     const locCards = document.querySelectorAll('.loc-card');
 
@@ -112,4 +99,5 @@ if (section) mosaicObserver.observe(section);
             else if (diff < 0 && activeIndex > 0) locCards[activeIndex - 1].click();
         }
     }, { passive: true });
+
 });
