@@ -421,3 +421,5 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         scroll-snap-align: center;
         flex: 0 0 80vw; /* Takes up 80% of screen width */
 }
+    touch-action: pan-x; /* Explicitly enables horizontal swipe handling */
+}
