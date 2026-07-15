@@ -154,9 +154,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     transition: opacity 0.5s ease;
 }
 
-.tile.is-active {
-    opacity: 1;
-}
 .tile-card {
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 80px 40px; /* Larger tiles */
@@ -170,9 +167,19 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     cursor: pointer;
 }
 
-.tile-card:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--gold); }
 .tile-card i { font-size: 40px; color: #fff; transition: var(--transition); }
 .tile-card span { font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: #fff; }
+
+.tile-card {
+    opacity: 0; /* Initially invisible */
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tile-card.is-active {
+    opacity: 1; /* Fades in when JS adds this class */
+    transform: translateY(0);
+}
 
 /* Large Title & CTA */
 .mosaic-footer {
