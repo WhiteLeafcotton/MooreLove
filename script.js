@@ -75,10 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Locations Gallery Logic
    // 5. Locations Gallery & Swipe Logic
+// 5. Locations Gallery Logic
 const gallery = document.getElementById('locationsGallery');
 const locCards = document.querySelectorAll('.loc-card');
 
-// Click handler for both web and mobile
+// Efficiently activate card
 const activateCard = (card) => {
     locCards.forEach(c => c.classList.remove('active'));
     card.classList.add('active');
@@ -88,32 +89,27 @@ const activateCard = (card) => {
     }
 };
 
+// Use pointerdown (faster than click for mobile)
 locCards.forEach(card => {
-    card.addEventListener('click', (e) => {
+    card.addEventListener('pointerdown', (e) => {
         activateCard(card);
+        // Smoothly snap the clicked card to center
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     });
 });
 
-// Improved Swipe Logic
-let touchStartX = 0;
-gallery.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-}, { passive: true });
+// Auto-detect which card is centered while scrolling (The "Native" Swipe)
+const observerOptions = {
+    root: gallery,
+    threshold: 0.6 // Card must be 60% visible to be considered "active"
+};
 
-gallery.addEventListener('touchend', e => {
-    const touchEndX = e.changedTouches[0].screenX;
-    const diff = touchStartX - touchEndX;
-    
-    // Only trigger if swipe is significant
-    if (Math.abs(diff) > 50) {
-        const activeIndex = Array.from(locCards).findIndex(c => c.classList.contains('active'));
-        // Swipe Left (Next)
-        if (diff > 0 && activeIndex < locCards.length - 1) {
-            activateCard(locCards[activeIndex + 1]);
-        } 
-        // Swipe Right (Previous)
-        else if (diff < 0 && activeIndex > 0) {
-            activateCard(locCards[activeIndex - 1]);
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            activateCard(entry.target);
         }
-    }
-}, { passive: true });
+    });
+}, observerOptions);
+
+locCards.forEach(card => observer.observe(card));
