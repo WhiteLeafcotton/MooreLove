@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Stickyee Navigation Logic
+    // ==========================================
+    // 1. Sticky Navigation Logic
+    // ==========================================
     const hero = document.getElementById("hero");
     const nav = document.getElementById("mainNav");
 
     function updateNav() {
         if (!hero || !nav) return;
-        // Use pageYOffset for better compatibility
         if (window.scrollY >= hero.offsetHeight) {
             nav.classList.add("sticky");
         } else {
@@ -15,7 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener("scroll", updateNav, { passive: true });
 
+    // ==========================================
     // 2. Hero Content & Image Swapping Logic
+    // ==========================================
     const iconItems = document.querySelectorAll('.icon-item');
     const heroSection = document.querySelector('.hero');
     const heroVideo = document.getElementById('heroVideo');
@@ -42,23 +45,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Initialize line position slightly after load
     setTimeout(() => { if (iconItems.length > 0) moveLine(iconItems[0]); }, 100);
 
-    // 3. Slide-Up Masked Reveal Animation for Featured Card
-    const observer = new IntersectionObserver((entries) => {
+    // ==========================================
+    // 3. Featured Card Intersection Observer
+    // ==========================================
+    const featuredObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const title = entry.target.querySelector('.h3-mask h3');
+                const title = entry.target.querySelector('h3');
                 if (title) title.classList.add('is-visible');
-                observer.unobserve(entry.target);
+                featuredObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.3 });
 
     const featuredCard = document.querySelector('.featured-card');
-    if (featuredCard) observer.observe(featuredCard);
+    if (featuredCard) featuredObserver.observe(featuredCard);
 
-    // 4. Professional High-Density Mosaic Reveal
+    // ==========================================
+    // 4. Mosaic Grid Reveal Animation
+    // ==========================================
     const mosaicGrid = document.getElementById('mosaicGrid');
     const mosaicObserver = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
@@ -71,36 +79,74 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.2 });
 
     const mosaicSection = document.getElementById('mosaicSection');
-    if (mosaicSection) mosaicObserver.observe(mosaicSection);
+    if (mosaicSection && mosaicGrid) mosaicObserver.observe(mosaicSection);
 
-    // 5. Locations Gallery Logic
-   // 5. Locations Gallery & Swipe Logic
-   // 5. Locations Gallery & Swipe Logic
-   // 5. Locations Gallery Logic
+    // ==========================================
+    // 5. Locations Gallery & Swipe Logic
+    // ==========================================
     const gallery = document.getElementById('locationsGallery');
     const locCards = document.querySelectorAll('.loc-card');
 
     function setActiveCard(card) {
+        // Remove active class from all
         locCards.forEach(c => c.classList.remove('active'));
+        
+        // Add active class to target
         card.classList.add('active');
+        
+        // Update Gallery Background
         const bg = card.getAttribute('data-bg');
         if (gallery && bg) {
             gallery.style.background = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${bg}') center/cover no-repeat`;
         }
     }
 
+    // Set initial background based on the HTML's active card
+    const initialActive = document.querySelector('.loc-card.active');
+    if (initialActive) setActiveCard(initialActive);
+
+    // Click/Tap Events for Cards
     locCards.forEach(card => {
-        card.addEventListener('click', () => setActiveCard(card));
+        card.addEventListener('click', (e) => {
+            // Ignore click if they click the "VIEW PROPERTY" button so the link still works
+            if (e.target.tagName !== 'A') {
+                e.preventDefault(); 
+                setActiveCard(card);
+
+                // Auto-center the clicked card smoothly on mobile
+                if (window.innerWidth <= 768) {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
+            }
+        });
     });
 
     // Swipe Logic for Mobile
     let touchStartX = 0;
-    gallery?.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, { passive: true });
-    gallery?.addEventListener('touchend', e => {
-        const diff = touchStartX - e.changedTouches[0].screenX;
+    
+    gallery?.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    gallery?.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        
+        // Ensure the swipe was intentional (more than 50px of movement)
         if (Math.abs(diff) > 50) {
             const activeIndex = Array.from(locCards).findIndex(c => c.classList.contains('active'));
-            if (diff > 0 && activeIndex < locCards.length - 1) setActiveCard(locCards[activeIndex + 1]);
-            else if (diff < 0 && activeIndex > 0) setActiveCard(locCards[activeIndex - 1]);
+            
+            // Swiped Left (Next Card)
+            if (diff > 0 && activeIndex < locCards.length - 1) {
+                setActiveCard(locCards[activeIndex + 1]);
+                locCards[activeIndex + 1].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            } 
+            // Swiped Right (Previous Card)
+            else if (diff < 0 && activeIndex > 0) {
+                setActiveCard(locCards[activeIndex - 1]);
+                locCards[activeIndex - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
         }
     }, { passive: true });
+
+});
