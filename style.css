@@ -444,8 +444,14 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         scroll-snap-type: x mandatory;
         padding-bottom: 20px;
         -webkit-overflow-scrolling: touch;
-        /* THIS IS THE FIX: Disable browser's vertical scroll while swiping */
+        /* Disables vertical scroll interference while swiping horizontally */
         touch-action: pan-x !important; 
+        /* Optional: hide scrollbar for cleaner look */
+        scrollbar-width: none; 
+    }
+    
+    .locations-gallery::-webkit-scrollbar {
+        display: none;
     }
 
     .loc-card {
@@ -455,6 +461,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         position: relative;
         z-index: 10;
         pointer-events: auto !important;
+        margin: 0 10px; /* Adds small spacing between cards for better flow */
     }
 
 /* Fix for the navigation tap target */
