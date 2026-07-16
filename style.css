@@ -66,19 +66,46 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     top: -120px; 
     left: 0; 
     width: 100%; 
-    z-index: 99999 !important; /* Force above all mosaic layers */
+    z-index: 99999 !important; 
     background: rgba(8, 8, 8, 0.95); 
     backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); /* Required for Safari/iOS */
     transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Ensure the nav allows clicks */
+    pointer-events: auto !important; 
+    /* Prevent the browser from trying to scroll while tapping the nav */
+    touch-action: none; 
 }
 
 #mainNav.sticky { 
     top: 0; 
     box-shadow: 0 5px 20px rgba(0,0,0,0.5); 
 }
-.nav-inner { display: flex; align-items: center; justify-content: center; gap: 40px; padding: 15px 20px; position: relative; }
-.nav-link, .nav-link:visited, .nav-link:link { text-decoration: none !important; color: #fff !important; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; transition: var(--transition); }
+
+/* Force links to be the primary interactive target */
+.nav-inner { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 40px; 
+    padding: 15px 20px; 
+    position: relative; 
+    pointer-events: auto !important;
+}
+
+.nav-link { 
+    text-decoration: none !important; 
+    color: #fff !important; 
+    font-size: 11px; 
+    letter-spacing: 1.5px; 
+    text-transform: uppercase; 
+    transition: var(--transition);
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    /* Increase tap target size for mobile */
+    padding: 10px; 
+}
 .nav-link:hover, .nav-link:active { color: var(--gold) !important; }
 .nav-icon { width: 24px; height: 24px; filter: brightness(0) invert(1); transition: var(--transition); }
 .nav-logo:hover .nav-icon { filter: invert(72%) sepia(21%) saturate(1478%) hue-rotate(345deg) brightness(90%) contrast(88%); }
