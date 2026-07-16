@@ -418,13 +418,14 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         padding-left: 10%;
     }
     .loc-card {
-        scroll-snap-align: center;
-        flex: 0 0 80vw; /* Takes up 80% of screen width */
-}
+        scroll-snap-align: center;
+        flex: 0 0 80vw;
+        touch-action: pan-x !important; /* Move this INSIDE the braces */
+    }
     touch-action: pan-x; /* Explicitly enables horizontal swipe handling */
 }
 /* FORCE INTERACTIVITY ON MOBILE */
-#mainNav, .nav-link, .loc-card, .tile-card {
+#mainNav, .nav-link,  .tile-card {
     pointer-events: auto !important;
     touch-action: manipulation !important;
 }
