@@ -434,28 +434,33 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     }
 }
 
-/* Global fixes */
-.mosaic-bg-layer { pointer-events: none !important; }
-#mainNav { pointer-events: auto !important; z-index: 99999 !important; }
-/* FORCE INTERACTIVITY */
-#mainNav, 
-.nav-link, 
-.loc-card, 
-.tile-card {
-    pointer-events: auto !important;
-    position: relative;
-    z-index: 999999 !important;
+/* --- CLEANED INTERACTIVITY FIXES --- */
+
+/* 1. Ensure the body doesn't accidentally block clicks */
+body { pointer-events: auto !important; }
+
+/* 2. Navigation is fixed, top, and interactive */
+#mainNav { 
+    position: fixed !important; 
+    top: -120px !important; 
+    left: 0; 
+    width: 100%; 
+    z-index: 999999 !important; 
+    pointer-events: auto !important; 
 }
 
-/* Ensure the gallery container doesn't block clicks */
-.locations-gallery {
-    pointer-events: auto !important;
+#mainNav.sticky { 
+    top: 0 !important; 
 }
 
-/* If you have a background layer, ensure it is truly behind everything */
+/* 3. Ensure the Gallery and Mosaic don't intercept clicks meant for buttons */
 .mosaic-bg-layer, 
 .mosaic-section::before, 
 .locations-gallery::before {
-    pointer-events: none !important;
-    z-index: 1 !important;
+    pointer-events: none !important; /* Let clicks pass through to cards */
+}
+
+.loc-card, .tile-card, .nav-link {
+    pointer-events: auto !important;
+    z-index: 999999 !important;
 }
