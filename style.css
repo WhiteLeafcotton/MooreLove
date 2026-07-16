@@ -327,7 +327,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* MOBILE RESPONSIVE ADAPTATION */
 /* MOBILE RESPONSIVE ADAPTATION */
 @media (max-width: 768px) {
-    /* Existing tweaks */
     .top-bar { padding: 20px 4%; }
     .top-links { gap: 15px; }
     .nav-inner { gap: 20px; padding: 10px; }
@@ -351,31 +350,24 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         margin-bottom: 25px; 
     }
     
-    /* NEW: Dedicated background layer logic for Mobile */
-   
-/* Update this in your style.css */
-/* 1. Ensure the section is transparent */
+    /* Mosaic Section Fixes */
     .mosaic-section {
         padding: 40px 4%;
         position: relative;
         background: transparent !important; 
     }
 
-    /* 2. Style the background layer specifically */
     .mosaic-bg-layer {
         display: block;
-         /* This now works because it's a separate div, not a background property */
         top: 0;
         left: 0;
         width: 100%;
-        height: 100vh; /* Use 100vh to ensure it covers the viewport */
+        height: 100vh;
         background: url('final2.jpg') center/cover no-repeat;
         z-index: -1;
-        pointer-events: none; /* Allows clicks to pass through to content */
+        pointer-events: none; /* Allows clicks to pass through */
         position: absolute;
     }
-
-
     
     .mosaic-section::before {
         content: "";
@@ -383,66 +375,43 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%; /* Covers entire section */
-        /* Fade from black at top to dark overlay at bottom */
+        height: 100%;
         background: linear-gradient(to bottom, #080808 0%, rgba(8,8,8,0.85) 30%);
         z-index: 1;
         pointer-events: none;
     }
-    /* Ensure the section content is opaque so it covers the fixed background */
 
-
-    /* 2 Rows, 3 Columns Grid Layout */
-.mosaic-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
-    grid-template-rows: repeat(2, auto);    /* 2 Rows */
-    gap: 15px; 
-    width: 100%;
-    max-width: 1200px; /* Wider to accommodate 3 columns */
-    z-index: 2;
-    margin-bottom: 30px;
-}
-    .tile-card { 
-        padding: 20px 10px; 
+    .mosaic-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, auto);
         gap: 10px; 
+        width: 100%;
+        z-index: 2;
+        margin-bottom: 30px;
     }
-    .tile-card i { font-size: 24px; }
-    .tile-card span { font-size: 8px; }
 
+    .tile-card { padding: 15px 5px; gap: 5px; }
+    .tile-card i { font-size: 18px; }
+    .tile-card span { font-size: 7px; }
 
-   .locations-gallery {
-        overflow-x: auto; /* Allows the container to scroll */
-        scroll-snap-type: x mandatory; /* Snaps cards into view */
-        justify-content: flex-start;
-        padding-left: 10%;
-    }
-    .loc-card {
-        scroll-snap-align: center;
-        flex: 0 0 80vw; /* Takes up 80% of screen width */
-}
-    touch-action: pan-x; /* Explicitly enables horizontal swipe handling */
-}
+    /* Locations Gallery Mobile Swiping Fixes */
+    .locations-gallery {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        justify-content: flex-start;
+        padding-left: 10%;
+        touch-action: pan-x; /* Crucial: enables horizontal swipe */
+        -webkit-overflow-scrolling: touch;
+    }
 
-/* Fix for the Locations Gallery Swiping */
-.locations-gallery {
-    /* ... existing styles ... */
-    touch-action: pan-x; /* Enables horizontal swipe for gallery */
-    -webkit-overflow-scrolling: touch;
+    .loc-card {
+        scroll-snap-align: center;
+        flex: 0 0 80vw;
+        touch-action: pan-x; /* Crucial: prevents vertical scroll conflict */
+    }
 }
 
-.loc-card {
-    /* Ensure cards don't capture events that should trigger scrolling */
-    touch-action: pan-x; 
-}
-
-/* Ensure the background layer doesn't block clicks */
-.mosaic-bg-layer {
-    pointer-events: none; 
-}
-
-/* Ensure Nav is above overlays and interactive */
-#mainNav {
-    pointer-events: auto; /* Ensure it stays interactive */
-    z-index: 99999;
-}
+/* Global fixes that apply to all screen sizes */
+.mosaic-bg-layer { pointer-events: none; }
+#mainNav { pointer-events: auto; z-index: 99999; }
