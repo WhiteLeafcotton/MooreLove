@@ -364,7 +364,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         display: flex;
         flex-direction: row;
         overflow-x: auto !important;
-        scroll-snap-type: x mandatory;
+        scroll-snap-type: x proximity;
         padding-left: 10vw; /* Centers initial card */
         padding-right: 10vw;
         padding-bottom: 20px;
