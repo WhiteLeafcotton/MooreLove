@@ -423,3 +423,26 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
     touch-action: pan-x; /* Explicitly enables horizontal swipe handling */
 }
+
+/* Fix for the Locations Gallery Swiping */
+.locations-gallery {
+    /* ... existing styles ... */
+    touch-action: pan-x; /* Enables horizontal swipe for gallery */
+    -webkit-overflow-scrolling: touch;
+}
+
+.loc-card {
+    /* Ensure cards don't capture events that should trigger scrolling */
+    touch-action: pan-x; 
+}
+
+/* Ensure the background layer doesn't block clicks */
+.mosaic-bg-layer {
+    pointer-events: none; 
+}
+
+/* Ensure Nav is above overlays and interactive */
+#mainNav {
+    pointer-events: auto; /* Ensure it stays interactive */
+    z-index: 99999;
+}
