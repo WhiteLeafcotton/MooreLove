@@ -18,7 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
     // 2. Hero Content & Image Swapping Logic
-    // 2. Hero Content & Image Swapping Logic
+// ==========================================
+// 2. Hero Content & Image Swapping Logic
+// ==========================================
 const iconItems = document.querySelectorAll('.icon-item');
 const heroSection = document.querySelector('.hero');
 const heroVideo = document.getElementById('heroVideo');
@@ -26,8 +28,9 @@ const heroTitle = document.querySelector('.hero-content h1');
 const heroBtn = document.querySelector('.hero-button');
 const activeLine = document.getElementById("activeLine");
 
-// Reusable function for the interaction
+// 1. The Interaction Function
 function updateHeroContent(item) {
+    // Hide and pause video ONLY when a user interacts
     if (heroVideo) {
         heroVideo.style.display = 'none';
         heroVideo.pause();
@@ -38,27 +41,30 @@ function updateHeroContent(item) {
     if (heroTitle) heroTitle.innerHTML = item.dataset.title;
     if (heroBtn) heroBtn.innerText = item.dataset.cta;
     
-    // Update line
+    // Update line position
     if (activeLine) {
         activeLine.style.width = item.offsetWidth + "px";
         activeLine.style.left = item.offsetLeft + "px";
     }
 }
 
+// 2. Event Listeners for Interaction
 iconItems.forEach((item) => {
-    // For Desktop (Mouse)
     item.addEventListener('mouseenter', () => updateHeroContent(item));
-    
-    // For Mobile (Touch/Click)
     item.addEventListener('click', (e) => {
         e.preventDefault();
         updateHeroContent(item);
     });
 });
 
-// Initialize line position slightly after load
-setTimeout(() => { if (iconItems.length > 0) updateHeroContent(iconItems[0]); }, 100);
-
+// 3. Initialize ONLY the line position on load (Keep the video playing)
+setTimeout(() => { 
+    if (activeLine && iconItems.length > 0) {
+        // Just set the line position to the first item without calling updateHeroContent()
+        activeLine.style.width = iconItems[0].offsetWidth + "px";
+        activeLine.style.left = iconItems[0].offsetLeft + "px";
+    }
+}, 100);
   
 
     // ==========================================
