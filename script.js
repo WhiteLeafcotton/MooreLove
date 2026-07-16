@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Sticky Navigation Logic
+    // 1. Stickyee Navigation Logic
     const hero = document.getElementById("hero");
     const nav = document.getElementById("mainNav");
 
