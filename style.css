@@ -416,13 +416,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         scroll-snap-type: x mandatory; /* Snaps cards into view */
         justify-content: flex-start;
         padding-left: 10%;
-    }
-    .loc-card {
-        scroll-snap-align: center;
-        flex: 0 0 80vw;
-        touch-action: pan-x !important; /* Move this INSIDE the braces */
-    }
-    touch-action: pan-x; /* Explicitly enables horizontal swipe handling */
+    
 }
 /* FORCE INTERACTIVITY ON MOBILE */
 #mainNav, .nav-link,  .tile-card {
@@ -432,9 +426,24 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* Ensure nothing blocks the gallery */
 .locations-gallery {
-    touch-action: pan-x !important; /* Enables smooth horizontal swipe */
-    -webkit-overflow-scrolling: touch;
-}
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 20px;
+        -webkit-overflow-scrolling: touch;
+        /* THIS IS THE FIX: Disable browser's vertical scroll while swiping */
+        touch-action: pan-x !important; 
+    }
+
+    .loc-card {
+        flex: 0 0 80vw !important;
+        scroll-snap-align: center;
+        /* Ensure cards are above any background layers */
+        position: relative;
+        z-index: 10;
+        pointer-events: auto !important;
+    }
 
 /* Fix for the navigation tap target */
 .nav-inner {
