@@ -395,21 +395,23 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     .tile-card i { font-size: 18px; }
     .tile-card span { font-size: 7px; }
 
-    /* Locations Gallery Mobile Swiping Fixes */
+ 
+    /* Ensure the container has height and displays items */
     .locations-gallery {
+        display: flex;
         overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        justify-content: flex-start;
-        padding-left: 10%;
-        touch-action: pan-x; /* Crucial: enables horizontal swipe */
-        -webkit-overflow-scrolling: touch;
+        /* Prevent the container from collapsing */
+        min-height: 200px; 
     }
-
+    
     .loc-card {
-        scroll-snap-align: center;
-        flex: 0 0 80vw;
-        touch-action: pan-x; /* Crucial: prevents vertical scroll conflict */
+        /* Ensure cards have a defined size */
+        flex: 0 0 80vw; 
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
+}
 }
 
 /* Global fixes that apply to all screen sizes */
