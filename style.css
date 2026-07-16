@@ -231,6 +231,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* ==================================================
    LOCATIONS GALLERY - UPDATED WITH TOP BLUR
    ================================================== */
+/* --- Desktop Default (Balanced) --- */
 .locations-gallery {
     display: flex;
     justify-content: center;
@@ -239,102 +240,55 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     padding: 60px 4%;
     background: #000;
     transition: background 0.5s ease;
-    position: relative; /* Required for the blur positioning */
-    overflow: hidden;   /* Keeps blur contained */
-
-    scroll-snap-type: x mandatory; /* This handles the swipe-snap */
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Hide scrollbar */
-   
-}
-
-.locations-gallery::-webkit-scrollbar {
-    display: none;
-}
-
-/* Add the top blur edge */
-.locations-gallery::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 120px; /* Adjust height as needed */
-    background: linear-gradient(to bottom, #000000, transparent);
-    z-index: 10; /* Keeps it above the cards */
-    pointer-events: none; /* Allows mouse interaction with cards below */
+    position: relative;
+    overflow: hidden;
 }
 
 .loc-card {
-    flex: 0 0 320px; /* Locked width - no flicker */
-    height: 480px;   /* Locked height - no flicker */
+    flex: 0 0 320px; /* Fixed width for Desktop */
+    height: 480px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.5); /* Dimmed state */
+    background: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     transition: all 0.4s ease;
     text-align: center;
-    scroll-snap-align: center; /* This centers the card on swipe */
-    flex: 0 0 80vw;
-    touch-action: pan-x; /* Explicitly allow horizontal scroll */
+    position: relative;
+    z-index: 10;
 }
 
-/* Active State: The White Card Look */
-.loc-card.active {
-    background: #fff;
-    color: #000;
-    border-color: #fff;
+/* --- Mobile Specific (Swipe & Scroll) --- */
+@media (max-width: 768px) {
+    .locations-gallery {
+        overflow-x: auto !important; /* Allow scrolling */
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x !important;
+        justify-content: flex-start; /* Align left for swiping */
+        padding-left: 10vw;
+        padding-right: 10vw;
+    }
+
+    .loc-card {
+        flex: 0 0 80vw !important; /* Mobile width */
+        scroll-snap-align: center;
+        margin: 0 10px; /* Space between cards */
+    }
 }
 
-/* Image styling */
-.loc-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    margin: 20px 0;
-    display: none; /* Hidden on inactive cards */
-}
-
-.loc-card.active img { 
-    display: block; 
-}
-
-/* Reveal content only on active card */
-.card-reveal { 
-    display: none; 
-}
-
-.loc-card.active .card-reveal { 
-    display: block; 
-}
-
-.card-title { 
-    letter-spacing: 2px; 
-    font-size: 14px; 
-    color: #fff; /* White title on dark cards */
-    transition: color 0.3s ease;
-}
-
-.loc-card.active .card-title { 
-    color: #000; /* Black title on white active card */
-}
-
-/* Ensure the button matches your style */
-.view-btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: 1px solid #000;
-    text-decoration: none;
-    color: #000;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
+/* Base styles for active state (keep these outside the media query) */
+.loc-card.active { background: #fff; color: #000; border-color: #fff; }
+.loc-card img { width: 100%; height: 200px; object-fit: cover; margin: 20px 0; display: none; }
+.loc-card.active img { display: block; }
+.card-reveal { display: none; }
+.loc-card.active .card-reveal { display: block; }
+.card-title { letter-spacing: 2px; font-size: 14px; color: #fff; transition: color 0.3s ease; }
+.loc-card.active .card-title { color: #000; }
+.view-btn { display: inline-block; margin-top: 15px; padding: 10px 20px; border: 1px solid #000; text-decoration: none; color: #000; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
 
 /* MOBILE RESPONSIVE ADAPTATION */
 /* MOBILE RESPONSIVE ADAPTATION */
@@ -342,7 +296,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     /* Existing tweaks */
     .top-bar { padding: 20px 4%; }
     .top-links { gap: 15px; }
-    .nav-inner { gap: 20px; padding: 10px; }
+    .nav-inner { gap: 20px; padding: 10px; pointer-events: auto !important; position: relative; z-index: 999999; }
     .nav-link { font-size: 9px; letter-spacing: 1px; }
 
     .featured-card-wrapper { padding: 40px 4%; }
@@ -363,110 +317,71 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         margin-bottom: 25px; 
     }
     
-    /* NEW: Dedicated background layer logic for Mobile */
-   
-/* Update this in your style.css */
-/* 1. Ensure the section is transparent */
+    /* Mosaic Section */
     .mosaic-section {
         padding: 40px 4%;
         position: relative;
         background: transparent !important; 
     }
-
-    /* 2. Style the background layer specifically */
     .mosaic-bg-layer {
         display: block;
-         /* This now works because it's a separate div, not a background property */
         top: 0;
         left: 0;
         width: 100%;
-        height: 100vh; /* Use 100vh to ensure it covers the viewport */
+        height: 100vh;
         background: url('final2.jpg') center/cover no-repeat;
         z-index: -1;
-        pointer-events: none; /* Allows clicks to pass through to content */
+        pointer-events: none;
         position: absolute;
     }
-
-
-    
     .mosaic-section::before {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%; /* Covers entire section */
-        /* Fade from black at top to dark overlay at bottom */
+        height: 100%;
         background: linear-gradient(to bottom, #080808 0%, rgba(8,8,8,0.85) 30%);
         z-index: 1;
         pointer-events: none;
     }
-    /* Ensure the section content is opaque so it covers the fixed background */
-
-
-    /* 2 Rows, 3 Columns Grid Layout */
-.mosaic-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
-    grid-template-rows: repeat(2, auto);    /* 2 Rows */
-    gap: 15px; 
-    width: 100%;
-    max-width: 1200px; /* Wider to accommodate 3 columns */
-    z-index: 2;
-    margin-bottom: 30px;
-}
-    .tile-card { 
-        padding: 20px 10px; 
-        gap: 10px; 
+    .mosaic-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, auto);
+        gap: 15px; 
+        width: 100%;
+        max-width: 1200px;
+        z-index: 2;
+        margin-bottom: 30px;
     }
+    .tile-card { padding: 20px 10px; gap: 10px; pointer-events: auto !important; }
     .tile-card i { font-size: 24px; }
     .tile-card span { font-size: 8px; }
 
-
-   .locations-gallery {
-        overflow-x: auto; /* Allows the container to scroll */
-        scroll-snap-type: x mandatory; /* Snaps cards into view */
-        justify-content: flex-start;
-        padding-left: 10%;
-    
-}
-/* FORCE INTERACTIVITY ON MOBILE */
-#mainNav, .nav-link,  .tile-card {
-    pointer-events: auto !important;
-    touch-action: manipulation !important;
-}
-
-/* Ensure nothing blocks the gallery */
-.locations-gallery {
+    /* Locations Gallery - Swipe & Snap Logic */
+    .locations-gallery {
         display: flex;
         flex-direction: row;
         overflow-x: auto !important;
         scroll-snap-type: x mandatory;
+        padding-left: 10vw; /* Centers initial card */
+        padding-right: 10vw;
         padding-bottom: 20px;
         -webkit-overflow-scrolling: touch;
-        /* Disables vertical scroll interference while swiping horizontally */
-        touch-action: pan-x !important; 
-        /* Optional: hide scrollbar for cleaner look */
-        scrollbar-width: none; 
+        touch-action: pan-x !important;
+        scrollbar-width: none;
+        justify-content: flex-start;
     }
-    
-    .locations-gallery::-webkit-scrollbar {
-        display: none;
-    }
+    .locations-gallery::-webkit-scrollbar { display: none; }
 
     .loc-card {
-        flex: 0 0 80vw !important;
+        flex: 0 0 80vw !important; /* Forces 80% width for swipe feel */
         scroll-snap-align: center;
-        /* Ensure cards are above any background layers */
+        margin: 0 10px; /* Spacing between cards */
         position: relative;
         z-index: 10;
         pointer-events: auto !important;
-        margin: 0 10px; /* Adds small spacing between cards for better flow */
+        touch-action: pan-x;
     }
-
-/* Fix for the navigation tap target */
-.nav-inner {
-    pointer-events: auto !important;
-    position: relative;
-    z-index: 999999;
 }
