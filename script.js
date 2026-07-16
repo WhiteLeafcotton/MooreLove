@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Sticky Navigation & 1.5 Event Delegation
+    // 1. Stickyee Navigation Logic
     const hero = document.getElementById("hero");
     const nav = document.getElementById("mainNav");
 
     function updateNav() {
         if (!hero || !nav) return;
+        // Use pageYOffset for better compatibility
         if (window.scrollY >= hero.offsetHeight) {
             nav.classList.add("sticky");
         } else {
@@ -13,20 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     window.addEventListener("scroll", updateNav, { passive: true });
-
-    if (nav) {
-        nav.addEventListener('click', (e) => {
-            const link = e.target.closest('.nav-link');
-            if (link) {
-                console.log("Nav link clicked:", link.innerText);
-                // Optional: link.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    }
-
-
-
-    
 
     // 2. Hero Content & Image Swapping Logic
     const iconItems = document.querySelectorAll('.icon-item');
@@ -87,39 +74,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mosaicSection) mosaicObserver.observe(mosaicSection);
 
     // 5. Locations Gallery Logic
-// 5. Locations Gallery Logic
     const gallery = document.getElementById('locationsGallery');
     const locCards = document.querySelectorAll('.loc-card');
 
-    function activateCard(card) {
-        locCards.forEach(c => c.classList.remove('active'));
-        card.classList.add('active');
-        
-        const bg = card.getAttribute('data-bg');
-        if (gallery && bg) {
-            gallery.style.background = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${bg}') center/cover no-repeat`;
-        }
-    }
-
-    // Attach click listeners to cards
     locCards.forEach(card => {
-        card.addEventListener('click', () => activateCard(card));
+        card.addEventListener('click', () => {
+            locCards.forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+            const bg = card.getAttribute('data-bg');
+            if (gallery && bg) {
+                gallery.style.background = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${bg}') center/cover no-repeat`;
+            }
+        });
     });
 
     // Swipe Logic for Mobile
     let touchStartX = 0;
-    gallery?.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
+    gallery?.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, { passive: true });
     gallery?.addEventListener('touchend', e => {
         const diff = touchStartX - e.changedTouches[0].screenX;
         if (Math.abs(diff) > 50) {
             const activeIndex = Array.from(locCards).findIndex(c => c.classList.contains('active'));
-            if (diff > 0 && activeIndex < locCards.length - 1) {
-                activateCard(locCards[activeIndex + 1]);
-            } else if (diff < 0 && activeIndex > 0) {
-                activateCard(locCards[activeIndex - 1]);
-            }
+            if (diff > 0 && activeIndex < locCards.length - 1) locCards[activeIndex + 1].click();
+            else if (diff < 0 && activeIndex > 0) locCards[activeIndex - 1].click();
         }
     }, { passive: true });
+
+});
