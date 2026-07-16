@@ -15,6 +15,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener("scroll", updateNav, { passive: true });
 
+
+
+// 1.5. Improved Navigation Interaction (Event Delegation)
+const nav = document.getElementById("mainNav");
+if (nav) {
+    nav.addEventListener('click', (e) => {
+        // Check if the clicked item (or its parent) is a link
+        const link = e.target.closest('.nav-link');
+        if (link) {
+            // Your existing logic for nav clicks goes here
+            console.log("Nav link clicked:", link.innerText);
+            // e.preventDefault(); // Uncomment if these are SPA links
+        }
+    });
+}
+
+
+
+
+    
+
     // 2. Hero Content & Image Swapping Logic
     const iconItems = document.querySelectorAll('.icon-item');
     const heroSection = document.querySelector('.hero');
