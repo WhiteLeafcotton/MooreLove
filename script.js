@@ -18,35 +18,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
     // 2. Hero Content & Image Swapping Logic
-    // ==========================================
-    const iconItems = document.querySelectorAll('.icon-item');
-    const heroSection = document.querySelector('.hero');
-    const heroVideo = document.getElementById('heroVideo');
-    const heroTitle = document.querySelector('.hero-content h1');
-    const heroBtn = document.querySelector('.hero-button');
-    const activeLine = document.getElementById("activeLine");
+    // 2. Hero Content & Image Swapping Logic
+const iconItems = document.querySelectorAll('.icon-item');
+const heroSection = document.querySelector('.hero');
+const heroVideo = document.getElementById('heroVideo');
+const heroTitle = document.querySelector('.hero-content h1');
+const heroBtn = document.querySelector('.hero-button');
+const activeLine = document.getElementById("activeLine");
 
-    function moveLine(item) {
-        if (!activeLine) return;
+// Reusable function for the interaction
+function updateHeroContent(item) {
+    if (heroVideo) {
+        heroVideo.style.display = 'none';
+        heroVideo.pause();
+    }
+    
+    // Update visuals
+    heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('${item.dataset.image}')`;
+    if (heroTitle) heroTitle.innerHTML = item.dataset.title;
+    if (heroBtn) heroBtn.innerText = item.dataset.cta;
+    
+    // Update line
+    if (activeLine) {
         activeLine.style.width = item.offsetWidth + "px";
         activeLine.style.left = item.offsetLeft + "px";
     }
+}
 
-    iconItems.forEach((item) => {
-        item.addEventListener('mouseenter', () => {
-            if (heroVideo) {
-                heroVideo.style.display = 'none';
-                heroVideo.pause();
-            }
-            heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('${item.dataset.image}')`;
-            if (heroTitle) heroTitle.innerHTML = item.dataset.title;
-            if (heroBtn) heroBtn.innerText = item.dataset.cta;
-            moveLine(item);
-        });
+iconItems.forEach((item) => {
+    // For Desktop (Mouse)
+    item.addEventListener('mouseenter', () => updateHeroContent(item));
+    
+    // For Mobile (Touch/Click)
+    item.addEventListener('click', (e) => {
+        e.preventDefault();
+        updateHeroContent(item);
     });
+});
 
-    // Initialize line position slightly after load
-    setTimeout(() => { if (iconItems.length > 0) moveLine(iconItems[0]); }, 100);
+// Initialize line position slightly after load
+setTimeout(() => { if (iconItems.length > 0) updateHeroContent(iconItems[0]); }, 100);
+
+  
 
     // ==========================================
     // 3. Featured Card Intersection Observer
