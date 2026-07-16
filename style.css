@@ -350,7 +350,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         margin-bottom: 25px; 
     }
     
-    /* Mosaic Section Fixes */
     .mosaic-section {
         padding: 40px 4%;
         position: relative;
@@ -365,7 +364,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         height: 100vh;
         background: url('final2.jpg') center/cover no-repeat;
         z-index: -1;
-        pointer-events: none; /* Allows clicks to pass through */
+        pointer-events: none;
         position: absolute;
     }
     
@@ -384,36 +383,30 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     .mosaic-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, auto);
         gap: 10px; 
         width: 100%;
         z-index: 2;
         margin-bottom: 30px;
     }
 
-    .tile-card { padding: 15px 5px; gap: 5px; }
-    .tile-card i { font-size: 18px; }
-    .tile-card span { font-size: 7px; }
-
- 
-    /* Ensure the container has height and displays items */
+    .tile-card { padding: 15px 5px; gap: 5px; pointer-events: auto; }
+    
     .locations-gallery {
         display: flex;
         overflow-x: auto;
-        /* Prevent the container from collapsing */
-        min-height: 200px; 
+        min-height: 400px; /* Increased height so cards aren't squashed */
+        touch-action: pan-x;
     }
     
     .loc-card {
-        /* Ensure cards have a defined size */
         flex: 0 0 80vw; 
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
+        pointer-events: auto !important; /* Force clicks to work */
     }
 }
-}
 
-/* Global fixes that apply to all screen sizes */
-.mosaic-bg-layer { pointer-events: none; }
-#mainNav { pointer-events: auto; z-index: 99999; }
+/* Global fixes */
+.mosaic-bg-layer { pointer-events: none !important; }
+#mainNav { pointer-events: auto !important; z-index: 99999 !important; }
