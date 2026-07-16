@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Sticky Navigation Logic
+    // 1. Sticky Navigation & 1.5 Event Delegation
     const hero = document.getElementById("hero");
     const nav = document.getElementById("mainNav");
 
@@ -14,19 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener("scroll", updateNav, { passive: true });
 
-    // 1.5. Improved Navigation Interaction (Event Delegation)
     if (nav) {
         nav.addEventListener('click', (e) => {
-            // Check if the clicked element is a .nav-link
             const link = e.target.closest('.nav-link');
             if (link) {
                 console.log("Nav link clicked:", link.innerText);
-                // You can add logic here to scroll to sections or change pages
-                // e.preventDefault(); 
+                // Optional: link.scrollIntoView({ behavior: 'smooth' });
             }
         });
     }
-
 
 
 
