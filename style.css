@@ -384,4 +384,17 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         pointer-events: auto !important;
         touch-action: pan-x;
     }
+    /* Add this to your style.css */
+.icon-item {
+    text-align: center;
+    color: rgba(255,255,255,0.6);
+    flex: 1;
+    cursor: pointer;
+    transition: .3s;
+    /* Ensure the icon area is fully clickable */
+    pointer-events: auto; 
+    /* Prevent text selection highlight on tap */
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
 }
