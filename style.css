@@ -464,3 +464,7 @@ body { pointer-events: auto !important; }
     pointer-events: auto !important;
     z-index: 999999 !important;
 }
+.nav-link:active {
+    outline: 5px solid red !important;
+    background: yellow !important;
+}
