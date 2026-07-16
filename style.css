@@ -437,3 +437,25 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Global fixes */
 .mosaic-bg-layer { pointer-events: none !important; }
 #mainNav { pointer-events: auto !important; z-index: 99999 !important; }
+/* FORCE INTERACTIVITY */
+#mainNav, 
+.nav-link, 
+.loc-card, 
+.tile-card {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 999999 !important;
+}
+
+/* Ensure the gallery container doesn't block clicks */
+.locations-gallery {
+    pointer-events: auto !important;
+}
+
+/* If you have a background layer, ensure it is truly behind everything */
+.mosaic-bg-layer, 
+.mosaic-section::before, 
+.locations-gallery::before {
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
