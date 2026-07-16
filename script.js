@@ -75,41 +75,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Locations Gallery Logic
    // 5. Locations Gallery & Swipe Logic
-// 5. Locations Gallery Logic
-const gallery = document.getElementById('locationsGallery');
-const locCards = document.querySelectorAll('.loc-card');
+    const gallery = document.getElementById('locationsGallery');
+    const locCards = document.querySelectorAll('.loc-card');
 
-// Efficiently activate card
-const activateCard = (card) => {
-    locCards.forEach(c => c.classList.remove('active'));
-    card.classList.add('active');
-    const bg = card.getAttribute('data-bg');
-    if (gallery && bg) {
-        gallery.style.background = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${bg}') center/cover no-repeat`;
-    }
-};
-
-// Use pointerdown (faster than click for mobile)
-locCards.forEach(card => {
-    card.addEventListener('pointerdown', (e) => {
-        activateCard(card);
-        // Smoothly snap the clicked card to center
-        card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    });
-});
-
-// Auto-detect which card is centered while scrolling (The "Native" Swipe)
-const observerOptions = {
-    root: gallery,
-    threshold: 0.6 // Card must be 60% visible to be considered "active"
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            activateCard(entry.target);
+    function setActiveCard(card) {
+        locCards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        const bg = card.getAttribute('data-bg');
+        if (gallery && bg) {
+            gallery.style.background = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${bg}') center/cover no-repeat`;
         }
-    });
-}, observerOptions);
+        // Snap the card into view on mobile
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
 
-locCards.forEach(card => observer.observe(card));
+    locCards.forEach(card => {
+        card.addEventListener('click', () => setActiveCard(card));
+    });
+
+    // Swipe Logic for Mobile
+    let touchStartX = 0;
+    
+    gallery?.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    gallery?.addEventListener('touchend', e => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > 50) { // Threshold for swipe
+            const activeIndex = Array.from(locCards).findIndex(c => c.classList.contains('active'));
+            
+            if (diff > 0 && activeIndex < locCards.length - 1) {
+                // Swiped Left
+                setActiveCard(locCards[activeIndex + 1]);
+            } else if (diff < 0 && activeIndex > 0) {
+                // Swiped Right
+                setActiveCard(locCards[activeIndex - 1]);
+            }
+        }
+    }, { passive: true });
