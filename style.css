@@ -241,6 +241,15 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     transition: background 0.5s ease;
     position: relative; /* Required for the blur positioning */
     overflow: hidden;   /* Keeps blur contained */
+
+    scroll-snap-type: x mandatory; /* This handles the swipe-snap */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbar */
+   
+}
+
+.locations-gallery::-webkit-scrollbar {
+    display: none;
 }
 
 /* Add the top blur edge */
@@ -269,6 +278,9 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     cursor: pointer;
     transition: all 0.4s ease;
     text-align: center;
+    scroll-snap-align: center; /* This centers the card on swipe */
+    flex: 0 0 80vw;
+    touch-action: pan-x; /* Explicitly allow horizontal scroll */
 }
 
 /* Active State: The White Card Look */
