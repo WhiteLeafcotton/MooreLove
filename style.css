@@ -423,3 +423,21 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
     touch-action: pan-x; /* Explicitly enables horizontal swipe handling */
 }
+/* FORCE INTERACTIVITY ON MOBILE */
+#mainNav, .nav-link, .loc-card, .tile-card {
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+}
+
+/* Ensure nothing blocks the gallery */
+.locations-gallery {
+    touch-action: pan-x !important; /* Enables smooth horizontal swipe */
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Fix for the navigation tap target */
+.nav-inner {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 999999;
+}
