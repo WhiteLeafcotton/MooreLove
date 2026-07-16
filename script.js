@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener("scroll", updateNav, { passive: true });
 
     // ==========================================
-    // 2. Hero Content & Image Swapping Logic
+    // 2. Hero Content & 4444Image Swapping Logic
 // ==========================================
 // 2. Hero Content & Image Swapping Logic
 // ==========================================
