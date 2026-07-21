@@ -53,22 +53,46 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .icon-bar-line { width: 100%; height: 1px; background: rgba(255,255,255,0.15); margin-bottom: 25px; position: relative; }
 .active-line { position: absolute; top: 0; left: 0; height: 1px; background: #fff; transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), left 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
 .icon-wrapper { display: flex; justify-content: space-between; position: relative; }
-.icon-item { text-align: center; color: rgba(255,255,255,0.6); flex: 1; cursor: pointer; transition: .3s; }
-.icon-item i { display: block; font-size: 20px; margin-bottom: 10px; }
-.icon-item span { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
-.icon-item:hover { color: #fff; }
 
+/* Container for each icon + label pair */
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; /* Increased space between icon and text */
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+}
+
+/* Lucide SVGs (The outline icons) */
 .icon-item svg {
-    width: 24px;
-    height: 24px;
-    stroke-width: 1.25; /* Controls line thinness (1.0 = ultra thin, 1.5 = normal) */
-    transition: color 0.3s ease, stroke-width 0.3s ease;
+    width: 36px;            /* Increased from default (~24px) */
+    height: 36px;           /* Increased from default (~24px) */
+    stroke-width: 1.25;     /* Keeps stroke thin and crisp at larger scale */
+    transition: all 0.3s ease;
+}
+
+/* Text Labels (Lifestyle, Wellness, Community, Support) */
+.icon-item span {
+    font-size: 1.05rem;     /* Increased title size */
+    font-weight: 500;
+    letter-spacing: 1.5px;  /* Spaced lettering for editorial look */
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+/* Hover & Active States */
+.icon-item:hover,
+.icon-item.active {
+    color: #ffffff;
+    transform: translateY(-4px); /* Slightly deeper lift effect */
 }
 
 .icon-item:hover svg,
 .icon-item.active svg {
-    color: #d4af37; /* Luxury Gold */
-    stroke-width: 1.75;
+    color: #d4af37;         /* Gold color highlight */
+    stroke-width: 1.75;     /* Slightly thickens active outline */
 }
 
 /* STICKY NAV */
