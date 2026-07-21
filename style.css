@@ -56,29 +56,30 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* Container for each icon + label pair */
 /* Container for each icon + label pair */
+/* Container for each icon + label pair */
 .icon-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px; /* Balanced spacing between icon and title */
+    gap: 6px;
     cursor: pointer;
     color: rgba(255, 255, 255, 0.7);
     transition: all 0.3s ease;
 }
 
-/* Lucide SVGs (The outline icons) */
+/* Lucide SVGs (Ultra-thin, razor-line outlines) */
 .icon-item svg {
-    width: 28px;            /* Goldilocks size: bigger than 24px, sleeker than 36px */
-    height: 28px;
-    stroke-width: 1.35;     /* Delicate line weight */
+    width: 22px;
+    height: 22px;
+    stroke-width: 0.85;     /* Super thin, delicate lines */
     transition: all 0.3s ease;
 }
 
-/* Text Labels (Lifestyle, Wellness, Community, Support) */
+/* Text Labels */
 .icon-item span {
-    font-size: 0.9rem;      /* Clean, refined text size */
-    font-weight: 500;
-    letter-spacing: 1.2px;  /* Subtle spacing for high-end look */
+    font-size: 0.75rem;
+    font-weight: 400;       /* Slightly lighter font weight to match thin lines */
+    letter-spacing: 1px;
     text-transform: uppercase;
     transition: color 0.3s ease;
 }
@@ -92,8 +93,8 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 .icon-item:hover svg,
 .icon-item.active svg {
-    color: #d4af37;         /* Elegant gold highlight */
-    stroke-width: 1.75;
+    color: #d4af37;
+    stroke-width: 1.1;      /* Crisp, subtle bump on hover */
 }
 
 /* STICKY NAV */
