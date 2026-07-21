@@ -54,27 +54,29 @@
 <!-- Interactive Icon Bar -->
 <!-- Interactive Icon Bar (Thin Minimal Outlines) -->
 <!-- Interactive Icon Bar (Minimal Outline Icons) -->
+<!-- Interactive Icon Bar -->
 <div class="icon-bar-container">
     <div class="icon-bar-line"><div class="active-line" id="activeLine"></div></div>
     <div class="icon-wrapper">
 
         <div class="icon-item" data-image="lifestyle.jpg" data-title="ELEVATED <span>LIFESTYLE</span> EXPERIENCES" data-cta="Explore Lifestyle">
-            <i class="fe fe-user"></i>
+            <i data-lucide="footprints"></i>
             <span>Lifestyle</span>
         </div>
 
         <div class="icon-item" data-image="wellness.jpg" data-title="HOLISTIC <span>WELLNESS</span> & CARE" data-cta="View Wellness">
-            <i class="fe fe-activity"></i>
+            <!-- Alternatives: data-lucide="line-chart" or data-lucide="clock" -->
+            <i data-lucide="pill"></i>
             <span>Wellness</span>
         </div>
 
         <div class="icon-item" data-image="community.jpg" data-title="A VIBRANT <span>COMMUNITY</span> BELONGING" data-cta="Join Community">
-            <i class="fe fe-home"></i>
+            <i data-lucide="house"></i>
             <span>Community</span>
         </div>
 
         <div class="icon-item" data-image="support.jpg" data-title="DEDICATED <span>SUPPORT</span> 24/7" data-cta="Learn More">
-            <i class="fe fe-heart"></i>
+            <i data-lucide="hand-heart"></i>
             <span>Support</span>
         </div>
 
@@ -214,6 +216,12 @@
   
 
     <script src="script.js"></script>
+    <!-- Lucide Icons (Ultra-thin hollow line icons) -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+    lucide.createIcons();
+</script>
    
 </body>
 </html> 
