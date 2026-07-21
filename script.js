@@ -169,3 +169,25 @@ setTimeout(() => {
     }, { passive: true });
 
 });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const revealSection = document.querySelector('.text-reveal-section');
+
+  if (revealSection) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Unobserve if you only want the sequence to play once upon reveal
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.25 // Triggers when 25% of the section is visible in viewport
+    });
+
+    observer.observe(revealSection);
+  }
+});
