@@ -19,9 +19,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
-    <!-- Feather Icon Font CDN for Outline Icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feathericon@1.0.2/build/css/feathericon.min.css">
+    <!-- Font Awesome (Required for Mosaic Section & Footer Icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -36,7 +36,7 @@
     </header>
 
     <section class="hero" id="hero">
-        <!-- The Video Background (Loeads initially) -->
+        <!-- Video Background -->
         <video id="heroVideo" autoplay loop muted playsinline poster="home-poster.jpg">
             <source src="home-video.mp4" type="video/mp4">
         </video>
@@ -48,180 +48,154 @@
             <a href="#" class="hero-button">Discover Our Story</a>
         </div>
 
-        <!-- Interactive Icon Bar (4 Icons) -->
-        <!-- Ultra-Clean Line Icons -->
-<!-- Interactive Icon Bar (4 Icons) -->
-<!-- Interactive Icon Bar -->
-<!-- Interactive Icon Bar (Thin Minimal Outlines) -->
-<!-- Interactive Icon Bar (Minimal Outline Icons) -->
-<!-- Interactive Icon Bar -->
-<div class="icon-bar-container">
-    <div class="icon-bar-line"><div class="active-line" id="activeLine"></div></div>
-    <div class="icon-wrapper">
+        <!-- Interactive Icon Bar (Lucide Thin Outline Icons) -->
+        <div class="icon-bar-container">
+            <div class="icon-bar-line"><div class="active-line" id="activeLine"></div></div>
+            <div class="icon-wrapper">
 
-        <div class="icon-item" data-image="lifestyle.jpg" data-title="ELEVATED <span>LIFESTYLE</span> EXPERIENCES" data-cta="Explore Lifestyle">
-            <i data-lucide="footprints"></i>
-            <span>Lifestyle</span>
+                <div class="icon-item" data-image="lifestyle.jpg" data-title="ELEVATED <span>LIFESTYLE</span> EXPERIENCES" data-cta="Explore Lifestyle">
+                    <i data-lucide="footprints"></i>
+                    <span>Lifestyle</span>
+                </div>
+
+                <div class="icon-item" data-image="wellness.jpg" data-title="HOLISTIC <span>WELLNESS</span> & CARE" data-cta="View Wellness">
+                    <i data-lucide="pill"></i>
+                    <span>Wellness</span>
+                </div>
+
+                <div class="icon-item" data-image="community.jpg" data-title="A VIBRANT <span>COMMUNITY</span> BELONGING" data-cta="Join Community">
+                    <i data-lucide="house"></i>
+                    <span>Community</span>
+                </div>
+
+                <div class="icon-item" data-image="support.jpg" data-title="DEDICATED <span>SUPPORT</span> 24/7" data-cta="Learn More">
+                    <i data-lucide="hand-heart"></i>
+                    <span>Support</span>
+                </div>
+
+            </div>
         </div>
-
-        <div class="icon-item" data-image="wellness.jpg" data-title="HOLISTIC <span>WELLNESS</span> & CARE" data-cta="View Wellness">
-            <!-- Alternatives: data-lucide="line-chart" or data-lucide="clock" -->
-            <i data-lucide="pill"></i>
-            <span>Wellness</span>
-        </div>
-
-        <div class="icon-item" data-image="community.jpg" data-title="A VIBRANT <span>COMMUNITY</span> BELONGING" data-cta="Join Community">
-            <i data-lucide="house"></i>
-            <span>Community</span>
-        </div>
-
-        <div class="icon-item" data-image="support.jpg" data-title="DEDICATED <span>SUPPORT</span> 24/7" data-cta="Learn More">
-            <i data-lucide="hand-heart"></i>
-            <span>Support</span>
-        </div>
-
-    </div>
-</div>
     </section>
 
     <!-- Navigation -->
-    <!-- Navigation -->
-<!-- Navigation -->
-<nav class="main-nav" id="mainNav">
-    <div class="nav-inner">
-        <a href="#" class="nav-logo">
-            <img src="heart.svg" alt="Logo" class="nav-icon">
-        </a>
-        <!-- Added class="nav-link" to target these specifically -->
-        <a href="#" class="nav-link">Residences</a>
-        <a href="#" class="nav-link">Villas</a>
-        <a href="#" class="nav-link">Dining</a>
-        <a href="#" class="nav-link">Yachts</a>
-    </div>
-</nav>
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <img src="heart.svg" alt="Logo" class="nav-icon">
+            </a>
+            <a href="#" class="nav-link">Residences</a>
+            <a href="#" class="nav-link">Villas</a>
+            <a href="#" class="nav-link">Dining</a>
+            <a href="#" class="nav-link">Yachts</a>
+        </div>
+    </nav>
 
     <!-- Content Sections -->
-  <section class="featured-card-wrapper">
-    <div class="featured-card">
-        <div class="card-content">
-            <i>Explore our Resorts in Asia</i>
-            <h3>Experiences to Remember</h3>
-            <p>Uncover Asia’s most sought-after destinations, where nature restores balance and jungle trails inspire adventure.</p>
-            <a href="#" class="card-btn">Book Now</a>
+    <section class="featured-card-wrapper">
+        <div class="featured-card">
+            <div class="card-content">
+                <i>Explore our Resorts in Asia</i>
+                <h3>Experiences to Remember</h3>
+                <p>Uncover Asia’s most sought-after destinations, where nature restores balance and jungle trails inspire adventure.</p>
+                <a href="#" class="card-btn">Book Now</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-
-<!-- CORRECTED MOSAIC SECTION -->
-<section class="mosaic-section" id="mosaicSection">
-    <div class="mosaic-bg-layer"></div>
-    
-    <!-- Added id="mosaicGrid" to match the JavaScript selector -->
-    <div class="mosaic-grid" id="mosaicGrid">
-        <div class="tile-card"><i class="fa-solid fa-star"></i><span>Quality</span></div>
-        <div class="tile-card"><i class="fa-solid fa-compass"></i><span>Explore</span></div>
-        <div class="tile-card"><i class="fa-solid fa-leaf"></i><span>Wellness</span></div>
-        <div class="tile-card"><i class="fa-solid fa-wine-glass"></i><span>Dining</span></div>
-        <div class="tile-card"><i class="fa-solid fa-sailboat"></i><span>Yachts</span></div>
-        <div class="tile-card"><i class="fa-solid fa-heart"></i><span>Care</span></div>
-    </div>
-    
-    <div class="mosaic-footer">
-        <h2 class="mosaic-title">Artisan Craft</h2>
-        <div class="cta-arrow">
-            <span>The Vision Revealed</span>
-            <i class="fa-solid fa-arrow-right"></i>
+    <!-- MOSAIC SECTION -->
+    <section class="mosaic-section" id="mosaicSection">
+        <div class="mosaic-bg-layer"></div>
+        
+        <div class="mosaic-grid" id="mosaicGrid">
+            <div class="tile-card"><i class="fa-solid fa-star"></i><span>Quality</span></div>
+            <div class="tile-card"><i class="fa-solid fa-compass"></i><span>Explore</span></div>
+            <div class="tile-card"><i class="fa-solid fa-leaf"></i><span>Wellness</span></div>
+            <div class="tile-card"><i class="fa-solid fa-wine-glass"></i><span>Dining</span></div>
+            <div class="tile-card"><i class="fa-solid fa-sailboat"></i><span>Yachts</span></div>
+            <div class="tile-card"><i class="fa-solid fa-heart"></i><span>Care</span></div>
         </div>
-    </div>
-    <!-- ADD THIS LINE BELOW -->
-    <div class="mosaic-bottom-blur"></div>
-</section>
-
-
-
-    
-<section class="locations-gallery" id="locationsGallery">
-    <!-- INACTIVE CARD EXAMPLE -->
-    <div class="loc-card" data-bg="san-fran.jpg">
-        <h3 class="card-title">SAN FRANCISCO, 706 MISSION</h3>
-        <div class="card-reveal">
-            <img src="san-fran.jpg" alt="San Francisco">
-            <p>Description text here...</p>
-            <a href="#" class="view-btn">VIEW PROPERTY</a>
+        
+        <div class="mosaic-footer">
+            <h2 class="mosaic-title">Artisan Craft</h2>
+            <div class="cta-arrow">
+                <span>The Vision Revealed</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
         </div>
-    </div>
+        <div class="mosaic-bottom-blur"></div>
+    </section>
 
-    <!-- ACTIVE CARD EXAMPLE (Add 'active' class here) -->
-    <div class="loc-card active" data-bg="home.jpg">
-        <h3 class="card-title">BAHRAIN BAY</h3>
-        <div class="card-reveal">
-            <img src="home.jpg" alt="Bahrain Bay">
-            <p>Arrive home to a masterpiece of sophisticated design, highly-personalized service and world-class amenities...</p>
-            <a href="#" class="view-btn">VIEW PROPERTY</a>
+    <!-- LOCATIONS GALLERY -->
+    <section class="locations-gallery" id="locationsGallery">
+        <div class="loc-card" data-bg="san-fran.jpg">
+            <h3 class="card-title">SAN FRANCISCO, 706 MISSION</h3>
+            <div class="card-reveal">
+                <img src="san-fran.jpg" alt="San Francisco">
+                <p>Description text here...</p>
+                <a href="#" class="view-btn">VIEW PROPERTY</a>
+            </div>
         </div>
-    </div>
-    
 
-    <!-- INACTIVE CARD EXAMPLE -->
-    <div class="loc-card" data-bg="deer-valley.jpg">
-        <h3 class="card-title">DEER VALLEY</h3>
-        <div class="card-reveal">
-            <img src="deer-valley.jpg" alt="Deer Valley">
-            <p>Description text here...</p>
-            <a href="#" class="view-btn">VIEW PROPERTY</a>
+        <div class="loc-card active" data-bg="home.jpg">
+            <h3 class="card-title">BAHRAIN BAY</h3>
+            <div class="card-reveal">
+                <img src="home.jpg" alt="Bahrain Bay">
+                <p>Arrive home to a masterpiece of sophisticated design, highly-personalized service and world-class amenities...</p>
+                <a href="#" class="view-btn">VIEW PROPERTY</a>
+            </div>
         </div>
-    </div>
 
-
-      <!-- INACTIVE CARD EXAMPLE -->
-    <div class="loc-card" data-bg="deer-valley.jpg">
-        <h3 class="card-title">DEER VALLEY</h3>
-        <div class="card-reveal">
-            <img src="deer-valley.jpg" alt="Deer Valley">
-            <p>Description text here...</p>
-            <a href="#" class="view-btn">VIEW PROPERTY</a>
+        <div class="loc-card" data-bg="deer-valley.jpg">
+            <h3 class="card-title">DEER VALLEY</h3>
+            <div class="card-reveal">
+                <img src="deer-valley.jpg" alt="Deer Valley">
+                <p>Description text here...</p>
+                <a href="#" class="view-btn">VIEW PROPERTY</a>
+            </div>
         </div>
-    </div>
-</section>
 
-
-
-
-    
-<footer class="site-footer">
-    <div class="footer-container">
-        <div class="footer-brand">
-            <div class="footer-logo">HBCR</div>
-            <p>Unparalleled elegance, defined by care.</p>
+        <div class="loc-card" data-bg="deer-valley.jpg">
+            <h3 class="card-title">DEER VALLEY</h3>
+            <div class="card-reveal">
+                <img src="deer-valley.jpg" alt="Deer Valley">
+                <p>Description text here...</p>
+                <a href="#" class="view-btn">VIEW PROPERTY</a>
+            </div>
         </div>
-        <div class="footer-links">
-            <a href="#">Privacy</a>
-            <a href="#">Legal</a>
-            <a href="#">Contact</a>
-            <a href="#">Careers</a>
-        </div>
-        <div class="footer-social">
-            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        &copy; 2026 HBCR Senior Living. All rights reserved.
-    </div>
-</footer>
+    </section>
 
-  
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">HBCR</div>
+                <p>Unparalleled elegance, defined by care.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Legal</a>
+                <a href="#">Contact</a>
+                <a href="#">Careers</a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 HBCR Senior Living. All rights reserved.
+        </div>
+    </footer>
 
+    <!-- Main Site Script -->
     <script src="script.js"></script>
-    <!-- Lucide Icons (Ultra-thin hollow line icons) -->
-<script src="https://unpkg.com/lucide@latest"></script>
-
+    
+    <!-- Lucide Icons Script & Initialization -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
-    lucide.createIcons();
-</script>
-   
+        lucide.createIcons();
+    </script>
 </body>
-</html> 
+</html>
