@@ -590,6 +590,62 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
   transform: scale(1.05);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
+
+
+/* 1. Fixed Container (Prevents Layout Jumps) */
+.phrase-container {
+    position: relative;
+    width: 100%;
+    /* Set a explicit height or min-height matching your largest text block */
+    min-height: 80px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Clips any text sliding in from outside */
+}
+
+/* 2. Base Message State (Hidden & Positioned Absolute) */
+.message-1,
+.message-2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    text-align: center;
+    
+    /* Hide by default & position slightly below center */
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -40%);
+    
+    /* Smooth, elegant bezier transition curve */
+    transition: 
+        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 0.8s step-end;
+}
+
+/* 3. Active State (Smoothly Enters & Settles in Center) */
+.message-1.active,
+.message-2.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%); /* Perfectly centered */
+    transition: 
+        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 0s linear;
+}
+
+/* 4. Exit State (Smoothly Slides Up & Fades Out) */
+.message-1.exit,
+.message-2.exit {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+    transition: 
+        opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
 /* MOBILE RESPONSIVE ADAPTATION */
 /* MOBILE RESPONSIVE ADAPTATION */
 @media (max-width: 768px) {
