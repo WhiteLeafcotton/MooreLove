@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
-    // 1. Sticky Navigatidddon Logic
+    // 1. Sticky Navigation Logic
     // ==========================================
     const hero = document.getElementById("hero");
     const nav = document.getElementById("mainNav");
@@ -17,55 +17,52 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener("scroll", updateNav, { passive: true });
 
     // ==========================================
-    // 2. Hero Content & 4444Image Swapping Logic
-// ==========================================
-// 2. Hero Content & Image Swapping Logic
-// ==========================================
-const iconItems = document.querySelectorAll('.icon-item');
-const heroSection = document.querySelector('.hero');
-const heroVideo = document.getElementById('heroVideo');
-const heroTitle = document.querySelector('.hero-content h1');
-const heroBtn = document.querySelector('.hero-button');
-const activeLine = document.getElementById("activeLine");
+    // 2. Hero Content & Image Swapping Logic
+    // ==========================================
+    const iconItems = document.querySelectorAll('.icon-item');
+    const heroSection = document.querySelector('.hero');
+    const heroVideo = document.getElementById('heroVideo');
+    const heroTitle = document.querySelector('.hero-content h1');
+    const heroBtn = document.querySelector('.hero-button');
+    const activeLine = document.getElementById("activeLine");
 
-// 1. The Interaction Function
-function updateHeroContent(item) {
-    // Hide and pause video ONLY when a user interacts
-    if (heroVideo) {
-        heroVideo.style.display = 'none';
-        heroVideo.pause();
+    // 1. The Interaction Function
+    function updateHeroContent(item) {
+        // Hide and pause video ONLY when a user interacts
+        if (heroVideo) {
+            heroVideo.style.display = 'none';
+            heroVideo.pause();
+        }
+        
+        // Update visuals
+        heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('${item.dataset.image}')`;
+        if (heroTitle) heroTitle.innerHTML = item.dataset.title;
+        if (heroBtn) heroBtn.innerText = item.dataset.cta;
+        
+        // Update line position
+        if (activeLine) {
+            activeLine.style.width = item.offsetWidth + "px";
+            activeLine.style.left = item.offsetLeft + "px";
+        }
     }
-    
-    // Update visuals
-    heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('${item.dataset.image}')`;
-    if (heroTitle) heroTitle.innerHTML = item.dataset.title;
-    if (heroBtn) heroBtn.innerText = item.dataset.cta;
-    
-    // Update line position
-    if (activeLine) {
-        activeLine.style.width = item.offsetWidth + "px";
-        activeLine.style.left = item.offsetLeft + "px";
-    }
-}
 
-// 2. Event Listeners for Interaction
-iconItems.forEach((item) => {
-    item.addEventListener('mouseenter', () => updateHeroContent(item));
-    item.addEventListener('click', (e) => {
-        e.preventDefault();
-        updateHeroContent(item);
+    // 2. Event Listeners for Interaction
+    iconItems.forEach((item) => {
+        item.addEventListener('mouseenter', () => updateHeroContent(item));
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            updateHeroContent(item);
+        });
     });
-});
 
-// 3. Initialize ONLY the line position on load (Keep the video playing)
-setTimeout(() => { 
-    if (activeLine && iconItems.length > 0) {
-        // Just set the line position to the first item without calling updateHeroContent()
-        activeLine.style.width = iconItems[0].offsetWidth + "px";
-        activeLine.style.left = iconItems[0].offsetLeft + "px";
-    }
-}, 100);
-  
+    // 3. Initialize ONLY the line position on load (Keep the video playing)
+    setTimeout(() => { 
+        if (activeLine && iconItems.length > 0) {
+            // Just set the line position to the first item without calling updateHeroContent()
+            activeLine.style.width = iconItems[0].offsetWidth + "px";
+            activeLine.style.left = iconItems[0].offsetLeft + "px";
+        }
+    }, 100);
 
     // ==========================================
     // 3. Featured Card Intersection Observer
@@ -168,49 +165,51 @@ setTimeout(() => {
         }
     }, { passive: true });
 
-});
+    // ==========================================
+    // 6. Animated Phrases Rotation Logic
+    // ==========================================
+    const msg1 = document.querySelector('.message-1');
+    const msg2 = document.querySelector('.message-2');
+    
+    if (msg1 && msg2) {
+        let currentMsg = 1;
+        const displayDuration = 5500; // Time each message stays on screen (ms)
+        const exitDuration = 700;     // Transition out time (ms)
 
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const msg1 = document.querySelector('.message-1');
-  const msg2 = document.querySelector('.message-2');
-  
-  if (!msg1 || !msg2) return;
-
-  let currentMsg = 1;
-  const displayDuration = 5500; // Time each message stays on screen (ms)
-  const exitDuration = 700;     // Transition out time (ms)
-
-  function cycleMessages() {
-    if (currentMsg === 1) {
-      // Exit Message 1
-      msg1.classList.add('exit');
-      msg1.classList.remove('active');
-
-      setTimeout(() => {
-        msg1.classList.remove('exit');
-        
-        // Enter Message 2
-        msg2.classList.add('active');
-        currentMsg = 2;
-      }, exitDuration);
-
-    } else {
-      // Exit Message 2
-      msg2.classList.add('exit');
-      msg2.classList.remove('active');
-
-      setTimeout(() => {
-        msg2.classList.remove('exit');
-
-        // Enter Message 1
+        // Ensure the first message displays immediately on load
         msg1.classList.add('active');
-        currentMsg = 1;
-      }, exitDuration);
-    }
-  }
 
-  // Start continuous infinite loop
-  setInterval(cycleMessages, displayDuration);
+        function cycleMessages() {
+            if (currentMsg === 1) {
+                // Exit Message 1
+                msg1.classList.add('exit');
+                msg1.classList.remove('active');
+
+                setTimeout(() => {
+                    msg1.classList.remove('exit');
+                    
+                    // Enter Message 2
+                    msg2.classList.add('active');
+                    currentMsg = 2;
+                }, exitDuration);
+
+            } else {
+                // Exit Message 2
+                msg2.classList.add('exit');
+                msg2.classList.remove('active');
+
+                setTimeout(() => {
+                    msg2.classList.remove('exit');
+
+                    // Enter Message 1
+                    msg1.classList.add('active');
+                    currentMsg = 1;
+                }, exitDuration);
+            }
+        }
+
+        // Start continuous infinite loop
+        setInterval(cycleMessages, displayDuration);
+    }
+
 });
