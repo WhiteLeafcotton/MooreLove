@@ -431,28 +431,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 /* TOP & BOTTOM BLACK BLUR OVERLAYS */
-.blur-edge {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 110px;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.blur-top {
-  top: 0;
-  background: linear-gradient(to bottom, #000000 20%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0) 100%);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.blur-bottom {
-  bottom: 0;
-  background: linear-gradient(to top, #000000 20%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0) 100%);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
 
 /* ABSOLUTE POSITIONING CONTAINER (Prevents section height changes) */
 .message-wrapper {
