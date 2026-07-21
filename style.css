@@ -55,11 +55,12 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .icon-wrapper { display: flex; justify-content: space-between; position: relative; }
 
 /* Container for each icon + label pair */
+/* Container for each icon + label pair */
 .icon-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px; /* Increased space between icon and text */
+    gap: 8px; /* Balanced spacing between icon and title */
     cursor: pointer;
     color: rgba(255, 255, 255, 0.7);
     transition: all 0.3s ease;
@@ -67,17 +68,17 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* Lucide SVGs (The outline icons) */
 .icon-item svg {
-    width: 36px;            /* Increased from default (~24px) */
-    height: 36px;           /* Increased from default (~24px) */
-    stroke-width: 1.25;     /* Keeps stroke thin and crisp at larger scale */
+    width: 28px;            /* Goldilocks size: bigger than 24px, sleeker than 36px */
+    height: 28px;
+    stroke-width: 1.35;     /* Delicate line weight */
     transition: all 0.3s ease;
 }
 
 /* Text Labels (Lifestyle, Wellness, Community, Support) */
 .icon-item span {
-    font-size: 1.05rem;     /* Increased title size */
+    font-size: 0.9rem;      /* Clean, refined text size */
     font-weight: 500;
-    letter-spacing: 1.5px;  /* Spaced lettering for editorial look */
+    letter-spacing: 1.2px;  /* Subtle spacing for high-end look */
     text-transform: uppercase;
     transition: color 0.3s ease;
 }
@@ -86,13 +87,13 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .icon-item:hover,
 .icon-item.active {
     color: #ffffff;
-    transform: translateY(-4px); /* Slightly deeper lift effect */
+    transform: translateY(-2px);
 }
 
 .icon-item:hover svg,
 .icon-item.active svg {
-    color: #d4af37;         /* Gold color highlight */
-    stroke-width: 1.75;     /* Slightly thickens active outline */
+    color: #d4af37;         /* Elegant gold highlight */
+    stroke-width: 1.75;
 }
 
 /* STICKY NAV */
