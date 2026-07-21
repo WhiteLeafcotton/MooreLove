@@ -406,6 +406,122 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 
+
+
+
+
+
+
+
+
+
+/* Container styling with white background */
+.text-reveal-section {
+  position: relative;
+  background-color: #ffffff;
+  padding: 140px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Edge blur & gradient blend overlays */
+.blur-edge {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  pointer-events: none;
+  z-index: 2;
+  backdrop-filter: blur(8px);
+}
+
+.blur-top {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+}
+
+.blur-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+  -webkit-mask-image: linear-gradient(to top, black 20%, transparent 100%);
+  mask-image: linear-gradient(to top, black 20%, transparent 100%);
+}
+
+/* Typography alignment */
+.text-container {
+  max-width: 800px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.reveal-text.subtitle {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  color: #a38f68; /* Subtle warm gold tone */
+  margin-bottom: 16px;
+}
+
+.reveal-text.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 400;
+  color: #1a1a1a;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.reveal-text.description {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555555;
+  max-width: 620px;
+  margin: 0 auto 32px;
+}
+
+.reveal-text.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 4px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.reveal-text.cta-link:hover {
+  color: #a38f68;
+  border-color: #a38f68;
+}
+
+/* Keyframe animations */
+.reveal-text {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--delay, 0s);
+}
+
+/* Triggered state applied via IntersectionObserver */
+.text-reveal-section.visible .reveal-text {
+  opacity: 1;
+  transform: translateY(0);
+}
 /* Mobile Responsive */
 
 /* MOBILE RESPONSIVE ADAPTATION */
