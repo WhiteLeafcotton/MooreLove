@@ -58,6 +58,19 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .icon-item span { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
 .icon-item:hover { color: #fff; }
 
+.icon-item svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 1.25; /* Controls line thinness (1.0 = ultra thin, 1.5 = normal) */
+    transition: color 0.3s ease, stroke-width 0.3s ease;
+}
+
+.icon-item:hover svg,
+.icon-item.active svg {
+    color: #d4af37; /* Luxury Gold */
+    stroke-width: 1.75;
+}
+
 /* STICKY NAV */
 /* STICKY NAV */
 /* Update your CSS to target the ID specifically */
