@@ -173,21 +173,44 @@ setTimeout(() => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const revealSection = document.querySelector('.text-reveal-section');
+  const msg1 = document.querySelector('.message-1');
+  const msg2 = document.querySelector('.message-2');
+  
+  if (!msg1 || !msg2) return;
 
-  if (revealSection) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          // Unobserve if you only want the sequence to play once upon reveal
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.25 // Triggers when 25% of the section is visible in viewport
-    });
+  let currentMsg = 1;
+  const displayDuration = 5500; // Time each message stays on screen (ms)
+  const exitDuration = 700;     // Transition out time (ms)
 
-    observer.observe(revealSection);
+  function cycleMessages() {
+    if (currentMsg === 1) {
+      // Exit Message 1
+      msg1.classList.add('exit');
+      msg1.classList.remove('active');
+
+      setTimeout(() => {
+        msg1.classList.remove('exit');
+        
+        // Enter Message 2
+        msg2.classList.add('active');
+        currentMsg = 2;
+      }, exitDuration);
+
+    } else {
+      // Exit Message 2
+      msg2.classList.add('exit');
+      msg2.classList.remove('active');
+
+      setTimeout(() => {
+        msg2.classList.remove('exit');
+
+        // Enter Message 1
+        msg1.classList.add('active');
+        currentMsg = 1;
+      }, exitDuration);
+    }
   }
+
+  // Start continuous infinite loop
+  setInterval(cycleMessages, displayDuration);
 });
