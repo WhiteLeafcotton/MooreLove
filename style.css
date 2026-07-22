@@ -47,6 +47,17 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .hero-content h1 { font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: clamp(30px, 3.5vw, 48px); line-height: 1.1; letter-spacing: -0.2px; margin-bottom: 30px; text-transform: uppercase; transition: opacity 0.3s ease; }
 .hero-button { display: inline-block; padding: 12px 30px; border: 1px solid rgba(255,255,255,.4); text-decoration: none; color: white; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); }
 .hero-button:hover { background: #fff; color: #000; }
+.hero-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* Space between text and heart */
+}
+
+.hero-logo-icon {
+    width: 28px; /* Adjust height/width to match your font size */
+    height: auto;
+    display: inline-block;
+}
 
 /* ICON BAR */
 .icon-bar-container { position: absolute; bottom: 40px; left: 4%; right: 4%; z-index: 10; }
