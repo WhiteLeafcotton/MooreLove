@@ -167,49 +167,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
     // 6. Animated Phrases Rotation Logic
-    // ==========================================
-    const msg1 = document.querySelector('.message-1');
-    const msg2 = document.querySelector('.message-2');
-    
-    if (msg1 && msg2) {
-        let currentMsg = 1;
-        const displayDuration = 5500; // Time each message stays on screen (ms)
-        const exitDuration = 700;     // Transition out time (ms)
+  const textRevealBlock = document.querySelector('.text-reveal-section .message-block');
 
-        // Ensure the first message displays immediately on load
-        msg1.classList.add('active');
+    if (textRevealBlock) {
+        const textRevealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    textRevealBlock.classList.add('active');
+                    textRevealObserver.unobserve(entry.target); // Trigger reveal once
+                }
+            });
+        }, { threshold: 0.25 });
 
-        function cycleMessages() {
-            if (currentMsg === 1) {
-                // Exit Message 1
-                msg1.classList.add('exit');
-                msg1.classList.remove('active');
-
-                setTimeout(() => {
-                    msg1.classList.remove('exit');
-                    
-                    // Enter Message 2
-                    msg2.classList.add('active');
-                    currentMsg = 2;
-                }, exitDuration);
-
-            } else {
-                // Exit Message 2
-                msg2.classList.add('exit');
-                msg2.classList.remove('active');
-
-                setTimeout(() => {
-                    msg2.classList.remove('exit');
-
-                    // Enter Message 1
-                    msg1.classList.add('active');
-                    currentMsg = 1;
-                }, exitDuration);
-            }
-        }
-
-        // Start continuous infinite loop
-        setInterval(cycleMessages, displayDuration);
+        textRevealObserver.observe(textRevealBlock);
     }
 
 });
