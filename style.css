@@ -48,44 +48,46 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Container Wrapper */
 /* Hero Logo Layout */
 /* Stacked & Overlapping Hero Logo Wrapper */
+/* Container set to relative block so children can layer over each other */
 .hero-logo.stacked-logo {
     position: relative;
     display: inline-block;
-    margin-bottom: 35px;
+    margin-bottom: 45px; /* Adds space above the H1 heading */
 }
 
-/* "MOORE" - Large Montserrat All-Caps */
+/* "MOORE" - Large Montserrat Sans-Serif */
 .hero-logo .strong-title {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 300;              /* 300 gives that high-end thin luxury aesthetic */
-    font-size: 58px;               /* Dominant, large presence like "PRETTY" in reference */
-    letter-spacing: 12px;          /* Generous tracking */
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 300 !important;      /* Light, clean aesthetic */
+    font-size: 64px !important;       /* Makes MOORE prominent */
+    letter-spacing: 12px !important;   /* Wide luxury spacing like "PRETTY" */
     text-transform: uppercase;
     color: #ffffff;
     display: block;
-    line-height: 0.9;
+    line-height: 0.85;
+    margin: 0;
 }
 
-/* "love and care" - Layered Overlapping Script */
+/* "love and care" - Layered & Overlapping Gold Cursive */
 .hero-logo .script-subtitle {
-    font-family: "WindSong", cursive;
-    font-size: 42px;
+    font-family: 'WindSong', cursive !important;
+    font-size: 46px !important;
     font-weight: 400;
-    color: #d4b06a;                /* Gold accent color matching the image style */
+    color: #d4b06a !important;        /* Warm gold accent matching reference */
     position: absolute;
-    bottom: -12px;                  /* Positions it overlapping the bottom right of MOORE */
-    right: 25px;                   /* Shifts it rightward across the main letters */
+    bottom: -18px;                    /* Pulls script down over bottom edge of MOORE */
+    left: 45%;                        /* Moves script across the middle-right of MOORE */
     z-index: 2;
     text-transform: lowercase;
     white-space: nowrap;
-    pointer-events: none;
+    pointer-events: none;             /* Prevents layout shifts */
 }
 
-/* Minimal Heart Icon */
+/* Heart Icon placed at end of script */
 .hero-logo-icon {
     position: absolute;
-    right: -25px;
-    bottom: -4px;
+    right: -28px;
+    bottom: -2px;
     width: 14px !important;
     height: 14px !important;
     filter: brightness(0) invert(1);
