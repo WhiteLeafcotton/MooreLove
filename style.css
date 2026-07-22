@@ -96,16 +96,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     pointer-events: none;
 }
 
-/* Heart Icon placed at end of script */
-.hero-logo-icon {
-    position: absolute;
-    right: -28px;
-    bottom: -2px;
-    width: 14px !important;
-    height: 14px !important;
-    filter: brightness(0) invert(1);
-    opacity: 0.75;
-}
+
 .hero-content h1 { font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: clamp(30px, 3.5vw, 48px); line-height: 1.1; letter-spacing: -0.2px; margin-bottom: 30px; text-transform: uppercase; transition: opacity 0.3s ease; }
 .hero-button { display: inline-block; padding: 12px 30px; border: 1px solid rgba(255,255,255,.4); text-decoration: none; color: white; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); }
 .hero-button:hover { background: #fff; color: #000; }
