@@ -46,45 +46,43 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Hero Logo Wrapper */
 /* Hero Logo with Delicate Wedding Font */
 /* Container Wrapper */
+/* Hero Logo Layout */
 .hero-logo {
     display: inline-flex;
-    align-items: center;
-    gap: 12px;
+    align-items: baseline; /* Aligns script and serif naturally along the baseline */
+    gap: 16px;
     margin-bottom: 25px;
-    opacity: 0.95;
 }
 
-/* "LOVE MOORE" - High-End Architectural Serif */
-.hero-logo .logo-primary {
-    font-family: "Cinzel", serif;
-    font-weight: 500;
-    font-size: 15px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: #ffffff;
-}
-
-/* "and Care" - Delicate Wedding Script Accent */
-.hero-logo .logo-accent {
-    font-family: "Pinyon Script", cursive;
+/* Ultra-Delicate Sweeping Calligraphy (Matches "French" in your photo) */
+.hero-logo .script-title {
+    font-family: "Monsieur La Doulaise", cursive;
+    font-size: 52px;              /* Script fonts with delicate lines look best larger */
     font-weight: 400;
-    font-size: 28px;
-    color: #d4b06a; /* Soft Gold Accent */
-    text-transform: none;
-    margin-left: -2px; /* Pulls script closer for a natural handwritten flow */
+    color: #ffffff;
+    line-height: 0.8;
+    letter-spacing: 1px;
 }
 
-/* Heart Icon (Positioned strictly on the Right) */
+/* Clean Modern Serif (Matches "MODERN HANDWRITTEN..." in your photo) */
+.hero-logo .serif-subtitle {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 7px;          /* Wide tracking for a luxury feel */
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Minimal Heart Icon on the Right */
 .hero-logo-icon {
-    width: 18px !important;
-    height: 18px !important;
-    max-width: 18px;
-    max-height: 18px;
-    object-fit: contain;
-    display: inline-block;
-    filter: brightness(0) invert(1); /* Makes SVG crisp white */
-    opacity: 0.85;
-    margin-left: 2px;
+    width: 14px !important;
+    height: 14px !important;
+    max-width: 14px;
+    max-height: 14px;
+    filter: brightness(0) invert(1);
+    opacity: 0.75;
+    margin-left: 4px;
 }
 .hero-content h1 { font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: clamp(30px, 3.5vw, 48px); line-height: 1.1; letter-spacing: -0.2px; margin-bottom: 30px; text-transform: uppercase; transition: opacity 0.3s ease; }
 .hero-button { display: inline-block; padding: 12px 30px; border: 1px solid rgba(255,255,255,.4); text-decoration: none; color: white; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); }
