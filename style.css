@@ -95,17 +95,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     white-space: nowrap;
     pointer-events: none;
 }
-.hero-logo {
-    transition: opacity 0.4s ease, visibility 0.4s ease;
-}
 
-.hero-logo.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    /* Optional: use display: none if you don't want it taking up layout space */
-    display: none !important; 
-}
 
 .hero-content h1 { font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: clamp(30px, 3.5vw, 48px); line-height: 1.1; letter-spacing: -0.2px; margin-bottom: 30px; text-transform: uppercase; transition: opacity 0.3s ease; }
 .hero-button { display: inline-block; padding: 12px 30px; border: 1px solid rgba(255,255,255,.4); text-decoration: none; color: white; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); }
