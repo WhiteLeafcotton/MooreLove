@@ -52,16 +52,24 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Stacked Logo Container - Flex Layout */
 
 /* Smooth fade out for the hero logo when clicking a tab */
+/* Container holds both the icon and the name */
 .hero-logo {
-    transition: opacity 0.4s ease, visibility 0.4s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.hero-logo.hidden {
+/* Give the business name text smooth fade capabilities */
+.hero-logo .brand-name {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+/* Hidden state: slow fade out */
+.hero-logo .brand-name.hidden {
     opacity: 0;
     visibility: hidden;
-    pointer-events: none;
-    /* Optional: use display: none if you don't want it taking up layout space */
-    display: none !important; 
 }
 
 
