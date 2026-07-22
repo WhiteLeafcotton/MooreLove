@@ -56,11 +56,10 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* Ultra-Delicate Sweeping Calligraphy */
 .hero-logo .script-title {
-    font-family: "Monsieur La Doulaise", cursive;
-    font-size: 52px;              /* Script fonts with delicate lines look best larger */
+    font-family: "WindSong", cursive;
+    font-size: 42px;
     font-weight: 400;
     color: #ffffff;
-    line-height: 0.8;
     letter-spacing: 1px;
 }
 
