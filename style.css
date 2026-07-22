@@ -69,18 +69,22 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 /* "love and care" - Layered & Overlapping Gold Cursive */
+/* "love and care" - Adjusted Positioning */
 .hero-logo .script-subtitle {
     font-family: 'WindSong', cursive !important;
-    font-size: 46px !important;
+    font-size: 44px !important;
     font-weight: 400;
-    color: #d4b06a !important;        /* Warm gold accent matching reference */
+    color: #d4b06a !important;        
     position: absolute;
-    bottom: -18px;                    /* Pulls script down over bottom edge of MOORE */
-    left: 45%;                        /* Moves script across the middle-right of MOORE */
+    
+    /* POSTION CONTROLS */
+    bottom: -30px !important;         /* Pushes DOWN (was -18px) */
+    left: 35% !important;             /* Shifts RIGHT across 'R' and 'E' (change to 15% if you want it further left) */
+    
     z-index: 2;
     text-transform: lowercase;
     white-space: nowrap;
-    pointer-events: none;             /* Prevents layout shifts */
+    pointer-events: none;             
 }
 
 /* Heart Icon placed at end of script */
