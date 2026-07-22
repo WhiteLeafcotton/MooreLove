@@ -45,36 +45,46 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .hero-content { position: relative; z-index: 5; max-width: 700px; margin-top: -40px; animation: fadeUp 1s ease; }
 /* Hero Logo Wrapper */
 /* Hero Logo with Delicate Wedding Font */
+/* Container Wrapper */
 .hero-logo {
-    /* OPTION 1: Pinyon Script (Very delicate, calligraphic) */
-    font-family: "Great Vibes", cursive;
-    font-size: 28px;               /* Script fonts render smaller, so increase slightly */
-    letter-spacing: 2px;          /* Scripts look best with tighter letter spacing */
-    
-    /* OPTION 2: Great Vibes (Soft, traditional wedding) */
-    /* font-family: "Great Vibes", cursive; font-size: 26px; letter-spacing: 1px; */
-
-    /* OPTION 3: Alex Brush (Delicate & clear) */
-    /* font-family: "Alex Brush", cursive; font-size: 26px; letter-spacing: 1px; */
-
-    text-transform: none;          /* IMPORTANT: Script/calligraphy fonts must be lowercase/title case, NOT all-caps */
-    margin-bottom: 25px;
-    opacity: 0.95;
     display: inline-flex;
     align-items: center;
     gap: 12px;
+    margin-bottom: 25px;
+    opacity: 0.95;
 }
 
-/* Heart Icon (Sized strictly to match font size) */
+/* "LOVE MOORE" - High-End Architectural Serif */
+.hero-logo .logo-primary {
+    font-family: "Cinzel", serif;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+/* "and Care" - Delicate Wedding Script Accent */
+.hero-logo .logo-accent {
+    font-family: "Pinyon Script", cursive;
+    font-weight: 400;
+    font-size: 28px;
+    color: #d4b06a; /* Soft Gold Accent */
+    text-transform: none;
+    margin-left: -2px; /* Pulls script closer for a natural handwritten flow */
+}
+
+/* Heart Icon (Positioned strictly on the Right) */
 .hero-logo-icon {
-    width: 20px !important;    /* Force width */
-    height: 20px !important;   /* Force height */
-    max-width: 20px;
-    max-height: 20px;
+    width: 18px !important;
+    height: 18px !important;
+    max-width: 18px;
+    max-height: 18px;
     object-fit: contain;
     display: inline-block;
-    filter: brightness(0) invert(1); /* Makes the SVG crisp white */
-    vertical-align: middle;
+    filter: brightness(0) invert(1); /* Makes SVG crisp white */
+    opacity: 0.85;
+    margin-left: 2px;
 }
 .hero-content h1 { font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: clamp(30px, 3.5vw, 48px); line-height: 1.1; letter-spacing: -0.2px; margin-bottom: 30px; text-transform: uppercase; transition: opacity 0.3s ease; }
 .hero-button { display: inline-block; padding: 12px 30px; border: 1px solid rgba(255,255,255,.4); text-decoration: none; color: white; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); }
