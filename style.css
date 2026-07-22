@@ -54,7 +54,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     margin-bottom: 25px;
 }
 
-/* Ultra-Delicate Sweeping Calligraphy (Matches "French" in your photo) */
+/* Ultra-Delicate Sweeping Calligraphy */
 .hero-logo .script-title {
     font-family: "Monsieur La Doulaise", cursive;
     font-size: 52px;              /* Script fonts with delicate lines look best larger */
@@ -64,7 +64,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     letter-spacing: 1px;
 }
 
-/* Clean Modern Serif (Matches "MODERN HANDWRITTEN..." in your photo) */
+/* Clean Modern Serif */
 .hero-logo .serif-subtitle {
     font-family: "Cormorant Garamond", serif;
     font-size: 13px;
