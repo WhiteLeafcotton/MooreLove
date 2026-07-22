@@ -49,18 +49,21 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Hero Logo Layout */
 /* Stacked & Overlapping Hero Logo Wrapper */
 /* Container set to relative block so children can layer over each other */
+/* Stacked Logo Container - Flex Layout */
 .hero-logo.stacked-logo {
     position: relative;
-    display: inline-block;
-    margin-bottom: 45px; /* Adds space above the H1 heading */
+    display: inline-flex;          /* Flex container to place MOORE & SVG side-by-side */
+    align-items: center;           /* Center SVG vertically with MOORE */
+    gap: 24px;                     /* Spacing between MOORE and the SVG icon */
+    margin-bottom: 45px;
 }
 
-/* "MOORE" - Large Montserrat Sans-Serif */
+/* "MOORE" - Main Heading */
 .hero-logo .strong-title {
     font-family: 'Montserrat', sans-serif !important;
-    font-weight: 300 !important;      /* Light, clean aesthetic */
-    font-size: 64px !important;       /* Makes MOORE prominent */
-    letter-spacing: 12px !important;   /* Wide luxury spacing like "PRETTY" */
+    font-weight: 300 !important;
+    font-size: 64px !important;
+    letter-spacing: 12px !important;
     text-transform: uppercase;
     color: #ffffff;
     display: block;
@@ -68,23 +71,29 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     margin: 0;
 }
 
-/* "love and care" - Layered & Overlapping Gold Cursive */
-/* "love and care" - Adjusted Positioning */
+/* SVG Logo Icon (Scaled to match MOORE height & placed on right) */
+.hero-logo-icon {
+    position: static !important;   /* Removes absolute positioning so flexbox handles placement */
+    width: 54px !important;        /* Matches visual height of MOORE */
+    height: 54px !important;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+    flex-shrink: 0;
+}
+
+/* "love and care" - Overlay Subtitle */
 .hero-logo .script-subtitle {
     font-family: 'WindSong', cursive !important;
     font-size: 44px !important;
     font-weight: 400;
-    color: #d4b06a !important;        
+    color: #d4b06a !important;
     position: absolute;
-    
-    /* POSTION CONTROLS */
-    bottom: -15px !important;         /* Pushes DOWN (was -18px) */
-    left: 35% !important;             /* Shifts RIGHT across 'R' and 'E' (change to 15% if you want it further left) */
-    
+    bottom: -38px !important;
+    left: 20% !important;
     z-index: 2;
     text-transform: lowercase;
     white-space: nowrap;
-    pointer-events: none;             
+    pointer-events: none;
 }
 
 /* Heart Icon placed at end of script */
