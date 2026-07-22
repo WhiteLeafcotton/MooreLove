@@ -17,25 +17,45 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener("scroll", updateNav, { passive: true });
 
     // ==========================================
-    // 2. Hero Content & Image Swapping Logic
+    // 2. Hero Content, Logo Hiding & Image Swapping Logic
     // ==========================================
     const iconItems = document.querySelectorAll('.icon-item');
     const heroSection = document.querySelector('.hero');
     const heroVideo = document.getElementById('heroVideo');
-    const heroTitle = document.querySelector('.hero-content h1');
-    const heroBtn = document.querySelector('.hero-button');
+    const heroLogo = document.querySelector('.hero-logo');
+    const heroTitle = document.getElementById('heroTitle') || document.querySelector('.hero-content h1');
+    const heroBtn = document.getElementById('heroButton') || document.querySelector('.hero-button');
     const activeLine = document.getElementById("activeLine");
 
     function updateHeroContent(item) {
+        // Hide initial logo SVG/text block
+        if (heroLogo) {
+            heroLogo.classList.add('hidden');
+        }
+
+        // Hide video if playing
         if (heroVideo) {
             heroVideo.style.display = 'none';
             heroVideo.pause();
         }
-        
-        heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('${item.dataset.image}')`;
-        if (heroTitle) heroTitle.innerHTML = item.dataset.title;
-        if (heroBtn) heroBtn.innerText = item.dataset.cta;
-        
+
+        // Swap image background
+        if (item.dataset.image) {
+            heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('${item.dataset.image}')`;
+        }
+
+        // Swap dynamic headline and button text
+        if (heroTitle && item.dataset.title) {
+            heroTitle.innerHTML = item.dataset.title;
+        }
+        if (heroBtn && item.dataset.cta) {
+            heroBtn.innerText = item.dataset.cta;
+        }
+
+        // Update active tab styling & indicator line
+        iconItems.forEach(icon => icon.classList.remove('active'));
+        item.classList.add('active');
+
         if (activeLine) {
             activeLine.style.width = item.offsetWidth + "px";
             activeLine.style.left = item.offsetLeft + "px";
@@ -50,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Position initial active line tab
     setTimeout(() => { 
         if (activeLine && iconItems.length > 0) {
             activeLine.style.width = iconItems[0].offsetWidth + "px";
@@ -99,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function setActiveCard(card) {
         locCards.forEach(c => c.classList.remove('active'));
         card.classList.add('active');
-        
+
         const bg = card.getAttribute('data-bg');
         if (gallery && bg) {
             gallery.style.background = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${bg}') center/cover no-repeat`;
@@ -123,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     let touchStartX = 0;
-    
+
     gallery?.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
@@ -131,10 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
     gallery?.addEventListener('touchend', (e) => {
         const touchEndX = e.changedTouches[0].screenX;
         const diff = touchStartX - touchEndX;
-        
+
         if (Math.abs(diff) > 50) {
             const activeIndex = Array.from(locCards).findIndex(c => c.classList.contains('active'));
-            
+
             if (diff > 0 && activeIndex < locCards.length - 1) {
                 setActiveCard(locCards[activeIndex + 1]);
                 locCards[activeIndex + 1].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
