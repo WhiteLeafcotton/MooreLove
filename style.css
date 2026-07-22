@@ -147,17 +147,34 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 /* Lucide SVGs (Ultra-thin, razor-line outlines) */
+/* Container for each icon + label pair */
+.icon-item {
+    display: flex !important;
+    flex-direction: column !important; /* Forces vertical stacking (Icon TOP, Text BOTTOM) */
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px; /* Vertical gap between icon and label */
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+}
+
+/* Lucide SVGs & Tags - Forced Display & Sizing */
+.icon-item i,
 .icon-item svg {
-    width: 22px;
-    height: 22px;
-    stroke-width: 0.85;     /* Super thin, delicate lines */
+    display: block !important;       /* Prevents inline height collapses */
+    width: 22px !important;
+    height: 22px !important;
+    stroke-width: 0.85; 
+    stroke: currentColor;            /* Ensures SVG uses text color */
+    fill: none;                      /* Maintains thin outline aesthetic */
     transition: all 0.3s ease;
 }
 
 /* Text Labels */
 .icon-item span {
     font-size: 0.75rem;
-    font-weight: 400;       /* Slightly lighter font weight to match thin lines */
+    font-weight: 400;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: color 0.3s ease;
@@ -171,9 +188,11 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 .icon-item:hover svg,
-.icon-item.active svg {
+.icon-item.active svg,
+.icon-item:hover i,
+.icon-item.active i {
     color: #d4af37;
-    stroke-width: 1.1;      /* Crisp, subtle bump on hover */
+    stroke-width: 1.1;
 }
 
 /* STICKY NAV */
