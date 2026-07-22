@@ -601,13 +601,31 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 /* MOBILE RESPONSIVE ADAPTATION */
 /* MOBILE RESPONSIVE ADAPTATION */
+/* ===================================================
+   MOBILE RESPONSIVE ADAPTATION
+   =================================================== */
 @media (max-width: 768px) {
-    /* Existing tweaks */
+    /* Top Bar & Navigation */
     .top-bar { padding: 20px 4%; }
     .top-links { gap: 15px; }
     .nav-inner { gap: 20px; padding: 10px; pointer-events: auto !important; position: relative; z-index: 999999; }
     .nav-link { font-size: 9px; letter-spacing: 1px; }
 
+    /* Mobile Logo Scaling & Positioning */
+    .hero-logo.stacked-logo {
+        margin-bottom: 30px;
+    }
+    .hero-logo .strong-title {
+        font-size: 38px !important;       /* Scaled down so MOORE fits on mobile screens */
+        letter-spacing: 6px !important;
+    }
+    .hero-logo .script-subtitle {
+        font-size: 30px !important;       /* Scaled down script font */
+        bottom: -28px !important;         /* Adjusted overlay position for mobile */
+        left: 20% !important;
+    }
+
+    /* Featured Card */
     .featured-card-wrapper { padding: 40px 4%; }
     .featured-card { 
         height: auto; 
@@ -626,7 +644,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         margin-bottom: 25px; 
     }
     
-    /* Mosaic Section */
+    /* Mosaic Section Mobile */
     .mosaic-section {
         padding: 40px 4%;
         position: relative;
@@ -668,46 +686,45 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     .tile-card i { font-size: 24px; }
     .tile-card span { font-size: 8px; }
 
-    /* Locations Gallery - Swipe & Snap Logic */
+    /* Locations Gallery Mobile */
     .locations-gallery {
         display: flex;
         flex-direction: row;
         overflow-x: auto !important;
         scroll-snap-type: x proximity;
-        padding-left: 10vw; /* Centers initial card */
+        padding-left: 10vw;
         padding-right: 10vw;
         padding-bottom: 20px;
         -webkit-overflow-scrolling: touch;
-        touch-action: pan-x pan-y !important; /* Update this line */
+        touch-action: pan-x pan-y !important;
         scrollbar-width: none;
         justify-content: flex-start;
     }
     .locations-gallery::-webkit-scrollbar { display: none; }
 
     .loc-card {
-        flex: 0 0 80vw !important; /* Forces 80% width for swipe feel */
+        flex: 0 0 80vw !important;
         scroll-snap-align: center;
-        margin: 0 10px; /* Spacing between cards */
+        margin: 0 10px;
         position: relative;
         z-index: 10;
         pointer-events: auto !important;
         touch-action: pan-x;
     }
-    /* Add this to your style.css */
-.icon-item {
-    text-align: center;
-    color: rgba(255,255,255,0.6);
-    flex: 1;
-    cursor: pointer;
-    transition: .3s;
-    /* Ensure the icon area is fully clickable */
-    pointer-events: auto; 
-    /* Prevent text selection highlight on tap */
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
 
- 
+    /* Icon Bar Mobile */
+    .icon-item {
+        text-align: center;
+        color: rgba(255,255,255,0.6);
+        flex: 1;
+        cursor: pointer;
+        transition: .3s;
+        pointer-events: auto; 
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+    }
 
+    /* Footer Mobile */
     .footer-container {
         flex-direction: column;
         text-align: center;
@@ -716,5 +733,5 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     .footer-links {
         flex-wrap: wrap;
         justify-content: center;
-    
-}
+    }
+} /* Clean closing brace for @media */
