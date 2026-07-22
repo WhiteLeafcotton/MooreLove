@@ -643,7 +643,16 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         visibility: hidden !important;
         pointer-events: none !important;
     }
-
+/* Place this inside your @media (max-width: 768px) block */
+.hero-logo.hidden,
+.hero-logo.hidden * {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
     .hero-logo.stacked-logo:not(.hidden) {
         display: inline-flex !important;
         gap: 14px !important;
