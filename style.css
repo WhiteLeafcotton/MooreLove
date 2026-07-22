@@ -78,7 +78,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     position: absolute;
     
     /* POSTION CONTROLS */
-    bottom: -45px !important;         /* Pushes DOWN (was -18px) */
+    bottom: -24px !important;         /* Pushes DOWN (was -18px) */
     left: 35% !important;             /* Shifts RIGHT across 'R' and 'E' (change to 15% if you want it further left) */
     
     z-index: 2;
