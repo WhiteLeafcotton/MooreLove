@@ -621,18 +621,25 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     .nav-link { font-size: 9px; letter-spacing: 1px; }
 
     /* Mobile Logo Scaling & Positioning */
+   
     .hero-logo.stacked-logo {
+        gap: 14px !important;
         margin-bottom: 30px;
     }
     .hero-logo .strong-title {
-        font-size: 38px !important;       /* Scaled down so MOORE fits on mobile screens */
+        font-size: 38px !important;
         letter-spacing: 6px !important;
     }
-    .hero-logo .script-subtitle {
-        font-size: 30px !important;       /* Scaled down script font */
-        bottom: -18px !important;         /* Adjusted overlay position for mobile */
-        left: 20% !important;
+    .hero-logo-icon {
+        width: 32px !important;    /* Scaled down to match 38px mobile title */
+        height: 32px !important;
     }
+    .hero-logo .script-subtitle {
+        font-size: 30px !important;
+        bottom: -24px !important;
+        left: 15% !important;
+    }
+
 
     /* Featured Card */
     .featured-card-wrapper { padding: 40px 4%; }
