@@ -628,7 +628,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* MOBILE RESPONSIVE ADAPTATION */
 /* ===================================================
    MOBILE RESPONSIVE ADAPTATION
-   =================================================== */
+/* =================================================== */
 @media (max-width: 768px) {
     /* Top Bar & Navigation */
     .top-bar { padding: 20px 4%; }
@@ -637,8 +637,15 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     .nav-link { font-size: 9px; letter-spacing: 1px; }
 
     /* Mobile Logo Scaling & Positioning */
-   
-    .hero-logo.stacked-logo {
+    .hero-logo.hidden {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    .hero-logo.stacked-logo:not(.hidden) {
+        display: inline-flex !important;
         gap: 14px !important;
         margin-bottom: 30px;
     }
@@ -656,7 +663,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         left: 15% !important;
         color: #ffffff !important;
     }
-
 
     /* Featured Card */
     .featured-card-wrapper { padding: 40px 4%; }
