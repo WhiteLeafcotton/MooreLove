@@ -47,7 +47,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Hero Logo with Delicate Wedding Font */
 .hero-logo {
     /* OPTION 1: Pinyon Script (Very delicate, calligraphic) */
-    font-family: "Pinyon Script", cursive;
+    font-family: "Great Vibes", cursive;
     font-size: 28px;               /* Script fonts render smaller, so increase slightly */
     letter-spacing: 2px;          /* Scripts look best with tighter letter spacing */
     
