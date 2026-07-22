@@ -67,11 +67,12 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 /* Hidden state: slow fade out */
-.hero-logo .brand-name.hidden {
-    opacity: 0;
-    visibility: hidden;
+.hero-logo.hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    display: none !important; 
 }
-
 
 
 .hero-logo.stacked-logo {
