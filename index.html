@@ -47,13 +47,20 @@
 <div class="hero-overlay"></div>
 
 <div class="hero-content">
+    <!-- Brand Logo (Always visible) -->
     <div class="hero-logo stacked-logo">
         <span class="strong-title">MOORE</span>
         <img class="hero-logo-icon" src="heart.svg" alt="Heart Icon">
         <span class="script-subtitle">love and care</span>
     </div>
-    
-    <a href="#" class="hero-button">Discover Our Story</a>
+
+    <!-- Title Container: Hidden on initial hero state, visible for sub-categories -->
+    <h1 class="hero-title" id="heroTitle"></h1>
+
+    <!-- Button Wrapper to ensure it stays block-level below -->
+    <div class="hero-btn-wrapper">
+        <a href="#" class="hero-button" id="heroButton">Discover Our Story</a>
+    </div>
 </div>
   
 
