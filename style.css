@@ -621,7 +621,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     }
     .hero-logo .script-subtitle {
         font-size: 30px !important;       /* Scaled down script font */
-        bottom: -28px !important;         /* Adjusted overlay position for mobile */
+        bottom: -24px !important;         /* Adjusted overlay position for mobile */
         left: 20% !important;
     }
 
