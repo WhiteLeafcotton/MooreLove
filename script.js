@@ -26,27 +26,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroBtn = document.querySelector('.hero-button');
     const activeLine = document.getElementById("activeLine");
 
-    // 1. The Interaction Function
     function updateHeroContent(item) {
-        // Hide and pause video ONLY when a user interacts
         if (heroVideo) {
             heroVideo.style.display = 'none';
             heroVideo.pause();
         }
         
-        // Update visuals
         heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('${item.dataset.image}')`;
         if (heroTitle) heroTitle.innerHTML = item.dataset.title;
         if (heroBtn) heroBtn.innerText = item.dataset.cta;
         
-        // Update line position
         if (activeLine) {
             activeLine.style.width = item.offsetWidth + "px";
             activeLine.style.left = item.offsetLeft + "px";
         }
     }
 
-    // 2. Event Listeners for Interaction
     iconItems.forEach((item) => {
         item.addEventListener('mouseenter', () => updateHeroContent(item));
         item.addEventListener('click', (e) => {
@@ -55,10 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Initialize ONLY the line position on load (Keep the video playing)
     setTimeout(() => { 
         if (activeLine && iconItems.length > 0) {
-            // Just set the line position to the first item without calling updateHeroContent()
             activeLine.style.width = iconItems[0].offsetWidth + "px";
             activeLine.style.left = iconItems[0].offsetLeft + "px";
         }
@@ -104,32 +97,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const locCards = document.querySelectorAll('.loc-card');
 
     function setActiveCard(card) {
-        // Remove active class from all
         locCards.forEach(c => c.classList.remove('active'));
-        
-        // Add active class to target
         card.classList.add('active');
         
-        // Update Gallery Background
         const bg = card.getAttribute('data-bg');
         if (gallery && bg) {
             gallery.style.background = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${bg}') center/cover no-repeat`;
         }
     }
 
-    // Set initial background based on the HTML's active card
     const initialActive = document.querySelector('.loc-card.active');
     if (initialActive) setActiveCard(initialActive);
 
-    // Click/Tap Events for Cards
     locCards.forEach(card => {
         card.addEventListener('click', (e) => {
-            // Ignore click if they click the "VIEW PROPERTY" button so the link still works
             if (e.target.tagName !== 'A') {
                 e.preventDefault(); 
                 setActiveCard(card);
 
-                // Auto-center the clicked card smoothly on mobile
                 if (window.innerWidth <= 768) {
                     card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                 }
@@ -137,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Swipe Logic for Mobile
     let touchStartX = 0;
     
     gallery?.addEventListener('touchstart', (e) => {
@@ -148,59 +132,42 @@ document.addEventListener('DOMContentLoaded', () => {
         const touchEndX = e.changedTouches[0].screenX;
         const diff = touchStartX - touchEndX;
         
-        // Ensure the swipe was intentional (more than 50px of movement)
         if (Math.abs(diff) > 50) {
             const activeIndex = Array.from(locCards).findIndex(c => c.classList.contains('active'));
             
-            // Swiped Left (Next Card)
             if (diff > 0 && activeIndex < locCards.length - 1) {
                 setActiveCard(locCards[activeIndex + 1]);
                 locCards[activeIndex + 1].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
             } 
-            // Swiped Right (Previous Card)
             else if (diff < 0 && activeIndex > 0) {
                 setActiveCard(locCards[activeIndex - 1]);
                 locCards[activeIndex - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
             }
         }
     }, { passive: true });
-document.addEventListener("DOMContentLoaded", () => {
-  const revealTarget = document.querySelector(".message-block");
 
-  if (!revealTarget) return;
-
-  const observerOptions = {
-    root: null, // Watch the browser viewport
-    rootMargin: "0px 0px -15% 0px", // Triggers slightly before element enters center
-    threshold: 0.15 // Triggers when 15% of the element is visible
-  };
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("active");
-        obs.unobserve(entry.target); // Stops observing once triggered
-      }
-    });
-  }, observerOptions);
-
-  observer.observe(revealTarget);
-});
     // ==========================================
-    // 6. Animated Phrases Rotation Logic
-  const textRevealBlock = document.querySelector('.text-reveal-section .message-block');
+    // 6. Text Reveal Section Animation
+    // ==========================================
+    const revealTarget = document.querySelector(".message-block");
 
-    if (textRevealBlock) {
-        const textRevealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+    if (revealTarget) {
+        const textObserverOptions = {
+            root: null,
+            rootMargin: "0px 0px -15% 0px",
+            threshold: 0.15
+        };
+
+        const textObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    textRevealBlock.classList.add('active');
-                    textRevealObserver.unobserve(entry.target); // Trigger reveal once
+                    entry.target.classList.add("active");
+                    obs.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.25 });
+        }, textObserverOptions);
 
-        textRevealObserver.observe(textRevealBlock);
+        textObserver.observe(revealTarget);
     }
 
 });
