@@ -50,6 +50,22 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Stacked & Overlapping Hero Logo Wrapper */
 /* Container set to relative block so children can layer over each other */
 /* Stacked Logo Container - Flex Layout */
+
+/* Smooth fade out for the hero logo when clicking a tab */
+.hero-logo {
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.hero-logo.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    /* Optional: use display: none if you don't want it taking up layout space */
+    display: none !important; 
+}
+
+
+
 .hero-logo.stacked-logo {
     position: relative;
     display: inline-flex;          /* Flex container to place MOORE & SVG side-by-side */
