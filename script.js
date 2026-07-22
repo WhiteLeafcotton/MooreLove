@@ -164,7 +164,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }, { passive: true });
+document.addEventListener("DOMContentLoaded", () => {
+  const revealTarget = document.querySelector(".message-block");
 
+  if (!revealTarget) return;
+
+  const observerOptions = {
+    root: null, // Watch the browser viewport
+    rootMargin: "0px 0px -15% 0px", // Triggers slightly before element enters center
+    threshold: 0.15 // Triggers when 15% of the element is visible
+  };
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+        obs.unobserve(entry.target); // Stops observing once triggered
+      }
+    });
+  }, observerOptions);
+
+  observer.observe(revealTarget);
+});
     // ==========================================
     // 6. Animated Phrases Rotation Logic
   const textRevealBlock = document.querySelector('.text-reveal-section .message-block');
