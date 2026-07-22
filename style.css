@@ -47,42 +47,49 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Hero Logo with Delicate Wedding Font */
 /* Container Wrapper */
 /* Hero Logo Layout */
-.hero-logo {
-    display: inline-flex;
-    align-items: baseline; /* Aligns the bold serif baseline with the script */
-    gap: 14px;
-    margin-bottom: 25px;
+/* Stacked & Overlapping Hero Logo Wrapper */
+.hero-logo.stacked-logo {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 35px;
 }
 
-/* "MOORE" - Serious, High-End, Bold Serif */
+/* "MOORE" - Large Montserrat All-Caps */
 .hero-logo .strong-title {
-    font-family: "Bodoni Moda", serif;
-    font-weight: 800;             /* Ultra bold high-fashion weight */
-    font-size: 22px;
-    letter-spacing: 4px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;              /* 300 gives that high-end thin luxury aesthetic */
+    font-size: 58px;               /* Dominant, large presence like "PRETTY" in reference */
+    letter-spacing: 12px;          /* Generous tracking */
     text-transform: uppercase;
     color: #ffffff;
+    display: block;
+    line-height: 0.9;
 }
 
-/* "love and care" - Soft, Sweeping WindSong Script */
+/* "love and care" - Layered Overlapping Script */
 .hero-logo .script-subtitle {
     font-family: "WindSong", cursive;
-    font-weight: 500;
-    font-size: 32px;              /* WindSong renders delicate, so keeping it larger */
-    color: rgba(255, 255, 255, 0.9);
-    text-transform: lowercase;    /* Lowercase for a demure accent */
-    margin-left: 2px;
+    font-size: 42px;
+    font-weight: 400;
+    color: #d4b06a;                /* Gold accent color matching the image style */
+    position: absolute;
+    bottom: -12px;                  /* Positions it overlapping the bottom right of MOORE */
+    right: 25px;                   /* Shifts it rightward across the main letters */
+    z-index: 2;
+    text-transform: lowercase;
+    white-space: nowrap;
+    pointer-events: none;
 }
 
-/* Minimal Right Heart Icon */
+/* Minimal Heart Icon */
 .hero-logo-icon {
+    position: absolute;
+    right: -25px;
+    bottom: -4px;
     width: 14px !important;
     height: 14px !important;
-    max-width: 14px;
-    max-height: 14px;
     filter: brightness(0) invert(1);
     opacity: 0.75;
-    margin-left: 4px;
 }
 .hero-content h1 { font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: clamp(30px, 3.5vw, 48px); line-height: 1.1; letter-spacing: -0.2px; margin-bottom: 30px; text-transform: uppercase; transition: opacity 0.3s ease; }
 .hero-button { display: inline-block; padding: 12px 30px; border: 1px solid rgba(255,255,255,.4); text-decoration: none; color: white; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); }
