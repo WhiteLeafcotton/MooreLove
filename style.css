@@ -49,32 +49,32 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Hero Logo Layout */
 .hero-logo {
     display: inline-flex;
-    align-items: baseline; /* Aligns script and serif naturally along the baseline */
-    gap: 16px;
+    align-items: baseline; /* Aligns the bold serif baseline with the script */
+    gap: 14px;
     margin-bottom: 25px;
 }
 
-/* Ultra-Delicate Sweeping Calligraphy */
-.hero-logo .serif-title {
-    font-family: "Cinzel", serif;
-    font-weight: 600;
-    font-size: 18px;
-    letter-spacing: 5px;
+/* "MOORE" - Serious, High-End, Bold Serif */
+.hero-logo .strong-title {
+    font-family: "Bodoni Moda", serif;
+    font-weight: 800;             /* Ultra bold high-fashion weight */
+    font-size: 22px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     color: #ffffff;
 }
 
-/* "love and care" - Soft, Delicate Cursive */
+/* "love and care" - Soft, Sweeping WindSong Script */
 .hero-logo .script-subtitle {
-    font-family: "Alex Brush", cursive;
-    font-size: 28px;
-    font-weight: 400;
+    font-family: "WindSong", cursive;
+    font-weight: 500;
+    font-size: 32px;              /* WindSong renders delicate, so keeping it larger */
     color: rgba(255, 255, 255, 0.9);
-    text-transform: lowercase; /* Lowercase cursive gives that soft, demure feel */
+    text-transform: lowercase;    /* Lowercase for a demure accent */
     margin-left: 2px;
 }
 
-/* Minimal Heart Icon on the Right */
+/* Minimal Right Heart Icon */
 .hero-logo-icon {
     width: 14px !important;
     height: 14px !important;
