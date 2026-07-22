@@ -44,15 +44,25 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* CONTENT */
 .hero-content { position: relative; z-index: 5; max-width: 700px; margin-top: -40px; animation: fadeUp 1s ease; }
 /* Hero Logo Wrapper */
+/* Hero Logo with Delicate Wedding Font */
 .hero-logo {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 16px;
-    letter-spacing: 6px;
+    /* OPTION 1: Pinyon Script (Very delicate, calligraphic) */
+    font-family: "Pinyon Script", cursive;
+    font-size: 28px;               /* Script fonts render smaller, so increase slightly */
+    letter-spacing: 2px;          /* Scripts look best with tighter letter spacing */
+    
+    /* OPTION 2: Great Vibes (Soft, traditional wedding) */
+    /* font-family: "Great Vibes", cursive; font-size: 26px; letter-spacing: 1px; */
+
+    /* OPTION 3: Alex Brush (Delicate & clear) */
+    /* font-family: "Alex Brush", cursive; font-size: 26px; letter-spacing: 1px; */
+
+    text-transform: none;          /* IMPORTANT: Script/calligraphy fonts must be lowercase/title case, NOT all-caps */
     margin-bottom: 25px;
-    opacity: 0.8;
+    opacity: 0.95;
     display: inline-flex;
     align-items: center;
-    gap: 12px; /* Space between text and icon */
+    gap: 12px;
 }
 
 /* Heart Icon (Sized strictly to match font size) */
