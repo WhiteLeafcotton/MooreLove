@@ -78,7 +78,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     position: absolute;
     
     /* POSTION CONTROLS */
-    bottom: -20px !important;         /* Pushes DOWN (was -18px) */
+    bottom: -15px !important;         /* Pushes DOWN (was -18px) */
     left: 35% !important;             /* Shifts RIGHT across 'R' and 'E' (change to 15% if you want it further left) */
     
     z-index: 2;
@@ -621,7 +621,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     }
     .hero-logo .script-subtitle {
         font-size: 30px !important;       /* Scaled down script font */
-        bottom: -20px !important;         /* Adjusted overlay position for mobile */
+        bottom: -15px !important;         /* Adjusted overlay position for mobile */
         left: 20% !important;
     }
 
