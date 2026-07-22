@@ -37,63 +37,61 @@
             <a href="tel:+12629510165">Connect</a>
         </div>
     </header>
+<section class="hero" id="hero">
+    <!-- Video Background -->
+    <video id="heroVideo" autoplay loop muted playsinline poster="home-poster.jpg">
+        <source src="vidz.mp4" type="video/mp4">
+    </video>
+    
+    <div class="hero-overlay"></div>
 
-    <section class="hero" id="hero">
-        <!-- Video Background -->
-        <video id="heroVideo" autoplay loop muted playsinline poster="home-poster.jpg">
-            <source src="vidz.mp4" type="video/mp4">
-        </video>
-        
-<div class="hero-overlay"></div>
+    <div class="hero-content">
+        <!-- Brand Logo (Always visible) -->
+        <div class="hero-logo stacked-logo">
+            <span class="strong-title">MOORE</span>
+            <img class="hero-logo-icon" src="heart.svg" alt="Heart Icon">
+            <span class="script-subtitle">love and care</span>
+        </div>
 
-<div class="hero-content">
-    <!-- Brand Logo (Always visible) -->
-    <div class="hero-logo stacked-logo">
-        <span class="strong-title">MOORE</span>
-        <img class="hero-logo-icon" src="heart.svg" alt="Heart Icon">
-        <span class="script-subtitle">love and care</span>
+        <!-- Title Container: Hidden on initial hero state, visible for sub-categories -->
+        <h1 class="hero-title" id="heroTitle"></h1>
+
+        <!-- Button Wrapper -->
+        <div class="hero-btn-wrapper">
+            <a href="#" class="hero-button" id="heroButton">Discover Our Story</a>
+        </div>
     </div>
 
-    <!-- Title Container: Hidden on initial hero state, visible for sub-categories -->
-    <h1 class="hero-title" id="heroTitle"></h1>
+    <!-- Interactive Icon Bar -->
+    <div class="icon-bar-container">
+        <!-- Horizontal track line for the animated active bar -->
+        <div class="icon-bar-line">
+            <div class="active-line" id="activeLine"></div>
+        </div>
 
-    <!-- Button Wrapper to ensure it stays block-level below -->
-    <div class="hero-btn-wrapper">
-        <a href="#" class="hero-button" id="heroButton">Discover Our Story</a>
+        <div class="icon-wrapper">
+            <div class="icon-item" data-image="lifestyle.jpg" data-title="ELEVATED <span>LIFESTYLE</span> EXPERIENCES" data-cta="Explore Lifestyle">
+                <i data-lucide="footprints"></i>
+                <span>Lifestyle</span>
+            </div>
+
+            <div class="icon-item" data-image="lifestyle.jpg" data-title="PERSONALIZED <span>WELLNESS</span> CARE" data-cta="Explore Wellness">
+                <i data-lucide="pill"></i>
+                <span>Wellness</span>
+            </div>
+
+            <div class="icon-item" data-image="lifestyle.jpg" data-title="WARM RESIDENTIAL <span>COMMUNITY</span>" data-cta="Explore Community">
+                <i data-lucide="house"></i>
+                <span>Community</span>
+            </div>
+
+            <div class="icon-item" data-image="lifestyle.jpg" data-title="DEDICATED <span>SUPPORT</span> SERVICES" data-cta="Explore Support">
+                <i data-lucide="hand-heart"></i>
+                <span>Support</span>
+            </div>
+        </div>
     </div>
-</div>
-  
-
-        <!-- Interactive Icon Bar (Lucide Thin Outline Icons) -->
-             <!-- Interactive Icon Bar (Lucide Thin Outline Icons) -->
-        <div class="icon-bar-container">
-            <div class="active-line" id="activeLine"></div></div>
-            <div class="icon-wrapper">
-
-                <div class="icon-item" data-image="lifestyle.jpg" data-title="ELEVATED <span>LIFESTYLE</span> EXPERIENCES" data-cta="Explore Lifestyle">
-                    <i data-lucide="footprints"></i>
-                    <span>Lifestyle</span>
-                </div>
-
-                <div class="icon-item" data-image="lifestyle.jpg" data-title="ELEVATED <span>LIFESTYLE</span> EXPERIENCES" data-cta="Explore Lifestyle">
-                    <i data-lucide="pill"></i>
-                    <span>Wellness</span>
-                </div>
-
-                <div class="icon-item" data-image="lifestyle.jpg" data-title="ELEVATED <span>LIFESTYLE</span> EXPERIENCES" data-cta="Explore Lifestyle">
-                    <i data-lucide="house"></i>
-                    <span>Community</span>
-                </div>
-
-                <div class="icon-item" data-image="lifestyle.jpg" data-title="ELEVATED <span>LIFESTYLE</span> EXPERIENCES" data-cta="Explore Lifestyle">
-                    <i data-lucide="hand-heart"></i>
-                    <span>Support</span>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
+</section>
     <!-- Navigation -->
     <nav class="main-nav" id="mainNav">
         <div class="nav-inner">
