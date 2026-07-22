@@ -55,22 +55,23 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 /* Ultra-Delicate Sweeping Calligraphy */
-.hero-logo .script-title {
-    font-family: "WindSong", cursive;
-    font-size: 42px;
-    font-weight: 400;
+.hero-logo .serif-title {
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
     color: #ffffff;
-    letter-spacing: 1px;
 }
 
-/* Clean Modern Serif */
-.hero-logo .serif-subtitle {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 13px;
-    font-weight: 300;
-    letter-spacing: 7px;          /* Wide tracking for a luxury feel */
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.85);
+/* "love and care" - Soft, Delicate Cursive */
+.hero-logo .script-subtitle {
+    font-family: "Alex Brush", cursive;
+    font-size: 28px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: lowercase; /* Lowercase cursive gives that soft, demure feel */
+    margin-left: 2px;
 }
 
 /* Minimal Heart Icon on the Right */
