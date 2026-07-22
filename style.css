@@ -637,22 +637,27 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     .nav-link { font-size: 9px; letter-spacing: 1px; }
 
     /* Mobile Logo Scaling & Positioning */
-    .hero-logo.hidden {
+   /* Mobile Logo Scaling & Positioning */
+    .hero-logo.hidden .strong-title,
+    .hero-logo.hidden .script-subtitle {
         display: none !important;
         opacity: 0 !important;
         visibility: hidden !important;
-        pointer-events: none !important;
     }
-/* Place this inside your @media (max-width: 768px) block */
-.hero-logo.hidden,
-.hero-logo.hidden * {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
+
+    .hero-logo.hidden .hero-logo-icon {
+        display: block !important;
+        opacity: 0.9 !important;
+        visibility: visible !important;
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .hero-logo.stacked-logo {
+        display: inline-flex !important;
+        gap: 14px !important;
+        margin-bottom: 30px;
+    }
     .hero-logo.stacked-logo:not(.hidden) {
         display: inline-flex !important;
         gap: 14px !important;
