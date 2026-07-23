@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Brownie | Application" />
+    <meta property="og:description" content="Complete your Brownie application online. Quick and simple registration form." />
+    <meta property="og:image" content="https://github.com/WhiteLeafcotton/MooreLove/blob/main/tag.jpg?raw=true" />
+    <meta property="og:url" content="https://whiteleafcotton.github.io/MooreLove/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <title>Moore Love and Care | Resident Application</title>
+
+    <!-- Google Fonts for Brand & Luxury Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* Pure white full-screen background */
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            padding: 80px 40px;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Top Left Minimal Back Button */
+        .back-btn {
+            position: absolute;
+            top: 25px;
+            left: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #333333;
+            text-decoration: none;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-4px);
+            opacity: 0.6;
+        }
+
+        .back-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Bottom Right Star Button - Animates purely on load */
+        .star-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.4s ease, opacity 0.4s ease, color 0.4s ease;
+            z-index: 10;
+            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+            animation-delay: 1.5s; /* Fixed delay on load */
+            opacity: 0;
+        }
+
+        .star-btn:hover {
+            transform: scale(1.05);
+            color: #e5a93c; /* Subtle gold hover */
+        }
+
+        .star-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Main Form Container */
+        .form-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* BRAND LOGO HEADER - Pure Slow Opacity Fade on Load */
+        .brand-header-logo {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 35px;
+            animation: logoPureFade 3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            animation-delay: 0.1s;
+            opacity: 0;
+        }
+
+        .brand-header-logo .strong-title {
+            font-family: 'Montserrat', sans-serif !important;
+            font-weight: 300 !important;
+            font-size: 48px !important;
+            letter-spacing: 10px !important;
+            text-transform: uppercase;
+            color: #111111;
+            line-height: 0.85;
+            margin: 0;
+        }
+
+        .brand-header-logo .hero-logo-icon {
+            width: 40px !important;
+            height: 40px !important;
+            opacity: 0.9;
+            flex-shrink: 0;
+        }
+
+        .brand-header-logo .script-subtitle {
+            font-family: 'WindSong', cursive !important;
+            font-size: 36px !important;
+            font-weight: 400;
+            color: #111111 !important;
+            position: absolute;
+            bottom: -28px !important;
+            left: 15% !important;
+            z-index: 2;
+            text-transform: lowercase;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        /* --- SCROLL REVEAL CLASSES (Handled by JS) --- */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(15px);
+            filter: blur(3px);
+            transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1),
+                        transform 1s cubic-bezier(0.075, 0.82, 0.165, 1),
+                        filter 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        .reveal-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        /* Form Layout Styles */
+        p.subtext {
+            color: #666666;
+            font-size: 1rem;
+            margin-bottom: 50px;
+        }
+
+        .form-group-inline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 35px;
+            gap: 20px;
+        }
+
+        .form-group-inline label {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #333333;
+            min-width: 220px;
+            flex-shrink: 0;
+        }
+
+        .form-group-inline input[type="text"],
+        .form-group-inline input[type="email"],
+        .form-group-inline textarea {
+            flex-grow: 1;
+            border: none;
+            border-bottom: 2px solid #ccc;
+            border-radius: 0;
+            padding: 8px 4px;
+            font-size: 1rem;
+            background: transparent;
+            outline: none;
+            transition: border-color 0.4s ease;
+        }
+
+        .form-group-inline input[type="text"]:focus,
+        .form-group-inline input[type="email"]:focus,
+        .form-group-inline textarea:focus {
+            border-bottom-color: #111111;
+        }
+
+        .checkbox-section {
+            margin-bottom: 40px;
+        }
+
+        .checkbox-section > label {
+            display: block;
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-left: 5px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            max-width: 300px;
+            background-color: #111111;
+            color: #ffffff;
+            padding: 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button[type="submit"]:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+
+        /* KEYFRAMES FOR LOAD ANIMATIONS */
+        @keyframes logoPureFade {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes prestigiousReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+                filter: blur(2px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 650px) {
+            body { padding: 70px 20px 80px 20px; }
+            .brand-header-logo .strong-title { font-size: 32px !important; letter-spacing: 6px !important; }
+            .brand-header-logo .hero-logo-icon { width: 28px !important; height: 28px !important; }
+            .brand-header-logo .script-subtitle { font-size: 26px !important; bottom: -20px !important; }
+            .form-group-inline { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .form-group-inline input[type="text"],
+            .form-group-inline input[type="email"],
+            .form-group-inline textarea { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Minimal Back Arrow Button -->
+    <a href="index.html" class="back-btn" aria-label="Back to home">
+        <svg viewBox="0 0 24 24">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+    </a>
+
+    <div class="form-container">
+        
+        <!-- MOORE love and care Logo Header -->
+        <div class="brand-header-logo">
+            <span class="strong-title">MOORE</span>
+            <img class="hero-logo-icon" src="heart.svg" alt="Heart Icon">
+            <span class="script-subtitle">love and care</span>
+        </div>
+
+        <p class="subtext">Please fill out the application below to get started. Make sure all required fields are completed.</p>
+
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            
+            <div class="form-group-inline">
+                <label for="q1">Full Name</label>
+                <input type="text" id="q1" name="q1_fullName" placeholder="Jane Doe" required>
+            </div>
+
+            <div class="form-group-inline">
+                <label for="q2">Email Address</label>
+                <input type="email" id="q2" name="q2_email" placeholder="jane@example.com" required>
+            </div>
+
+            <div class="form-group-inline">
+                <label for="q3">Phone Number</label>
+                <input type="text" id="q3" name="q3_phone" placeholder="(555) 000-0000" required>
+            </div>
+
+            <div class="form-group-inline">
+                <label for="q4">Street Address</label>
+                <input type="text" id="q4" name="q4_address" placeholder="123 Main St">
+            </div>
+
+            <div class="form-group-inline">
+                <label for="q5">City & State</label>
+                <input type="text" id="q5" name="q5_city_state" placeholder="Los Angeles, CA">
+            </div>
+
+            <div class="form-group-inline">
+                <label for="q6">ZIP Code</label>
+                <input type="text" id="q6" name="q6_zip" placeholder="90210">
+            </div>
+
+            <div class="form-group-inline">
+                <label for="q7">Date of Birth</label>
+                <input type="text" id="q7" name="q7_dob" placeholder="MM/DD/YYYY">
+            </div>
+
+            <div class="form-group-inline">
+                <label for="q8">Emergency Contact Name</label>
+                <input type="text" id="q8" name="q8_emergency_name" placeholder="John Doe">
+            </div>
+
+            <div class="form-group-inline">
+                <label for="q9">Emergency Contact Phone</label>
+                <input type="text" id="q9" name="q9_emergency_phone" placeholder="(555) 000-0000">
+            </div>
+
+            <div class="form-group-inline">
+                <label for="q10">Preferred Move-in Date</label>
+                <input type="text" id="q10" name="q10_move_in_date" placeholder="MM/DD/YYYY">
+            </div>
+
+            <div class="form-group-inline">
+                <label for="q11">Occupation / Profession</label>
+                <input type="text" id="q11" name="q11_occupation" placeholder="Designer, Teacher, etc.">
+            </div>
+
+            <div class="form-group-inline">
+                <label for="q12">Referral Source</label>
+                <input type="text" id="q12" name="q12_referral" placeholder="Friend, Social Media, etc.">
+            </div>
+
+            <div class="form-group-inline">
+                <label for="q13">Preferred Method of Contact</label>
+                <input type="text" id="q13" name="q13_contact_method" placeholder="Email, Phone, Text">
+            </div>
+
+            <div class="form-group-inline">
+                <label for="q14">Additional Notes</label>
+                <input type="text" id="q14" name="q14_notes" placeholder="Any special requests...">
+            </div>
+
+
+            <!-- SECTION QUESTION 1 -->
+            <div class="checkbox-section">
+                <label>Select Your Care Requirements (Choose all that apply)</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="Assisted Living Support"> Option 1 — Assisted Living Support</label>
+                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="Medication Management"> Option 2 — Medication Management</label>
+                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="Meal Preparation & Nutrition"> Option 3 — Meal Preparation & Nutrition</label>
+                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="Housekeeping & Laundry"> Option 4 — Housekeeping & Laundry</label>
+                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="Mobility Assistance"> Option 5 — Mobility Assistance</label>
+                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="24/7 Companion Care"> Option 6 — 24/7 Companion Care</label>
+                </div>
+            </div>
+
+            <!-- SECTION QUESTION 2 -->
+            <div class="checkbox-section">
+                <label>Select Your Amenities & Activity Preferences (21 Options)</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Private Suite"> Option 1 — Private Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Shared Suite"> Option 2 — Shared Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Private Bathroom"> Option 3 — Private Bathroom</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Furnished Room"> Option 4 — Furnished Room</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Pet-Friendly Access"> Option 5 — Pet-Friendly Access</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Daily Chef Meals"> Option 6 — Daily Chef Meals</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Special Dietary Menus"> Option 7 — Special Dietary Menus</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="In-Room Dining"> Option 8 — In-Room Dining</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Garden & Courtyard Access"> Option 9 — Garden & Courtyard Access</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Fitness & Wellness Classes"> Option 10 — Fitness & Wellness Classes</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Arts & Crafts Studio"> Option 11 — Arts & Crafts Studio</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Library & Reading Lounge"> Option 12 — Library & Reading Lounge</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Movie Nights & Media Room"> Option 13 — Movie Nights & Media Room</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Scheduled Transportation"> Option 14 — Scheduled Transportation</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="On-Site Salon & Spa"> Option 15 — On-Site Salon & Spa</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Physical Therapy Suite"> Option 16 — Physical Therapy Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Group Outings & Events"> Option 17 — Group Outings & Events</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Music Therapy Programs"> Option 18 — Music Therapy Programs</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="High-Speed Wi-Fi & Cable"> Option 19 — High-Speed Wi-Fi & Cable</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Guest Overnight Stay Access"> Option 20 — Guest Overnight Stay Access</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="24/7 Security Monitoring"> Option 21 — 24/7 Security Monitoring</label>
+                </div>
+            </div>
+
+        <!-- 1. THREE INLINE QUESTIONS -->
+            <div class="form-group-inline reveal-item">
+                <label for="q1">Full Name</label>
+                <input type="text" id="q1" name="q1_fullName" placeholder="Jane Doe" required>
+            </div>
+
+            <div class="form-group-inline reveal-item">
+                <label for="q2">Email Address</label>
+                <input type="email" id="q2" name="q2_email" placeholder="jane@example.com" required>
+            </div>
+
+            <div class="form-group-inline reveal-item">
+                <label for="q3">Phone Number</label>
+                <input type="tel" id="q3" name="q3_phone" placeholder="(555) 000-0000" required>
+            </div>
+
+
+            <!-- 2. SECTION QUESTION WITH 2 OPTIONS -->
+            <fieldset class="checkbox-section reveal-item" style="border: none; padding: 0;">
+                <legend style="font-weight: 600; font-size: 1.05rem; margin-bottom: 15px;">1. Primary Residency Status</legend>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="residency_type[]" value="Permanent Resident">
+                        Option 1 — Permanent Resident Status
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="residency_type[]" value="Short-Term Respite Care">
+                        Option 2 — Short-Term Respite Care Stay
+                    </label>
+                </div>
+            </fieldset>
+
+
+            <!-- 3. SECTION QUESTION WITH 10 OPTIONS -->
+            <fieldset class="checkbox-section reveal-item" style="border: none; padding: 0;">
+                <legend style="font-weight: 600; font-size: 1.05rem; margin-bottom: 15px;">2. Daily Support & Wellness Requirements (Select all that apply)</legend>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Medication Administration Assistance"> Option 1 — Medication Administration Assistance</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Personal Mobility Assistance"> Option 2 — Personal Mobility & Transfer Assistance</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Dietary Meal Planning"> Option 3 — Specialized Dietary Meal Planning</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Housekeeping Laundry"> Option 4 — Daily Housekeeping & Laundry Services</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Personal Hygiene Grooming"> Option 5 — Personal Hygiene & Grooming Support</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Physical Therapy Companion"> Option 6 — Physical Therapy Companion Support</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="On-Call Medical Oversight"> Option 7 — 24/7 On-Call Medical Oversight</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Cognitive Memory Support"> Option 8 — Cognitive & Memory Support Routines</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Transportation Assistance"> Option 9 — Transportation to Appointments</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Social Group Participation"> Option 10 — Social & Recreational Group Participation</label>
+                </div>
+            </fieldset>
+
+
+            <!-- 4. ONE INLINE QUESTION -->
+            <div class="form-group-inline reveal-item">
+                <label for="q4">Preferred Target Move-in Date</label>
+                <input type="date" id="q4" name="q4_move_in">
+            </div>
+
+
+            <!-- 5. SECTION QUESTION WITH 4 OPTIONS -->
+            <fieldset class="checkbox-section reveal-item" style="border: none; padding: 0;">
+                <legend style="font-weight: 600; font-size: 1.05rem; margin-bottom: 15px;">3. Preferred Suite Layout Options</legend>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="suite_layout[]" value="Deluxe Studio Suite"> Option 1 — Deluxe Studio Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="suite_layout[]" value="One-Bedroom Private Suite"> Option 2 — One-Bedroom Private Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="suite_layout[]" value="Two-Bedroom Shared Suite"> Option 3 — Two-Bedroom Shared Companion Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="suite_layout[]" value="Executive Balcony Suite"> Option 4 — Executive Balcony Suite</label>
+                </div>
+            </fieldset>
+
+
+            <!-- 6. SECTION QUESTION WITH 3 OPTIONS -->
+            <fieldset class="checkbox-section reveal-item" style="border: none; padding: 0;">
+                <legend style="font-weight: 600; font-size: 1.05rem; margin-bottom: 15px;">4. Preferred Dining Plan Tier</legend>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="dining_plan[]" value="All-Inclusive Culinary"> Option 1 — Full All-Inclusive Culinary Service (3 Meals + Snacks)</label>
+                    <label class="checkbox-item"><input type="checkbox" name="dining_plan[]" value="Dual-Meal Plan"> Option 2 — Standard Dual-Meal Dining Plan</label>
+                    <label class="checkbox-item"><input type="checkbox" name="dining_plan[]" value="Flex Dining Plan"> Option 3 — Flex Dining / Custom Meal Voucher Plan</label>
+                </div>
+            </fieldset>
+
+
+            <!-- 7. ONE INLINE QUESTION -->
+            <div class="form-group-inline reveal-item">
+                <label for="q5">Emergency Contact Name & Relation</label>
+                <input type="text" id="q5" name="q5_emergency_contact" placeholder="Jane Doe (Daughter)">
+            </div>
+
+
+            <!-- 8. SECTION QUESTION WITH 9 OPTIONS -->
+            <fieldset class="checkbox-section reveal-item" style="border: none; padding: 0;">
+                <legend style="font-weight: 600; font-size: 1.05rem; margin-bottom: 15px;">5. Community Amenities & Lifestyle Preferences</legend>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Spa Grooming Salon"> Option 1 — On-Site Spa & Grooming Salon</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Courtyard Walking Paths"> Option 2 — Private Courtyard & Walking Paths</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Fitness Hydrotherapy Suite"> Option 3 — Fitness & Hydrotherapy Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Arts Crafting Studio"> Option 4 — Arts & Creative Crafting Studio</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Library Reading Lounge"> Option 5 — Library & Solarium Reading Lounge</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Theater Media Room"> Option 6 — Theater & Media Screening Room</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Music Expressive Arts"> Option 7 — Music & Expressive Arts Programs</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Scheduled Community Outings"> Option 8 — Scheduled Community Outings</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Pet-Friendly Living"> Option 9 — Pet-Friendly Living Accommodations</label>
+                </div>
+            </fieldset>
+
+
+            <!-- 9. ACKNOWLEDGMENT PARAGRAPH -->
+            <div class="acknowledgment-block reveal-item">
+                <label style="font-weight: 600; font-size: 1.05rem; display: block; margin-bottom: 12px; color: #111111;">Applicant Acknowledgment & Authorization</label>
+                <p>By submitting this application, I confirm that all information provided in this form is accurate, true, and complete to the best of my knowledge. I understand that submitting this document does not guarantee immediate residency, but serves as an official request for evaluation by Moore Love and Care.</p>
+                <p>I authorize the review team to verify the information submitted herein and contact the listed emergency contacts or references as necessary for process completion.</p>
+
+                <!-- SIGNATURE AND DATE FIELD -->
+                <div class="signature-grid">
+                    <div class="form-group-inline" style="margin-bottom: 0;">
+                        <label for="signature_input" style="min-width: 140px;">Digital Signature</label>
+                        <input type="text" id="signature_input" name="signature_fullName" placeholder="Type Full Legal Name" required>
+                    </div>
+                    <div class="form-group-inline" style="margin-bottom: 0;">
+                        <label for="signature_date" style="min-width: 60px;">Date</label>
+                        <input type="date" id="signature_date" name="signature_date" required>
+                    </div>
+                </div>
+            </div>
+
+
+           <button type="submit" class="reveal-item">Submit Application</button>
+
+        </form>
+    </div>
+
+   
+<!-- Floating Share Button -->
+    <button class="share-btn" onclick="sharePage()" aria-label="Share page">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+        </svg>
+        <span>Share</span>
+    </button>
+
+</body>
+</html>
+    <!-- Scroll Reveal Logic & Share Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Gather all elements we want to reveal on scroll
+            const formElements = document.querySelectorAll('.subtext, .form-group-inline, .checkbox-section > label, .checkbox-item, button[type="submit"]');
+            
+            // 2. Add base reveal class so they start hidden
+            formElements.forEach(el => el.classList.add('reveal-item'));
+
+            // 3. Set up the Intersection Observer
+            const observer = new IntersectionObserver((entries) => {
+                let delay = 0; // Local delay to stagger items appearing in the same scroll batch
+                
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Apply stagger if multiple elements appear at once
+                        setTimeout(() => {
+                            entry.target.classList.add('is-visible');
+                        }, delay);
+                        
+                        delay += 60; // 60ms stagger per item
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px 0px -20px 0px', // Trigger slightly before it completely hits the bottom
+                threshold: 0.1 
+            });
+
+            // 4. Tell observer to watch all elements
+            formElements.forEach(el => observer.observe(el));
+        });
+
+        // Share action
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Brownie Application',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Application link copied to clipboard!');
+            }
+        }
+    </script>
+
+</body>
+</html>
