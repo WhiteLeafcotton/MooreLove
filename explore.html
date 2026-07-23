@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brownie Application</title>
     <style>
-        /* Modern reset & background styling */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -13,83 +12,112 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
+        /* Pure white full-screen background */
         body {
-            background-color: #f4f4f7; /* Subtle off-white background to make the white form pop */
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: #ffffff;
+            color: #333333;
+            padding: 60px 40px;
             min-height: 100vh;
-            padding: 20px;
         }
 
-        /* Form Container (White Background) */
+        /* Main Form Container - Fills available width */
         .form-container {
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             width: 100%;
-            max-width: 600px;
+            max-width: 1000px; /* Expands to fill screen space cleanly */
+            margin: 0 auto;
         }
 
         /* Title & Subtext */
         h1 {
-            color: #333333;
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 8px;
+            font-weight: 700;
         }
 
         p.subtext {
             color: #666666;
-            font-size: 0.95rem;
-            margin-bottom: 30px;
-            line-height: 1.5;
-        }
-
-        /* Form Controls */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #444444;
-        }
-
-        /* Text Inputs & Textareas */
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #cccccc;
-            border-radius: 6px;
             font-size: 1rem;
+            margin-bottom: 50px;
+        }
+
+        /* Side-by-Side Flex Layout for Text Fields */
+        .form-group-inline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 35px;
+            gap: 20px;
+        }
+
+        /* Question on the Left */
+        .form-group-inline label {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #333333;
+            min-width: 220px; /* Keeps question column structured */
+            flex-shrink: 0;
+        }
+
+        /* Underline Input Fields on the Right */
+        .form-group-inline input[type="text"],
+        .form-group-inline input[type="email"],
+        .form-group-inline textarea {
+            flex-grow: 1;
+            border: none;
+            border-bottom: 2px solid #ccc;
+            border-radius: 0;
+            padding: 8px 4px;
+            font-size: 1rem;
+            background: transparent;
+            outline: none;
             transition: border-color 0.2s;
         }
 
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #4a90e2;
+        /* Underline turns dark on click/focus */
+        .form-group-inline input[type="text"]:focus,
+        .form-group-inline input[type="email"]:focus,
+        .form-group-inline textarea:focus {
+            border-bottom-color: #111111;
         }
 
-        /* Checkbox Styling */
+        /* Align text area smoothly for multi-line inputs */
+        .form-group-inline.align-top {
+            align-items: flex-start;
+        }
+
+        .form-group-inline.align-top label {
+            padding-top: 8px;
+        }
+
+        .form-group-inline textarea {
+            resize: vertical;
+            min-height: 40px;
+        }
+
+        /* Checkbox Section */
+        .checkbox-section {
+            margin-bottom: 40px;
+        }
+
+        .checkbox-section > label {
+            display: block;
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+
         .checkbox-group {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-top: 5px;
+            gap: 12px;
+            padding-left: 5px;
         }
 
         .checkbox-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: normal;
+            gap: 12px;
+            font-size: 1rem;
             cursor: pointer;
         }
 
@@ -102,20 +130,35 @@
         /* Submit Button */
         button[type="submit"] {
             width: 100%;
-            background-color: #333333;
+            max-width: 300px;
+            background-color: #111111;
             color: #ffffff;
-            padding: 14px;
+            padding: 16px;
             border: none;
             border-radius: 6px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.2s;
-            margin-top: 10px;
+            transition: opacity 0.2s;
+            margin-top: 20px;
         }
 
         button[type="submit"]:hover {
-            background-color: #555555;
+            opacity: 0.85;
+        }
+
+        /* Responsive adjustment for mobile screens */
+        @media (max-width: 650px) {
+            .form-group-inline {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .form-group-inline input[type="text"],
+            .form-group-inline input[type="email"],
+            .form-group-inline textarea {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -128,20 +171,19 @@
         <!-- REPLACE THE ACTION URL BELOW WITH YOUR FORMSPREE/WEB3FORMS ENDPOINT -->
         <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
             
-            <!-- Text Response: Name -->
-            <div class="form-group">
+            <!-- Question on Left | Underline Input on Right -->
+            <div class="form-group-inline">
                 <label for="fullName">Full Name</label>
                 <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" required>
             </div>
 
-            <!-- Text Response: Email -->
-            <div class="form-group">
+            <div class="form-group-inline">
                 <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" placeholder="jane@example.com" required>
             </div>
 
-            <!-- Checkbox Options -->
-            <div class="form-group">
+            <!-- Checkboxes -->
+            <div class="checkbox-section">
                 <label>Select Your Preferences</label>
                 <div class="checkbox-group">
                     <label class="checkbox-item">
@@ -159,10 +201,10 @@
                 </div>
             </div>
 
-            <!-- Long Text Response -->
-            <div class="form-group">
+            <!-- Multi-line Underline Response -->
+            <div class="form-group-inline align-top">
                 <label for="experience">Tell us about your experience</label>
-                <textarea id="experience" name="experience" rows="4" placeholder="Write your response here..."></textarea>
+                <textarea id="experience" name="experience" rows="2" placeholder="Write your response here..."></textarea>
             </div>
 
             <!-- Submit Button -->
