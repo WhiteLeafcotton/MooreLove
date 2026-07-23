@@ -63,22 +63,23 @@
 }
 
         /* Bottom Left Share Button */
-        .share-btn {
-            position: fixed;
-            bottom: 25px;
-            left: 30px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #333333;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-            z-index: 10;
-        }
+        /* Bottom Right Share Button */
+.share-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 30px; /* Changed from left to right */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    z-index: 10;
+}
 
         .share-btn:hover {
             transform: scale(1.05);
