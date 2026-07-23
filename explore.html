@@ -49,13 +49,13 @@
             justify-content: center;
             color: #333333;
             text-decoration: none;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-            animation: luxuryReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
         }
 
         .back-btn:hover {
-            transform: translateX(-3px);
-            opacity: 0.7;
+            transform: translateX(-4px);
+            opacity: 0.6;
         }
 
         .back-btn svg {
@@ -77,16 +77,16 @@
             gap: 8px;
             font-size: 0.9rem;
             font-weight: 600;
-            transition: transform 0.2s ease, opacity 0.2s ease;
+            transition: transform 0.4s ease, opacity 0.4s ease;
             z-index: 10;
-            animation: luxuryReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            animation-delay: 0.8s;
+            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+            animation-delay: 1.4s;
             opacity: 0;
         }
 
         .share-btn:hover {
-            transform: scale(1.05);
-            opacity: 0.75;
+            transform: scale(1.03);
+            opacity: 0.7;
         }
 
         .share-btn svg {
@@ -113,8 +113,8 @@
             align-items: center;
             gap: 18px;
             margin-bottom: 35px;
-            animation: luxuryReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            animation-delay: 0.1s;
+            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+            animation-delay: 0.2s;
             opacity: 0;
         }
 
@@ -155,8 +155,8 @@
             color: #666666;
             font-size: 1rem;
             margin-bottom: 50px;
-            animation: luxuryReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            animation-delay: 0.25s;
+            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+            animation-delay: 0.4s;
             opacity: 0;
         }
 
@@ -167,14 +167,16 @@
             justify-content: space-between;
             margin-bottom: 35px;
             gap: 20px;
-            animation: luxuryReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
             opacity: 0;
         }
 
-        /* Individual Staggering for Form Groups */
-        .form-group-inline:nth-of-type(1) { animation-delay: 0.35s; }
-        .form-group-inline:nth-of-type(2) { animation-delay: 0.45s; }
-        .form-group-inline.align-top { animation-delay: 0.65s; }
+        /* Extended Staggered Sequence */
+        .form-group-inline:nth-of-type(1) { animation-delay: 0.6s; }
+        .form-group-inline:nth-of-type(2) { animation-delay: 0.8s; }
+        .checkbox-section { animation-delay: 1.0s; }
+        .form-group-inline.align-top { animation-delay: 1.2s; }
+        button[type="submit"] { animation-delay: 1.4s; }
 
         .form-group-inline label {
             font-weight: 600;
@@ -195,7 +197,7 @@
             font-size: 1rem;
             background: transparent;
             outline: none;
-            transition: border-color 0.2s;
+            transition: border-color 0.4s ease;
         }
 
         .form-group-inline input[type="text"]:focus,
@@ -220,8 +222,7 @@
         /* Checkbox Section */
         .checkbox-section {
             margin-bottom: 40px;
-            animation: luxuryReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            animation-delay: 0.55s;
+            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
             opacity: 0;
         }
 
@@ -265,26 +266,28 @@
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: opacity 0.2s;
+            transition: opacity 0.3s ease, transform 0.3s ease;
             margin-top: 20px;
-            animation: luxuryReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            animation-delay: 0.75s;
+            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
             opacity: 0;
         }
 
         button[type="submit"]:hover {
             opacity: 0.85;
+            transform: translateY(-1px);
         }
 
-        /* LUXURY SMOOTH TEXT REVEAL KEYFRAMES */
-        @keyframes luxuryReveal {
+        /* PRESTIGIOUS SLOW TEXT REVEAL KEYFRAMES */
+        @keyframes prestigiousReveal {
             0% {
                 opacity: 0;
-                transform: translateY(22px);
+                transform: translateY(12px);
+                filter: blur(2px); /* Subtle soft-focus effect as it reveals */
             }
             100% {
                 opacity: 1;
                 transform: translateY(0);
+                filter: blur(0);
             }
         }
 
