@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,7 +81,7 @@
             transition: transform 0.4s ease, opacity 0.4s ease;
             z-index: 10;
             animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-            animation-delay: 1.4s;
+            animation-delay: 2.2s;
             opacity: 0;
         }
 
@@ -174,9 +175,35 @@
         /* Extended Staggered Sequence */
         .form-group-inline:nth-of-type(1) { animation-delay: 0.6s; }
         .form-group-inline:nth-of-type(2) { animation-delay: 0.8s; }
-        .checkbox-section { animation-delay: 1.0s; }
-        .form-group-inline.align-top { animation-delay: 1.2s; }
-        button[type="submit"] { animation-delay: 1.4s; }
+
+        /* Checkbox Section Text Reveals */
+        .checkbox-section > label {
+            display: block;
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+            animation-delay: 1.0s;
+            opacity: 0;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+            opacity: 0;
+        }
+
+        /* Stagger individual checkbox items */
+        .checkbox-item:nth-child(1) { animation-delay: 1.15s; }
+        .checkbox-item:nth-child(2) { animation-delay: 1.30s; }
+        .checkbox-item:nth-child(3) { animation-delay: 1.45s; }
+
+        .form-group-inline.align-top { animation-delay: 1.65s; }
+        button[type="submit"] { animation-delay: 1.85s; }
 
         .form-group-inline label {
             font-weight: 600;
@@ -219,18 +246,9 @@
             min-height: 40px;
         }
 
-        /* Checkbox Section */
+        /* Checkbox Container */
         .checkbox-section {
             margin-bottom: 40px;
-            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-            opacity: 0;
-        }
-
-        .checkbox-section > label {
-            display: block;
-            font-weight: 600;
-            font-size: 1.05rem;
-            margin-bottom: 15px;
         }
 
         .checkbox-group {
@@ -238,14 +256,6 @@
             flex-direction: column;
             gap: 12px;
             padding-left: 5px;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1rem;
-            cursor: pointer;
         }
 
         .checkbox-item input[type="checkbox"] {
@@ -421,3 +431,5 @@
 
 </body>
 </html>
+
+```
