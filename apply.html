@@ -396,6 +396,57 @@ button[type="submit"]:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
+
+
+
+        /* ===================================================
+   FLOATING SHARE BUTTON (Icon Font Version)
+   =================================================== */
+.floating-share-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    
+    background: rgba(17, 17, 17, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+/* Icon Font Styling */
+.floating-share-btn i {
+    font-size: 16px;
+    color: #ffffff;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Hover State */
+.floating-share-btn:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.floating-share-btn:hover i {
+    color: #000000;
+    transform: scale(1.1);
+}
+
         /* KEYFRAMES */
         @keyframes logoPureFade {
             0% { opacity: 0; }
