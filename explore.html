@@ -1,9 +1,26 @@
+Here is the updated code including:
+
+* **Heart SVG "Back" Button:** Positioned in the top left corner, linking back to `index.html` (your home page).
+* **Share Icon:** A share button floating in the bottom left using the native Web Share API (with a clipboard fallback for desktop browsers).
+* **Meta Data:** Essential SEO, Open Graph (for social media previews), and mobile viewport meta tags placed inside the `<head>`.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brownie Application</title>
+    
+    <!-- Meta Data for SEO & Sharing -->
+    <title>Brownie | Application</title>
+    <meta name="description" content="Complete your Brownie application online. Quick and simple registration form.">
+    <meta name="keywords" content="Brownie, Application, Form, Register">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Brownie Application">
+    <meta property="og:description" content="Apply now via the Brownie application form.">
+    <meta property="og:type" content="website">
+
     <style>
         * {
             box-sizing: border-box;
@@ -16,14 +33,71 @@
         body {
             background-color: #ffffff;
             color: #333333;
-            padding: 60px 40px;
+            padding: 80px 40px;
             min-height: 100vh;
+            position: relative;
         }
 
-        /* Main Form Container - Fills available width */
+        /* Top Left Heart Back Button */
+        .back-btn {
+            position: absolute;
+            top: 25px;
+            left: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #333333;
+            text-decoration: none;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.1);
+            color: #e25555; /* Soft heart color on hover */
+        }
+
+        .back-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+
+        /* Bottom Left Share Button */
+        .share-btn {
+            position: fixed;
+            bottom: 25px;
+            left: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .share-btn:hover {
+            transform: scale(1.05);
+            opacity: 0.75;
+        }
+
+        .share-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Main Form Container */
         .form-container {
             width: 100%;
-            max-width: 1000px; /* Expands to fill screen space cleanly */
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -40,7 +114,7 @@
             margin-bottom: 50px;
         }
 
-        /* Side-by-Side Flex Layout for Text Fields */
+        /* Side-by-Side Layout for Text Fields */
         .form-group-inline {
             display: flex;
             align-items: center;
@@ -49,16 +123,14 @@
             gap: 20px;
         }
 
-        /* Question on the Left */
         .form-group-inline label {
             font-weight: 600;
             font-size: 1.05rem;
             color: #333333;
-            min-width: 220px; /* Keeps question column structured */
+            min-width: 220px;
             flex-shrink: 0;
         }
 
-        /* Underline Input Fields on the Right */
         .form-group-inline input[type="text"],
         .form-group-inline input[type="email"],
         .form-group-inline textarea {
@@ -73,14 +145,12 @@
             transition: border-color 0.2s;
         }
 
-        /* Underline turns dark on click/focus */
         .form-group-inline input[type="text"]:focus,
         .form-group-inline input[type="email"]:focus,
         .form-group-inline textarea:focus {
             border-bottom-color: #111111;
         }
 
-        /* Align text area smoothly for multi-line inputs */
         .form-group-inline.align-top {
             align-items: flex-start;
         }
@@ -147,8 +217,10 @@
             opacity: 0.85;
         }
 
-        /* Responsive adjustment for mobile screens */
         @media (max-width: 650px) {
+            body {
+                padding: 70px 20px 80px 20px;
+            }
             .form-group-inline {
                 flex-direction: column;
                 align-items: flex-start;
@@ -164,14 +236,21 @@
 </head>
 <body>
 
+    <!-- Heart Back Button (Top Left) -->
+    <a href="index.html" class="back-btn" aria-label="Back to home">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+    </a>
+
+    <!-- Application Form Container -->
     <div class="form-container">
         <h1>Brownie</h1>
         <p class="subtext">Please fill out the application below to get started. Make sure all required fields are completed.</p>
 
-        <!-- REPLACE THE ACTION URL BELOW WITH YOUR FORMSPREE/WEB3FORMS ENDPOINT -->
+        <!-- Form Endpoint -->
         <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
             
-            <!-- Question on Left | Underline Input on Right -->
             <div class="form-group-inline">
                 <label for="fullName">Full Name</label>
                 <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" required>
@@ -182,7 +261,6 @@
                 <input type="email" id="email" name="email" placeholder="jane@example.com" required>
             </div>
 
-            <!-- Checkboxes -->
             <div class="checkbox-section">
                 <label>Select Your Preferences</label>
                 <div class="checkbox-group">
@@ -201,17 +279,44 @@
                 </div>
             </div>
 
-            <!-- Multi-line Underline Response -->
             <div class="form-group-inline align-top">
                 <label for="experience">Tell us about your experience</label>
                 <textarea id="experience" name="experience" rows="2" placeholder="Write your response here..."></textarea>
             </div>
 
-            <!-- Submit Button -->
             <button type="submit">Submit Application</button>
 
         </form>
     </div>
 
+    <!-- Share Button (Bottom Left) -->
+    <button class="share-btn" onclick="sharePage()" aria-label="Share page">
+        <svg viewBox="0 0 24 24">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+        </svg>
+        <span>Share</span>
+    </button>
+
+    <!-- Native Web Share Script -->
+    <script>
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Brownie Application',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Application link copied to clipboard!');
+            }
+        }
+    </script>
+
 </body>
 </html>
+
+```
