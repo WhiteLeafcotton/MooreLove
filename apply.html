@@ -253,27 +253,32 @@
 /* ===================================================
    ACKNOWLEDGMENT CARD (Exact .loc-card Dark Style)
    =================================================== */
+/* ===================================================
+   ACKNOWLEDGMENT CARD (Crisp Dark - No Haze)
+   =================================================== */
 .acknowledgment-block {
-    /* Identical to .loc-card background & border */
-    background: rgba(0, 0, 0, 0.5) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    /* Pure dark background eliminates white background blur haze */
+    background: #111111 !important; 
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
     border-radius: 0 !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
+    
+    /* Remove blur so white page content won't bleed through */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     
     padding: 40px;
     margin-top: 50px;
     margin-bottom: 40px;
     color: #ffffff !important;
-    transition: all 0.4s ease;
 }
 
-/* Card Title / Header */
+/* Crisp Text Hierarchy */
 .acknowledgment-block label,
 .acknowledgment-block h3,
 .acknowledgment-block h4 {
     font-family: 'Inter', sans-serif !important;
-    font-size: 14px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
     letter-spacing: 2px !important;
     text-transform: uppercase !important;
     color: #ffffff !important;
@@ -281,31 +286,29 @@
     display: block;
 }
 
-/* Paragraph text inside the dark card */
 .acknowledgment-block p {
     font-family: 'Inter', sans-serif !important;
     font-size: 14px !important;
     line-height: 1.7 !important;
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
     margin-bottom: 25px;
 }
 
-/* Field Labels */
+/* Sharp Form Fields */
 .acknowledgment-block .form-group-inline label {
     font-size: 10px !important;
     letter-spacing: 1.5px !important;
     text-transform: uppercase !important;
-    color: rgba(255, 255, 255, 0.7) !important;
+    color: rgba(255, 255, 255, 0.6) !important;
 }
 
-/* Inputs with clean white border bottom */
 .acknowledgment-block input[type="text"],
 .acknowledgment-block input[type="date"] {
     background: transparent !important;
     border: none !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
     color: #ffffff !important;
-    padding: 8px 0 !important;
+    padding: 10px 0 !important;
     font-family: 'Inter', sans-serif !important;
     font-size: 14px !important;
     border-radius: 0 !important;
