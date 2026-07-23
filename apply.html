@@ -256,23 +256,40 @@
 /* ===================================================
    ACKNOWLEDGMENT CARD (Crisp Dark - No Haze)
    =================================================== */
+/* ===================================================
+   GLASS CARD CONTAINER (Provides background image)
+   =================================================== */
+.card-glass-wrapper {
+    width: 100%;
+    padding: 60px 20px;
+    /* Uses your existing site image background */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('final2.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===================================================
+   DARK GLASS CARD (Matches .loc-card style)
+   =================================================== */
 .acknowledgment-block {
-    /* Pure dark background eliminates white background blur haze */
-    background: #111111 !important; 
-    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    width: 100%;
+    max-width: 900px;
+    
+    /* Dark semi-transparent tint + blur */
+    background: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    
+    /* Crisp thin white border matching your location cards */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 0 !important;
     
-    /* Remove blur so white page content won't bleed through */
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    
     padding: 40px;
-    margin-top: 50px;
-    margin-bottom: 40px;
     color: #ffffff !important;
 }
 
-/* Crisp Text Hierarchy */
+/* Typography inside the Glass Card */
 .acknowledgment-block label,
 .acknowledgment-block h3,
 .acknowledgment-block h4 {
@@ -294,12 +311,12 @@
     margin-bottom: 25px;
 }
 
-/* Sharp Form Fields */
+/* Inputs styling */
 .acknowledgment-block .form-group-inline label {
     font-size: 10px !important;
     letter-spacing: 1.5px !important;
     text-transform: uppercase !important;
-    color: rgba(255, 255, 255, 0.6) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .acknowledgment-block input[type="text"],
@@ -311,7 +328,7 @@
     padding: 10px 0 !important;
     font-family: 'Inter', sans-serif !important;
     font-size: 14px !important;
-    border-radius: 0 !important;
+    width: 100%;
 }
 
 .acknowledgment-block input[type="text"]::placeholder {
@@ -323,7 +340,6 @@
     border-bottom-color: #ffffff !important;
     outline: none !important;
 }
-
         .signature-grid {
             display: flex;
             flex-direction: column;
