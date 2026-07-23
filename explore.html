@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Meta Data for SEO & Sharing -->
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Brownie | Application" />
+    <meta property="og:description" content="Complete your Brownie application online. Quick and simple registration form." />
+    <meta property="og:image" content="https://github.com/WhiteLeafcotton/MooreLove/blob/main/tag.jpg?raw=true" />
+    <meta property="og:url" content="https://whiteleafcotton.github.io/MooreLove/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
     <title>Brownie | Application</title>
-    <meta name="description" content="Complete your Brownie application online. Quick and simple registration form.">
-    <meta name="keywords" content="Brownie, Application, Form, Register">
+
+    <!-- Google Fonts for Brand & Luxury Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="Brownie Application">
-    <meta property="og:description" content="Apply now via the Brownie application form.">
-    <meta property="og:type" content="website">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         * {
@@ -46,7 +54,7 @@
 
         .back-btn:hover {
             transform: scale(1.1);
-            color: #e25555; /* Soft heart color on hover */
+            color: #e25555;
         }
 
         .back-btn svg {
@@ -70,6 +78,7 @@
             font-size: 0.9rem;
             font-weight: 600;
             transition: transform 0.2s ease, opacity 0.2s ease;
+            z-index: 10;
         }
 
         .share-btn:hover {
@@ -94,11 +103,53 @@
             margin: 0 auto;
         }
 
+        /* BRAND LOGO HEADER (MOORE love and care) */
+        .brand-header-logo {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 35px;
+        }
+
+        .brand-header-logo .strong-title {
+            font-family: 'Montserrat', sans-serif !important;
+            font-weight: 300 !important;
+            font-size: 48px !important;
+            letter-spacing: 10px !important;
+            text-transform: uppercase;
+            color: #111111;
+            line-height: 0.85;
+            margin: 0;
+        }
+
+        .brand-header-logo .hero-logo-icon {
+            width: 40px !important;
+            height: 40px !important;
+            opacity: 0.9;
+            flex-shrink: 0;
+        }
+
+        .brand-header-logo .script-subtitle {
+            font-family: 'WindSong', cursive !important;
+            font-size: 36px !important;
+            font-weight: 400;
+            color: #111111 !important;
+            position: absolute;
+            bottom: -28px !important;
+            left: 15% !important;
+            z-index: 2;
+            text-transform: lowercase;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
         /* Title & Subtext */
-        h1 {
-            font-size: 2.5rem;
+        h1.form-title {
+            font-size: 2.2rem;
             margin-bottom: 8px;
             font-weight: 700;
+            margin-top: 20px;
         }
 
         p.subtext {
@@ -214,6 +265,18 @@
             body {
                 padding: 70px 20px 80px 20px;
             }
+            .brand-header-logo .strong-title {
+                font-size: 32px !important;
+                letter-spacing: 6px !important;
+            }
+            .brand-header-logo .hero-logo-icon {
+                width: 28px !important;
+                height: 28px !important;
+            }
+            .brand-header-logo .script-subtitle {
+                font-size: 26px !important;
+                bottom: -20px !important;
+            }
             .form-group-inline {
                 flex-direction: column;
                 align-items: flex-start;
@@ -229,7 +292,7 @@
 </head>
 <body>
 
-    <!-- Heart Back Button (Top Left) -->
+    <!-- Top Left Heart Back Button -->
     <a href="index.html" class="back-btn" aria-label="Back to home">
         <svg viewBox="0 0 24 24">
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -238,7 +301,15 @@
 
     <!-- Application Form Container -->
     <div class="form-container">
-        <h1>Brownie</h1>
+        
+        <!-- MOORE love and care Logo Header -->
+        <div class="brand-header-logo">
+            <span class="strong-title">MOORE</span>
+            <img class="hero-logo-icon" src="heart.svg" alt="Heart Icon">
+            <span class="script-subtitle">love and care</span>
+        </div>
+
+        <h1 class="form-title">Brownie</h1>
         <p class="subtext">Please fill out the application below to get started. Make sure all required fields are completed.</p>
 
         <!-- Form Endpoint -->
