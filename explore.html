@@ -427,7 +427,132 @@
                 </div>
             </div>
 
-            <button type="submit">Submit Application</button>
+            <!-- 1. THREE INLINE QUESTIONS -->
+            <div class="form-group-inline reveal-item">
+                <label for="q1">Full Name</label>
+                <input type="text" id="q1" name="q1_fullName" placeholder="Jane Doe" required>
+            </div>
+
+            <div class="form-group-inline reveal-item">
+                <label for="q2">Email Address</label>
+                <input type="email" id="q2" name="q2_email" placeholder="jane@example.com" required>
+            </div>
+
+            <div class="form-group-inline reveal-item">
+                <label for="q3">Phone Number</label>
+                <input type="text" id="q3" name="q3_phone" placeholder="(555) 000-0000" required>
+            </div>
+
+
+            <!-- 2. SECTION QUESTION WITH 2 OPTIONS -->
+            <div class="checkbox-section reveal-item">
+                <label>1. Primary Residency Status</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="residency_type[]" value="Permanent Resident">
+                        Option 1 — Permanent Resident Status
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="residency_type[]" value="Short-Term Respite Care">
+                        Option 2 — Short-Term Respite Care Stay
+                    </label>
+                </div>
+            </div>
+
+
+            <!-- 3. SECTION QUESTION WITH 10 OPTIONS -->
+            <div class="checkbox-section reveal-item">
+                <label>2. Daily Support & Wellness Requirements (Select all that apply)</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 1"> Option 1 — Medication Administration Assistance</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 2"> Option 2 — Personal Mobility & Transfer Assistance</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 3"> Option 3 — Specialized Dietary Meal Planning</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 4"> Option 4 — Daily Housekeeping & Laundry Services</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 5"> Option 5 — Personal Hygiene & Grooming Support</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 6"> Option 6 — Physical Therapy Companion Support</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 7"> Option 7 — 24/7 On-Call Medical Oversight</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 8"> Option 8 — Cognitive & Memory Support Routines</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 9"> Option 9 — Transportation to Appointments</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 10"> Option 10 — Social & Recreational Group Participation</label>
+                </div>
+            </div>
+
+
+            <!-- 4. ONE INLINE QUESTION -->
+            <div class="form-group-inline reveal-item">
+                <label for="q4">Preferred Target Move-in Date</label>
+                <input type="text" id="q4" name="q4_move_in" placeholder="MM/DD/YYYY">
+            </div>
+
+
+            <!-- 5. SECTION QUESTION WITH 4 OPTIONS -->
+            <div class="checkbox-section reveal-item">
+                <label>3. Preferred Suite Layout Options</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="suite_layout[]" value="Option 1"> Option 1 — Deluxe Studio Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="suite_layout[]" value="Option 2"> Option 2 — One-Bedroom Private Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="suite_layout[]" value="Option 3"> Option 3 — Two-Bedroom Shared Companion Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="suite_layout[]" value="Option 4"> Option 4 — Executive Balcony Suite</label>
+                </div>
+            </div>
+
+
+            <!-- 6. SECTION QUESTION WITH 3 OPTIONS -->
+            <div class="checkbox-section reveal-item">
+                <label>4. Preferred Dining Plan Tier</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="dining_plan[]" value="Option 1"> Option 1 — Full All-Inclusive Culinary Service (3 Meals + Snacks)</label>
+                    <label class="checkbox-item"><input type="checkbox" name="dining_plan[]" value="Option 2"> Option 2 — Standard Dual-Meal Dining Plan</label>
+                    <label class="checkbox-item"><input type="checkbox" name="dining_plan[]" value="Option 3"> Option 3 — Flex Dining / Custom Meal Voucher Plan</label>
+                </div>
+            </div>
+
+
+            <!-- 7. ONE INLINE QUESTION -->
+            <div class="form-group-inline reveal-item">
+                <label for="q5">Emergency Contact Name & Relation</label>
+                <input type="text" id="q5" name="q5_emergency_contact" placeholder="Jane Doe (Daughter)">
+            </div>
+
+
+            <!-- 8. SECTION QUESTION WITH 9 OPTIONS -->
+            <div class="checkbox-section reveal-item">
+                <label>5. Community Amenities & Lifestyle Preferences</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 1"> Option 1 — On-Site Spa & Grooming Salon</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 2"> Option 2 — Private Courtyard & Walking Paths</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 3"> Option 3 — Fitness & Hydrotherapy Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 4"> Option 4 — Arts & Creative Crafting Studio</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 5"> Option 5 — Library & Solarium Reading Lounge</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 6"> Option 6 — Theater & Media Screening Room</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 7"> Option 7 — Music & Expressive Arts Programs</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 8"> Option 8 — Scheduled Community Outings</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 9"> Option 9 — Pet-Friendly Living Accommodations</label>
+                </div>
+            </div>
+
+
+            <!-- 9. ACKNOWLEDGMENT PARAGRAPH -->
+            <div class="acknowledgment-block reveal-item">
+                <label style="font-weight: 600; font-size: 1.05rem; display: block; margin-bottom: 12px; color: #111111;">Applicant Acknowledgment & Authorization</label>
+                <p>By submitting this application, I confirm that all information provided in this form is accurate, true, and complete to the best of my knowledge. I understand that submitting this document does not guarantee immediate residency, but serves as an official request for evaluation by Moore Love and Care.</p>
+                <p>I authorize the review team to verify the information submitted herein and contact the listed emergency contacts or references as necessary for process completion.</p>
+
+                <!-- SIGNATURE AND DATE FIELD -->
+                <div class="signature-grid">
+                    <div class="form-group-inline" style="margin-bottom: 0;">
+                        <label for="signature_input" style="min-width: 140px;">Digital Signature</label>
+                        <input type="text" id="signature_input" name="signature_fullName" placeholder="Type Full Legal Name" required>
+                    </div>
+                    <div class="form-group-inline" style="margin-bottom: 0;">
+                        <label for="signature_date" style="min-width: 60px;">Date</label>
+                        <input type="date" id="signature_date" name="signature_date" required>
+                    </div>
+                </div>
+            </div>
+
+
+            <button type="submit" class="reveal-item">Submit Application</button>
 
         </form>
     </div>
