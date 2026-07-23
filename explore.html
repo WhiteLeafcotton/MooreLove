@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brownie Application</title>
+    <style>
+        /* Modern reset & background styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f7; /* Subtle off-white background to make the white form pop */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Form Container (White Background) */
+        .form-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* Title & Subtext */
+        h1 {
+            color: #333333;
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        p.subtext {
+            color: #666666;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #444444;
+        }
+
+        /* Text Inputs & Textareas */
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #4a90e2;
+        }
+
+        /* Checkbox Styling */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* Submit Button */
+        button[type="submit"] {
+            width: 100%;
+            background-color: #333333;
+            color: #ffffff;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 10px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #555555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Brownie</h1>
+        <p class="subtext">Please fill out the application below to get started. Make sure all required fields are completed.</p>
+
+        <!-- REPLACE THE ACTION URL BELOW WITH YOUR FORMSPREE/WEB3FORMS ENDPOINT -->
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            
+            <!-- Text Response: Name -->
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" required>
+            </div>
+
+            <!-- Text Response: Email -->
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+            </div>
+
+            <!-- Checkbox Options -->
+            <div class="form-group">
+                <label>Select Your Preferences</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="preferences[]" value="Option 1">
+                        Option 1 Description
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="preferences[]" value="Option 2">
+                        Option 2 Description
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="preferences[]" value="Option 3">
+                        Option 3 Description
+                    </label>
+                </div>
+            </div>
+
+            <!-- Long Text Response -->
+            <div class="form-group">
+                <label for="experience">Tell us about your experience</label>
+                <textarea id="experience" name="experience" rows="4" placeholder="Write your response here..."></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit Application</button>
+
+        </form>
+    </div>
+
+</body>
+</html>
