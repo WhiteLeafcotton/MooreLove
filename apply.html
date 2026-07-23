@@ -361,25 +361,40 @@
             margin-top: 25px;
         }
 
-        button[type="submit"] {
-            width: 100%;
-            max-width: 300px;
-            background-color: #111111;
-            color: #ffffff;
-            padding: 16px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            margin-top: 20px;
-        }
+        /* ===================================================
+   SUBMIT BUTTON (Matches index.html Luxury Styling)
+   =================================================== */
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin: 30px auto 0 auto;
+    padding: 16px 35px;
+    
+    /* Colors & Typography matching index.html */
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    
+    /* Sharp luxury borders */
+    border: 1px solid #ffffff;
+    border-radius: 0 !important; /* Sharp corners matching index.html cards */
+    
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
 
-        button[type="submit"]:hover {
-            opacity: 0.85;
-            transform: translateY(-1px);
-        }
+button[type="submit"]:hover {
+    background-color: var(--gold, #d4b06a); /* Smooth gold shift on hover */
+    border-color: var(--gold, #d4b06a);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
 
         /* KEYFRAMES */
         @keyframes logoPureFade {
