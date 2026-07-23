@@ -427,7 +427,7 @@
                 </div>
             </div>
 
-            <!-- 1. THREE INLINE QUESTIONS -->
+        <!-- 1. THREE INLINE QUESTIONS -->
             <div class="form-group-inline reveal-item">
                 <label for="q1">Full Name</label>
                 <input type="text" id="q1" name="q1_fullName" placeholder="Jane Doe" required>
@@ -440,13 +440,13 @@
 
             <div class="form-group-inline reveal-item">
                 <label for="q3">Phone Number</label>
-                <input type="text" id="q3" name="q3_phone" placeholder="(555) 000-0000" required>
+                <input type="tel" id="q3" name="q3_phone" placeholder="(555) 000-0000" required>
             </div>
 
 
             <!-- 2. SECTION QUESTION WITH 2 OPTIONS -->
-            <div class="checkbox-section reveal-item">
-                <label>1. Primary Residency Status</label>
+            <fieldset class="checkbox-section reveal-item" style="border: none; padding: 0;">
+                <legend style="font-weight: 600; font-size: 1.05rem; margin-bottom: 15px;">1. Primary Residency Status</legend>
                 <div class="checkbox-group">
                     <label class="checkbox-item">
                         <input type="checkbox" name="residency_type[]" value="Permanent Resident">
@@ -457,55 +457,55 @@
                         Option 2 — Short-Term Respite Care Stay
                     </label>
                 </div>
-            </div>
+            </fieldset>
 
 
             <!-- 3. SECTION QUESTION WITH 10 OPTIONS -->
-            <div class="checkbox-section reveal-item">
-                <label>2. Daily Support & Wellness Requirements (Select all that apply)</label>
+            <fieldset class="checkbox-section reveal-item" style="border: none; padding: 0;">
+                <legend style="font-weight: 600; font-size: 1.05rem; margin-bottom: 15px;">2. Daily Support & Wellness Requirements (Select all that apply)</legend>
                 <div class="checkbox-group">
-                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 1"> Option 1 — Medication Administration Assistance</label>
-                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 2"> Option 2 — Personal Mobility & Transfer Assistance</label>
-                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 3"> Option 3 — Specialized Dietary Meal Planning</label>
-                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 4"> Option 4 — Daily Housekeeping & Laundry Services</label>
-                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 5"> Option 5 — Personal Hygiene & Grooming Support</label>
-                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 6"> Option 6 — Physical Therapy Companion Support</label>
-                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 7"> Option 7 — 24/7 On-Call Medical Oversight</label>
-                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 8"> Option 8 — Cognitive & Memory Support Routines</label>
-                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 9"> Option 9 — Transportation to Appointments</label>
-                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Option 10"> Option 10 — Social & Recreational Group Participation</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Medication Administration Assistance"> Option 1 — Medication Administration Assistance</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Personal Mobility Assistance"> Option 2 — Personal Mobility & Transfer Assistance</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Dietary Meal Planning"> Option 3 — Specialized Dietary Meal Planning</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Housekeeping Laundry"> Option 4 — Daily Housekeeping & Laundry Services</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Personal Hygiene Grooming"> Option 5 — Personal Hygiene & Grooming Support</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Physical Therapy Companion"> Option 6 — Physical Therapy Companion Support</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="On-Call Medical Oversight"> Option 7 — 24/7 On-Call Medical Oversight</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Cognitive Memory Support"> Option 8 — Cognitive & Memory Support Routines</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Transportation Assistance"> Option 9 — Transportation to Appointments</label>
+                    <label class="checkbox-item"><input type="checkbox" name="support[]" value="Social Group Participation"> Option 10 — Social & Recreational Group Participation</label>
                 </div>
-            
+            </fieldset>
 
 
             <!-- 4. ONE INLINE QUESTION -->
             <div class="form-group-inline reveal-item">
                 <label for="q4">Preferred Target Move-in Date</label>
-                <input type="text" id="q4" name="q4_move_in" placeholder="MM/DD/YYYY">
+                <input type="date" id="q4" name="q4_move_in">
             </div>
 
 
             <!-- 5. SECTION QUESTION WITH 4 OPTIONS -->
-            <div class="checkbox-section reveal-item">
-                <label>3. Preferred Suite Layout Options</label>
+            <fieldset class="checkbox-section reveal-item" style="border: none; padding: 0;">
+                <legend style="font-weight: 600; font-size: 1.05rem; margin-bottom: 15px;">3. Preferred Suite Layout Options</legend>
                 <div class="checkbox-group">
-                    <label class="checkbox-item"><input type="checkbox" name="suite_layout[]" value="Option 1"> Option 1 — Deluxe Studio Suite</label>
-                    <label class="checkbox-item"><input type="checkbox" name="suite_layout[]" value="Option 2"> Option 2 — One-Bedroom Private Suite</label>
-                    <label class="checkbox-item"><input type="checkbox" name="suite_layout[]" value="Option 3"> Option 3 — Two-Bedroom Shared Companion Suite</label>
-                    <label class="checkbox-item"><input type="checkbox" name="suite_layout[]" value="Option 4"> Option 4 — Executive Balcony Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="suite_layout[]" value="Deluxe Studio Suite"> Option 1 — Deluxe Studio Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="suite_layout[]" value="One-Bedroom Private Suite"> Option 2 — One-Bedroom Private Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="suite_layout[]" value="Two-Bedroom Shared Suite"> Option 3 — Two-Bedroom Shared Companion Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="suite_layout[]" value="Executive Balcony Suite"> Option 4 — Executive Balcony Suite</label>
                 </div>
-            </div>
+            </fieldset>
 
 
             <!-- 6. SECTION QUESTION WITH 3 OPTIONS -->
-            <div class="checkbox-section reveal-item">
-                <label>4. Preferred Dining Plan Tier</label>
+            <fieldset class="checkbox-section reveal-item" style="border: none; padding: 0;">
+                <legend style="font-weight: 600; font-size: 1.05rem; margin-bottom: 15px;">4. Preferred Dining Plan Tier</legend>
                 <div class="checkbox-group">
-                    <label class="checkbox-item"><input type="checkbox" name="dining_plan[]" value="Option 1"> Option 1 — Full All-Inclusive Culinary Service (3 Meals + Snacks)</label>
-                    <label class="checkbox-item"><input type="checkbox" name="dining_plan[]" value="Option 2"> Option 2 — Standard Dual-Meal Dining Plan</label>
-                    <label class="checkbox-item"><input type="checkbox" name="dining_plan[]" value="Option 3"> Option 3 — Flex Dining / Custom Meal Voucher Plan</label>
+                    <label class="checkbox-item"><input type="checkbox" name="dining_plan[]" value="All-Inclusive Culinary"> Option 1 — Full All-Inclusive Culinary Service (3 Meals + Snacks)</label>
+                    <label class="checkbox-item"><input type="checkbox" name="dining_plan[]" value="Dual-Meal Plan"> Option 2 — Standard Dual-Meal Dining Plan</label>
+                    <label class="checkbox-item"><input type="checkbox" name="dining_plan[]" value="Flex Dining Plan"> Option 3 — Flex Dining / Custom Meal Voucher Plan</label>
                 </div>
-            </div>
+            </fieldset>
 
 
             <!-- 7. ONE INLINE QUESTION -->
@@ -516,20 +516,20 @@
 
 
             <!-- 8. SECTION QUESTION WITH 9 OPTIONS -->
-            <div class="checkbox-section reveal-item">
-                <label>5. Community Amenities & Lifestyle Preferences</label>
+            <fieldset class="checkbox-section reveal-item" style="border: none; padding: 0;">
+                <legend style="font-weight: 600; font-size: 1.05rem; margin-bottom: 15px;">5. Community Amenities & Lifestyle Preferences</legend>
                 <div class="checkbox-group">
-                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 1"> Option 1 — On-Site Spa & Grooming Salon</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 2"> Option 2 — Private Courtyard & Walking Paths</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 3"> Option 3 — Fitness & Hydrotherapy Suite</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 4"> Option 4 — Arts & Creative Crafting Studio</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 5"> Option 5 — Library & Solarium Reading Lounge</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 6"> Option 6 — Theater & Media Screening Room</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 7"> Option 7 — Music & Expressive Arts Programs</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 8"> Option 8 — Scheduled Community Outings</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Option 9"> Option 9 — Pet-Friendly Living Accommodations</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Spa Grooming Salon"> Option 1 — On-Site Spa & Grooming Salon</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Courtyard Walking Paths"> Option 2 — Private Courtyard & Walking Paths</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Fitness Hydrotherapy Suite"> Option 3 — Fitness & Hydrotherapy Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Arts Crafting Studio"> Option 4 — Arts & Creative Crafting Studio</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Library Reading Lounge"> Option 5 — Library & Solarium Reading Lounge</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Theater Media Room"> Option 6 — Theater & Media Screening Room</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Music Expressive Arts"> Option 7 — Music & Expressive Arts Programs</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Scheduled Community Outings"> Option 8 — Scheduled Community Outings</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities_pref[]" value="Pet-Friendly Living"> Option 9 — Pet-Friendly Living Accommodations</label>
                 </div>
-            </div>
+            </fieldset>
 
 
             <!-- 9. ACKNOWLEDGMENT PARAGRAPH -->
@@ -553,9 +553,6 @@
 
 
             <button type="submit" class="reveal-item">Submit Application</button>
-
-        </form>
-    </div>
 
     <!-- Star Button (Animates on load automatically via CSS) -->
     <button class="star-btn" onclick="sharePage()" aria-label="Star/Share page">
