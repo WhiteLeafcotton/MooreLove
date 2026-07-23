@@ -81,7 +81,7 @@
             transition: transform 0.4s ease, opacity 0.4s ease;
             z-index: 10;
             animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-            animation-delay: 2.2s;
+            animation-delay: 2.8s;
             opacity: 0;
         }
 
@@ -157,7 +157,7 @@
             font-size: 1rem;
             margin-bottom: 50px;
             animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-            animation-delay: 0.4s;
+            animation-delay: 0.3s;
             opacity: 0;
         }
 
@@ -172,38 +172,72 @@
             opacity: 0;
         }
 
-        /* Extended Staggered Sequence */
-        .form-group-inline:nth-of-type(1) { animation-delay: 0.6s; }
-        .form-group-inline:nth-of-type(2) { animation-delay: 0.8s; }
+        /* Full Staggered Sequence for ALL 14 Line Questions */
+        .form-group-inline:nth-of-type(1)  { animation-delay: 0.35s; }
+        .form-group-inline:nth-of-type(2)  { animation-delay: 0.40s; }
+        .form-group-inline:nth-of-type(3)  { animation-delay: 0.45s; }
+        .form-group-inline:nth-of-type(4)  { animation-delay: 0.50s; }
+        .form-group-inline:nth-of-type(5)  { animation-delay: 0.55s; }
+        .form-group-inline:nth-of-type(6)  { animation-delay: 0.60s; }
+        .form-group-inline:nth-of-type(7)  { animation-delay: 0.65s; }
+        .form-group-inline:nth-of-type(8)  { animation-delay: 0.70s; }
+        .form-group-inline:nth-of-type(9)  { animation-delay: 0.75s; }
+        .form-group-inline:nth-of-type(10) { animation-delay: 0.80s; }
+        .form-group-inline:nth-of-type(11) { animation-delay: 0.85s; }
+        .form-group-inline:nth-of-type(12) { animation-delay: 0.90s; }
+        .form-group-inline:nth-of-type(13) { animation-delay: 0.95s; }
+        .form-group-inline:nth-of-type(14) { animation-delay: 1.00s; }
 
-        /* Checkbox Section Text Reveals */
-        .checkbox-section > label {
-            display: block;
-            font-weight: 600;
-            font-size: 1.05rem;
-            margin-bottom: 15px;
+        /* Section 1 Label & Items */
+        .checkbox-section:nth-of-type(1) > label {
             animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-            animation-delay: 1.0s;
+            animation-delay: 1.08s;
             opacity: 0;
         }
 
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1rem;
-            cursor: pointer;
+        .checkbox-section:nth-of-type(1) .checkbox-item {
             animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
             opacity: 0;
         }
+        .checkbox-section:nth-of-type(1) .checkbox-item:nth-child(1) { animation-delay: 1.12s; }
+        .checkbox-section:nth-of-type(1) .checkbox-item:nth-child(2) { animation-delay: 1.16s; }
+        .checkbox-section:nth-of-type(1) .checkbox-item:nth-child(3) { animation-delay: 1.20s; }
+        .checkbox-section:nth-of-type(1) .checkbox-item:nth-child(4) { animation-delay: 1.24s; }
+        .checkbox-section:nth-of-type(1) .checkbox-item:nth-child(5) { animation-delay: 1.28s; }
+        .checkbox-section:nth-of-type(1) .checkbox-item:nth-child(6) { animation-delay: 1.32s; }
 
-        /* Stagger individual checkbox items */
-        .checkbox-item:nth-child(1) { animation-delay: 1.15s; }
-        .checkbox-item:nth-child(2) { animation-delay: 1.30s; }
-        .checkbox-item:nth-child(3) { animation-delay: 1.45s; }
+        /* Section 2 Label & Items */
+        .checkbox-section:nth-of-type(2) > label {
+            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+            animation-delay: 1.40s;
+            opacity: 0;
+        }
 
-        .form-group-inline.align-top { animation-delay: 1.65s; }
-        button[type="submit"] { animation-delay: 1.85s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item {
+            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+            opacity: 0;
+        }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(1)  { animation-delay: 1.44s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(2)  { animation-delay: 1.48s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(3)  { animation-delay: 1.52s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(4)  { animation-delay: 1.56s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(5)  { animation-delay: 1.60s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(6)  { animation-delay: 1.64s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(7)  { animation-delay: 1.68s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(8)  { animation-delay: 1.72s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(9)  { animation-delay: 1.76s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(10) { animation-delay: 1.80s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(11) { animation-delay: 1.84s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(12) { animation-delay: 1.88s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(13) { animation-delay: 1.92s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(14) { animation-delay: 1.96s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(15) { animation-delay: 2.00s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(16) { animation-delay: 2.04s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(17) { animation-delay: 2.08s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(18) { animation-delay: 2.12s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(19) { animation-delay: 2.16s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(20) { animation-delay: 2.20s; }
+        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(21) { animation-delay: 2.24s; }
 
         .form-group-inline label {
             font-weight: 600;
@@ -233,17 +267,20 @@
             border-bottom-color: #111111;
         }
 
-        .form-group-inline.align-top {
-            align-items: flex-start;
+        /* Checkbox Section Headings */
+        .checkbox-section > label {
+            display: block;
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
         }
 
-        .form-group-inline.align-top label {
-            padding-top: 8px;
-        }
-
-        .form-group-inline textarea {
-            resize: vertical;
-            min-height: 40px;
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            cursor: pointer;
         }
 
         /* Checkbox Container */
@@ -279,6 +316,7 @@
             transition: opacity 0.3s ease, transform 0.3s ease;
             margin-top: 20px;
             animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+            animation-delay: 2.35s;
             opacity: 0;
         }
 
@@ -342,8 +380,7 @@
 </head>
 <body>
 
-     
-           <!-- Minimal Back Arrow Button (Top Left) -->
+    <!-- Minimal Back Arrow Button (Top Left) -->
     <a href="index.html" class="back-btn" aria-label="Back to home">
         <svg viewBox="0 0 24 24">
             <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -560,8 +597,6 @@
                 </div>
             </div>
 
-      
-
             <button type="submit">Submit Application</button>
 
         </form>
@@ -597,4 +632,3 @@
 </body>
 </html>
 
-```
