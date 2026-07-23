@@ -673,49 +673,57 @@ button[type="submit"]:hover {
         </form>
     </div>
 
-    <!-- Floating Share Button -->
-   <!-- FLOATING SHARE BUTTON -->
-<button id="floatingShareBtn" class="floating-share-btn" aria-label="Share Page">
+  <!-- FLOATING SHARE BUTTON -->
+<button id="floatingShareBtn" class="floating-share-btn" onclick="sharePage()" aria-label="Share Page">
     <i class="fa-solid fa-arrow-up-right-from-square"></i>
 </button>
 
-    <!-- Scroll Reveal Logic & Share Script -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const revealElements = document.querySelectorAll('.reveal-item');
+<!-- Scroll Reveal Logic & Share Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const revealElements = document.querySelectorAll('.reveal-item');
 
-            const observer = new IntersectionObserver((entries) => {
-                let delay = 0;
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.classList.add('is-visible');
-                        }, delay);
-                        delay += 50;
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                root: null,
-                rootMargin: '0px 0px -20px 0px',
-                threshold: 0.05
+        const observer = new IntersectionObserver((entries) => {
+            let delay = 0;
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('is-visible');
+                    }, delay);
+                    delay += 50;
+                    observer.unobserve(entry.target);
+                }
             });
-
-            revealElements.forEach(el => observer.observe(el));
+        }, {
+            root: null,
+            rootMargin: '0px 0px -20px 0px',
+            threshold: 0.05
         });
 
-        function sharePage() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Brownie Application',
+        revealElements.forEach(el => observer.observe(el));
+    });
+
+    // Native Web Share with Clipboard Fallback
+    async function sharePage() {
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: document.title || 'Moore Love and Care',
                     url: window.location.href
-                }).catch(() => {});
-            } else {
-                navigator.clipboard.writeText(window.location.href);
+                });
+            } catch (err) {
+                // User cancelled or share failed silently
+            }
+        } else {
+            try {
+                await navigator.clipboard.writeText(window.location.href);
                 alert('Application link copied to clipboard!');
+            } catch (err) {
+                alert('Could not copy link. Please copy the browser URL.');
             }
         }
-    </script>
+    }
+</script>
 
 </body>
 </html>
