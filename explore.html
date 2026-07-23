@@ -106,15 +106,15 @@
             margin: 0 auto;
         }
 
-        /* BRAND LOGO HEADER (MOORE love and care) */
+        /* BRAND LOGO HEADER (MOORE love and care) - Pure Slow Opacity Fade */
         .brand-header-logo {
             position: relative;
             display: inline-flex;
             align-items: center;
             gap: 18px;
             margin-bottom: 35px;
-            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-            animation-delay: 0.2s;
+            animation: logoPureFade 3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            animation-delay: 0.1s;
             opacity: 0;
         }
 
@@ -277,12 +277,22 @@
             transform: translateY(-1px);
         }
 
-        /* PRESTIGIOUS SLOW TEXT REVEAL KEYFRAMES */
+        /* PURE ULTRA-SLOW LOGO FADE ANIMATION */
+        @keyframes logoPureFade {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* PRESTIGIOUS SLOW TEXT REVEAL KEYFRAMES (For Body Content) */
         @keyframes prestigiousReveal {
             0% {
                 opacity: 0;
                 transform: translateY(12px);
-                filter: blur(2px); /* Subtle soft-focus effect as it reveals */
+                filter: blur(2px);
             }
             100% {
                 opacity: 1;
