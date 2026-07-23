@@ -235,19 +235,67 @@
             cursor: pointer;
         }
 
-        .acknowledgment-block {
-            margin-top: 50px;
-            margin-bottom: 40px;
-            padding: 25px;
-            background-color: #f9f9f9;
-            border-left: 3px solid #111111;
-        }
+        /* ===================================================
+   ACKNOWLEDGMENT CARD (Glassmorphic Luxury Tile Style)
+   =================================================== */
+.acknowledgment-block {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    padding: 35px 30px;
+    
+    /* Tile Card Aesthetic */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 3px solid #d4b06a; /* Luxury gold accent line */
+    
+    color: #ffffff;
+    transition: all 0.4s ease;
+}
 
-        .acknowledgment-block p {
-            margin-bottom: 15px;
-            line-height: 1.5;
-            color: #555555;
-        }
+.acknowledgment-block label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 15px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.acknowledgment-block p {
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+}
+
+/* Inline Form Inputs inside the Dark Card */
+.acknowledgment-block .form-group-inline label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.acknowledgment-block input[type="text"],
+.acknowledgment-block input[type="date"] {
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+}
+
+.acknowledgment-block input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.acknowledgment-block input[type="text"]:focus,
+.acknowledgment-block input[type="date"]:focus {
+    border-bottom-color: #d4b06a; /* Gold highlight on focus */
+}
 
         .signature-grid {
             display: flex;
