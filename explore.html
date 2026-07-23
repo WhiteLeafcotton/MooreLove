@@ -39,47 +39,50 @@
             position: relative;
         }
 
-        /* Top Left Heart Back Button */
+        /* Top Left Minimal Back Button */
         .back-btn {
-    position: absolute;
-    top: 25px;
-    left: 30px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #333333;
-    text-decoration: none;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
+            position: absolute;
+            top: 25px;
+            left: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #333333;
+            text-decoration: none;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            animation: luxuryReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
 
-.back-btn:hover {
-    transform: translateX(-3px); /* Subtle slide left on hover */
-    opacity: 0.7;
-}
+        .back-btn:hover {
+            transform: translateX(-3px);
+            opacity: 0.7;
+        }
 
-.back-btn svg {
-    width: 24px;
-    height: 24px;
-}
+        .back-btn svg {
+            width: 24px;
+            height: 24px;
+        }
 
-        /* Bottom Left Share Button */
         /* Bottom Right Share Button */
-.share-btn {
-    position: fixed;
-    bottom: 25px;
-    right: 30px; /* Changed from left to right */
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #333333;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-    z-index: 10;
-}
+        .share-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            z-index: 10;
+            animation: luxuryReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.8s;
+            opacity: 0;
+        }
 
         .share-btn:hover {
             transform: scale(1.05);
@@ -110,6 +113,9 @@
             align-items: center;
             gap: 18px;
             margin-bottom: 35px;
+            animation: luxuryReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.1s;
+            opacity: 0;
         }
 
         .brand-header-logo .strong-title {
@@ -144,18 +150,14 @@
             pointer-events: none;
         }
 
-        /* Title & Subtext */
-        h1.form-title {
-            font-size: 2.2rem;
-            margin-bottom: 8px;
-            font-weight: 700;
-            margin-top: 20px;
-        }
-
+        /* Subtext */
         p.subtext {
             color: #666666;
             font-size: 1rem;
             margin-bottom: 50px;
+            animation: luxuryReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.25s;
+            opacity: 0;
         }
 
         /* Side-by-Side Layout for Text Fields */
@@ -165,7 +167,14 @@
             justify-content: space-between;
             margin-bottom: 35px;
             gap: 20px;
+            animation: luxuryReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
         }
+
+        /* Individual Staggering for Form Groups */
+        .form-group-inline:nth-of-type(1) { animation-delay: 0.35s; }
+        .form-group-inline:nth-of-type(2) { animation-delay: 0.45s; }
+        .form-group-inline.align-top { animation-delay: 0.65s; }
 
         .form-group-inline label {
             font-weight: 600;
@@ -211,6 +220,9 @@
         /* Checkbox Section */
         .checkbox-section {
             margin-bottom: 40px;
+            animation: luxuryReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.55s;
+            opacity: 0;
         }
 
         .checkbox-section > label {
@@ -255,10 +267,25 @@
             cursor: pointer;
             transition: opacity 0.2s;
             margin-top: 20px;
+            animation: luxuryReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.75s;
+            opacity: 0;
         }
 
         button[type="submit"]:hover {
             opacity: 0.85;
+        }
+
+        /* LUXURY SMOOTH TEXT REVEAL KEYFRAMES */
+        @keyframes luxuryReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(22px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @media (max-width: 650px) {
@@ -292,13 +319,12 @@
 </head>
 <body>
 
-    <!-- Top Left Heart Back Button -->
     <!-- Minimal Back Arrow Button (Top Left) -->
-<a href="index.html" class="back-btn" aria-label="Back to home">
-    <svg viewBox="0 0 24 24">
-        <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    </svg>
-</a>
+    <a href="index.html" class="back-btn" aria-label="Back to home">
+        <svg viewBox="0 0 24 24">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+    </a>
 
     <!-- Application Form Container -->
     <div class="form-container">
@@ -310,7 +336,6 @@
             <span class="script-subtitle">love and care</span>
         </div>
 
-        
         <p class="subtext">Please fill out the application below to get started. Make sure all required fields are completed.</p>
 
         <!-- Form Endpoint -->
@@ -354,7 +379,7 @@
         </form>
     </div>
 
-    <!-- Share Button (Bottom Left) -->
+    <!-- Share Button (Bottom Right) -->
     <button class="share-btn" onclick="sharePage()" aria-label="Share page">
         <svg viewBox="0 0 24 24">
             <circle cx="18" cy="5" r="3"></circle>
