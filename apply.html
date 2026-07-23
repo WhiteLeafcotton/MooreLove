@@ -241,64 +241,60 @@
 /* ===================================================
    ACKNOWLEDGMENT CARD (Dark Glassmorphic Luxury Tile)
    =================================================== */
+/* ===================================================
+   ACKNOWLEDGMENT CARD (Exact Tile Card Style)
+   =================================================== */
 .acknowledgment-block {
+    /* Exact Tile-Card Glass & Border Styling */
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 0 !important; /* Sharp corners like the mosaic grid */
+    
+    padding: 40px;
     margin-top: 50px;
     margin-bottom: 40px;
-    padding: 35px 30px;
-    
-    /* Dark contrast background so white text is visible on light pages */
-    background: rgba(15, 15, 15, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-left: 3px solid #d4b06a; /* Gold accent line */
-    border-radius: 4px;
-    
     color: #ffffff;
-    transition: all 0.4s ease;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.acknowledgment-block label {
+/* Typography inside the card */
+.acknowledgment-block label,
+.acknowledgment-block h3,
+.acknowledgment-block h4 {
     font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 1.1rem;
-    display: block;
-    margin-bottom: 15px;
-    color: #ffffff !important;
-    letter-spacing: 1px;
+    font-size: 11px;
+    letter-spacing: 2px;
     text-transform: uppercase;
+    color: #ffffff !important;
+    margin-bottom: 15px;
+    display: block;
 }
 
 .acknowledgment-block p {
     font-family: 'Inter', sans-serif;
-    margin-bottom: 15px;
+    font-size: 14px;
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.82) !important;
-    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8) !important;
+    margin-bottom: 20px;
 }
 
-/* Form Inputs inside the Card */
-.acknowledgment-block .form-group-inline label {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.9) !important;
-    text-transform: none;
-    letter-spacing: normal;
-}
-
+/* Inputs matching the clean dark layout */
 .acknowledgment-block input[type="text"],
 .acknowledgment-block input[type="date"] {
-    color: #ffffff !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
     background: transparent !important;
-}
-
-.acknowledgment-block input[type="text"]::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+    border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #ffffff !important;
+    padding: 8px 0;
+    font-family: 'Inter', sans-serif;
 }
 
 .acknowledgment-block input[type="text"]:focus,
 .acknowledgment-block input[type="date"]:focus {
-    border-bottom-color: #d4b06a !important; /* Gold border on focus */
+    border-bottom-color: #ffffff !important;
+    outline: none;
 }
 
         .signature-grid {
