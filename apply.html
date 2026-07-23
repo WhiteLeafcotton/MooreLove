@@ -63,8 +63,8 @@
             height: 24px;
         }
 
-        /* Bottom Right Star Button - Animates purely on load */
-        .star-btn {
+        /* Bottom Right Share/Star Button */
+        .share-btn {
             position: fixed;
             bottom: 25px;
             right: 30px;
@@ -80,16 +80,16 @@
             transition: transform 0.4s ease, opacity 0.4s ease, color 0.4s ease;
             z-index: 10;
             animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-            animation-delay: 1.5s; /* Fixed delay on load */
+            animation-delay: 0.5s;
             opacity: 0;
         }
 
-        .star-btn:hover {
+        .share-btn:hover {
             transform: scale(1.05);
             color: #e5a93c; /* Subtle gold hover */
         }
 
-        .star-btn svg {
+        .share-btn svg {
             width: 24px;
             height: 24px;
             fill: none;
@@ -106,7 +106,7 @@
             margin: 0 auto;
         }
 
-        /* BRAND LOGO HEADER - Pure Slow Opacity Fade on Load */
+        /* BRAND LOGO HEADER */
         .brand-header-logo {
             position: relative;
             display: inline-flex;
@@ -150,20 +150,20 @@
             pointer-events: none;
         }
 
-        /* --- SCROLL REVEAL CLASSES (Handled by JS) --- */
+        /* SCROLL REVEAL ANIMATIONS */
         .reveal-item {
             opacity: 0;
             transform: translateY(15px);
             filter: blur(3px);
-            transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1),
-                        transform 1s cubic-bezier(0.075, 0.82, 0.165, 1),
-                        filter 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+            transition: opacity 0.8s cubic-bezier(0.075, 0.82, 0.165, 1),
+                        transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1),
+                        filter 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
 
         .reveal-item.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            filter: blur(0) !important;
         }
 
         /* Form Layout Styles */
@@ -191,6 +191,8 @@
 
         .form-group-inline input[type="text"],
         .form-group-inline input[type="email"],
+        .form-group-inline input[type="tel"],
+        .form-group-inline input[type="date"],
         .form-group-inline textarea {
             flex-grow: 1;
             border: none;
@@ -203,21 +205,13 @@
             transition: border-color 0.4s ease;
         }
 
-        .form-group-inline input[type="text"]:focus,
-        .form-group-inline input[type="email"]:focus,
+        .form-group-inline input:focus,
         .form-group-inline textarea:focus {
             border-bottom-color: #111111;
         }
 
         .checkbox-section {
             margin-bottom: 40px;
-        }
-
-        .checkbox-section > label {
-            display: block;
-            font-weight: 600;
-            font-size: 1.05rem;
-            margin-bottom: 15px;
         }
 
         .checkbox-group {
@@ -241,6 +235,27 @@
             cursor: pointer;
         }
 
+        .acknowledgment-block {
+            margin-top: 50px;
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-left: 3px solid #111111;
+        }
+
+        .acknowledgment-block p {
+            margin-bottom: 15px;
+            line-height: 1.5;
+            color: #555555;
+        }
+
+        .signature-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
         button[type="submit"] {
             width: 100%;
             max-width: 300px;
@@ -261,7 +276,7 @@
             transform: translateY(-1px);
         }
 
-        /* KEYFRAMES FOR LOAD ANIMATIONS */
+        /* KEYFRAMES */
         @keyframes logoPureFade {
             0% { opacity: 0; }
             100% { opacity: 1; }
@@ -287,9 +302,7 @@
             .brand-header-logo .hero-logo-icon { width: 28px !important; height: 28px !important; }
             .brand-header-logo .script-subtitle { font-size: 26px !important; bottom: -20px !important; }
             .form-group-inline { flex-direction: column; align-items: flex-start; gap: 8px; }
-            .form-group-inline input[type="text"],
-            .form-group-inline input[type="email"],
-            .form-group-inline textarea { width: 100%; }
+            .form-group-inline input { width: 100%; }
         }
     </style>
 </head>
@@ -311,123 +324,11 @@
             <span class="script-subtitle">love and care</span>
         </div>
 
-        <p class="subtext">Please fill out the application below to get started. Make sure all required fields are completed.</p>
+        <p class="subtext reveal-item">Please fill out the application below to get started. Make sure all required fields are completed.</p>
 
         <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
             
-            <div class="form-group-inline">
-                <label for="q1">Full Name</label>
-                <input type="text" id="q1" name="q1_fullName" placeholder="Jane Doe" required>
-            </div>
-
-            <div class="form-group-inline">
-                <label for="q2">Email Address</label>
-                <input type="email" id="q2" name="q2_email" placeholder="jane@example.com" required>
-            </div>
-
-            <div class="form-group-inline">
-                <label for="q3">Phone Number</label>
-                <input type="text" id="q3" name="q3_phone" placeholder="(555) 000-0000" required>
-            </div>
-
-            <div class="form-group-inline">
-                <label for="q4">Street Address</label>
-                <input type="text" id="q4" name="q4_address" placeholder="123 Main St">
-            </div>
-
-            <div class="form-group-inline">
-                <label for="q5">City & State</label>
-                <input type="text" id="q5" name="q5_city_state" placeholder="Los Angeles, CA">
-            </div>
-
-            <div class="form-group-inline">
-                <label for="q6">ZIP Code</label>
-                <input type="text" id="q6" name="q6_zip" placeholder="90210">
-            </div>
-
-            <div class="form-group-inline">
-                <label for="q7">Date of Birth</label>
-                <input type="text" id="q7" name="q7_dob" placeholder="MM/DD/YYYY">
-            </div>
-
-            <div class="form-group-inline">
-                <label for="q8">Emergency Contact Name</label>
-                <input type="text" id="q8" name="q8_emergency_name" placeholder="John Doe">
-            </div>
-
-            <div class="form-group-inline">
-                <label for="q9">Emergency Contact Phone</label>
-                <input type="text" id="q9" name="q9_emergency_phone" placeholder="(555) 000-0000">
-            </div>
-
-            <div class="form-group-inline">
-                <label for="q10">Preferred Move-in Date</label>
-                <input type="text" id="q10" name="q10_move_in_date" placeholder="MM/DD/YYYY">
-            </div>
-
-            <div class="form-group-inline">
-                <label for="q11">Occupation / Profession</label>
-                <input type="text" id="q11" name="q11_occupation" placeholder="Designer, Teacher, etc.">
-            </div>
-
-            <div class="form-group-inline">
-                <label for="q12">Referral Source</label>
-                <input type="text" id="q12" name="q12_referral" placeholder="Friend, Social Media, etc.">
-            </div>
-
-            <div class="form-group-inline">
-                <label for="q13">Preferred Method of Contact</label>
-                <input type="text" id="q13" name="q13_contact_method" placeholder="Email, Phone, Text">
-            </div>
-
-            <div class="form-group-inline">
-                <label for="q14">Additional Notes</label>
-                <input type="text" id="q14" name="q14_notes" placeholder="Any special requests...">
-            </div>
-
-
-            <!-- SECTION QUESTION 1 -->
-            <div class="checkbox-section">
-                <label>Select Your Care Requirements (Choose all that apply)</label>
-                <div class="checkbox-group">
-                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="Assisted Living Support"> Option 1 — Assisted Living Support</label>
-                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="Medication Management"> Option 2 — Medication Management</label>
-                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="Meal Preparation & Nutrition"> Option 3 — Meal Preparation & Nutrition</label>
-                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="Housekeeping & Laundry"> Option 4 — Housekeeping & Laundry</label>
-                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="Mobility Assistance"> Option 5 — Mobility Assistance</label>
-                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="24/7 Companion Care"> Option 6 — 24/7 Companion Care</label>
-                </div>
-            </div>
-
-            <!-- SECTION QUESTION 2 -->
-            <div class="checkbox-section">
-                <label>Select Your Amenities & Activity Preferences (21 Options)</label>
-                <div class="checkbox-group">
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Private Suite"> Option 1 — Private Suite</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Shared Suite"> Option 2 — Shared Suite</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Private Bathroom"> Option 3 — Private Bathroom</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Furnished Room"> Option 4 — Furnished Room</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Pet-Friendly Access"> Option 5 — Pet-Friendly Access</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Daily Chef Meals"> Option 6 — Daily Chef Meals</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Special Dietary Menus"> Option 7 — Special Dietary Menus</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="In-Room Dining"> Option 8 — In-Room Dining</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Garden & Courtyard Access"> Option 9 — Garden & Courtyard Access</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Fitness & Wellness Classes"> Option 10 — Fitness & Wellness Classes</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Arts & Crafts Studio"> Option 11 — Arts & Crafts Studio</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Library & Reading Lounge"> Option 12 — Library & Reading Lounge</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Movie Nights & Media Room"> Option 13 — Movie Nights & Media Room</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Scheduled Transportation"> Option 14 — Scheduled Transportation</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="On-Site Salon & Spa"> Option 15 — On-Site Salon & Spa</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Physical Therapy Suite"> Option 16 — Physical Therapy Suite</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Group Outings & Events"> Option 17 — Group Outings & Events</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Music Therapy Programs"> Option 18 — Music Therapy Programs</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="High-Speed Wi-Fi & Cable"> Option 19 — High-Speed Wi-Fi & Cable</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Guest Overnight Stay Access"> Option 20 — Guest Overnight Stay Access</label>
-                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="24/7 Security Monitoring"> Option 21 — 24/7 Security Monitoring</label>
-                </div>
-            </div>
-
-        <!-- 1. THREE INLINE QUESTIONS -->
+            <!-- PERSONAL INFORMATION -->
             <div class="form-group-inline reveal-item">
                 <label for="q1">Full Name</label>
                 <input type="text" id="q1" name="q1_fullName" placeholder="Jane Doe" required>
@@ -443,24 +344,71 @@
                 <input type="tel" id="q3" name="q3_phone" placeholder="(555) 000-0000" required>
             </div>
 
+            <div class="form-group-inline reveal-item">
+                <label for="q4">Street Address</label>
+                <input type="text" id="q4" name="q4_address" placeholder="123 Main St">
+            </div>
 
-            <!-- 2. SECTION QUESTION WITH 2 OPTIONS -->
+            <div class="form-group-inline reveal-item">
+                <label for="q5">City & State</label>
+                <input type="text" id="q5" name="q5_city_state" placeholder="Los Angeles, CA">
+            </div>
+
+            <div class="form-group-inline reveal-item">
+                <label for="q6">ZIP Code</label>
+                <input type="text" id="q6" name="q6_zip" placeholder="90210">
+            </div>
+
+            <div class="form-group-inline reveal-item">
+                <label for="q7">Date of Birth</label>
+                <input type="date" id="q7" name="q7_dob">
+            </div>
+
+            <div class="form-group-inline reveal-item">
+                <label for="q8">Occupation / Profession</label>
+                <input type="text" id="q8" name="q8_occupation" placeholder="Designer, Teacher, etc.">
+            </div>
+
+            <div class="form-group-inline reveal-item">
+                <label for="q9">Referral Source</label>
+                <input type="text" id="q9" name="q9_referral" placeholder="Friend, Social Media, etc.">
+            </div>
+
+            <div class="form-group-inline reveal-item">
+                <label for="q10">Preferred Contact Method</label>
+                <input type="text" id="q10" name="q10_contact_method" placeholder="Email, Phone, Text">
+            </div>
+
+            <div class="form-group-inline reveal-item">
+                <label for="q11">Target Move-in Date</label>
+                <input type="date" id="q11" name="q11_move_in">
+            </div>
+
+            <div class="form-group-inline reveal-item">
+                <label for="q12">Emergency Contact Name & Relation</label>
+                <input type="text" id="q12" name="q12_emergency_contact" placeholder="John Doe (Son)">
+            </div>
+
+            <div class="form-group-inline reveal-item">
+                <label for="q13">Emergency Contact Phone</label>
+                <input type="tel" id="q13" name="q13_emergency_phone" placeholder="(555) 000-0000">
+            </div>
+
+            <div class="form-group-inline reveal-item">
+                <label for="q14">Additional Notes</label>
+                <input type="text" id="q14" name="q14_notes" placeholder="Any special requests...">
+            </div>
+
+            <!-- SECTION 1: RESIDENCY STATUS -->
             <fieldset class="checkbox-section reveal-item" style="border: none; padding: 0;">
                 <legend style="font-weight: 600; font-size: 1.05rem; margin-bottom: 15px;">1. Primary Residency Status</legend>
                 <div class="checkbox-group">
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="residency_type[]" value="Permanent Resident">
-                        Option 1 — Permanent Resident Status
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="residency_type[]" value="Short-Term Respite Care">
-                        Option 2 — Short-Term Respite Care Stay
-                    </label>
+                    <label class="checkbox-item"><input type="checkbox" name="residency_type[]" value="Permanent Resident"> Option 1 — Permanent Resident Status</label>
+                    <label class="checkbox-item"><input type="checkbox" name="residency_type[]" value="Short-Term Respite Care"> Option 2 — Short-Term Respite Care Stay</label>
                 </div>
             </fieldset>
 
-
-            <!-- 3. SECTION QUESTION WITH 10 OPTIONS -->
+            <!-- SECTION 2: SUPPORT & WELLNESS -->
             <fieldset class="checkbox-section reveal-item" style="border: none; padding: 0;">
                 <legend style="font-weight: 600; font-size: 1.05rem; margin-bottom: 15px;">2. Daily Support & Wellness Requirements (Select all that apply)</legend>
                 <div class="checkbox-group">
@@ -477,15 +425,7 @@
                 </div>
             </fieldset>
 
-
-            <!-- 4. ONE INLINE QUESTION -->
-            <div class="form-group-inline reveal-item">
-                <label for="q4">Preferred Target Move-in Date</label>
-                <input type="date" id="q4" name="q4_move_in">
-            </div>
-
-
-            <!-- 5. SECTION QUESTION WITH 4 OPTIONS -->
+            <!-- SECTION 3: SUITE LAYOUT -->
             <fieldset class="checkbox-section reveal-item" style="border: none; padding: 0;">
                 <legend style="font-weight: 600; font-size: 1.05rem; margin-bottom: 15px;">3. Preferred Suite Layout Options</legend>
                 <div class="checkbox-group">
@@ -496,8 +436,7 @@
                 </div>
             </fieldset>
 
-
-            <!-- 6. SECTION QUESTION WITH 3 OPTIONS -->
+            <!-- SECTION 4: DINING PLAN -->
             <fieldset class="checkbox-section reveal-item" style="border: none; padding: 0;">
                 <legend style="font-weight: 600; font-size: 1.05rem; margin-bottom: 15px;">4. Preferred Dining Plan Tier</legend>
                 <div class="checkbox-group">
@@ -507,15 +446,7 @@
                 </div>
             </fieldset>
 
-
-            <!-- 7. ONE INLINE QUESTION -->
-            <div class="form-group-inline reveal-item">
-                <label for="q5">Emergency Contact Name & Relation</label>
-                <input type="text" id="q5" name="q5_emergency_contact" placeholder="Jane Doe (Daughter)">
-            </div>
-
-
-            <!-- 8. SECTION QUESTION WITH 9 OPTIONS -->
+            <!-- SECTION 5: AMENITIES & LIFESTYLE -->
             <fieldset class="checkbox-section reveal-item" style="border: none; padding: 0;">
                 <legend style="font-weight: 600; font-size: 1.05rem; margin-bottom: 15px;">5. Community Amenities & Lifestyle Preferences</legend>
                 <div class="checkbox-group">
@@ -531,14 +462,12 @@
                 </div>
             </fieldset>
 
-
-            <!-- 9. ACKNOWLEDGMENT PARAGRAPH -->
+            <!-- ACKNOWLEDGMENT & SIGNATURE -->
             <div class="acknowledgment-block reveal-item">
                 <label style="font-weight: 600; font-size: 1.05rem; display: block; margin-bottom: 12px; color: #111111;">Applicant Acknowledgment & Authorization</label>
                 <p>By submitting this application, I confirm that all information provided in this form is accurate, true, and complete to the best of my knowledge. I understand that submitting this document does not guarantee immediate residency, but serves as an official request for evaluation by Moore Love and Care.</p>
                 <p>I authorize the review team to verify the information submitted herein and contact the listed emergency contacts or references as necessary for process completion.</p>
 
-                <!-- SIGNATURE AND DATE FIELD -->
                 <div class="signature-grid">
                     <div class="form-group-inline" style="margin-bottom: 0;">
                         <label for="signature_input" style="min-width: 140px;">Digital Signature</label>
@@ -551,14 +480,12 @@
                 </div>
             </div>
 
-
-           <button type="submit" class="reveal-item">Submit Application</button>
+            <button type="submit" class="reveal-item">Submit Application</button>
 
         </form>
     </div>
 
-   
-<!-- Floating Share Button -->
+    <!-- Floating Share Button -->
     <button class="share-btn" onclick="sharePage()" aria-label="Share page">
         <svg viewBox="0 0 24 24">
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
@@ -566,43 +493,31 @@
         <span>Share</span>
     </button>
 
-</body>
-</html>
     <!-- Scroll Reveal Logic & Share Script -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // 1. Gather all elements we want to reveal on scroll
-            const formElements = document.querySelectorAll('.subtext, .form-group-inline, .checkbox-section > label, .checkbox-item, button[type="submit"]');
-            
-            // 2. Add base reveal class so they start hidden
-            formElements.forEach(el => el.classList.add('reveal-item'));
+            const revealElements = document.querySelectorAll('.reveal-item');
 
-            // 3. Set up the Intersection Observer
             const observer = new IntersectionObserver((entries) => {
-                let delay = 0; // Local delay to stagger items appearing in the same scroll batch
-                
+                let delay = 0;
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // Apply stagger if multiple elements appear at once
                         setTimeout(() => {
                             entry.target.classList.add('is-visible');
                         }, delay);
-                        
-                        delay += 60; // 60ms stagger per item
-                        observer.unobserve(entry.target); // Only animate once
+                        delay += 50;
+                        observer.unobserve(entry.target);
                     }
                 });
             }, {
                 root: null,
-                rootMargin: '0px 0px -20px 0px', // Trigger slightly before it completely hits the bottom
-                threshold: 0.1 
+                rootMargin: '0px 0px -20px 0px',
+                threshold: 0.05
             });
 
-            // 4. Tell observer to watch all elements
-            formElements.forEach(el => observer.observe(el));
+            revealElements.forEach(el => observer.observe(el));
         });
 
-        // Share action
         function sharePage() {
             if (navigator.share) {
                 navigator.share({
