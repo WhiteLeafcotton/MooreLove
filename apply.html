@@ -272,29 +272,36 @@
 /* ===================================================
    DARK GLASS CARD (Matches .loc-card style)
    =================================================== */
+/* ===================================================
+   ACKNOWLEDGMENT CARD (Dark Glass with Exact Background)
+   =================================================== */
 .acknowledgment-block {
+    position: relative;
     width: 100%;
     max-width: 900px;
+    margin: 40px auto;
+    padding: 40px;
+    overflow: hidden; /* Clips the background image to exact card border */
     
-    /* Dark semi-transparent tint + blur */
-    background: rgba(0, 0, 0, 0.5) !important;
+    /* 1. Sets image AND dark overlay ONLY within the card bounds */
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+        url('final2.jpg') center/cover no-repeat !important;
+        
+    /* 2. Glassmorphic frosted blur effect */
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
     
-    /* Crisp thin white border matching your location cards */
+    /* 3. Crisp white border & sharp corners */
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 0 !important;
     
-    padding: 40px;
     color: #ffffff !important;
 }
 
-/* Typography inside the Glass Card */
-.acknowledgment-block label,
-.acknowledgment-block h3,
-.acknowledgment-block h4 {
+.acknowledgment-block .ack-title {
     font-family: 'Inter', sans-serif !important;
-    font-size: 13px !important;
+    font-size: 14px !important;
     font-weight: 600 !important;
     letter-spacing: 2px !important;
     text-transform: uppercase !important;
@@ -308,10 +315,17 @@
     font-size: 14px !important;
     line-height: 1.7 !important;
     color: rgba(255, 255, 255, 0.85) !important;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
-/* Inputs styling */
+/* Signature Grid & Inputs */
+.signature-grid {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
 .acknowledgment-block .form-group-inline label {
     font-size: 10px !important;
     letter-spacing: 1.5px !important;
@@ -325,10 +339,10 @@
     border: none !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
     color: #ffffff !important;
-    padding: 10px 0 !important;
+    padding: 8px 0 !important;
     font-family: 'Inter', sans-serif !important;
     font-size: 14px !important;
-    width: 100%;
+    border-radius: 0 !important;
 }
 
 .acknowledgment-block input[type="text"]::placeholder {
@@ -565,29 +579,28 @@
 
 
 <!-- ACKNOWLEDGMENT & SIGNATURE (GLASS WRAPPER) -->
-<div class="card-glass-wrapper reveal-item">
-    <div class="acknowledgment-block">
-        <!-- Removed inline color: #111111 so the CSS makes it crisp white -->
-        <label class="ack-title">Applicant Acknowledgment & Authorization</label>
-        
-        <p>By submitting this application, I confirm that all information provided in this form is accurate, true, and complete to the best of my knowledge. I understand that submitting this document does not guarantee immediate residency, but serves as an official request for evaluation by Moore Love and Care.</p>
-        
-        <p>I authorize the review team to verify the information submitted herein and contact the listed emergency contacts or references as necessary for process completion.</p>
+<!-- ACKNOWLEDGMENT & SIGNATURE -->
+<div class="acknowledgment-block reveal-item">
+    <label class="ack-title">Applicant Acknowledgment & Authorization</label>
+    
+    <p>By submitting this application, I confirm that all information provided in this form is accurate, true, and complete to the best of my knowledge. I understand that submitting this document does not guarantee immediate residency, but serves as an official request for evaluation by Moore Love and Care.</p>
+    
+    <p>I authorize the review team to verify the information submitted herein and contact the listed emergency contacts or references as necessary for process completion.</p>
 
-        <div class="signature-grid">
-            <div class="form-group-inline" style="margin-bottom: 0;">
-                <label for="signature_input" style="min-width: 140px;">Digital Signature</label>
-                <input type="text" id="signature_input" name="signature_fullName" placeholder="Type Full Legal Name" required>
-            </div>
-            <div class="form-group-inline" style="margin-bottom: 0;">
-                <label for="signature_date" style="min-width: 60px;">Date</label>
-                <input type="date" id="signature_date" name="signature_date" required>
-            </div>
+    <div class="signature-grid">
+        <div class="form-group-inline" style="margin-bottom: 0;">
+            <label for="signature_input" style="min-width: 140px;">Digital Signature</label>
+            <input type="text" id="signature_input" name="signature_fullName" placeholder="Type Full Legal Name" required>
+        </div>
+        <div class="form-group-inline" style="margin-bottom: 0;">
+            <label for="signature_date" style="min-width: 60px;">Date</label>
+            <input type="date" id="signature_date" name="signature_date" required>
         </div>
     </div>
 </div>
 
 <button type="submit" class="reveal-item">Submit Application</button>
+
 
         </form>
     </div>
