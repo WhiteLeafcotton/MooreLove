@@ -407,6 +407,11 @@
     </a>
 
     <div class="form-container">
+
+
+
+
+   
         
         <!-- MOORE love and care Logo Header -->
         <div class="brand-header-logo">
@@ -418,6 +423,9 @@
         <p class="subtext reveal-item">Please fill out the application below to get started. Make sure all required fields are completed.</p>
 
         <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+
+            
             
             <!-- PERSONAL INFORMATION -->
             <div class="form-group-inline reveal-item">
@@ -553,25 +561,33 @@
                 </div>
             </fieldset>
 
-            <!-- ACKNOWLEDGMENT & SIGNATURE -->
-            <div class="acknowledgment-block reveal-item">
-                <label style="font-weight: 600; font-size: 1.05rem; display: block; margin-bottom: 12px; color: #111111;">Applicant Acknowledgment & Authorization</label>
-                <p>By submitting this application, I confirm that all information provided in this form is accurate, true, and complete to the best of my knowledge. I understand that submitting this document does not guarantee immediate residency, but serves as an official request for evaluation by Moore Love and Care.</p>
-                <p>I authorize the review team to verify the information submitted herein and contact the listed emergency contacts or references as necessary for process completion.</p>
 
-                <div class="signature-grid">
-                    <div class="form-group-inline" style="margin-bottom: 0;">
-                        <label for="signature_input" style="min-width: 140px;">Digital Signature</label>
-                        <input type="text" id="signature_input" name="signature_fullName" placeholder="Type Full Legal Name" required>
-                    </div>
-                    <div class="form-group-inline" style="margin-bottom: 0;">
-                        <label for="signature_date" style="min-width: 60px;">Date</label>
-                        <input type="date" id="signature_date" name="signature_date" required>
-                    </div>
-                </div>
+
+
+<!-- ACKNOWLEDGMENT & SIGNATURE (GLASS WRAPPER) -->
+<div class="card-glass-wrapper reveal-item">
+    <div class="acknowledgment-block">
+        <!-- Removed inline color: #111111 so the CSS makes it crisp white -->
+        <label class="ack-title">Applicant Acknowledgment & Authorization</label>
+        
+        <p>By submitting this application, I confirm that all information provided in this form is accurate, true, and complete to the best of my knowledge. I understand that submitting this document does not guarantee immediate residency, but serves as an official request for evaluation by Moore Love and Care.</p>
+        
+        <p>I authorize the review team to verify the information submitted herein and contact the listed emergency contacts or references as necessary for process completion.</p>
+
+        <div class="signature-grid">
+            <div class="form-group-inline" style="margin-bottom: 0;">
+                <label for="signature_input" style="min-width: 140px;">Digital Signature</label>
+                <input type="text" id="signature_input" name="signature_fullName" placeholder="Type Full Legal Name" required>
             </div>
+            <div class="form-group-inline" style="margin-bottom: 0;">
+                <label for="signature_date" style="min-width: 60px;">Date</label>
+                <input type="date" id="signature_date" name="signature_date" required>
+            </div>
+        </div>
+    </div>
+</div>
 
-            <button type="submit" class="reveal-item">Submit Application</button>
+<button type="submit" class="reveal-item">Submit Application</button>
 
         </form>
     </div>
