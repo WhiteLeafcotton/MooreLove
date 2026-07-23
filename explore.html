@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,8 +63,8 @@
             height: 24px;
         }
 
-        /* Bottom Right Share Button */
-        .share-btn {
+        /* Bottom Right Star Button - Animates purely on load */
+        .star-btn {
             position: fixed;
             bottom: 25px;
             right: 30px;
@@ -78,19 +77,19 @@
             gap: 8px;
             font-size: 0.9rem;
             font-weight: 600;
-            transition: transform 0.4s ease, opacity 0.4s ease;
+            transition: transform 0.4s ease, opacity 0.4s ease, color 0.4s ease;
             z-index: 10;
             animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-            animation-delay: 2.8s;
+            animation-delay: 1.5s; /* Fixed delay on load */
             opacity: 0;
         }
 
-        .share-btn:hover {
-            transform: scale(1.03);
-            opacity: 0.7;
+        .star-btn:hover {
+            transform: scale(1.05);
+            color: #e5a93c; /* Subtle gold hover */
         }
 
-        .share-btn svg {
+        .star-btn svg {
             width: 24px;
             height: 24px;
             fill: none;
@@ -107,7 +106,7 @@
             margin: 0 auto;
         }
 
-        /* BRAND LOGO HEADER (MOORE love and care) - Pure Slow Opacity Fade */
+        /* BRAND LOGO HEADER - Pure Slow Opacity Fade on Load */
         .brand-header-logo {
             position: relative;
             display: inline-flex;
@@ -151,93 +150,36 @@
             pointer-events: none;
         }
 
-        /* Subtext */
+        /* --- SCROLL REVEAL CLASSES (Handled by JS) --- */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(15px);
+            filter: blur(3px);
+            transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1),
+                        transform 1s cubic-bezier(0.075, 0.82, 0.165, 1),
+                        filter 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        .reveal-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        /* Form Layout Styles */
         p.subtext {
             color: #666666;
             font-size: 1rem;
             margin-bottom: 50px;
-            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-            animation-delay: 0.3s;
-            opacity: 0;
         }
 
-        /* Side-by-Side Layout for Text Fields */
         .form-group-inline {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 35px;
             gap: 20px;
-            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-            opacity: 0;
         }
-
-        /* Full Staggered Sequence for ALL 14 Line Questions */
-        .form-group-inline:nth-of-type(1)  { animation-delay: 0.35s; }
-        .form-group-inline:nth-of-type(2)  { animation-delay: 0.40s; }
-        .form-group-inline:nth-of-type(3)  { animation-delay: 0.45s; }
-        .form-group-inline:nth-of-type(4)  { animation-delay: 0.50s; }
-        .form-group-inline:nth-of-type(5)  { animation-delay: 0.55s; }
-        .form-group-inline:nth-of-type(6)  { animation-delay: 0.60s; }
-        .form-group-inline:nth-of-type(7)  { animation-delay: 0.65s; }
-        .form-group-inline:nth-of-type(8)  { animation-delay: 0.70s; }
-        .form-group-inline:nth-of-type(9)  { animation-delay: 0.75s; }
-        .form-group-inline:nth-of-type(10) { animation-delay: 0.80s; }
-        .form-group-inline:nth-of-type(11) { animation-delay: 0.85s; }
-        .form-group-inline:nth-of-type(12) { animation-delay: 0.90s; }
-        .form-group-inline:nth-of-type(13) { animation-delay: 0.95s; }
-        .form-group-inline:nth-of-type(14) { animation-delay: 1.00s; }
-
-        /* Section 1 Label & Items */
-        .checkbox-section:nth-of-type(1) > label {
-            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-            animation-delay: 1.08s;
-            opacity: 0;
-        }
-
-        .checkbox-section:nth-of-type(1) .checkbox-item {
-            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-            opacity: 0;
-        }
-        .checkbox-section:nth-of-type(1) .checkbox-item:nth-child(1) { animation-delay: 1.12s; }
-        .checkbox-section:nth-of-type(1) .checkbox-item:nth-child(2) { animation-delay: 1.16s; }
-        .checkbox-section:nth-of-type(1) .checkbox-item:nth-child(3) { animation-delay: 1.20s; }
-        .checkbox-section:nth-of-type(1) .checkbox-item:nth-child(4) { animation-delay: 1.24s; }
-        .checkbox-section:nth-of-type(1) .checkbox-item:nth-child(5) { animation-delay: 1.28s; }
-        .checkbox-section:nth-of-type(1) .checkbox-item:nth-child(6) { animation-delay: 1.32s; }
-
-        /* Section 2 Label & Items */
-        .checkbox-section:nth-of-type(2) > label {
-            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-            animation-delay: 1.40s;
-            opacity: 0;
-        }
-
-        .checkbox-section:nth-of-type(2) .checkbox-item {
-            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-            opacity: 0;
-        }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(1)  { animation-delay: 1.44s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(2)  { animation-delay: 1.48s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(3)  { animation-delay: 1.52s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(4)  { animation-delay: 1.56s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(5)  { animation-delay: 1.60s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(6)  { animation-delay: 1.64s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(7)  { animation-delay: 1.68s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(8)  { animation-delay: 1.72s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(9)  { animation-delay: 1.76s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(10) { animation-delay: 1.80s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(11) { animation-delay: 1.84s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(12) { animation-delay: 1.88s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(13) { animation-delay: 1.92s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(14) { animation-delay: 1.96s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(15) { animation-delay: 2.00s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(16) { animation-delay: 2.04s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(17) { animation-delay: 2.08s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(18) { animation-delay: 2.12s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(19) { animation-delay: 2.16s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(20) { animation-delay: 2.20s; }
-        .checkbox-section:nth-of-type(2) .checkbox-item:nth-child(21) { animation-delay: 2.24s; }
 
         .form-group-inline label {
             font-weight: 600;
@@ -267,12 +209,22 @@
             border-bottom-color: #111111;
         }
 
-        /* Checkbox Section Headings */
+        .checkbox-section {
+            margin-bottom: 40px;
+        }
+
         .checkbox-section > label {
             display: block;
             font-weight: 600;
             font-size: 1.05rem;
             margin-bottom: 15px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-left: 5px;
         }
 
         .checkbox-item {
@@ -283,25 +235,12 @@
             cursor: pointer;
         }
 
-        /* Checkbox Container */
-        .checkbox-section {
-            margin-bottom: 40px;
-        }
-
-        .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            padding-left: 5px;
-        }
-
         .checkbox-item input[type="checkbox"] {
             width: 18px;
             height: 18px;
             cursor: pointer;
         }
 
-        /* Submit Button */
         button[type="submit"] {
             width: 100%;
             max-width: 300px;
@@ -315,9 +254,6 @@
             cursor: pointer;
             transition: opacity 0.3s ease, transform 0.3s ease;
             margin-top: 20px;
-            animation: prestigiousReveal 2.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-            animation-delay: 2.35s;
-            opacity: 0;
         }
 
         button[type="submit"]:hover {
@@ -325,17 +261,12 @@
             transform: translateY(-1px);
         }
 
-        /* PURE ULTRA-SLOW LOGO FADE ANIMATION */
+        /* KEYFRAMES FOR LOAD ANIMATIONS */
         @keyframes logoPureFade {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
-        /* PRESTIGIOUS SLOW TEXT REVEAL KEYFRAMES (For Body Content) */
         @keyframes prestigiousReveal {
             0% {
                 opacity: 0;
@@ -349,45 +280,28 @@
             }
         }
 
+        /* Mobile Adjustments */
         @media (max-width: 650px) {
-            body {
-                padding: 70px 20px 80px 20px;
-            }
-            .brand-header-logo .strong-title {
-                font-size: 32px !important;
-                letter-spacing: 6px !important;
-            }
-            .brand-header-logo .hero-logo-icon {
-                width: 28px !important;
-                height: 28px !important;
-            }
-            .brand-header-logo .script-subtitle {
-                font-size: 26px !important;
-                bottom: -20px !important;
-            }
-            .form-group-inline {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
+            body { padding: 70px 20px 80px 20px; }
+            .brand-header-logo .strong-title { font-size: 32px !important; letter-spacing: 6px !important; }
+            .brand-header-logo .hero-logo-icon { width: 28px !important; height: 28px !important; }
+            .brand-header-logo .script-subtitle { font-size: 26px !important; bottom: -20px !important; }
+            .form-group-inline { flex-direction: column; align-items: flex-start; gap: 8px; }
             .form-group-inline input[type="text"],
             .form-group-inline input[type="email"],
-            .form-group-inline textarea {
-                width: 100%;
-            }
+            .form-group-inline textarea { width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Minimal Back Arrow Button (Top Left) -->
+    <!-- Minimal Back Arrow Button -->
     <a href="index.html" class="back-btn" aria-label="Back to home">
         <svg viewBox="0 0 24 24">
             <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         </svg>
     </a>
 
-    <!-- Application Form Container -->
     <div class="form-container">
         
         <!-- MOORE love and care Logo Header -->
@@ -399,10 +313,8 @@
 
         <p class="subtext">Please fill out the application below to get started. Make sure all required fields are completed.</p>
 
-        <!-- Form Endpoint -->
         <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
             
-            <!-- 14 LINE QUESTIONS -->
             <div class="form-group-inline">
                 <label for="q1">Full Name</label>
                 <input type="text" id="q1" name="q1_fullName" placeholder="Jane Doe" required>
@@ -474,126 +386,44 @@
             </div>
 
 
-            <!-- SECTION QUESTION 1 (6 OPTIONS) -->
+            <!-- SECTION QUESTION 1 -->
             <div class="checkbox-section">
                 <label>Select Your Care Requirements (Choose all that apply)</label>
                 <div class="checkbox-group">
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="care_requirements[]" value="Assisted Living Support">
-                        Option 1 — Assisted Living Support
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="care_requirements[]" value="Medication Management">
-                        Option 2 — Medication Management
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="care_requirements[]" value="Meal Preparation & Nutrition">
-                        Option 3 — Meal Preparation & Nutrition
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="care_requirements[]" value="Housekeeping & Laundry">
-                        Option 4 — Housekeeping & Laundry
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="care_requirements[]" value="Mobility Assistance">
-                        Option 5 — Mobility Assistance
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="care_requirements[]" value="24/7 Companion Care">
-                        Option 6 — 24/7 Companion Care
-                    </label>
+                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="Assisted Living Support"> Option 1 — Assisted Living Support</label>
+                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="Medication Management"> Option 2 — Medication Management</label>
+                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="Meal Preparation & Nutrition"> Option 3 — Meal Preparation & Nutrition</label>
+                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="Housekeeping & Laundry"> Option 4 — Housekeeping & Laundry</label>
+                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="Mobility Assistance"> Option 5 — Mobility Assistance</label>
+                    <label class="checkbox-item"><input type="checkbox" name="care[]" value="24/7 Companion Care"> Option 6 — 24/7 Companion Care</label>
                 </div>
             </div>
 
-
-            <!-- SECTION QUESTION 2 (21 OPTIONS) -->
+            <!-- SECTION QUESTION 2 -->
             <div class="checkbox-section">
                 <label>Select Your Amenities & Activity Preferences (21 Options)</label>
                 <div class="checkbox-group">
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Private Suite">
-                        Option 1 — Private Suite
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Shared Suite">
-                        Option 2 — Shared Suite
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Private Bathroom">
-                        Option 3 — Private Bathroom
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Furnished Room">
-                        Option 4 — Furnished Room
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Pet-Friendly Access">
-                        Option 5 — Pet-Friendly Access
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Daily Chef Meals">
-                        Option 6 — Daily Chef Meals
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Special Dietary Menus">
-                        Option 7 — Special Dietary Menus
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="In-Room Dining">
-                        Option 8 — In-Room Dining
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Garden & Courtyard Access">
-                        Option 9 — Garden & Courtyard Access
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Fitness & Wellness Classes">
-                        Option 10 — Fitness & Wellness Classes
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Arts & Crafts Studio">
-                        Option 11 — Arts & Crafts Studio
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Library & Reading Lounge">
-                        Option 12 — Library & Reading Lounge
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Movie Nights & Media Room">
-                        Option 13 — Movie Nights & Media Room
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Scheduled Transportation">
-                        Option 14 — Scheduled Transportation
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="On-Site Salon & Spa">
-                        Option 15 — On-Site Salon & Spa
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Physical Therapy Suite">
-                        Option 16 — Physical Therapy Suite
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Group Outings & Events">
-                        Option 17 — Group Outings & Events
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Music Therapy Programs">
-                        Option 18 — Music Therapy Programs
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="High-Speed Wi-Fi & Cable">
-                        Option 19 — High-Speed Wi-Fi & Cable
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="Guest Overnight Stay Access">
-                        Option 20 — Guest Overnight Stay Access
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="amenities[]" value="24/7 Security Monitoring">
-                        Option 21 — 24/7 Security Monitoring
-                    </label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Private Suite"> Option 1 — Private Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Shared Suite"> Option 2 — Shared Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Private Bathroom"> Option 3 — Private Bathroom</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Furnished Room"> Option 4 — Furnished Room</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Pet-Friendly Access"> Option 5 — Pet-Friendly Access</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Daily Chef Meals"> Option 6 — Daily Chef Meals</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Special Dietary Menus"> Option 7 — Special Dietary Menus</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="In-Room Dining"> Option 8 — In-Room Dining</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Garden & Courtyard Access"> Option 9 — Garden & Courtyard Access</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Fitness & Wellness Classes"> Option 10 — Fitness & Wellness Classes</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Arts & Crafts Studio"> Option 11 — Arts & Crafts Studio</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Library & Reading Lounge"> Option 12 — Library & Reading Lounge</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Movie Nights & Media Room"> Option 13 — Movie Nights & Media Room</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Scheduled Transportation"> Option 14 — Scheduled Transportation</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="On-Site Salon & Spa"> Option 15 — On-Site Salon & Spa</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Physical Therapy Suite"> Option 16 — Physical Therapy Suite</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Group Outings & Events"> Option 17 — Group Outings & Events</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Music Therapy Programs"> Option 18 — Music Therapy Programs</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="High-Speed Wi-Fi & Cable"> Option 19 — High-Speed Wi-Fi & Cable</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="Guest Overnight Stay Access"> Option 20 — Guest Overnight Stay Access</label>
+                    <label class="checkbox-item"><input type="checkbox" name="amenities[]" value="24/7 Security Monitoring"> Option 21 — 24/7 Security Monitoring</label>
                 </div>
             </div>
 
@@ -602,20 +432,49 @@
         </form>
     </div>
 
-    <!-- Share Button (Bottom Right) -->
-    <button class="share-btn" onclick="sharePage()" aria-label="Share page">
+    <!-- Star Button (Animates on load automatically via CSS) -->
+    <button class="star-btn" onclick="sharePage()" aria-label="Star/Share page">
         <svg viewBox="0 0 24 24">
-            <circle cx="18" cy="5" r="3"></circle>
-            <circle cx="6" cy="12" r="3"></circle>
-            <circle cx="18" cy="19" r="3"></circle>
-            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
         </svg>
-        <span>Share</span>
+        <span>Star</span>
     </button>
 
-    <!-- Native Web Share Script -->
+    <!-- Scroll Reveal Logic & Share Script -->
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Gather all elements we want to reveal on scroll
+            const formElements = document.querySelectorAll('.subtext, .form-group-inline, .checkbox-section > label, .checkbox-item, button[type="submit"]');
+            
+            // 2. Add base reveal class so they start hidden
+            formElements.forEach(el => el.classList.add('reveal-item'));
+
+            // 3. Set up the Intersection Observer
+            const observer = new IntersectionObserver((entries) => {
+                let delay = 0; // Local delay to stagger items appearing in the same scroll batch
+                
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Apply stagger if multiple elements appear at once
+                        setTimeout(() => {
+                            entry.target.classList.add('is-visible');
+                        }, delay);
+                        
+                        delay += 60; // 60ms stagger per item
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px 0px -20px 0px', // Trigger slightly before it completely hits the bottom
+                threshold: 0.1 
+            });
+
+            // 4. Tell observer to watch all elements
+            formElements.forEach(el => observer.observe(el));
+        });
+
+        // Share action
         function sharePage() {
             if (navigator.share) {
                 navigator.share({
@@ -631,4 +490,3 @@
 
 </body>
 </html>
-
