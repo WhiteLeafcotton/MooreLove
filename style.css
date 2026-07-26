@@ -104,6 +104,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     filter: brightness(0) invert(1);
     opacity: 0.9;
     flex-shrink: 0;
+    color: #5C546B;
 }
 
 /* "love and care" - Overlay Subtitle */
