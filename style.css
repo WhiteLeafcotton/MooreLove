@@ -837,10 +837,11 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     width: 100vw;
     height: 100vh;
     background: url('final2.jpg') center/cover no-repeat !important;
-    z-index: -1; /* Keeps it behind pseudo-elements and text */
+    z-index: 0 !important; /* Move z-index to 0 instead of -1 so body background #050505 covers it outside section */
     pointer-events: none;
-    transform: translateZ(0); /* Force hardware acceleration on mobile GPU */
+    transform: translateZ(0);
     -webkit-transform: translateZ(0);
+    will-change: transform;
 }
 
 /* Base dark overlay */
