@@ -784,31 +784,26 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     
     /* Mosaic Section Mobile */
     
+    /* Mosaic Section Mobile Fix */
     .mosaic-section {
         padding: 60px 4%;
         position: relative;
-        background: transparent !important;
-    }
-
-    /* Fixed layer pinned directly to mobile device viewport */
-    .mosaic-bg-layer {
-        display: block !important;
-        position: fixed !important;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
+        /* Re-enables the background on mobile and uses standard scrolling attachment */
         background: url('final2.jpg') center/cover no-repeat !important;
-        z-index: -1;
-        pointer-events: none;
-        will-change: transform;
+        background-attachment: scroll !important; 
     }
 
-    /* Ensure content layers cleanly on top */
-    .mosaic-grid,
-    .mosaic-footer {
+    .mosaic-bg-layer {
+        display: none !important;
+    }
+
+    .mosaic-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns fits mobile screens far better */
+        gap: 10px;
+        width: 100%;
         position: relative;
-        z-index: 5;
+        z-index: 3;
     }
 
     .tile-card { 
