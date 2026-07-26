@@ -783,42 +783,40 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     }
     
     /* Mosaic Section Mobile */
+    @media (max-width: 768px) {
     .mosaic-section {
-        padding: 40px 4%;
+        padding: 60px 4%;
         position: relative;
-        background: transparent !important; /* Keep section container transparent */
-        overflow: hidden;
+        /* Converts fixed desktop background into a responsive mobile background */
+        background: url('final2.jpg') center/cover no-repeat !important;
+        background-attachment: scroll !important; 
     }
 
-    /* Fixed background container for mobile parity */
-    .mosaic-section::before {
-        content: "";
-        position: fixed; /* Holds the image stationary on mobile while text scrolls over */
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: url('final2.jpg') center/cover no-repeat;
-        z-index: -1; /* Placed behind mosaic grid content */
-        pointer-events: none;
-        will-change: transform;
+    .mosaic-bg-layer {
+        display: none !important; /* Removes competing background layers */
     }
 
-    /* Dark overlay layer on top of the fixed background image */
-    .mosaic-section::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, #080808 0%, rgba(8,8,8,0.85) 50%, #080808 100%);
-        z-index: 1;
-        pointer-events: none;
-    }
-
-    /* Ensure content stays elevated over the overlays */
-    .mosaic-grid,
-    .mosaic-footer {
+    .mosaic-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns fits mobile screens far better */
+        gap: 12px;
+        width: 100%;
         position: relative;
         z-index: 3;
+    }
+
+    .tile-card { 
+        padding: 20px 10px; 
+        gap: 8px; 
+    }
+
+    .tile-card i, .tile-card svg { 
+        width: 22px !important; 
+        height: 22px !important; 
+    }
+
+    .tile-card span { 
+        font-size: 9px; 
     }
     .tile-card { padding: 20px 10px; gap: 10px; pointer-events: auto !important; }
     .tile-card i { font-size: 24px; }
