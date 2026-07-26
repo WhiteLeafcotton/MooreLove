@@ -314,31 +314,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Container */
 /* Container Spacing */
 
-/* Tile Card Styling */
-.tile-card {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 30px 20px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px; 
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(12px);
-    cursor: pointer;
-    opacity: 0; 
-    transform: translateY(20px);
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tile-card.is-active {
-    opacity: 1; 
-    transform: translateY(0);
-}
-
-.tile-card i { font-size: 24px; color: #fff; transition: var(--transition); }
-.tile-card span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
-
-
 
 
 
