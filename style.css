@@ -3,28 +3,9 @@
 HBCR Senior333 jkjkj444Living - Final CSS
 ==================================================*/
 * { margin: 0; padding: 0; box-sizing: border-box; }
-/* REPLACE THIS: */
-/* html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%;overscroll-behavior-y: none;} */
+html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%;overscroll-behavior-y: none;}
+body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
-/* WITH THIS: */
-html {
-    background-color: #080808 !important; /* Locks background during iOS rubber-band bounce */
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    width: 100%;
-    height: 100%;
-    overscroll-behavior-y: none;
-}
-
-body { 
-    background-color: #080808 !important; 
-    font-family: "Inter", sans-serif; 
-    color: #fff; 
-    overflow-x: hidden;
-    width: 100%;
-    min-height: 100%;
-    position: relative;
-}
 :root { --gold: #5C546B; --transition: .4s ease; }
 
 /* TOP BjhfeaccjAR */
@@ -516,25 +497,10 @@ body {
 
 
 .site-footer {
-    position: relative;
-    z-index: 20 !important; /* High z-index to stay firmly on top of fixed layers */
     padding: 60px 8% 30px;
-    background: #050505 !important;
+    background: #050505;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: #fff;
-}
-
-/* Hard floor that physically blocks fixed backgrounds during iOS bounce */
-.site-footer::after {
-    content: "";
-    position: absolute;
-    top: 99%; /* Slight overlap to prevent 1px subpixel gaps */
-    left: 0;
-    width: 100%;
-    height: 100vh; /* Extends 100vh below page bottom */
-    background: #050505 !important;
-    z-index: 20;
-    pointer-events: none;
 }
 
 .footer-container {
@@ -857,11 +823,10 @@ body {
     width: 100vw;
     height: 100vh;
     background: url('final2.jpg') center/cover no-repeat !important;
-    z-index: 0 !important; /* Move z-index to 0 instead of -1 so body background #050505 covers it outside section */
+    z-index: -1; /* Keeps it behind pseudo-elements and text */
     pointer-events: none;
-    transform: translateZ(0);
+    transform: translateZ(0); /* Force hardware acceleration on mobile GPU */
     -webkit-transform: translateZ(0);
-    will-change: transform;
 }
 
 /* Base dark overlay */
