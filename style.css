@@ -3,9 +3,28 @@
 HBCR Senior333 jkjkj444Living - Final CSS
 ==================================================*/
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%;overscroll-behavior-y: none;}
-body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
+/* REPLACE THIS: */
+/* html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%;overscroll-behavior-y: none;} */
 
+/* WITH THIS: */
+html {
+    background-color: #080808 !important; /* Locks background during iOS rubber-band bounce */
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    overscroll-behavior-y: none;
+}
+
+body { 
+    background-color: #080808 !important; 
+    font-family: "Inter", sans-serif; 
+    color: #fff; 
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+}
 :root { --gold: #5C546B; --transition: .4s ease; }
 
 /* TOP BjhfeaccjAR */
