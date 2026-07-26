@@ -308,6 +308,12 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     margin: 30px 0;
 }
 
+
+/* Large Title & CTA */
+/* Base Container */
+/* Container */
+/* Container Spacing */
+
 /* Tile Card Styling */
 .tile-card {
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -332,97 +338,35 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .tile-card i { font-size: 24px; color: #fff; transition: var(--transition); }
 .tile-card span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
 
-/* Large Title & CTA */
-/* Base Container */
-/* Container */
-/* Container Spacing */
-.mosaic-footer {
+
+
+
+
+
+
+/* Tile Card Styling */
+.tile-card {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 30px 20px; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 4rem 2rem;
-    gap: 2rem;
+    gap: 10px; 
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    cursor: pointer;
+    opacity: 0; 
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Luxury Tagline Typography */
-.mosaic-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.75rem);
-    font-weight: 300;
-    color: #ffffff; /* Crisp white for dark backgrounds */
-    letter-spacing: 0.04em;
-    line-height: 1.3;
-    max-width: 900px;
-    margin: 0;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); /* Soft shadow for contrast */
+.tile-card.is-active {
+    opacity: 1; 
+    transform: translateY(0);
 }
 
-/* Second line break on desktop/tablet */
-.mosaic-title .tag-line-2 {
-    display: block;
-    margin-top: 0.25rem;
-}
-
-/* Elegantly highlight key words using WindSong font */
-.mosaic-title .tag-accent {
-    font-family: 'WindSong', cursive;
-    font-weight: 500;
-    font-size: 1.3em; /* Slightly larger script pop */
-    color: #e2d3ed; /* Gentle lavender accent to match brand */
-    text-transform: none;
-    letter-spacing: 0.02em;
-    padding: 0 0.15em;
-}
-
-/* Modern Frameless CTA Button */
-.cta-arrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    text-decoration: none;
-    background: transparent;
-    border: none;
-    outline: none;
-    padding: 0.5rem 0;
-    position: relative;
-    transition: color 0.3s ease;
-}
-
-/* Subtle Hover Line Effect under Read More */
-.cta-arrow::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: #e2d3ed;
-    transition: width 0.3s ease;
-}
-
-.cta-arrow:hover::after {
-    width: 100%;
-}
-
-.cta-arrow svg,
-.cta-arrow i {
-    width: 18px;
-    height: 18px;
-    transition: transform 0.3s ease;
-}
-
-.cta-arrow:hover svg,
-.cta-arrow:hover i {
-    transform: translateX(6px);
-}
+.tile-card i { font-size: 24px; color: #fff; transition: var(--transition); }
+.tile-card span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
 /* ==================================================
    LOCATIONS GALLERY
    ================================================== */
