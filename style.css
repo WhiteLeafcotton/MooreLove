@@ -184,7 +184,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Hover & Active States */
 .icon-item:hover,
 .icon-item.active {
-    color: #5C546B;;
+    color: #5C546B;
     transform: translateY(-2px);
 }
 
