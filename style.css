@@ -861,7 +861,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     /* Icon Bar Mobile */
     .icon-item {
         text-align: center;
-        color: rgba(255,255,255,0.6);
+        color:#5C546B;
         flex: 1;
         cursor: pointer;
         transition: .3s;
