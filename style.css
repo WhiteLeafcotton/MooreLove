@@ -785,16 +785,34 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     /* Mosaic Section Mobile */
     
     /* Mosaic Section Mobile Fix */
-   .mosaic-section {
-    position: relative;
-    padding: 60px 4%;
-    background: transparent !important; /* Made transparent to reveal the fixed layer behind it */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
+  /* Mosaic Section Mobile Parallax Fix */
+    .mosaic-section {
+        padding: 60px 4%;
+        position: relative;
+        background: transparent !important;
+    }
+
+    /* Keeps the image pinned to the physical mobile screen viewport */
+    .mosaic-bg-layer {
+        display: block !important;
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: url('final2.jpg') center/cover no-repeat !important;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .mosaic-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        width: 100%;
+        position: relative;
+        z-index: 3;
+    }
 
 /* Base fixed background layer (Works on Desktop & Mobile) */
 .mosaic-bg-layer {
