@@ -137,38 +137,27 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Container for each icon + label pair */
 /* Container for each icon + label pair */
 /* Container for each icon + label pair */
-.icon-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-    color: #ffffff;
-    transition: all 0.3s ease;
-}
-
-/* Lucide SVGs (Ultra-thin, razor-line outlines) */
 /* Container for each icon + label pair */
 .icon-item {
     display: flex !important;
-    flex-direction: column !important; /* Forces vertical stacking (Icon TOP, Text BOTTOM) */
+    flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 8px; /* Vertical gap between icon and label */
+    gap: 8px;
     cursor: pointer;
-    color: #5C546B;
+    color: #ffffff !important; /* Keeps the text label pure white */
     transition: all 0.3s ease;
 }
 
 /* Lucide SVGs & Tags - Forced Display & Sizing */
 .icon-item i,
 .icon-item svg {
-    display: block !important;       /* Prevents inline height collapses */
+    display: block !important;
     width: 22px !important;
     height: 22px !important;
     stroke-width: 0.85; 
-    stroke: currentColor;            /* Ensures SVG uses text color */
-    fill: none;                      /* Maintains thin outline aesthetic */
+    stroke: rgba(255, 255, 255, 0.7); /* Default unselected icon color */
+    fill: none;
     transition: all 0.3s ease;
 }
 
@@ -178,21 +167,24 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     font-weight: 400;
     letter-spacing: 1px;
     text-transform: uppercase;
+    color: #ffffff !important; /* Ensures text stays white */
     transition: color 0.3s ease;
 }
 
 /* Hover & Active States */
 .icon-item:hover,
 .icon-item.active {
-    color: #5C546B;
+    color: #ffffff !important; /* Keep container/text white */
     transform: translateY(-2px);
 }
 
+/* ONLY the icon changes to dark purple on selected/hover */
 .icon-item:hover svg,
 .icon-item.active svg,
 .icon-item:hover i,
 .icon-item.active i {
-    color: #d4af37;
+    color: #5C546B !important;
+    stroke: #5C546B !important; /* Dark purple icon */
     stroke-width: 1.1;
 }
 
