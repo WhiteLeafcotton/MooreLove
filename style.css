@@ -498,23 +498,24 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 .site-footer {
     position: relative;
-    z-index: 10; /* Raises footer above the fixed background layer */
+    z-index: 20 !important; /* High z-index to stay firmly on top of fixed layers */
     padding: 60px 8% 30px;
-    background: #050505;
+    background: #050505 !important;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: #fff;
 }
 
-/* Safety floor: Extends background color past the bottom edge during overscroll */
+/* Hard floor that physically blocks fixed backgrounds during iOS bounce */
 .site-footer::after {
     content: "";
     position: absolute;
-    top: 100%;
+    top: 99%; /* Slight overlap to prevent 1px subpixel gaps */
     left: 0;
     width: 100%;
-    height: 100vh; /* Covers up to a full screen height of pull-down bounce */
-    background: #050505;
-    z-index: 10;
+    height: 100vh; /* Extends 100vh below page bottom */
+    background: #050505 !important;
+    z-index: 20;
+    pointer-events: none;
 }
 
 .footer-container {
