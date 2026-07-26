@@ -143,7 +143,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     align-items: center;
     gap: 6px;
     cursor: pointer;
-    color: rgba(255, 255, 255, 0.7);
+    color: #ffffff;
     transition: all 0.3s ease;
 }
 
@@ -156,7 +156,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     justify-content: center !important;
     gap: 8px; /* Vertical gap between icon and label */
     cursor: pointer;
-    color: rgba(255, 255, 255, 0.7);
+    color: #5C546B;
     transition: all 0.3s ease;
 }
 
