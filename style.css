@@ -6,7 +6,7 @@ HBCR Senior333 jkjkj444Living - Final CSS
 html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
 body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
-:root { --gold: #d4b06a; --transition: .4s ease; }
+:root { --gold: #756B86; --transition: .4s ease; }
 
 /* TOP BjhfeaccjAR */
 .top-bar { position: absolute; top: 0; left: 0; width: 100%; padding: 28px 8%; z-index: 1000; display: flex; justify-content: flex-end; }
