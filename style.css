@@ -3,7 +3,7 @@
 HBCR Senior333 jkjkj444Living - Final CSS
 ==================================================*/
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%;overscroll-behavior-y: none;}
+html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
 body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 :root { --gold: #5C546B; --transition: .4s ease; }
