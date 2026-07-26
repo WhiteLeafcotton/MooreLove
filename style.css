@@ -309,7 +309,10 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 /* Container */
+/* Container */
 .mosaic-footer {
+    position: relative; /* REQUIRED: Enables z-index layering */
+    z-index: 3;         /* FLOATS ABOVE: Places footer text/button above the bottom blur (z-index: 2) */
     display: flex;
     flex-direction: column;
     align-items: center;
