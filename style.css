@@ -783,26 +783,32 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     }
     
     /* Mosaic Section Mobile */
-    @media (max-width: 768px) {
+    
     .mosaic-section {
         padding: 60px 4%;
         position: relative;
-        /* Converts fixed desktop background into a responsive mobile background */
-        background: url('final2.jpg') center/cover no-repeat !important;
-        background-attachment: scroll !important; 
+        background: transparent !important;
     }
 
+    /* Fixed layer pinned directly to mobile device viewport */
     .mosaic-bg-layer {
-        display: none !important; /* Removes competing background layers */
+        display: block !important;
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: url('final2.jpg') center/cover no-repeat !important;
+        z-index: -1;
+        pointer-events: none;
+        will-change: transform;
     }
 
-    .mosaic-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 columns fits mobile screens far better */
-        gap: 12px;
-        width: 100%;
+    /* Ensure content layers cleanly on top */
+    .mosaic-grid,
+    .mosaic-footer {
         position: relative;
-        z-index: 3;
+        z-index: 5;
     }
 
     .tile-card { 
