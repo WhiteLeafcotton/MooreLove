@@ -528,8 +528,11 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 
 
+/* ===================================================
+   SITE FOOTER - MOORE BRANDING & LAYOUT ALIGNMENT
+   =================================================== */
 .site-footer {
-    padding: 60px 8% 30px;
+    padding: 60px 4% 30px; /* Matched 4% horizontal padding with mosaic/featured cards */
     background: #050505;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: #fff;
@@ -539,25 +542,50 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1600px; /* UPDATED: Aligns with featured-card & mosaic width */
     margin: 0 auto 40px;
     flex-wrap: wrap;
     gap: 30px;
 }
 
-.footer-logo {
-    font-family: "Cormorant Garamond", serif;
+/* Stacked Logo Styling */
+.footer-brand .stacked-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    margin-bottom: 8px;
+}
+
+.footer-brand .strong-title {
+    font-family: 'Montserrat', sans-serif;
     font-size: 20px;
+    font-weight: 300;
     letter-spacing: 6px;
-    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.footer-brand .hero-logo-icon {
+    width: 16px;
+    height: auto;
+    margin: 2px 0;
+}
+
+.footer-brand .script-subtitle {
+    font-family: 'WindSong', cursive;
+    font-size: 14px;
+    color: #ffffff;
+    opacity: 0.8;
 }
 
 .footer-brand p {
     font-size: 11px;
     letter-spacing: 1px;
     opacity: 0.5;
+    margin-top: 4px;
 }
 
+/* Footer Links */
 .footer-links {
     display: flex;
     gap: 30px;
@@ -569,27 +597,29 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    transition: var(--transition);
+    transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-    color: var(--gold);
+    color: #6E6280; /* UPDATED: Dark Slate Purple hover state */
 }
 
+/* Social Icons */
 .footer-social {
     display: flex;
-    gap: 22px; /* Balanced spacing for 4 icons */
+    gap: 22px;
     align-items: center;
 }
 
 .footer-social a {
     color: rgba(255, 255, 255, 0.4);
-    transition: var(--transition);
-    font-size: 15px; /* Ensures consistent icon visual weight */
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 15px;
 }
 
 .footer-social a:hover {
-    color: var(--gold);
+    color: #6E6280; /* UPDATED: Dark Slate Purple hover state */
+    transform: translateY(-2px);
 }
 
 .footer-bottom {
@@ -599,6 +629,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     text-transform: uppercase;
     opacity: 0.3;
     padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 
