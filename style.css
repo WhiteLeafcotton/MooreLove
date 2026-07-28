@@ -788,41 +788,52 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
        COMPACT MOSAIC SECTION (MOBILE)
     ========================================== */
  /* Compact Mosaic Section Container */
+    /* Scoped Mosaic Section Container */
     .mosaic-section {
         padding: 20px 4% !important;
         min-height: auto !important;
-        position: relative;
-        background: transparent !important;
+        position: relative !important;
+        background: #080808 !important; /* Base color prevents transparent bounce bleed */
+        overflow: hidden !important;   /* Clips overscroll bleed within this section */
+        contain: paint;                /* Scopes rendering & scrolling boundary strictly to this section */
     }
 
-    /* Fixed Viewport Background Layer */
+    /* Scoped Background Layer (No longer fixed to whole screen viewport) */
     .mosaic-bg-layer {
         display: block !important;
-        position: fixed !important;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
+        position: absolute !important; /* Changed from fixed to absolute to lock inside .mosaic-section */
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
         background: url('final2.jpg') center/cover no-repeat !important;
-        z-index: -1;
-        pointer-events: none;
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
+        z-index: 0 !important;
+        pointer-events: none !important;
+        transform: translate3d(0, 0, 0); /* Keeps GPU rendering sharp without fixed scroll jitters */
     }
 
     /* Compact Top/Bottom Overlay Edge Blurs */
     .mosaic-section::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
         height: 35px !important;
+        background: linear-gradient(to bottom, #080808, transparent);
+        z-index: 2;
+        pointer-events: none;
     }
 
     .mosaic-bottom-blur {
         height: 35px !important;
+        z-index: 2;
     }
 
     /* 2 Rows x 3 Columns Grid Layout */
     .mosaic-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr) !important; /* Changed to 3 columns */
+        grid-template-columns: repeat(3, 1fr) !important;
         gap: 8px !important;
         width: 100%;
         margin: 10px 0 !important;
@@ -834,7 +845,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     .mosaic-grid .tile-card,
     .tile-card { 
         padding: 10px 4px !important;
-        aspect-ratio: 1 / 1 !important;  /* Forces tiles to be perfectly square */
+        aspect-ratio: 1 / 1 !important;
         height: auto !important;
         min-height: 0 !important;
         gap: 6px !important;
@@ -873,11 +884,13 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         width: 100% !important;
         align-items: flex-start !important;
         text-align: left !important;
+        position: relative;
+        z-index: 3;
     }
 
     /* Larger Title */
     .mosaic-title {
-        font-size: 1.85rem !important; /* Increased title size */
+        font-size: 1.85rem !important;
         line-height: 1.2 !important;
         text-align: left !important;
     }
