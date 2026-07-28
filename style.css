@@ -1130,19 +1130,18 @@ a.contact-value:hover {
     }
 
 
-    .footer-top-split {
+    .footer-top-row {
         flex-direction: column;
         align-items: flex-start;
-        gap: 25px;
+        gap: 15px;
     }
 
     .footer-vertical-divider {
-        display: none; /* Hide vertical line on small screens */
+        display: none;
     }
 
     .footer-contact-block {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
+        flex-wrap: wrap;
+        gap: 15px;
     }
 }
