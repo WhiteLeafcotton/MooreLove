@@ -1133,7 +1133,7 @@ a.contact-value:hover {
     .footer-top-row {
         flex-direction: column;
         align-items: flex-start;
-        gap: 15px;
+        gap: 20px;
     }
 
     .footer-vertical-divider {
@@ -1142,6 +1142,7 @@ a.contact-value:hover {
 
     .footer-contact-block {
         flex-wrap: wrap;
-        gap: 15px;
+        gap: 18px;
     }
+
 }
