@@ -1211,7 +1211,9 @@ a.contact-value:hover {
     .contact-value {
         font-size: 10px !important;
     }
-
+.hide-mobile {
+        display: none !important;
+    }
     /* --- HIDE ENTIRE 3RD CONTACT ITEM (CLINICAL DESK / CLOCK ICON / 24/7 STAFFING) ON MOBILE --- */
     .footer-contact-block .contact-item:nth-child(3) {
         display: none !important;
