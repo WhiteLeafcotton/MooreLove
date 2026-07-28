@@ -638,7 +638,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
   font-size: 1rem;
   font-weight: 700;               /* Bolder weight */
   letter-spacing: 4px;            /* Slightly wider spacing */
-  color: #a38f68;
+  color: #E5E0EA;
   margin-bottom: 20px;
   text-transform: uppercase;
 }
@@ -683,11 +683,19 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
   background-color: #a38f68;
   padding: 18px 40px;
   border-radius: 2px;
-  transition: background-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  
+  /* Added 1px thin dark slate purple outline */
+  border: 1px solid #6E6280; 
+  
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .cta-button:hover {
   background-color: #1a1a1a;
+  
+  /* Optional: keeps the border slate purple or change to match hover state */
+  border-color: #6E6280; 
+  
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
