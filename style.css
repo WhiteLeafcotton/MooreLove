@@ -787,8 +787,10 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     /* ==========================================
        COMPACT MOSAIC SECTION (MOBILE)
     ========================================== */
+    /* Ultra-Compact Mosaic Section Container */
     .mosaic-section {
-        padding: 25px 4% !important; /* Stripped heavy 60px padding */
+        padding: 15px 4% !important; /* Stripped down padding */
+        min-height: auto !important; /* Prevents unwanted vertical stretching */
         position: relative;
         background: transparent !important;
     }
@@ -810,54 +812,85 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
     /* Compact Top/Bottom Overlay Edge Blurs */
     .mosaic-section::after {
-        height: 40px !important; /* Shrunk from 100px */
+        height: 30px !important; /* Shrunk edge blurs */
     }
 
     .mosaic-bottom-blur {
-        height: 40px !important; /* Shrunk from 100px */
+        height: 30px !important;
     }
 
-    /* Compact Mosaic Grid */
+    /* Compact Mosaic Grid Layout */
     .mosaic-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px !important; /* Tightened gap */
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 6px !important; /* Tightened grid gap */
         width: 100%;
-        margin: 10px 0 !important; /* Removed vertical spacing */
+        margin: 5px 0 !important; /* Reduced vertical spacing */
         position: relative;
         z-index: 3;
     }
 
-    /* Compact Tile Cards */
+    /* Force Ultra-Compact Tile Cards */
+    .mosaic-grid .tile-card,
     .tile-card { 
-        padding: 12px 8px !important; /* Compact padding */
-        gap: 6px !important; 
+        padding: 8px 6px !important;      /* Tighter interior padding */
+        min-height: 0 !important;          /* Clears forced tile heights */
+        height: auto !important;          /* Hugs inner content tight */
+        gap: 4px !important;              /* Spacing between icon & text */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
         pointer-events: auto !important; 
     }
 
+    /* Compact Icons/SVGs */
     .tile-card i, 
-    .tile-card svg { 
-        width: 18px !important; 
-        height: 18px !important; 
-        font-size: 18px !important;
+    .tile-card svg,
+    .tile-card img { 
+        width: 16px !important; 
+        height: 16px !important; 
+        font-size: 16px !important;
+        margin: 0 !important;
     }
 
-    .tile-card span { 
+    /* Compact Text Labels */
+    .tile-card span,
+    .tile-card p { 
         font-size: 8px !important; 
-        letter-spacing: 0.5px;
+        line-height: 1.1 !important;
+        letter-spacing: 0.3px !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-    /* Compact Mosaic Footer & Title */
+    /* Compact Left-Aligned Footer Container */
     .mosaic-footer {
-        padding: 1.5rem 0 0.5rem 0 !important; /* Stripped heavy 4rem 2rem padding */
-        gap: 0.75rem !important;
-        align-items: flex-start;
-        text-align: left;
+        padding: 1rem 0 0.5rem 0 !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
+        align-items: flex-start !important;
+        text-align: left !important;
     }
 
+    /* Left-Aligned Compact Title */
     .mosaic-title {
-        font-size: 1.75rem !important; /* Scaled down for mobile viewports */
-        line-height: 1.2;
+        font-size: 1.5rem !important;
+        line-height: 1.15 !important;
+        text-align: left !important;
+    }
+
+    /* Match "Promise." word to parent title */
+    .mosaic-title .script-word {
+        font-family: inherit !important;
+        font-size: inherit !important;
+        font-weight: inherit !important;
+        color: inherit !important;
+        text-transform: none !important;
+        letter-spacing: inherit !important;
+        padding-left: 0 !important;
+        display: inline !important;
+        vertical-align: baseline !important;
     }
 
     /* Locations Gallery Mobile */
