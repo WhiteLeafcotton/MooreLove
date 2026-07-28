@@ -528,72 +528,166 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 
 
+
+
+
 /* ===================================================
-   SITE FOOTER - MOORE BRANDING & LAYOUT ALIGNMENT
+   SPLIT LAYOUT FOOTER - MOORE BRANDING
    =================================================== */
 .site-footer {
-    padding: 60px 4% 30px; /* Matched 4% horizontal padding with mosaic/featured cards */
+    padding: 60px 4% 30px;
     background: #050505;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
+    color: #ffffff;
 }
 
-.footer-container {
+.footer-wrapper {
+    max-width: 1600px; /* Aligned with featured-card & mosaic width */
+    margin: 0 auto;
+}
+
+/* --- Top Split Section --- */
+.footer-top-split {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    max-width: 1600px; /* UPDATED: Aligns with featured-card & mosaic width */
-    margin: 0 auto 40px;
-    flex-wrap: wrap;
-    gap: 30px;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 25px;
 }
 
-/* Stacked Logo Styling */
-.footer-brand .stacked-logo {
+/* Left: Logo Block */
+.footer-logo-block {
+    flex: 0 0 auto;
+    min-width: 200px;
+}
+
+.footer-logo-block .stacked-logo {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 2px;
-    margin-bottom: 8px;
 }
 
-.footer-brand .strong-title {
+.footer-logo-block .strong-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
+    font-size: 26px;
     font-weight: 300;
-    letter-spacing: 6px;
+    letter-spacing: 7px;
     color: #ffffff;
 }
 
-.footer-brand .hero-logo-icon {
-    width: 16px;
+.footer-logo-block .hero-logo-icon {
+    width: 18px;
     height: auto;
-    margin: 2px 0;
+    margin: 3px 0;
 }
 
-.footer-brand .script-subtitle {
+.footer-logo-block .script-subtitle {
     font-family: 'WindSong', cursive;
-    font-size: 14px;
+    font-size: 16px;
     color: #ffffff;
-    opacity: 0.8;
+    opacity: 0.85;
 }
 
-.footer-brand p {
-    font-size: 11px;
+/* Middle: Elegant Vertical Line */
+.footer-vertical-divider {
+    width: 1px;
+    height: 75px;
+    background: linear-gradient(
+        to bottom, 
+        transparent, 
+        rgba(255, 255, 255, 0.25) 30%, 
+        rgba(255, 255, 255, 0.25) 70%, 
+        transparent
+    );
+    flex-shrink: 0;
+}
+
+/* Right: Contact Block Grid */
+.footer-contact-block {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    align-items: center;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.contact-icon {
+    width: 16px;
+    height: 16px;
+    color: #6E6280; /* Dark Slate Purple Accent */
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.contact-label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
     letter-spacing: 1px;
-    opacity: 0.5;
-    margin-top: 4px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 2px;
 }
 
-/* Footer Links */
+.contact-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a.contact-value:hover {
+    color: #6E6280;
+}
+
+/* --- Subtext Below Split --- */
+.footer-subtext {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    line-height: 1.7;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.5);
+    max-width: 850px;
+    margin: 0 0 35px 0;
+}
+
+/* Divider Line above Nav Bar */
+.footer-horizontal-line {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin-bottom: 30px;
+}
+
+/* --- Nav Links & Socials Row --- */
+.footer-nav-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* 4 Quick Links */
 .footer-links {
     display: flex;
-    gap: 30px;
+    gap: 32px;
 }
 
 .footer-links a {
     text-decoration: none;
-    color: #fff;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -601,10 +695,10 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 .footer-links a:hover {
-    color: #6E6280; /* UPDATED: Dark Slate Purple hover state */
+    color: #6E6280; /* Dark Slate Purple hover */
 }
 
-/* Social Icons */
+/* 4 Social Icons */
 .footer-social {
     display: flex;
     gap: 22px;
@@ -618,19 +712,22 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 .footer-social a:hover {
-    color: #6E6280; /* UPDATED: Dark Slate Purple hover state */
+    color: #6E6280; /* Dark Slate Purple hover */
     transform: translateY(-2px);
 }
 
+/* --- Bottom Copyright Bar --- */
 .footer-bottom {
     text-align: center;
+    font-family: 'Inter', sans-serif;
     font-size: 9px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    opacity: 0.3;
+    color: rgba(255, 255, 255, 0.3);
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
+
 
 
 
@@ -1033,14 +1130,20 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         user-select: none;
     }
 
-    /* Footer Mobile */
-    .footer-container {
+
+    .footer-top-split {
         flex-direction: column;
-        text-align: center;
-        gap: 20px;
+        align-items: flex-start;
+        gap: 25px;
     }
-    .footer-links {
-        flex-wrap: wrap;
-        justify-content: center;
+
+    .footer-vertical-divider {
+        display: none; /* Hide vertical line on small screens */
+    }
+
+    .footer-contact-block {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
     }
 }
