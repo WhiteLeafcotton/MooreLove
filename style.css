@@ -790,41 +790,36 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
  /* Compact Mosaic Section Container */
     /* Scoped Mosaic Section Container */
    /* Scoped Mosaic Section Container */
+    /* 1. Scoped Mobile Mosaic Section Window Container */
     .mosaic-section {
         padding: 20px 4% !important;
         min-height: auto !important;
         position: relative !important;
-        background: #080808 !important; /* Solid base color prevents bounce transparency */
-        overflow: hidden !important;   /* Keeps all child layers trapped strictly inside this section */
-        isolation: isolate;            /* Creates a local stacking context so z-indexes stay contained */
+        background: #080808 !important; /* Prevents rubber-band bleed */
+        
+        /* THE FIX FOR MOBILE PARALLAX:
+           This creates a clipping window so the fixed image stays 
+           stationary while scrolling, but clips strictly to this section. */
+        clip-path: inset(0 0 0 0) !important;
+        -webkit-clip-path: inset(0 0 0 0) !important;
     }
 
-    /* Fixed Viewport Image Window Effect */
+    /* 2. Fixed Image Layer (Creates the stationary "behind" image) */
     .mosaic-bg-layer {
         display: block !important;
-        position: absolute !important;
+        position: fixed !important; /* Fixed to mobile screen viewport */
         top: 0 !important;
         left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
+        width: 100vw !important;
+        height: 100vh !important;
         background: url('final2.jpg') center/cover no-repeat !important;
-        
-        /* Modern Parallax Window Effect */
-        background-attachment: fixed !important; 
-        
-        z-index: 0 !important;
+        z-index: -1 !important;
         pointer-events: none !important;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
     }
 
-    /* Fallback for iOS Safari (Where fixed background-attachment can jitter) */
-    @supports (-webkit-touch-callout: none) {
-        .mosaic-bg-layer {
-            /* Clips background strictly to the section bounds during mobile rubber-band scrolling */
-            clip-path: inset(0 0 0 0);
-        }
-    }
-
-    /* Compact Top/Bottom Overlay Edge Blurs */
+    /* 3. Edge Overlay Blurs */
     .mosaic-section::after {
         content: "";
         position: absolute;
@@ -848,7 +843,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         pointer-events: none;
     }
 
-    /* 2 Rows x 3 Columns Grid Layout */
+    /* 4. 2 Rows x 3 Columns Grid Layout */
     .mosaic-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr) !important;
@@ -859,7 +854,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         z-index: 3;
     }
 
-    /* Square Tiles with Increased Sizing */
+    /* 5. Square Tiles Sizing */
     .mosaic-grid .tile-card,
     .tile-card { 
         padding: 10px 4px !important;
@@ -874,7 +869,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         pointer-events: auto !important; 
     }
 
-    /* Larger Tile Icons */
+    /* Tile Icons */
     .tile-card i, 
     .tile-card svg,
     .tile-card img { 
@@ -884,7 +879,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         margin: 0 !important;
     }
 
-    /* Larger Tile Text Labels */
+    /* Tile Text Labels */
     .tile-card span,
     .tile-card p { 
         font-size: 10px !important; 
@@ -906,7 +901,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         z-index: 3;
     }
 
-    /* Larger Title */
+    /* Title Styling */
     .mosaic-title {
         font-size: 1.85rem !important;
         line-height: 1.2 !important;
