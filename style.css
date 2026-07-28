@@ -303,19 +303,22 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* Container */
 /* Container */
+/* Container - Updated to align content to the left */
 .mosaic-footer {
     position: relative; /* REQUIRED: Enables z-index layering */
     z-index: 3;         /* FLOATS ABOVE: Places footer text/button above the bottom blur (z-index: 2) */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    align-items: flex-start; /* Changed from center to align items to the left */
+    justify-content: flex-start;
+    text-align: left;        /* Changed from center to left-align typography */
     padding: 4rem 2rem;
     gap: 1.75rem;
+    width: 100%;             /* Ensures full-width alignment context */
+    max-width: 1200px;       /* Matches your grid container width */
 }
 
-/* Luxury Tagline Typography (Using Cormorant Garamond from Hero) */
+/* Luxury Tagline Typography */
 .mosaic-title {
     font-family: "Cormorant Garamond", serif;
     font-size: clamp(2.2rem, 4.2vw, 3.8rem);
@@ -326,19 +329,20 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     max-width: 950px;
     margin: 0;
     text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5); /* Enhanced contrast against image backdrop */
+    text-align: left; /* Left-aligns title lines if it wraps */
 }
 
-/* "Promise." in WindSong (Pure White) */
+/* "Promise." - Reset to inherit parent serif styling */
 .mosaic-title .script-word {
-    font-family: 'WindSong', cursive;
-    font-size: 1.25em; /* Scaled to visually align with Garamond */
-    font-weight: 400;
-    color: #ffffff; /* Pure white */
-    text-transform: lowercase;
-    letter-spacing: normal;
-    padding-left: 0.1em;
-    display: inline-block;
-    vertical-align: middle;
+    font-family: inherit;      /* Inherits Cormorant Garamond from .mosaic-title */
+    font-size: inherit;        /* Matches title font size */
+    font-weight: inherit;      /* Matches title font weight */
+    color: inherit;            /* Pure white */
+    text-transform: none;      /* Removes forced lowercase styling */
+    letter-spacing: inherit;   /* Inherits letter spacing */
+    padding-left: 0;           /* Resets script offset */
+    display: inline;           /* Behaves as normal inline text */
+    vertical-align: baseline;  /* Aligns with standard text baseline */
 }
 
 /* Frameless CTA Link (Clean, borderless, pure white) */
