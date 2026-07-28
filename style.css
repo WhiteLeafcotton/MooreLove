@@ -291,29 +291,28 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 /* 2 Row x 3 Column Grid (Base Styles) */
+/* 2 Row x 3 Column Grid (Base Styles) */
 .mosaic-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 Columns */
     grid-template-rows: repeat(2, auto);    /* 2 Rows */
     gap: 15px; 
     width: 100%;
-    max-width: 1200px; /* Base width */
+    max-width: 1600px; /* UPDATED: Matches featured-card max-width */
     z-index: 3; /* Elevated above blurs */
-    margin: 30px auto; /* Changed from "30px 0" to keep it centered */
+    margin: 30px auto; /* Centered */
 }
 
 /* --- Web / Desktop Only Override --- */
 @media (min-width: 1024px) {
     .mosaic-section {
-        /* Remove horizontal padding squeeze on desktop */
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 4%;
+        padding-right: 4%;
     }
 
     .mosaic-grid { 
         width: 100%;
-        /* Change this value to match your feature card's exact max-width if different */
-        max-width: 1200px; 
+        max-width: 1600px; /* UPDATED: Matches featured-card max-width */
         margin-top: 30px;
         margin-bottom: 30px;
     }
@@ -324,16 +323,17 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Container - Updated to align content to the left */
 .mosaic-footer {
     position: relative; /* REQUIRED: Enables z-index layering */
-    z-index: 3;         /* FLOATS ABOVE: Places footer text/button above the bottom blur (z-index: 2) */
+    z-index: 3;         /* FLOATS ABOVE: Places footer text/button above bottom blur */
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Changed from center to align items to the left */
+    align-items: flex-start;
     justify-content: flex-start;
-    text-align: left;        /* Changed from center to left-align typography */
-    padding: 4rem 2rem;
+    text-align: left;
+    padding: 4rem 0;
     gap: 1.75rem;
-    width: 100%;             /* Ensures full-width alignment context */
-    max-width: 1200px;       /* Matches your grid container width */
+    width: 100%;             
+    max-width: 1600px;  /* UPDATED: Matches featured-card max-width */
+    margin: 0 auto;     /* Keeps footer centered inline with grid */
 }
 
 /* Luxury Tagline Typography */
