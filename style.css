@@ -787,10 +787,10 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     /* ==========================================
        COMPACT MOSAIC SECTION (MOBILE)
     ========================================== */
-    /* Ultra-Compact Mosaic Section Container */
+ /* Compact Mosaic Section Container */
     .mosaic-section {
-        padding: 15px 4% !important; /* Stripped down padding */
-        min-height: auto !important; /* Prevents unwanted vertical stretching */
+        padding: 20px 4% !important;
+        min-height: auto !important;
         position: relative;
         background: transparent !important;
     }
@@ -812,31 +812,32 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
     /* Compact Top/Bottom Overlay Edge Blurs */
     .mosaic-section::after {
-        height: 30px !important; /* Shrunk edge blurs */
+        height: 35px !important;
     }
 
     .mosaic-bottom-blur {
-        height: 30px !important;
+        height: 35px !important;
     }
 
-    /* Compact Mosaic Grid Layout */
+    /* 2 Rows x 3 Columns Grid Layout */
     .mosaic-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 6px !important; /* Tightened grid gap */
+        grid-template-columns: repeat(3, 1fr) !important; /* Changed to 3 columns */
+        gap: 8px !important;
         width: 100%;
-        margin: 5px 0 !important; /* Reduced vertical spacing */
+        margin: 10px 0 !important;
         position: relative;
         z-index: 3;
     }
 
-    /* Force Ultra-Compact Tile Cards */
+    /* Square Tiles with Increased Sizing */
     .mosaic-grid .tile-card,
     .tile-card { 
-        padding: 8px 6px !important;      /* Tighter interior padding */
-        min-height: 0 !important;          /* Clears forced tile heights */
-        height: auto !important;          /* Hugs inner content tight */
-        gap: 4px !important;              /* Spacing between icon & text */
+        padding: 10px 4px !important;
+        aspect-ratio: 1 / 1 !important;  /* Forces tiles to be perfectly square */
+        height: auto !important;
+        min-height: 0 !important;
+        gap: 6px !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
@@ -844,39 +845,40 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         pointer-events: auto !important; 
     }
 
-    /* Compact Icons/SVGs */
+    /* Larger Tile Icons */
     .tile-card i, 
     .tile-card svg,
     .tile-card img { 
-        width: 16px !important; 
-        height: 16px !important; 
-        font-size: 16px !important;
+        width: 22px !important; 
+        height: 22px !important; 
+        font-size: 22px !important;
         margin: 0 !important;
     }
 
-    /* Compact Text Labels */
+    /* Larger Tile Text Labels */
     .tile-card span,
     .tile-card p { 
-        font-size: 8px !important; 
-        line-height: 1.1 !important;
+        font-size: 10px !important; 
+        line-height: 1.15 !important;
         letter-spacing: 0.3px !important;
+        text-align: center !important;
         margin: 0 !important;
         padding: 0 !important;
     }
 
-    /* Compact Left-Aligned Footer Container */
+    /* Left-Aligned Footer Container */
     .mosaic-footer {
-        padding: 1rem 0 0.5rem 0 !important;
-        gap: 0.5rem !important;
+        padding: 1.25rem 0 0.5rem 0 !important;
+        gap: 0.75rem !important;
         width: 100% !important;
         align-items: flex-start !important;
         text-align: left !important;
     }
 
-    /* Left-Aligned Compact Title */
+    /* Larger Title */
     .mosaic-title {
-        font-size: 1.5rem !important;
-        line-height: 1.15 !important;
+        font-size: 1.85rem !important; /* Increased title size */
+        line-height: 1.2 !important;
         text-align: left !important;
     }
 
