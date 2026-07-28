@@ -245,15 +245,18 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* ==================================================
    MOSAIC SECTION - UPDATED 2x3 LAYOUT & BLURS
    ================================================== */
+/* ==================================================
+   COMPACT MOSAIC SECTION
+   ================================================== */
 .mosaic-section {
     position: relative;
-    padding: 60px 4%; /* Increased padding to give space for blur effects */
+    padding: 30px 4%; /* REDUCED from 60px */
     background: url('final2.jpg') center/cover no-repeat fixed; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Clips the blur gradients */
+    overflow: hidden;
 }
 
 /* Base dark overlay */
@@ -272,7 +275,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     top: 0;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: 60px; /* REDUCED height for a tighter section */
     background: linear-gradient(to bottom, #080808, transparent);
     z-index: 2;
     pointer-events: none;
@@ -284,86 +287,106 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: 60px; /* REDUCED height */
     background: linear-gradient(to top, #080808, transparent);
     z-index: 2;
     pointer-events: none;
 }
 
-/* 2 Row x 3 Column Grid (Base Styles) */
-/* 2 Row x 3 Column Grid (Base Styles) */
+/* 2 Row x 3 Column Grid */
 .mosaic-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
-    grid-template-rows: repeat(2, auto);    /* 2 Rows */
-    gap: 15px; 
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);    
+    gap: 12px; /* Slight tightening of grid gap */
     width: 100%;
-    max-width: 1600px; /* UPDATED: Matches featured-card max-width */
-    z-index: 3; /* Elevated above blurs */
-    margin: 30px auto; /* Centered */
+    max-width: 1600px;
+    z-index: 3;
+    margin: 15px auto; /* REDUCED from 30px */
 }
+
+/* Compact Tile Interior */
+.tile-card {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 18px 15px; /* REDUCED from 30px 20px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px; 
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    cursor: pointer;
+    opacity: 0; 
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tile-card.is-active {
+    opacity: 1; 
+    transform: translateY(0);
+}
+
+.tile-card i { font-size: 20px; color: #fff; transition: var(--transition); }
+.tile-card span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
 
 /* --- Web / Desktop Only Override --- */
 @media (min-width: 1024px) {
     .mosaic-section {
-        padding-left: 4%;
-        padding-right: 4%;
+        padding-top: 25px;
+        padding-bottom: 25px;
     }
 
     .mosaic-grid { 
         width: 100%;
-        max-width: 1600px; /* UPDATED: Matches featured-card max-width */
-        margin-top: 30px;
-        margin-bottom: 30px;
+        max-width: 1600px; 
+        margin-top: 15px;
+        margin-bottom: 15px;
     }
 }
 
-/* Container */
-/* Container */
-/* Container - Updated to align content to the left */
+/* Compact Mosaic Footer */
 .mosaic-footer {
-    position: relative; /* REQUIRED: Enables z-index layering */
-    z-index: 3;         /* FLOATS ABOVE: Places footer text/button above bottom blur */
+    position: relative;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     text-align: left;
-    padding: 4rem 0;
-    gap: 1.75rem;
+    padding: 1.5rem 0 0.5rem 0; /* REDUCED from 4rem 0 */
+    gap: 1.25rem; /* REDUCED from 1.75rem */
     width: 100%;             
-    max-width: 1600px;  /* UPDATED: Matches featured-card max-width */
-    margin: 0 auto;     /* Keeps footer centered inline with grid */
+    max-width: 1600px;  
+    margin: 0 auto;     
 }
 
-/* Luxury Tagline Typography */
+/* Typography Adjustments */
 .mosaic-title {
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+    font-size: clamp(2rem, 3.5vw, 3.2rem); /* Slightly tighter font bounds */
     font-weight: 300;
-    color: #ffffff; /* Pure white */
-    line-height: 1.25;
+    color: #ffffff;
+    line-height: 1.2;
     letter-spacing: -0.2px;
     max-width: 950px;
     margin: 0;
-    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5); /* Enhanced contrast against image backdrop */
-    text-align: left; /* Left-aligns title lines if it wraps */
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+    text-align: left;
 }
 
-/* "Promise." - Reset to inherit parent serif styling */
 .mosaic-title .script-word {
-    font-family: inherit;      /* Inherits Cormorant Garamond from .mosaic-title */
-    font-size: inherit;        /* Matches title font size */
-    font-weight: inherit;      /* Matches title font weight */
-    color: inherit;            /* Pure white */
-    text-transform: none;      /* Removes forced lowercase styling */
-    letter-spacing: inherit;   /* Inherits letter spacing */
-    padding-left: 0;           /* Resets script offset */
-    display: inline;           /* Behaves as normal inline text */
-    vertical-align: baseline;  /* Aligns with standard text baseline */
+    font-family: inherit;      
+    font-size: inherit;        
+    font-weight: inherit;      
+    color: inherit;            
+    text-transform: none;      
+    letter-spacing: inherit;   
+    padding-left: 0;          
+    display: inline;          
+    vertical-align: baseline;  
 }
 
-/* Frameless CTA Link (Clean, borderless, pure white) */
+/* Frameless CTA Link */
 .cta-arrow {
     display: inline-flex;
     align-items: center;
@@ -378,14 +401,13 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     background: transparent;
     border: none;
     outline: none;
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
     cursor: pointer;
     position: relative;
     opacity: 0.95;
     transition: opacity 0.3s ease;
 }
 
-/* Underline Hover Reveal */
 .cta-arrow::after {
     content: '';
     position: absolute;
@@ -397,13 +419,8 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     transition: width 0.3s ease;
 }
 
-.cta-arrow:hover {
-    opacity: 1;
-}
-
-.cta-arrow:hover::after {
-    width: 100%;
-}
+.cta-arrow:hover { opacity: 1; }
+.cta-arrow:hover::after { width: 100%; }
 
 .cta-arrow svg,
 .cta-arrow i {
@@ -417,13 +434,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .cta-arrow:hover i {
     transform: translateX(6px);
 }
-/* Large Title & CTA */
-/* Base Container */
-/* Container */
-/* Container Spacing */
-
-
-
 
 
 
