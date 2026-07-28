@@ -1133,6 +1133,10 @@ a.contact-value:hover {
    COMPACT MOBILE FOOTER (MINIATURE DESKTOP SPLIT)
    =================================================== */
 
+    /* ===================================================
+   COMPACT MOBILE FOOTER (MINIATURE DESKTOP SPLIT)
+   =================================================== */
+
     .site-footer {
         padding: 25px 4% 15px !important;
     }
@@ -1204,13 +1208,13 @@ a.contact-value:hover {
         letter-spacing: 0.5px !important;
     }
 
-    /* --- HIDE CLINICAL DESK LABEL ON MOBILE ONLY --- */
-    .contact-item:nth-child(3) .contact-label {
-        display: none !important;
-    }
-
     .contact-value {
         font-size: 10px !important;
+    }
+
+    /* --- HIDE ENTIRE 3RD CONTACT ITEM (CLINICAL DESK / CLOCK ICON / 24/7 STAFFING) ON MOBILE --- */
+    .footer-contact-block .contact-item:nth-child(3) {
+        display: none !important;
     }
 
     /* Compact subtext */
