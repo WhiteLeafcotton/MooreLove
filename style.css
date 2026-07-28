@@ -1204,6 +1204,11 @@ a.contact-value:hover {
         letter-spacing: 0.5px !important;
     }
 
+    /* --- HIDE CLINICAL DESK LABEL ON MOBILE ONLY --- */
+    .contact-item:nth-child(3) .contact-label {
+        display: none !important;
+    }
+
     .contact-value {
         font-size: 10px !important;
     }
