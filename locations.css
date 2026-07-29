@@ -239,6 +239,9 @@ body {
 /* =================================================== */
 /*          "PLOPPING" ANIMATION INITIAL STATE        */
 /* =================================================== */
+/* =================================================== */
+/*             "PLOPPING" ANIMATION STATE             */
+/* =================================================== */
 .plop-item,
 .connecting-line,
 .section-title,
@@ -246,4 +249,14 @@ body {
     opacity: 0;
     transform: translateY(-40px) scale(0.96);
     will-change: transform, opacity;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Fallback class if GSAP is disabled */
+.location-section.is-visible .plop-item,
+.location-section.is-visible .connecting-line,
+.location-section.is-visible .section-title,
+.location-section.is-visible .section-subtitle {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
