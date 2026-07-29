@@ -1,242 +1,104 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ==========================================
-    // 1. Sticky Navigation Logic
-    // ==========================================
-    const hero = document.getElementById("hero");
-    const nav = document.getElementById("mainNav");
-
-    function updateNav() {
-        if (!hero || !nav) return;
-        if (window.scrollY >= hero.offsetHeight) {
-            nav.classList.add("sticky");
-        } else {
-            nav.classList.remove("sticky");
-        }
+    // Register GSAP Plugins
+    if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
+        gsap.registerPlugin(ScrollToPlugin);
     }
-    window.addEventListener("scroll", updateNav, { passive: true });
+
+    const wrapper = document.querySelector('.locations-wrapper');
+    const sections = document.querySelectorAll('.location-section');
+    const tabs = document.querySelectorAll('.nav-tab');
 
     // ==========================================
-    // 2. Heavy & Cinematic Image Cross-Fade & Dynamic CTA Routing Logic
+    // 1. GSAP "Plopping" Reveal Function
     // ==========================================
-    const iconItems = document.querySelectorAll('.icon-item');
-    const heroVideo = document.getElementById('heroVideo');
-    const heroLogo = document.querySelector('.hero-logo');
-    const heroTitle = document.getElementById('heroTitle') || document.querySelector('.hero-content h1');
-    const heroBtn = document.getElementById('heroButton') || document.querySelector('.hero-button') || document.querySelector('.card-btn');
-    const activeLine = document.getElementById("activeLine");
+    function animateSection(section) {
+        if (!section || typeof gsap === 'undefined') return;
 
-    // Cross-fade dual layers
-    const bgA = document.getElementById('heroBgA');
-    const bgB = document.getElementById('heroBgB');
-    let currentBg = 'A'; // Tracks active layer
+        const targets = section.querySelectorAll('.connecting-line, .section-title, .section-subtitle, .plop-item');
 
-    function updateHeroContent(item) {
-        // 1. Hide initial logo block smoothly
-        if (heroLogo) {
-            heroLogo.classList.add('hidden');
-        }
-
-        // 2. Hide video smoothly on tab interaction
-        if (heroVideo && heroVideo.style.display !== 'none') {
-            heroVideo.style.transition = 'opacity 1s ease';
-            heroVideo.style.opacity = '0';
-            setTimeout(() => {
-                heroVideo.style.display = 'none';
-                heroVideo.pause();
-            }, 1000);
-        }
-
-        // 3. Heavy/Slow Cross-Fade Image Transition
-        const newImage = item.dataset.image;
-        if (newImage) {
-            const bgUrl = `linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('${newImage}')`;
-
-            if (currentBg === 'A') {
-                if (bgB) {
-                    bgB.style.backgroundImage = bgUrl;
-                    bgB.classList.add('active');
-                }
-                if (bgA) bgA.classList.remove('active');
-                currentBg = 'B';
-            } else {
-                if (bgA) {
-                    bgA.style.backgroundImage = bgUrl;
-                    bgA.classList.add('active');
-                }
-                if (bgB) bgB.classList.remove('active');
-                currentBg = 'A';
+        // Reset and play GSAP animation
+        gsap.fromTo(targets, 
+            { 
+                opacity: 0, 
+                y: -40, 
+                scale: 0.96 
+            }, 
+            { 
+                opacity: 1, 
+                y: 0, 
+                scale: 1, 
+                duration: 0.8, 
+                stagger: 0.12, 
+                ease: "back.out(1.4)",
+                overwrite: "auto"
             }
-        }
-
-        // 4. Headline Text Swap
-        if (heroTitle && item.dataset.title && heroTitle.innerHTML !== item.dataset.title) {
-            heroTitle.style.opacity = '0';
-            heroTitle.style.transform = 'translateY(8px)';
-            setTimeout(() => {
-                heroTitle.innerHTML = item.dataset.title;
-                heroTitle.style.opacity = '1';
-                heroTitle.style.transform = 'translateY(0)';
-            }, 400);
-        }
-
-        // 5. Update CTA Button Text & Dynamic Routing
-        if (heroBtn && item.dataset.cta) {
-            heroBtn.innerText = item.dataset.cta;
-        }
-
-        const targetUrl = item.getAttribute('data-href');
-        if (heroBtn) {
-            if (targetUrl) {
-                heroBtn.onclick = () => { window.location.href = targetUrl; };
-            } else if (item.dataset.cta === "Explore Community") {
-                heroBtn.onclick = () => { window.location.href = "locations.html"; };
-            } else {
-                heroBtn.onclick = null;
-            }
-        }
-
-        // 6. Active Tab Styling & Line Sliding
-        iconItems.forEach(icon => icon.classList.remove('active'));
-        item.classList.add('active');
-
-        if (activeLine) {
-            activeLine.style.width = item.offsetWidth + "px";
-            activeLine.style.left = item.offsetLeft + "px";
-        }
+        );
     }
 
-    // Tab Listeners (Hover & Click support)
-    iconItems.forEach((item) => {
-        item.addEventListener('mouseenter', () => updateHeroContent(item));
-        item.addEventListener('click', () => updateHeroContent(item));
-    });
-
-    // Initialize active line positioning
-    setTimeout(() => { 
-        if (activeLine && iconItems.length > 0) {
-            activeLine.style.width = iconItems[0].offsetWidth + "px";
-            activeLine.style.left = iconItems[0].offsetLeft + "px";
-        }
-    }, 100);
-
-    // ==========================================
-    // 3. Featured Card Intersection Observer
-    // ==========================================
-    const featuredCard = document.querySelector('.featured-card');
-    if (featuredCard) {
-        const featuredObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    featuredCard.classList.add('is-visible');
-                    const title = entry.target.querySelector('h3');
-                    if (title) title.classList.add('is-visible');
-                    featuredObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.25 });
-
-        featuredObserver.observe(featuredCard);
+    // Trigger initial animation for Section 0 on load
+    if (sections.length > 0) {
+        animateSection(sections[0]);
     }
 
     // ==========================================
-    // 4. Mosaic Grid Reveal Animation
+    // 2. Tab Click Navigation & Smooth Scroll
     // ==========================================
-    const mosaicGrid = document.getElementById('mosaicGrid');
-    const mosaicSection = document.getElementById('mosaicSection');
+    tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+            const index = parseInt(tab.dataset.section, 10);
+            const targetSection = document.getElementById(`section-${index}`);
 
-    if (mosaicSection && mosaicGrid) {
-        const mosaicObserver = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                const cards = mosaicGrid.querySelectorAll('.tile-card');
-                cards.forEach((card, index) => {
-                    setTimeout(() => card.classList.add('is-active'), index * 150);
-                });
-                mosaicObserver.disconnect();
-            }
-        }, { threshold: 0.2 });
+            if (targetSection && wrapper) {
+                // Update Active Tab Styling
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
 
-        mosaicObserver.observe(mosaicSection);
-    }
-
-    // ==========================================
-    // 5. Locations Gallery & Swipe Logic
-    // ==========================================
-    const gallery = document.getElementById('locationsGallery');
-    const locCards = document.querySelectorAll('.loc-card');
-
-    function setActiveCard(card) {
-        locCards.forEach(c => c.classList.remove('active'));
-        card.classList.add('active');
-
-        const bg = card.getAttribute('data-bg');
-        if (gallery && bg) {
-            gallery.style.background = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${bg}') center/cover no-repeat`;
-        }
-    }
-
-    const initialActive = document.querySelector('.loc-card.active');
-    if (initialActive) setActiveCard(initialActive);
-
-    locCards.forEach(card => {
-        card.addEventListener('click', (e) => {
-            if (e.target.tagName !== 'A') {
-                e.preventDefault(); 
-                setActiveCard(card);
-
-                if (window.innerWidth <= 768) {
-                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                // Smooth Scroll Container horizontally
+                if (typeof gsap !== 'undefined') {
+                    gsap.to(wrapper, {
+                        scrollTo: { x: targetSection, autoKill: false },
+                        duration: 0.8,
+                        ease: "power2.inOut",
+                        onComplete: () => animateSection(targetSection)
+                    });
+                } else {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    animateSection(targetSection);
                 }
             }
         });
     });
 
-    let touchStartX = 0;
-
-    gallery?.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    gallery?.addEventListener('touchend', (e) => {
-        const touchEndX = e.changedTouches[0].screenX;
-        const diff = touchStartX - touchEndX;
-
-        if (Math.abs(diff) > 50) {
-            const activeIndex = Array.from(locCards).findIndex(c => c.classList.contains('active'));
-
-            if (diff > 0 && activeIndex < locCards.length - 1) {
-                setActiveCard(locCards[activeIndex + 1]);
-                locCards[activeIndex + 1].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            } 
-            else if (diff < 0 && activeIndex > 0) {
-                setActiveCard(locCards[activeIndex - 1]);
-                locCards[activeIndex - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            }
-        }
-    }, { passive: true });
-
     // ==========================================
-    // 6. Text Reveal Section Animation
+    // 3. Scroll Snap & Swipe Observer (Tab Auto-Switch)
     // ==========================================
-    const revealTarget = document.querySelector(".message-block");
-
-    if (revealTarget) {
-        const textObserverOptions = {
-            root: null,
-            rootMargin: "0px 0px -15% 0px",
-            threshold: 0.15
-        };
-
-        const textObserver = new IntersectionObserver((entries, obs) => {
-            entries.forEach((entry) => {
+    if (wrapper && sections.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add("active");
-                    obs.unobserve(entry.target);
+                    const sectionId = entry.target.id;
+                    const index = sectionId.replace('section-', '');
+
+                    // Sync active tab state
+                    tabs.forEach(t => {
+                        if (t.dataset.section === index) {
+                            t.classList.add('active');
+                        } else {
+                            t.classList.remove('active');
+                        }
+                    });
+
+                    // Play reveal animation
+                    animateSection(entry.target);
                 }
             });
-        }, textObserverOptions);
+        }, {
+            root: wrapper,
+            threshold: 0.6 // Triggers when section is 60% visible
+        });
 
-        textObserver.observe(revealTarget);
+        sections.forEach(section => observer.observe(section));
     }
 
 });
