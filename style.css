@@ -1248,22 +1248,62 @@ MOBILE RESPONSIVE ADAPTATION
     }
 
     /* Featured Card */
-    .featured-card-wrapper { padding: 25px 4%; }
-    .featured-card { 
-        height: auto; 
-        display: block; 
-        background: none; 
-        padding: 0; 
-        border: none; 
+    /* ==========================================
+       FEATURED CARD & REVEAL FIX (MOBILE)
+    ========================================== */
+    .featured-card-wrapper { 
+        padding: 25px 4% !important; 
+        width: 100% !important;
     }
+
+    .featured-card { 
+        height: auto !important; 
+        display: flex !important; 
+        flex-direction: column !important;
+        background: none !important; 
+        padding: 0 !important; 
+        border: none !important; 
+        opacity: 1 !important;              /* Force card visibility */
+        transform: none !important;         /* Prevent stuck transforms */
+        visibility: visible !important;
+    }
+
+    /* Restores banner card height so it isn't too thin */
     .featured-card::before { 
         content: ""; 
         display: block; 
         width: 100%; 
-        height: 120px; 
-        background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), url('banner.jpg') center/cover no-repeat; 
+        height: 220px !important;           /* Increased from 120px */
+        aspect-ratio: 16 / 9;
+        background: linear-gradient(to bottom, rgba(8,8,8,0) 40%, rgba(8,8,8,0.95) 100%), url('banner.jpg') center/cover no-repeat !important; 
         border: 0.5px solid rgba(255, 255, 255, 0.2); 
-        margin-bottom: 15px; 
+        border-radius: 8px;
+        margin-bottom: 18px; 
+    }
+
+    /* Force all text elements inside the feature card to reveal on mobile */
+    .featured-card *,
+    .featured-card-wrapper * {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
+
+    .featured-card h2,
+    .featured-card h3,
+    .featured-card .title {
+        font-size: 1.6rem !important;
+        line-height: 1.25 !important;
+        color: #ffffff !important;
+        margin-bottom: 10px !important;
+    }
+
+    .featured-card p,
+    .featured-card .description {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        margin-bottom: 15px !important;
     }
     
     /* ==========================================
