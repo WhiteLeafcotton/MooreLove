@@ -1147,27 +1147,69 @@ a.contact-value:hover {
    =================================================== */
 /* --- Mobile Specific (Swipe & Scroll) --- */
 
+    /* Locations Gallery Mobile Swiping & Vertical Scroll */
     .locations-gallery {
         display: flex !important;
         flex-direction: row !important;
         overflow-x: auto !important;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
-        touch-action: pan-x !important;
+        touch-action: pan-x pan-y !important; /* Allows horizontal swipe + vertical page scrolling */
         justify-content: flex-start !important;
         padding: 40px 10vw !important;
     }
 
     .loc-card {
-        flex: 0 0 80vw !important; /* Mobile width */
-        height: 420px !important;
+        flex: 0 0 80vw !important; /* Mobile card width */
+        min-height: 420px !important; /* Flexible min-height prevents CTA clipping */
+        height: auto !important;
         scroll-snap-align: center;
         margin: 0 10px !important;
+        touch-action: pan-x pan-y !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 24px 0 !important;
     }
 
     .loc-card img {
-        height: 180px !important; /* Mobile fixed image height */
+        height: 180px !important; /* Mobile image height */
+        width: 100% !important;
+        object-fit: cover !important;
+        margin: 12px 0 !important;
     }
+
+    /* CTA Button & Reveal Styling Fix for Mobile */
+    .loc-card .card-reveal {
+        display: none;
+        padding: 0 20px !important;
+        width: 100%;
+        text-align: center;
+    }
+
+    .loc-card.active .card-reveal {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+
+    /* Ensures CTA buttons remain tap-ready and visible */
+    .loc-card .card-btn,
+    .loc-card .cta-button,
+    .loc-card a {
+        display: inline-block !important;
+        position: relative !important;
+        z-index: 10 !important;
+        margin-top: 10px !important;
+        padding: 12px 24px !important;
+        font-size: 10px !important;
+        letter-spacing: 2px !important;
+        pointer-events: auto !important;
+        -webkit-tap-highlight-color: transparent;
+    }
+
 
     /* ===================================================
    COMPACT MOBILE FOOTER (MINIATURE DESKTOP SPLIT)
