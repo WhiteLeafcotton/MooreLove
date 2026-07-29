@@ -1248,23 +1248,20 @@ a.contact-value:hover {
     /* ==========================================
        FEATURED CARD (MOBILE FIX)
     ========================================== */
-   @media (max-width: 768px) {
-    .featured-card-wrapper {
-        padding: 24px 4%;
+   .featured-card-wrapper { 
+        padding: 25px 4% !important; 
     }
-
-    /* Convert card into a clean stacked column */
+    
     .featured-card { 
         height: auto !important; 
-        min-height: auto !important;
         display: flex !important;
         flex-direction: column !important;
         background: none !important; 
         padding: 0 !important; 
         border: none !important; 
     }
-
-    /* Top Banner Image */
+    
+    /* Mobile Card Top Banner Image */
     .featured-card::before { 
         content: ""; 
         display: block !important; 
@@ -1275,7 +1272,7 @@ a.contact-value:hover {
         margin-bottom: 20px !important; 
     }
 
-    /* Text & Content Layout */
+    /* Force Card Content Visibility on Mobile */
     .featured-card .card-content {
         max-width: 100% !important;
         padding: 0 10px !important;
@@ -1284,6 +1281,7 @@ a.contact-value:hover {
         transform: none !important;
     }
 
+    /* Force Text Elements to Show on Mobile */
     .featured-card .card-content i,
     .featured-card .card-content h3,
     .featured-card .card-content p {
@@ -1292,25 +1290,24 @@ a.contact-value:hover {
         transform: none !important;
     }
 
-    /* Mobile Typography Scaling */
-    .featured-card .card-content i {
-        font-size: 14px !important;
+    .card-content i {
+        font-size: 16px !important;
         margin-bottom: 8px !important;
     }
 
-    .featured-card .card-content h3 {
-        font-size: 11px !important;
-        letter-spacing: 2.5px !important;
-        margin-bottom: 10px !important;
+    .card-content h3 {
+        font-size: 12px !important;
+        letter-spacing: 2px !important;
+        margin-bottom: 12px !important;
     }
 
-    .featured-card .card-content p {
+    .card-content p {
         font-size: 18px !important;
-        line-height: 1.2 !important;
+        line-height: 1.4 !important;
         margin-bottom: 20px !important;
     }
-
-    /* Mobile Button Sizing */
+    
+    /* Dynamic Button Mobile Width Adjustments */
     .card-btn {
         width: 100% !important;
         max-width: 280px !important;
@@ -1318,8 +1315,8 @@ a.contact-value:hover {
         opacity: 1 !important;
         transform: none !important;
     }
-
     
+  
     /* ==========================================
        COMPACT MOSAIC SECTION (MOBILE)
     ========================================== */
