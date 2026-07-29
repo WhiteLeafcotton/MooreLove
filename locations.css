@@ -218,6 +218,7 @@ body {
     height: 280px;
     overflow: hidden;
     margin-bottom: 16px;
+    background-color: #FFFFFF;
 }
 
 .video-card video {
