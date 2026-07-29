@@ -17,136 +17,147 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener("scroll", updateNav, { passive: true });
 
     // ==========================================
-    // 2. Hero Content, Logo Hiding & Image Swapping Logic
+    // 2. Heavy & Cinematic Image Cross-Fade & Dynamic CTA Routing Logic
     // ==========================================
-    // ==========================================
-// 2. Heavy & Cinematic Image Cross-Fade Logic
-// ==========================================
-const iconItems = document.querySelectorAll('.icon-item');
-const heroVideo = document.getElementById('heroVideo');
-const heroLogo = document.querySelector('.hero-logo');
-const heroTitle = document.getElementById('heroTitle') || document.querySelector('.hero-content h1');
-const heroBtn = document.getElementById('heroButton') || document.querySelector('.hero-button');
-const activeLine = document.getElementById("activeLine");
+    const iconItems = document.querySelectorAll('.icon-item');
+    const heroVideo = document.getElementById('heroVideo');
+    const heroLogo = document.querySelector('.hero-logo');
+    const heroTitle = document.getElementById('heroTitle') || document.querySelector('.hero-content h1');
+    const heroBtn = document.getElementById('heroButton') || document.querySelector('.hero-button') || document.querySelector('.card-btn');
+    const activeLine = document.getElementById("activeLine");
 
-// Cross-fade dual layers
-const bgA = document.getElementById('heroBgA');
-const bgB = document.getElementById('heroBgB');
-let currentBg = 'A'; // Tracks which layer is currently visible
+    // Cross-fade dual layers
+    const bgA = document.getElementById('heroBgA');
+    const bgB = document.getElementById('heroBgB');
+    let currentBg = 'A'; // Tracks active layer
 
-function updateHeroContent(item) {
-    // 1. Hide initial logo block smoothly
-    if (heroLogo) {
-        heroLogo.classList.add('hidden');
-    }
+    function updateHeroContent(item) {
+        // 1. Hide initial logo block smoothly
+        if (heroLogo) {
+            heroLogo.classList.add('hidden');
+        }
 
-    // 2. Hide video smoothly on hover
-    if (heroVideo && heroVideo.style.display !== 'none') {
-        heroVideo.style.transition = 'opacity 1s ease';
-        heroVideo.style.opacity = '0';
-        setTimeout(() => {
-            heroVideo.style.display = 'none';
-            heroVideo.pause();
-        }, 1000);
-    }
+        // 2. Hide video smoothly on tab interaction
+        if (heroVideo && heroVideo.style.display !== 'none') {
+            heroVideo.style.transition = 'opacity 1s ease';
+            heroVideo.style.opacity = '0';
+            setTimeout(() => {
+                heroVideo.style.display = 'none';
+                heroVideo.pause();
+            }, 1000);
+        }
 
-    // 3. Heavy/Slow Cross-Fade Image Transition
-    const newImage = item.dataset.image;
-    if (newImage) {
-        const bgUrl = `linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('${newImage}')`;
+        // 3. Heavy/Slow Cross-Fade Image Transition
+        const newImage = item.dataset.image;
+        if (newImage) {
+            const bgUrl = `linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('${newImage}')`;
 
-        if (currentBg === 'A') {
-            // Prepare Layer B in the background, then fade it in
-            if (bgB) {
-                bgB.style.backgroundImage = bgUrl;
-                bgB.classList.add('active');
+            if (currentBg === 'A') {
+                if (bgB) {
+                    bgB.style.backgroundImage = bgUrl;
+                    bgB.classList.add('active');
+                }
+                if (bgA) bgA.classList.remove('active');
+                currentBg = 'B';
+            } else {
+                if (bgA) {
+                    bgA.style.backgroundImage = bgUrl;
+                    bgA.classList.add('active');
+                }
+                if (bgB) bgB.classList.remove('active');
+                currentBg = 'A';
             }
-            if (bgA) bgA.classList.remove('active');
-            currentBg = 'B';
-        } else {
-            // Prepare Layer A in the background, then fade it in
-            if (bgA) {
-                bgA.style.backgroundImage = bgUrl;
-                bgA.classList.add('active');
+        }
+
+        // 4. Headline Text Swap
+        if (heroTitle && item.dataset.title && heroTitle.innerHTML !== item.dataset.title) {
+            heroTitle.style.opacity = '0';
+            heroTitle.style.transform = 'translateY(8px)';
+            setTimeout(() => {
+                heroTitle.innerHTML = item.dataset.title;
+                heroTitle.style.opacity = '1';
+                heroTitle.style.transform = 'translateY(0)';
+            }, 400);
+        }
+
+        // 5. Update CTA Button Text & Dynamic Routing
+        if (heroBtn && item.dataset.cta) {
+            heroBtn.innerText = item.dataset.cta;
+        }
+
+        const targetUrl = item.getAttribute('data-href');
+        if (heroBtn) {
+            if (targetUrl) {
+                heroBtn.onclick = () => { window.location.href = targetUrl; };
+            } else if (item.dataset.cta === "Explore Community") {
+                heroBtn.onclick = () => { window.location.href = "locations.html"; };
+            } else {
+                heroBtn.onclick = null;
             }
-            if (bgB) bgB.classList.remove('active');
-            currentBg = 'A';
+        }
+
+        // 6. Active Tab Styling & Line Sliding
+        iconItems.forEach(icon => icon.classList.remove('active'));
+        item.classList.add('active');
+
+        if (activeLine) {
+            activeLine.style.width = item.offsetWidth + "px";
+            activeLine.style.left = item.offsetLeft + "px";
         }
     }
 
-    // 4. Smooth Headline & Button Text Swap
-    if (heroTitle && item.dataset.title && heroTitle.innerHTML !== item.dataset.title) {
-        heroTitle.style.opacity = '0';
-        heroTitle.style.transform = 'translateY(8px)';
-        setTimeout(() => {
-            heroTitle.innerHTML = item.dataset.title;
-            heroTitle.style.opacity = '1';
-            heroTitle.style.transform = 'translateY(0)';
-        }, 400); // Swaps midway through image blend
-    }
-
-    if (heroBtn && item.dataset.cta && heroBtn.innerText !== item.dataset.cta) {
-        heroBtn.innerText = item.dataset.cta;
-    }
-
-    // 5. Update Active Tab Styling & Slower Line Sliding
-    iconItems.forEach(icon => icon.classList.remove('active'));
-    item.classList.add('active');
-
-    if (activeLine) {
-        activeLine.style.width = item.offsetWidth + "px";
-        activeLine.style.left = item.offsetLeft + "px";
-    }
-}
-
-iconItems.forEach((item) => {
-    item.addEventListener('mouseenter', () => updateHeroContent(item));
-    item.addEventListener('click', (e) => {
-        e.preventDefault();
-        updateHeroContent(item);
+    // Tab Listeners (Hover & Click support)
+    iconItems.forEach((item) => {
+        item.addEventListener('mouseenter', () => updateHeroContent(item));
+        item.addEventListener('click', () => updateHeroContent(item));
     });
-});
 
-// Position initial active line tab
-setTimeout(() => { 
-    if (activeLine && iconItems.length > 0) {
-        activeLine.style.width = iconItems[0].offsetWidth + "px";
-        activeLine.style.left = iconItems[0].offsetLeft + "px";
-    }
-}, 100);
+    // Initialize active line positioning
+    setTimeout(() => { 
+        if (activeLine && iconItems.length > 0) {
+            activeLine.style.width = iconItems[0].offsetWidth + "px";
+            activeLine.style.left = iconItems[0].offsetLeft + "px";
+        }
+    }, 100);
 
     // ==========================================
     // 3. Featured Card Intersection Observer
     // ==========================================
-    const featuredObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const title = entry.target.querySelector('h3');
-                if (title) title.classList.add('is-visible');
-                featuredObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.3 });
-
     const featuredCard = document.querySelector('.featured-card');
-    if (featuredCard) featuredObserver.observe(featuredCard);
+    if (featuredCard) {
+        const featuredObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    featuredCard.classList.add('is-visible');
+                    const title = entry.target.querySelector('h3');
+                    if (title) title.classList.add('is-visible');
+                    featuredObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.25 });
+
+        featuredObserver.observe(featuredCard);
+    }
 
     // ==========================================
     // 4. Mosaic Grid Reveal Animation
     // ==========================================
     const mosaicGrid = document.getElementById('mosaicGrid');
-    const mosaicObserver = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-            const cards = mosaicGrid.querySelectorAll('.tile-card');
-            cards.forEach((card, index) => {
-                setTimeout(() => card.classList.add('is-active'), index * 150);
-            });
-            mosaicObserver.disconnect();
-        }
-    }, { threshold: 0.2 });
-
     const mosaicSection = document.getElementById('mosaicSection');
-    if (mosaicSection && mosaicGrid) mosaicObserver.observe(mosaicSection);
+
+    if (mosaicSection && mosaicGrid) {
+        const mosaicObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                const cards = mosaicGrid.querySelectorAll('.tile-card');
+                cards.forEach((card, index) => {
+                    setTimeout(() => card.classList.add('is-active'), index * 150);
+                });
+                mosaicObserver.disconnect();
+            }
+        }, { threshold: 0.2 });
+
+        mosaicObserver.observe(mosaicSection);
+    }
 
     // ==========================================
     // 5. Locations Gallery & Swipe Logic
@@ -228,58 +239,4 @@ setTimeout(() => {
         textObserver.observe(revealTarget);
     }
 
-});
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    const featuredCard = document.querySelector(".featured-card");
-    if (!featuredCard) return;
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                featuredCard.classList.add("is-visible");
-                observer.unobserve(featuredCard); // Triggers reveal once
-            }
-        });
-    }, { threshold: 0.25 });
-
-    observer.observe(featuredCard);
-});
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    const featuredCard = document.querySelector(".featured-card");
-    if (!featuredCard) return;
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                featuredCard.classList.add("is-visible");
-                observer.unobserve(featuredCard);
-            }
-        });
-    }, { threshold: 0.25 });
-
-    observer.observe(featuredCard);
-});
-
-
-
-document.querySelectorAll('.icon-item').forEach(item => {
-    item.addEventListener('click', () => {
-        const targetUrl = item.getAttribute('data-href');
-        const ctaButton = document.querySelector('.card-btn');
-
-        if (targetUrl) {
-            ctaButton.setAttribute('href', targetUrl);
-            ctaButton.onclick = () => { window.location.href = targetUrl; };
-        } else {
-            ctaButton.removeAttribute('href');
-            ctaButton.onclick = null;
-        }
-    });
 });
