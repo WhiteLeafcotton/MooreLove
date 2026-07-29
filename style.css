@@ -467,6 +467,9 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* ==================================================
    LOCATIONS GALLERY
    ================================================== */
+/* ==================================================
+   LOCATIONS GALLERY (Frameless Full-Bleed Image)
+   ================================================== */
 .locations-gallery {
     display: flex;
     justify-content: center;
@@ -479,64 +482,61 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     overflow: hidden;
 }
 
-/* Location Card Base */
 .loc-card {
-    flex: 0 0 320px; /* Fixed width for Desktop */
+    flex: 0 0 320px;
     height: 480px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; /* Spacing between header, full-width image, and CTA */
-    padding: 25px 0; /* Padding on top and bottom; 0 on sides so image bleeds edge-to-edge */
+    justify-content: space-between;
+    padding: 30px 0; /* Padding top/bottom only */
     background: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     transition: all 0.4s ease;
     text-align: center;
     position: relative;
     z-index: 10;
-    overflow: hidden; /* Clips the full-width image to card boundaries */
+    overflow: hidden;
 }
 
-/* Active Card State */
 .loc-card.active { 
     background: #ffffff; 
     color: #000000; 
     border-color: #ffffff; 
 }
 
-/* Card Header Text / Title */
+/* Header title with side padding */
 .card-title { 
     letter-spacing: 2px; 
     font-size: 14px; 
     color: #ffffff; 
     transition: color 0.3s ease; 
-    padding: 0 20px; /* Kept inside card bounds */
+    padding: 0 20px;
 }
 
 .loc-card.active .card-title { 
     color: #000000; 
 }
 
-/* Fixed Height & Edge-to-Edge Image (Bleeds Left & Right) */
+/* Full-Bleed Image (Spans 100% card width) */
 .loc-card img { 
     display: none; 
-    width: 100%;           /* Extends edge-to-edge left to right */
-    height: 220px;         /* Fixed height */
-    object-fit: cover;     /* Crops neatly without distortion */
-    margin: 15px 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);    /* Optional crisp border top/bottom */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    width: 100% !important; /* Full edge-to-edge width */
+    height: 230px;
+    object-fit: cover;
+    margin: 20px 0;
+    border: none;
 }
 
 .loc-card.active img { 
     display: block; 
 }
 
-/* Card Reveal Content & CTA */
+/* Lower text content block with side padding */
 .card-reveal { 
     display: none; 
-    padding: 0 20px;
+    padding: 0 25px; /* Side padding kept strictly for paragraph & button */
 }
 
 .loc-card.active .card-reveal { 
@@ -545,22 +545,22 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 .view-btn { 
     display: inline-block; 
-    margin-top: 10px; 
-    padding: 10px 22px; 
+    margin-top: 15px; 
+    padding: 12px 24px; 
+    background: #000000;
+    color: #ffffff; 
     border: 1px solid #000000; 
     text-decoration: none; 
-    color: #000000; 
     font-size: 10px; 
     letter-spacing: 2px; 
     text-transform: uppercase; 
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .view-btn:hover {
-    background: #000000;
-    color: #ffffff;
+    background: transparent;
+    color: #000000;
 }
-
 
 
 
