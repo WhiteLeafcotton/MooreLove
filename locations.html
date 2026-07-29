@@ -3,85 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOORE — Locations</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>Locations</title>
+    <link rel="stylesheet" href="locations.css">
+    
+    <!-- GSAP for smooth animated reveals -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 </head>
-<body class="locations-page">
+<body>
 
-    <!-- Main Navigation -->
-    <nav id="mainNav">
-        <div class="nav-logo">MOORE</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="locations.html" class="active">Locations</a></li>
-            <li><a href="#">Lifestyle</a></li>
-            <li><a href="#">Wellness</a></li>
-            <li><a href="#">Support</a></li>
-        </ul>
+    <!-- Fixed Header Navigation Tabs -->
+    <nav class="tab-nav">
+        <div class="tab-container">
+            <button class="nav-tab active" data-section="0">01 / NORTH AMERICA</button>
+            <button class="nav-tab" data-section="1">02 / EUROPE</button>
+            <button class="nav-tab" data-section="2">03 / ASIA PACIFIC</button>
+            <button class="nav-tab" data-section="3">04 / LATIN AMERICA</button>
+        </div>
     </nav>
 
-    <!-- Header & Region Filter -->
-    <header class="locations-header">
-        <span class="sub-heading">Global Presence</span>
-        <h1>EXPLORE OUR <span>COMMUNITY</span></h1>
-        
-        <div class="region-tabs">
-            <button class="region-tab active" data-region="north-america">01 / NORTH AMERICA</button>
-            <button class="region-tab" data-region="europe">02 / EUROPE</button>
-            <button class="region-tab" data-region="asia-pacific">03 / ASIA PACIFIC</button>
-            <button class="region-tab" data-region="latin-america">04 / LATIN AMERICA</button>
-        </div>
-    </header>
+    <!-- Main Content Container (Horizontal Swipe / Scroll Snap) -->
+    <main class="locations-wrapper">
 
-    <!-- Interactive Interactive Gallery Container -->
-    <main id="locationsGallery" class="locations-gallery">
-        <div class="cards-container">
-            
-            <!-- Card 1 -->
-            <div class="loc-card active" data-bg="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80">
-                <div class="card-overlay"></div>
-                <div class="card-details">
-                    <span class="card-number">01</span>
-                    <h3>The Reserve at Aspen</h3>
-                    <p class="card-location"><i data-lucide="map-pin"></i> Colorado, USA</p>
-                    <p class="card-desc">Private residential retreat set against panoramic mountain vistas with 24/7 continuous care.</p>
-                    <a href="#" class="card-link">Explore Residence <i data-lucide="arrow-right"></i></a>
-                </div>
+        <!-- ================= SECTION 1 ================= -->
+        <section class="location-section" id="section-0">
+            <div class="section-header">
+                <div class="tab-anchor"></div>
+                <div class="connecting-line"></div>
+                <h1 class="section-title">North America</h1>
+                <p class="section-subtitle">Urban sanctuaries and coastal retreats</p>
             </div>
 
-            <!-- Card 2 -->
-            <div class="loc-card" data-bg="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80">
-                <div class="card-overlay"></div>
-                <div class="card-details">
-                    <span class="card-number">02</span>
-                    <h3>Sonoma Haven</h3>
-                    <p class="card-location"><i data-lucide="map-pin"></i> California, USA</p>
-                    <p class="card-desc">Lush vineyard living focused on holistic wellness, organic dining, and community engagement.</p>
-                    <a href="#" class="card-link">Explore Residence <i data-lucide="arrow-right"></i></a>
+            <div class="content-grid">
+                <!-- Singular Photo with Subtext -->
+                <div class="grid-item photo-card plop-item">
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="New York Haven">
+                    </div>
+                    <h3>Manhattan Flagship</h3>
+                    <p>Designed with natural marble and quiet architecture.</p>
+                </div>
+
+                <!-- Quote Block -->
+                <div class="grid-item quote-card plop-item">
+                    <blockquote>
+                        “A quiet sanctuary amidst the rhythm of the modern metropolis.”
+                    </blockquote>
+                    <cite>— ARCHITECTURAL DIGEST</cite>
+                </div>
+
+                <!-- Thinly Spaced Collage -->
+                <div class="grid-item collage-card plop-item">
+                    <div class="collage-grid">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=500&q=80" alt="Detail 1">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=500&q=80" alt="Detail 2">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80" alt="Detail 3">
+                    </div>
+                    <span class="caption">Interior Materiality & Light</span>
+                </div>
+
+                <!-- Video Card -->
+                <div class="grid-item video-card plop-item">
+                    <div class="video-wrapper">
+                        <video autoplay loop muted playsinline>
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-architecture-41558-large.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <h3>Pacific Heights</h3>
+                    <p>San Francisco, CA</p>
                 </div>
             </div>
+        </section>
 
-            <!-- Card 3 -->
-            <div class="loc-card" data-bg="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80">
-                <div class="card-overlay"></div>
-                <div class="card-details">
-                    <span class="card-number">03</span>
-                    <h3>Oceanfront Sanctuary</h3>
-                    <p class="card-location"><i data-lucide="map-pin"></i> Florida, USA</p>
-                    <p class="card-desc">Coastal luxury combined with comprehensive clinical staffing and tailored support services.</p>
-                    <a href="#" class="card-link">Explore Residence <i data-lucide="arrow-right"></i></a>
-                </div>
+        <!-- ================= SECTION 2 ================= -->
+        <section class="location-section" id="section-1">
+            <div class="section-header">
+                <div class="tab-anchor"></div>
+                <div class="connecting-line"></div>
+                <h1 class="section-title">Europe</h1>
+                <p class="section-subtitle">Historic elegance blended with minimalist craft</p>
             </div>
 
-        </div>
+            <div class="content-grid">
+                <div class="grid-item quote-card plop-item">
+                    <blockquote>
+                        “Restoring heritage with subtle modern refinements.”
+                    </blockquote>
+                    <cite>— MONOCLE</cite>
+                </div>
+
+                <div class="grid-item photo-card plop-item">
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Paris Studio">
+                    </div>
+                    <h3>Le Marais Atelier</h3>
+                    <p>Paris, France</p>
+                </div>
+
+                <div class="grid-item collage-card plop-item">
+                    <div class="collage-grid">
+                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=500&q=80" alt="Spa Detail">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=500&q=80" alt="Courtyard">
+                        <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=500&q=80" alt="Lounge">
+                    </div>
+                    <span class="caption">Atelier Spaces</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 3 ================= -->
+        <section class="location-section" id="section-2">
+            <div class="section-header">
+                <div class="tab-anchor"></div>
+                <div class="connecting-line"></div>
+                <h1 class="section-title">Asia Pacific</h1>
+                <p class="section-subtitle">Harmonious spaces rooted in local tradition</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="grid-item photo-card plop-item">
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80" alt="Kyoto Sanctuary">
+                    </div>
+                    <h3>Kyoto Gardens</h3>
+                    <p>Kyoto, Japan</p>
+                </div>
+
+                <div class="grid-item quote-card plop-item">
+                    <blockquote>
+                        “Where nature and structure existing in continuous dialogue.”
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 4 ================= -->
+        <section class="location-section" id="section-3">
+            <div class="section-header">
+                <div class="tab-anchor"></div>
+                <div class="connecting-line"></div>
+                <h1 class="section-title">Latin America</h1>
+                <p class="section-subtitle">Earthy palettes and open air living</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="grid-item photo-card plop-item">
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=800&q=80" alt="Tulum Villa">
+                    </div>
+                    <h3>Tulum Retreat</h3>
+                    <p>Quintana Roo, Mexico</p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <script src="script.js"></script>
-    <script>
-        // Initialize icons
-        lucide.createIcons();
-    </script>
+    <script src="locations.js"></script>
 </body>
 </html>
