@@ -203,10 +203,10 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 featuredCard.classList.add("is-visible");
-                observer.unobserve(featuredCard); // Ensures smooth single execution
+                observer.unobserve(featuredCard); // Triggers reveal once
             }
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.25 });
 
     observer.observe(featuredCard);
 });
