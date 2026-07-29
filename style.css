@@ -230,179 +230,58 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
   FEATURED CARD - OPTION 6: MONOLITH ELEVATION & SHIMMER
 ==================================================*/
 
-/* 1. Wrapper Layer */
-.featured-card-wrapper {
-    padding: 80px 4%;
-    background: #080808;
-    display: flex;
-    justify-content: center;
-    perspective: 1200px; /* Provides rich visual depth */
-}
+/* FEATURED CARD STYLE */
+.featured-card-wrapper { padding: 60px 4%; background: #080808; display: flex; justify-content: center; }
+.featured-card { position: relative; width: 100%; max-width: 1600px; height: 300px; background: linear-gradient(to right, rgba(8,8,8,0.8) 0%, transparent 40%, transparent 100%), url('banner.jpg') center/cover no-repeat; display: flex; align-items: center; padding: 0 5%; border: 0.5px solid rgba(255, 255, 255, 0.2); overflow: hidden; }
+.card-content { position: relative; z-index: 2; max-width: 450px; color: #fff; }
 
-/* 2. Featured Card Base & Option 6 Entry State */
-.featured-card {
-    position: relative;
-    width: 100%;
-    max-width: 1600px;
-    min-height: 380px;
-    background: linear-gradient(135deg, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.85) 100%), 
-                url('banner.jpg') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    padding: 60px 6%;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    overflow: hidden;
-
-    /* Option 6 Entry Hidden State */
-    opacity: 0;
-    transform: translateY(40px) scale(0.97);
-    filter: blur(8px);
-    
-    /* Unified Smooth Transitions for Entrance + Hover Interaction */
-    transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.6s ease,
-                box-shadow 0.6s ease;
-    will-change: transform, opacity, filter;
-}
-
-/* 3. Option 6 Scroll Reveal Triggered State */
-.featured-card.is-visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0px);
-    border-color: rgba(255, 255, 255, 0.15);
-}
-
-/* 4. Luxury Hover Elevation & Ambient Glow */
-.featured-card.is-visible:hover {
-    border-color: rgba(255, 255, 255, 0.35);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 
-                0 0 40px rgba(92, 84, 107, 0.25);
-    transform: translateY(-4px) scale(1.005);
-}
-
-/* 5. Light Sweep (Shimmer Effect) */
-.featured-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -150%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.08),
-        transparent
-    );
-    transform: skewX(-25deg);
-    transition: left 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: none;
-    z-index: 1;
-}
-
-.featured-card:hover::before {
-    left: 150%;
-}
-
-/* 6. Text & Content Layer Staggering */
-.card-content {
-    position: relative;
-    z-index: 5;
-    max-width: 620px;
-    color: #fff;
-}
-
+/* Original Styles + Initial State for Reveal Animation */
 .card-content i,
 .card-content h3,
 .card-content p,
 .card-content .card-btn {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
-                color 0.3s ease,
-                background-color 0.3s ease,
-                border-color 0.3s ease;
-    will-change: transform, opacity;
+    transform: translateY(20px);
+    will-change: opacity, transform;
 }
 
-/* Cascade Timings (Starts as Card Unveils) */
+.card-content i { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 18px; margin-bottom: 15px; display: block; }
+.card-content h3 { font-family: "Inter", sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; font-weight: 500; }
+.card-content p { font-family: "Cormorant Garamond", serif; font-size: 24px; line-height: 1.3; margin-bottom: 30px; color: #fff; }
+.card-btn { display: inline-block; padding: 12px 35px; background: #fff; color: #000; text-decoration: none; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; transition: background 0.3s, color 0.3s; }
+.card-btn:hover { background: #5C546B; color: #fff; }
+
+/* Keyframe Definition */
+@keyframes fadeUp { 
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    } 
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+}
+
+/* Staggered Text Reveal when .is-visible is added to .featured-card */
 .featured-card.is-visible .card-content i {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.2s;
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.1s;
 }
 
 .featured-card.is-visible .card-content h3 {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.35s;
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.25s;
 }
 
 .featured-card.is-visible .card-content p {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.5s;
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.4s;
 }
 
 .featured-card.is-visible .card-content .card-btn {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.65s;
-}
-
-/* 7. Classy Glass CTA Button */
-.card-btn {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 44px;
-    background: transparent;
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    text-decoration: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-weight: 500;
-    overflow: hidden;
-}
-
-.card-btn::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: #ffffff;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: -1;
-}
-
-.card-btn:hover {
-    color: #080808;
-    border-color: #ffffff;
-    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
-}
-
-.card-btn:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    .featured-card-wrapper { padding: 40px 4%; }
-    .featured-card { 
-        padding: 40px 6%;
-        min-height: auto;
-    }
-    .card-btn { padding: 14px 32px; width: 100%; text-align: center; }
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.55s;
 }
 /* MOSAIC SECTION */
 /* MOSAIC SECTION - UPDATED FOR SIZE AND SPACING */
