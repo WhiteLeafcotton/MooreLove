@@ -210,3 +210,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     observer.observe(featuredCard);
 });
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const featuredCard = document.querySelector(".featured-card");
+    if (!featuredCard) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                featuredCard.classList.add("is-visible");
+                observer.unobserve(featuredCard);
+            }
+        });
+    }, { threshold: 0.25 });
+
+    observer.observe(featuredCard);
+});
