@@ -19,64 +19,101 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 2. Hero Content, Logo Hiding & Image Swapping Logic
     // ==========================================
-    const iconItems = document.querySelectorAll('.icon-item');
-    const heroSection = document.querySelector('.hero');
-    const heroVideo = document.getElementById('heroVideo');
-    const heroLogo = document.querySelector('.hero-logo');
-    const heroTitle = document.getElementById('heroTitle') || document.querySelector('.hero-content h1');
-    const heroBtn = document.getElementById('heroButton') || document.querySelector('.hero-button');
-    const activeLine = document.getElementById("activeLine");
+    // ==========================================
+// 2. Heavy & Cinematic Image Cross-Fade Logic
+// ==========================================
+const iconItems = document.querySelectorAll('.icon-item');
+const heroVideo = document.getElementById('heroVideo');
+const heroLogo = document.querySelector('.hero-logo');
+const heroTitle = document.getElementById('heroTitle') || document.querySelector('.hero-content h1');
+const heroBtn = document.getElementById('heroButton') || document.querySelector('.hero-button');
+const activeLine = document.getElementById("activeLine");
 
-    function updateHeroContent(item) {
-        // Hide initial logo SVG/text block
-        if (heroLogo) {
-            heroLogo.classList.add('hidden');
-        }
+// Cross-fade dual layers
+const bgA = document.getElementById('heroBgA');
+const bgB = document.getElementById('heroBgB');
+let currentBg = 'A'; // Tracks which layer is currently visible
 
-        // Hide video if playing
-        if (heroVideo) {
+function updateHeroContent(item) {
+    // 1. Hide initial logo block smoothly
+    if (heroLogo) {
+        heroLogo.classList.add('hidden');
+    }
+
+    // 2. Hide video smoothly on hover
+    if (heroVideo && heroVideo.style.display !== 'none') {
+        heroVideo.style.transition = 'opacity 1s ease';
+        heroVideo.style.opacity = '0';
+        setTimeout(() => {
             heroVideo.style.display = 'none';
             heroVideo.pause();
-        }
+        }, 1000);
+    }
 
-        // Swap image background
-        if (item.dataset.image) {
-            heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('${item.dataset.image}')`;
-        }
+    // 3. Heavy/Slow Cross-Fade Image Transition
+    const newImage = item.dataset.image;
+    if (newImage) {
+        const bgUrl = `linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('${newImage}')`;
 
-        // Swap dynamic headline and button text
-        if (heroTitle && item.dataset.title) {
-            heroTitle.innerHTML = item.dataset.title;
-        }
-        if (heroBtn && item.dataset.cta) {
-            heroBtn.innerText = item.dataset.cta;
-        }
-
-        // Update active tab styling & indicator line
-        iconItems.forEach(icon => icon.classList.remove('active'));
-        item.classList.add('active');
-
-        if (activeLine) {
-            activeLine.style.width = item.offsetWidth + "px";
-            activeLine.style.left = item.offsetLeft + "px";
+        if (currentBg === 'A') {
+            // Prepare Layer B in the background, then fade it in
+            if (bgB) {
+                bgB.style.backgroundImage = bgUrl;
+                bgB.classList.add('active');
+            }
+            if (bgA) bgA.classList.remove('active');
+            currentBg = 'B';
+        } else {
+            // Prepare Layer A in the background, then fade it in
+            if (bgA) {
+                bgA.style.backgroundImage = bgUrl;
+                bgA.classList.add('active');
+            }
+            if (bgB) bgB.classList.remove('active');
+            currentBg = 'A';
         }
     }
 
-    iconItems.forEach((item) => {
-        item.addEventListener('mouseenter', () => updateHeroContent(item));
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            updateHeroContent(item);
-        });
-    });
+    // 4. Smooth Headline & Button Text Swap
+    if (heroTitle && item.dataset.title && heroTitle.innerHTML !== item.dataset.title) {
+        heroTitle.style.opacity = '0';
+        heroTitle.style.transform = 'translateY(8px)';
+        setTimeout(() => {
+            heroTitle.innerHTML = item.dataset.title;
+            heroTitle.style.opacity = '1';
+            heroTitle.style.transform = 'translateY(0)';
+        }, 400); // Swaps midway through image blend
+    }
 
-    // Position initial active line tab
-    setTimeout(() => { 
-        if (activeLine && iconItems.length > 0) {
-            activeLine.style.width = iconItems[0].offsetWidth + "px";
-            activeLine.style.left = iconItems[0].offsetLeft + "px";
-        }
-    }, 100);
+    if (heroBtn && item.dataset.cta && heroBtn.innerText !== item.dataset.cta) {
+        heroBtn.innerText = item.dataset.cta;
+    }
+
+    // 5. Update Active Tab Styling & Slower Line Sliding
+    iconItems.forEach(icon => icon.classList.remove('active'));
+    item.classList.add('active');
+
+    if (activeLine) {
+        activeLine.style.width = item.offsetWidth + "px";
+        activeLine.style.left = item.offsetLeft + "px";
+    }
+}
+
+iconItems.forEach((item) => {
+    item.addEventListener('mouseenter', () => updateHeroContent(item));
+    item.addEventListener('click', (e) => {
+        e.preventDefault();
+        updateHeroContent(item);
+    });
+});
+
+// Position initial active line tab
+setTimeout(() => { 
+    if (activeLine && iconItems.length > 0) {
+        activeLine.style.width = iconItems[0].offsetWidth + "px";
+        activeLine.style.left = iconItems[0].offsetLeft + "px";
+    }
+}, 100);
 
     // ==========================================
     // 3. Featured Card Intersection Observer
