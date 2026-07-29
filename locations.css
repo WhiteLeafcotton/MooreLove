@@ -242,21 +242,21 @@ body {
 /* =================================================== */
 /*             "PLOPPING" ANIMATION STATE             */
 /* =================================================== */
+/* Visible by default so content ALWAYS renders */
 .plop-item,
 .connecting-line,
 .section-title,
 .section-subtitle {
-    opacity: 0;
-    transform: translateY(-40px) scale(0.96);
-    will-change: transform, opacity;
+    opacity: 1;
+    transform: translateY(0) scale(1);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-/* Fallback class if GSAP is disabled */
-.location-section.is-visible .plop-item,
-.location-section.is-visible .connecting-line,
-.location-section.is-visible .section-title,
-.location-section.is-visible .section-subtitle {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+/* Optional GSAP initial state when JS is explicitly active */
+.js-animated .plop-item,
+.js-animated .connecting-line,
+.js-animated .section-title,
+.js-animated .section-subtitle {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.96);
 }
