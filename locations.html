@@ -166,42 +166,89 @@
 
 
             <!-- Footer -->f
-<footer class="site-footer">
-    <div class="footer-container">
-        <div class="footer-top">
+ <footer class="site-footer">
+    <div class="footer-wrapper">
+        
+        <!-- Top Main Row: Brand (Left) | Vertical Divider | Contact Info (Right) -->
+        <div class="footer-top-row">
+            
+            <!-- Left: Hero-Style Stacked Logo -->
             <div class="footer-brand">
-                <span class="footer-logo">MOORE</span>
-                <p class="footer-tagline">Continuous Care & Clinical Staffing</p>
+                <div class="hero-logo stacked-logo">
+                    <div class="logo-top-row">
+                        <span class="strong-title">MOORE</span>
+                        <img class="hero-logo-icon" src="heart.svg" alt="Heart Icon">
+                    </div>
+                    <span class="script-subtitle">love and care</span>
+                </div>
             </div>
-            <div class="footer-nav">
-                <div class="footer-col">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="locations.html">Locations</a></li>
-                        <li><a href="#">Lifestyle</a></li>
-                        <li><a href="#">Wellness</a></li>
-                        <li><a href="#">Support</a></li>
-                    </ul>
+
+            <!-- Center: Thin Vertical Divider Line -->
+            <div class="footer-vertical-divider"></div>
+
+            <!-- Right: Compact Contact Info -->
+            <div class="footer-contact-block">
+                <div class="contact-item">
+                    <i data-lucide="phone" class="contact-icon"></i>
+                    <div>
+                        <span class="contact-label">Admissions</span>
+                        <a href="tel:+12629510165" class="contact-value">(262) 951-0165</a>
+                    </div>
                 </div>
-                <div class="footer-col">
-                    <h4>Regions</h4>
-                    <ul>
-                        <li><a href="#">North America</a></li>
-                        <li><a href="#">Europe</a></li>
-                        <li><a href="#">Asia Pacific</a></li>
-                        <li><a href="#">Latin America</a></li>
-                    </ul>
+
+                <div class="contact-item">
+                    <i data-lucide="mail" class="contact-icon"></i>
+                    <div>
+                        <span class="contact-label">Inquiries</span>
+                        <a href="mailto:inquiries@moorecare.com" class="contact-value">inquiries@moorecare.com</a>
+                    </div>
                 </div>
+
+               
+
+
+            <!-- ADDED 'hide-mobile' CLASS HERE -->
+    <div class="contact-item hide-mobile">
+        <i data-lucide="clock" class="contact-icon"></i>
+        <div>
+            <span class="contact-label">Clinical Desk</span>
+            <span class="contact-value">24/7 Staffing</span>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <!-- Subtext / Tagline Below Main Split -->
+        <p class="footer-subtext">
+            Unparalleled elegance, defined by care. Dedicated to creating timeless sanctuary, continuous clinical support, and personalized wellness across Wisconsin campuses.
+        </p>
+
+        <!-- Divider Line -->
+        <div class="footer-horizontal-line"></div>
+
+        <!-- Bottom Row: 4 Links (Left) & 4 Socials (Right) -->
+        <div class="footer-nav-row">
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Legal</a>
+                <a href="#">Contact</a>
+                <a href="#">Careers</a>
+            </div>
+
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
             </div>
         </div>
+
+        <!-- Copyright Line -->
         <div class="footer-bottom">
-            <p>&copy; 2026 MOORE. All rights reserved.</p>
-            <div class="footer-legal">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-            </div>
+            &copy; 2026 MOORE. All rights reserved. &bull; Equal Housing Opportunity
         </div>
+
     </div>
 </footer>
 
