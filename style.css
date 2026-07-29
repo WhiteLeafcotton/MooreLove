@@ -1107,27 +1107,27 @@ a.contact-value:hover {
    =================================================== */
 /* --- Mobile Specific (Swipe & Scroll) --- */
 
+  
     .locations-gallery {
         display: flex !important;
         flex-direction: row !important;
         overflow-x: auto !important;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
-        touch-action: pan-x !important;
+        /* Enables both horizontal card swiping AND vertical page scrolling */
+        touch-action: pan-x pan-y !important;
         justify-content: flex-start !important;
         padding: 40px 10vw !important;
     }
 
     .loc-card {
-        flex: 0 0 80vw !important; /* Mobile width */
+        flex: 0 0 80vw !important;
         height: 420px !important;
         scroll-snap-align: center;
         margin: 0 10px !important;
+        touch-action: pan-x pan-y !important;
     }
 
-    .loc-card img {
-        height: 180px !important; /* Mobile fixed image height */
-    }
 
     /* ===================================================
    COMPACT MOBILE FOOTER (MINIATURE DESKTOP SPLIT)
