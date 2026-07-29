@@ -471,6 +471,23 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
    LOCATIONS GALLERY (Frameless Full-Bleed Image)
    ================================================== */
 /* Container padding top/bottom only */
+/* ==================================================
+   LOCATIONS GALLERY (Touch Scroll Optimized)
+   ================================================== */
+.locations-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 60px 4%;
+    background: #000;
+    transition: background 0.5s ease;
+    position: relative;
+    overflow: hidden;
+    /* Allows natural vertical page scrolling over the gallery */
+    touch-action: pan-y;
+}
+
 .loc-card {
     flex: 0 0 320px;
     height: 480px;
@@ -479,7 +496,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 30px 0; /* No horizontal padding on card container */
+    padding: 30px 0;
     background: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     transition: all 0.4s ease;
@@ -487,6 +504,8 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     position: relative;
     z-index: 10;
     overflow: hidden;
+    /* Ensures touch events pass vertical movement up to the browser */
+    touch-action: pan-y;
 }
 
 /* Title text with padding */
