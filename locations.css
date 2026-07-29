@@ -49,7 +49,7 @@ body {
 .nav-tab.active,
 .nav-tab:hover {
     color: #000000;
-    background: #F5F5F7;
+    background: #9A8C9E;
 }
 
 /* =================================================== */
@@ -100,14 +100,14 @@ body {
     width: 24px;
     height: 8px;
     border: 1px solid #111111;
-    background-color: #111111;
+    background-color: ##6E6280;
 }
 
 /* Thin drop line leading to the title */
 .connecting-line {
     width: 1px;
     height: 50px;
-    background: linear-gradient(to bottom, #111111, rgba(0, 0, 0, 0.15));
+    background: linear-gradient(to bottom, #6E6280, rgba(0, 0, 0, 0.15));
     margin: 0 auto;
 }
 
