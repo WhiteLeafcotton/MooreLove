@@ -229,7 +229,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /*==================================================
   FEATURED CARD - OPTION 6: MONOLITH ELEVATION & SHIMMER
 ==================================================*/
-
 /* FEATURED CARD STYLE */
 .featured-card-wrapper { 
     padding: 60px 4%; 
@@ -258,7 +257,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     color: #fff; 
 }
 
-/* Entry Animation Base States */
+/* Base Initial States for Entry Reveal */
 .card-content i,
 .card-content h3,
 .card-content p,
@@ -294,14 +293,13 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 /* STRICT FIXED BUTTON SIZE */
-/* FIXED STRICT BUTTON CONTAINER */
 .card-btn { 
     position: relative;
     display: inline-flex !important; 
     align-items: center;
     justify-content: center;
-    width: 220px !important;       /* Fixed Width for Desktop & Mobile */
-    max-width: 100%;               /* Ensures fit on small mobile screens */
+    width: 220px !important;       /* Fixed Width */
+    max-width: 100%;               
     height: 48px !important;      /* Fixed Height */
     text-decoration: none; 
     font-family: "Inter", sans-serif;
@@ -310,7 +308,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     text-transform: uppercase; 
     font-weight: 600; 
     border: 1px solid rgba(255, 255, 255, 0.4);
-    overflow: hidden !important;   /* Clips extra off-screen text */
+    overflow: hidden !important;   
     background: #ffffff;
     box-sizing: border-box;
 }
@@ -332,12 +330,12 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     inset: 0;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 10;                  /* Higher Z-Index guarantees visibility over slider */
     overflow: hidden;
     pointer-events: none;
 }
 
-/* ABSOLUTE POSITIONING PREVENTS TRIPLE STACKING */
+/* ABSOLUTE POSITIONING FOR TEXT PHRASES */
 .btn-text {
     position: absolute;
     inset: 0;
@@ -353,20 +351,22 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     will-change: transform, opacity;
 }
 
-/* Initial visible state for first text */
+/* Initial state for first phrase */
 .text-1 {
     transform: translateX(0);
     opacity: 1;
     color: #000000;
 }
 
-/* ENTRY FADE-UP */
+/* KEYFRAMES */
+
+/* Card text entry */
 @keyframes fadeUp { 
     from { opacity: 0; transform: translateY(20px); } 
     to { opacity: 1; transform: translateY(0); } 
 }
 
-/* BACKGROUND COLOR CYCLE */
+/* Background Color Switching */
 @keyframes btnBaseBgLoop {
     0%, 30% { background-color: #ffffff; }
     33%, 63% { background-color: #1e1e24; } /* Dark Slate */
@@ -374,7 +374,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     100% { background-color: #ffffff; }
 }
 
-/* SLIDE BLOCK WIPING MOTION */
+/* Slide Block Motion */
 @keyframes slideBlockWipe {
     0%, 28% {
         transform: translateX(-101%);
@@ -399,7 +399,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     }
 }
 
-/* INDIVIDUAL TEXT SLIDES */
+/* Text Slide Motion */
 @keyframes text1Slide {
     0%, 28% { transform: translateX(0); opacity: 1; color: #000; }
     30% { transform: translateX(-100%); opacity: 0; color: #000; }
@@ -421,7 +421,19 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     100% { transform: translateX(100%); opacity: 0; color: #111; }
 }
 
-/* TRIGGER ANIMATIONS */
+/* TRIGGER ANIMATIONS (Added back i, h3, p triggers) */
+.featured-card.is-visible .card-content i {
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.1s;
+}
+
+.featured-card.is-visible .card-content h3 {
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.25s;
+}
+
+.featured-card.is-visible .card-content p {
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
+}
+
 .featured-card.is-visible .card-content .card-btn {
     animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards,
                btnBaseBgLoop 9s step-end 1.5s infinite;
