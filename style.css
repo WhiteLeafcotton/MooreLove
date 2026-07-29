@@ -235,7 +235,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .featured-card { position: relative; width: 100%; max-width: 1600px; height: 300px; background: linear-gradient(to right, rgba(8,8,8,0.8) 0%, transparent 40%, transparent 100%), url('banner.jpg') center/cover no-repeat; display: flex; align-items: center; padding: 0 5%; border: 0.5px solid rgba(255, 255, 255, 0.2); overflow: hidden; }
 .card-content { position: relative; z-index: 2; max-width: 450px; color: #fff; }
 
-/* Original Styles + Initial State for Reveal Animation */
+/* Initial States for Reveal */
 .card-content i,
 .card-content h3,
 .card-content p,
@@ -248,10 +248,27 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .card-content i { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 18px; margin-bottom: 15px; display: block; }
 .card-content h3 { font-family: "Inter", sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; font-weight: 500; }
 .card-content p { font-family: "Cormorant Garamond", serif; font-size: 24px; line-height: 1.3; margin-bottom: 30px; color: #fff; }
-.card-btn { display: inline-block; padding: 12px 35px; background: #fff; color: #000; text-decoration: none; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; transition: background 0.3s, color 0.3s; }
-.card-btn:hover { background: #5C546B; color: #fff; }
 
-/* Keyframe Definition */
+/* Dynamic CTA Button Base */
+.card-btn { 
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    padding: 12px 35px; 
+    text-decoration: none; 
+    font-family: "Inter", sans-serif;
+    font-size: 10px; 
+    letter-spacing: 3px; 
+    text-transform: uppercase; 
+    font-weight: 600; 
+    border: 1px solid transparent;
+}
+
+.card-btn .btn-text {
+    display: inline-block;
+}
+
+/* 1. Entry FadeUp Keyframe */
 @keyframes fadeUp { 
     from { 
         opacity: 0; 
@@ -263,7 +280,66 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     } 
 }
 
-/* Staggered Text Reveal when .is-visible is added to .featured-card */
+/* 2. Infinite Color Cycling Keyframe (White -> Dark Slate -> Lavender) */
+@keyframes ctaColorLoop {
+    0%, 28% {
+        background-color: #ffffff;
+        color: #000000;
+        border-color: #ffffff;
+    }
+    33%, 61% {
+        background-color: #1e1e24; /* Dark Slate */
+        color: #ffffff;
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+    66%, 94% {
+        background-color: #e6e4ce; /* Soft Light Lavender / Cream */
+        color: #1a1a1a;
+        border-color: #e6e4ce;
+    }
+    100% {
+        background-color: #ffffff;
+        color: #000000;
+        border-color: #ffffff;
+    }
+}
+
+/* 3. Text Shift Keyframe (Matches colors above) */
+@keyframes ctaTextLoop {
+    0%, 28% {
+        content: "Explore Support";
+        opacity: 1;
+    }
+    30%, 31% {
+        opacity: 0;
+    }
+    33%, 61% {
+        content: "Continuous Care";
+        opacity: 1;
+    }
+    63%, 64% {
+        opacity: 0;
+    }
+    66%, 94% {
+        content: "Learn More";
+        opacity: 1;
+    }
+    96%, 97% {
+        opacity: 0;
+    }
+    100% {
+        content: "Explore Support";
+        opacity: 1;
+    }
+}
+
+.card-btn .btn-text::before {
+    content: "Explore Support";
+    display: inline-block;
+    transition: opacity 0.3s ease;
+}
+
+/* Staggered Entry Animations */
 .featured-card.is-visible .card-content i {
     animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     animation-delay: 0.1s;
@@ -279,9 +355,14 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     animation-delay: 0.4s;
 }
 
+/* Button Reveals First, then Loops Colors & Text infinitely */
 .featured-card.is-visible .card-content .card-btn {
-    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: 0.55s;
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards,
+               ctaColorLoop 9s ease-in-out 1.6s infinite;
+}
+
+.featured-card.is-visible .card-content .card-btn .btn-text::before {
+    animation: ctaTextLoop 9s ease-in-out 1.6s infinite;
 }
 /* MOSAIC SECTION */
 /* MOSAIC SECTION - UPDATED FOR SIZE AND SPACING */
