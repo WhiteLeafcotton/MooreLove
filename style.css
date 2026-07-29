@@ -294,13 +294,15 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 /* STRICT FIXED BUTTON SIZE */
+/* FIXED STRICT BUTTON CONTAINER */
 .card-btn { 
     position: relative;
     display: inline-flex !important; 
     align-items: center;
     justify-content: center;
-    width: 220px;       /* Fixed Width */
-    height: 48px;       /* Fixed Height */
+    width: 220px !important;       /* Fixed Width for Desktop & Mobile */
+    max-width: 100%;               /* Ensures fit on small mobile screens */
+    height: 48px !important;      /* Fixed Height */
     text-decoration: none; 
     font-family: "Inter", sans-serif;
     font-size: 10px; 
@@ -308,11 +310,12 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     text-transform: uppercase; 
     font-weight: 600; 
     border: 1px solid rgba(255, 255, 255, 0.4);
-    overflow: hidden;   /* Clips the sliding block */
+    overflow: hidden !important;   /* Clips extra off-screen text */
     background: #ffffff;
+    box-sizing: border-box;
 }
 
-/* 1. SLIDING BLOCK OVERLAY */
+/* SLIDING BLOCK OVERLAY */
 .btn-slide-block {
     position: absolute;
     inset: 0;
@@ -320,43 +323,50 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     height: 100%;
     z-index: 1;
     transform: translateX(-101%);
+    pointer-events: none;
 }
 
-/* 2. TEXT WRAPPER & SLIDING POSITIONS */
+/* RELATIVE WRAPPER FOR PERFECT CENTERED STACKING */
 .btn-text-wrapper {
-    position: relative;
-    z-index: 2;
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
+    z-index: 2;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* ABSOLUTE POSITIONING PREVENTS TRIPLE STACKING */
+.btn-text {
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.btn-text {
-    position: absolute;
     width: 100%;
+    height: 100%;
     text-align: center;
     white-space: nowrap;
-    transform: translateX(100%);
     opacity: 0;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+    transform: translateX(100%);
+    will-change: transform, opacity;
 }
 
-/* Initial visible state for first label */
+/* Initial visible state for first text */
 .text-1 {
     transform: translateX(0);
     opacity: 1;
     color: #000000;
 }
 
-/* ENTRY FADE-UP ANIMATION */
+/* ENTRY FADE-UP */
 @keyframes fadeUp { 
     from { opacity: 0; transform: translateY(20px); } 
     to { opacity: 1; transform: translateY(0); } 
 }
 
-/* BACKGROUND COLOR SWITCHES MATCHING THE SLIDE */
+/* BACKGROUND COLOR CYCLE */
 @keyframes btnBaseBgLoop {
     0%, 30% { background-color: #ffffff; }
     33%, 63% { background-color: #1e1e24; } /* Dark Slate */
@@ -364,33 +374,32 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     100% { background-color: #ffffff; }
 }
 
-/* SLIDING BLOCK MOTION (Slides across left to right to reveal next state) */
+/* SLIDE BLOCK WIPING MOTION */
 @keyframes slideBlockWipe {
     0%, 28% {
         transform: translateX(-101%);
-        background-color: #1e1e24; /* Slate wipes over White */
+        background-color: #1e1e24;
     }
     33% {
         transform: translateX(0%);
     }
     34%, 61% {
         transform: translateX(-101%);
-        background-color: #DCD6EC; /* Lavender wipes over Slate */
+        background-color: #DCD6EC;
     }
     66% {
         transform: translateX(0%);
     }
     67%, 94% {
         transform: translateX(-101%);
-        background-color: #ffffff; /* White wipes over Lavender */
+        background-color: #ffffff;
     }
     99%, 100% {
         transform: translateX(0%);
     }
 }
 
-/* TEXT SLIDE ANIMATIONS */
-/* Text 1: White State */
+/* INDIVIDUAL TEXT SLIDES */
 @keyframes text1Slide {
     0%, 28% { transform: translateX(0); opacity: 1; color: #000; }
     30% { transform: translateX(-100%); opacity: 0; color: #000; }
@@ -398,7 +407,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     98%, 100% { transform: translateX(0); opacity: 1; color: #000; }
 }
 
-/* Text 2: Slate State */
 @keyframes text2Slide {
     0%, 28% { transform: translateX(100%); opacity: 0; color: #fff; }
     33%, 61% { transform: translateX(0); opacity: 1; color: #fff; }
@@ -406,7 +414,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     100% { transform: translateX(100%); opacity: 0; color: #fff; }
 }
 
-/* Text 3: Lavender State */
 @keyframes text3Slide {
     0%, 61% { transform: translateX(100%); opacity: 0; color: #111; }
     66%, 94% { transform: translateX(0); opacity: 1; color: #111; }
@@ -414,20 +421,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     100% { transform: translateX(100%); opacity: 0; color: #111; }
 }
 
-
-/* TRIGGER ANIMATIONS ON VIEW */
-.featured-card.is-visible .card-content i {
-    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.1s;
-}
-
-.featured-card.is-visible .card-content h3 {
-    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.25s;
-}
-
-.featured-card.is-visible .card-content p {
-    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
-}
-
+/* TRIGGER ANIMATIONS */
 .featured-card.is-visible .card-content .card-btn {
     animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards,
                btnBaseBgLoop 9s step-end 1.5s infinite;
