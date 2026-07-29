@@ -266,3 +266,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     observer.observe(featuredCard);
 });
+
+
+
+document.querySelectorAll('.icon-item').forEach(item => {
+    item.addEventListener('click', () => {
+        const targetUrl = item.getAttribute('data-href');
+        const ctaButton = document.querySelector('.card-btn');
+
+        if (targetUrl) {
+            ctaButton.setAttribute('href', targetUrl);
+            ctaButton.onclick = () => { window.location.href = targetUrl; };
+        } else {
+            ctaButton.removeAttribute('href');
+            ctaButton.onclick = null;
+        }
+    });
+});
