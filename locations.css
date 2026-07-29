@@ -457,3 +457,58 @@ a.contact-value:hover {
     border-top: 1px solid rgba(255, 255, 255, 0.04);
 
     }
+
+
+
+
+
+
+
+
+
+
+ .footer-contact-block .contact-item:nth-child(3) {
+        display: none !important;
+    }
+
+    .footer-subtext {
+        font-size: 10px !important;
+        line-height: 1.4 !important;
+        margin-bottom: 12px !important;
+    }
+
+    .footer-horizontal-line {
+        margin-bottom: 12px !important;
+    }
+
+    .footer-nav-row {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 10px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .footer-links {
+        gap: 12px !important;
+    }
+
+    .footer-links a {
+        font-size: 8.5px !important;
+        letter-spacing: 1px !important;
+    }
+
+    .footer-social {
+        gap: 12px !important;
+    }
+
+    .footer-social a {
+        font-size: 12px !important;
+    }
+
+    .footer-bottom {
+        font-size: 8px !important;
+        letter-spacing: 1px !important;
+        padding-top: 10px !important;
+    }
+}
