@@ -192,3 +192,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const card = document.querySelector(".featured-card");
+    if (!card) return;
+
+    // 1. Scroll Trigger (Intersection Observer)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                card.classList.add("is-visible");
+            }
+        });
+    }, { threshold: 0.25 });
+
+    observer.observe(card);
+
+    // 2. Subtle 3D Parallax Tilt Effect on Hover (Desktop Only)
+    if (window.innerWidth > 768) {
+        card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            // Subtle degree values (max 6deg)
+            const rotateX = (-y / (rect.height / 2)) * 6;
+            const rotateY = (x / (rect.width / 2)) * 6;
+
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+        });
+    }
+});
