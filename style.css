@@ -1200,480 +1200,422 @@ a.contact-value:hover {
 /* =================================================== */
 MOBILE RESPONSIVE ADAPTATION
 /* =================================================== */
+fix this dont change anything the words in the future section on mobile are not showing plz fix    MOBILE RESPONSIVE ADAPTATION
+/* =================================================== */
 @media (max-width: 768px) {
-    /* Top Bar & Navigation */
-    .top-bar { padding: 15px 4%; }
-    .top-links { gap: 12px; }
-    .nav-inner { gap: 15px; padding: 8px; pointer-events: auto !important; position: relative; z-index: 999999; }
-    .nav-link { font-size: 9px; letter-spacing: 1px; }
+    /* Top Bar & Navigation */
+    .top-bar { padding: 15px 4%; }
+    .top-links { gap: 12px; }
+    .nav-inner { gap: 15px; padding: 8px; pointer-events: auto !important; position: relative; z-index: 999999; }
+    .nav-link { font-size: 9px; letter-spacing: 1px; }
 
-    /* Mobile Logo Scaling & Positioning */
-    .hero-logo.hidden .strong-title,
-    .hero-logo.hidden .script-subtitle {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-    }
+    /* Mobile Logo Scaling & Positioning */
+    .hero-logo.hidden .strong-title,
+    .hero-logo.hidden .script-subtitle {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+    }
 
-    .hero-logo.hidden .hero-logo-icon {
-        display: block !important;
-        opacity: 0.9 !important;
-        visibility: visible !important;
-        width: 32px !important;
-        height: 32px !important;
-    }
+    .hero-logo.hidden .hero-logo-icon {
+        display: block !important;
+        opacity: 0.9 !important;
+        visibility: visible !important;
+        width: 32px !important;
+        height: 32px !important;
+    }
 
-    .hero-logo.stacked-logo,
-    .hero-logo.stacked-logo:not(.hidden) {
-        display: inline-flex !important;
-        gap: 14px !important;
-        margin-bottom: 20px;
-    }
+    .hero-logo.stacked-logo,
+    .hero-logo.stacked-logo:not(.hidden) {
+        display: inline-flex !important;
+        gap: 14px !important;
+        margin-bottom: 20px;
+    }
 
-    .hero-logo .strong-title {
-        font-size: 38px !important;
-        letter-spacing: 6px !important;
-    }
+    .hero-logo .strong-title {
+        font-size: 38px !important;
+        letter-spacing: 6px !important;
+    }
 
-    .hero-logo-icon {
-        width: 32px !important;
-        height: 32px !important;
-    }
+    .hero-logo-icon {
+        width: 32px !important;
+        height: 32px !important;
+    }
 
-    .hero-logo .script-subtitle {
-        font-size: 30px !important;
-        bottom: -24px !important;
-        left: 15% !important;
-        color: #ffffff !important;
-    }
+    .hero-logo .script-subtitle {
+        font-size: 30px !important;
+        bottom: -24px !important;
+        left: 15% !important;
+        color: #ffffff !important;
+    }
 
-    /* Featured Card */
-    /* ==========================================
-       FEATURED CARD & REVEAL FIX (MOBILE)
-    ========================================== */
-    .featured-card-wrapper { 
-        padding: 25px 4% !important; 
-        width: 100% !important;
-    }
+    /* Featured Card */
+    .featured-card-wrapper { padding: 25px 4%; }
+    .featured-card { 
+        height: auto; 
+        display: block; 
+        background: none; 
+        padding: 0; 
+        border: none; 
+    }
+    .featured-card::before { 
+        content: ""; 
+        display: block; 
+        width: 100%; 
+        height: 120px; 
+        background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), url('banner.jpg') center/cover no-repeat; 
+        border: 0.5px solid rgba(255, 255, 255, 0.2); 
+        margin-bottom: 15px; 
+    }
+    
+    /* ==========================================
+       COMPACT MOSAIC SECTION (MOBILE)
+    ========================================== */
+ /* Compact Mosaic Section Container */
+    /* Scoped Mosaic Section Container */
+   /* Scoped Mosaic Section Container */
+    /* 1. Scoped Mobile Mosaic Section Window Container */
+    .mosaic-section {
+        padding: 20px 4% !important;
+        min-height: auto !important;
+        position: relative !important;
+        background: #080808 !important; /* Prevents rubber-band bleed */
+        
+        /* THE FIX FOR MOBILE PARALLAX:
+           This creates a clipping window so the fixed image stays 
+           stationary while scrolling, but clips strictly to this section. */
+        clip-path: inset(0 0 0 0) !important;
+        -webkit-clip-path: inset(0 0 0 0) !important;
+    }
 
-    .featured-card { 
-        height: auto !important; 
-        display: flex !important; 
-        flex-direction: column !important;
-        background: none !important; 
-        padding: 0 !important; 
-        border: none !important; 
-        opacity: 1 !important;              /* Force card visibility */
-        transform: none !important;         /* Prevent stuck transforms */
-        visibility: visible !important;
-    }
+    /* 2. Fixed Image Layer (Creates the stationary "behind" image) */
+    .mosaic-bg-layer {
+        display: block !important;
+        position: fixed !important; /* Fixed to mobile screen viewport */
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: url('final2.jpg') center/cover no-repeat !important;
+        z-index: -1 !important;
+        pointer-events: none !important;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
 
-    /* Restores banner card height so it isn't too thin */
-    .featured-card::before { 
-        content: ""; 
-        display: block; 
-        width: 100%; 
-        height: 220px !important;           /* Increased from 120px */
-        aspect-ratio: 16 / 9;
-        background: linear-gradient(to bottom, rgba(8,8,8,0) 40%, rgba(8,8,8,0.95) 100%), url('banner.jpg') center/cover no-repeat !important; 
-        border: 0.5px solid rgba(255, 255, 255, 0.2); 
-        border-radius: 8px;
-        margin-bottom: 18px; 
-    }
+    /* 3. Edge Overlay Blurs */
+    .mosaic-section::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 35px !important;
+        background: linear-gradient(to bottom, #080808, transparent);
+        z-index: 2;
+        pointer-events: none;
+    }
 
-    /* Force all text elements inside the feature card to reveal on mobile */
-    .featured-card *,
-    .featured-card-wrapper * {
-        opacity: 1 !important;
-        visibility: visible !important;
-        transform: none !important;
-    }
+    .mosaic-bottom-blur {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 35px !important;
+        background: linear-gradient(to top, #080808, transparent);
+        z-index: 2;
+        pointer-events: none;
+    }
 
-    .featured-card h2,
-    .featured-card h3,
-    .featured-card .title {
-        font-size: 1.6rem !important;
-        line-height: 1.25 !important;
-        color: #ffffff !important;
-        margin-bottom: 10px !important;
-    }
+    /* 4. 2 Rows x 3 Columns Grid Layout */
+    .mosaic-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 8px !important;
+        width: 100%;
+        margin: 10px 0 !important;
+        position: relative;
+        z-index: 3;
+    }
 
-    .featured-card p,
-    .featured-card .description {
-        font-size: 0.95rem !important;
-        line-height: 1.5 !important;
-        color: rgba(255, 255, 255, 0.8) !important;
-        margin-bottom: 15px !important;
-    }
-    
-    /* ==========================================
-        COMPACT MOSAIC SECTION (MOBILE)
-    ========================================== */
-    .mosaic-section {
-        padding: 20px 4% !important;
-        min-height: auto !important;
-        position: relative !important;
-        background: #080808 !important; /* Prevents rubber-band bleed */
-        
-        /* THE FIX FOR MOBILE PARALLAX:
-           This creates a clipping window so the fixed image stays 
-           stationary while scrolling, but clips strictly to this section. */
-        clip-path: inset(0 0 0 0) !important;
-        -webkit-clip-path: inset(0 0 0 0) !important;
-    }
+    /* 5. Square Tiles Sizing */
+    .mosaic-grid .tile-card,
+    .tile-card { 
+        padding: 10px 4px !important;
+        aspect-ratio: 1 / 1 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        gap: 6px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        pointer-events: auto !important; 
+    }
 
-    /* 2. Fixed Image Layer (Creates the stationary "behind" image) */
-    .mosaic-bg-layer {
-        display: block !important;
-        position: fixed !important; /* Fixed to mobile screen viewport */
-        top: 0 !important;
-        left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        background: url('final2.jpg') center/cover no-repeat !important;
-        z-index: -1 !important;
-        pointer-events: none !important;
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
-    }
+    /* Tile Icons */
+    .tile-card i, 
+    .tile-card svg,
+    .tile-card img { 
+        width: 22px !important; 
+        height: 22px !important; 
+        font-size: 22px !important;
+        margin: 0 !important;
+    }
 
-    /* 3. Edge Overlay Blurs */
-    .mosaic-section::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 35px !important;
-        background: linear-gradient(to bottom, #080808, transparent);
-        z-index: 2;
-        pointer-events: none;
-    }
+    /* Tile Text Labels */
+    .tile-card span,
+    .tile-card p { 
+        font-size: 10px !important; 
+        line-height: 1.15 !important;
+        letter-spacing: 0.3px !important;
+        text-align: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
 
-    .mosaic-bottom-blur {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 35px !important;
-        background: linear-gradient(to top, #080808, transparent);
-        z-index: 2;
-        pointer-events: none;
-    }
+    /* Left-Aligned Footer Container */
+    .mosaic-footer {
+        padding: 1.25rem 0 0.5rem 0 !important;
+        gap: 0.75rem !important;
+        width: 100% !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        position: relative;
+        z-index: 3;
+    }
 
-    /* 4. 2 Rows x 3 Columns Grid Layout */
-    .mosaic-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 8px !important;
-        width: 100%;
-        margin: 10px 0 !important;
-        position: relative;
-        z-index: 3;
-    }
+    /* Title Styling */
+    .mosaic-title {
+        font-size: 1.85rem !important;
+        line-height: 1.2 !important;
+        text-align: left !important;
+    }
 
-    /* 5. Square Tiles Sizing */
-    .mosaic-grid .tile-card,
-    .tile-card { 
-        padding: 10px 4px !important;
-        aspect-ratio: 1 / 1 !important;
-        height: auto !important;
-        min-height: 0 !important;
-        gap: 6px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        pointer-events: auto !important; 
-    }
+    /* Match "Promise." word to parent title */
+    .mosaic-title .script-word {
+        font-family: inherit !important;
+        font-size: inherit !important;
+        font-weight: inherit !important;
+        color: inherit !important;
+        text-transform: none !important;
+        letter-spacing: inherit !important;
+        padding-left: 0 !important;
+        display: inline !important;
+        vertical-align: baseline !important;
+    }
 
-    /* Tile Icons */
-    .tile-card i, 
-    .tile-card svg,
-    .tile-card img { 
-        width: 22px !important; 
-        height: 22px !important; 
-        font-size: 22px !important;
-        margin: 0 !important;
-    }
+    /* Locations Gallery Mobile */
+    
 
-    /* Tile Text Labels */
-    .tile-card span,
-    .tile-card p { 
-        font-size: 10px !important; 
-        line-height: 1.15 !important;
-        letter-spacing: 0.3px !important;
-        text-align: center !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
+    /* Icon Bar Mobile */
+    .icon-item {
+        text-align: center;
+        color: #5C546B;
+        flex: 1;
+        cursor: pointer;
+        transition: .3s;
+        pointer-events: auto; 
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+    }
 
-    /* Left-Aligned Footer Container */
-    .mosaic-footer {
-        padding: 1.25rem 0 0.5rem 0 !important;
-        gap: 0.75rem !important;
-        width: 100% !important;
-        align-items: flex-start !important;
-        text-align: left !important;
-        position: relative;
-        z-index: 3;
-    }
+/* ===================================================
+   COMPACT MOBILE FOOTER (MINIATURE DESKTOP SPLIT)
+   =================================================== */
+/* --- Mobile Specific (Swipe & Scroll) --- */
 
-    /* Title Styling */
-    .mosaic-title {
-        font-size: 1.85rem !important;
-        line-height: 1.2 !important;
-        text-align: left !important;
-    }
+    /* Locations Gallery Mobile Swiping & Vertical Scroll */
+    .locations-gallery {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x pan-y !important; /* Allows horizontal swipe + vertical page scrolling */
+        justify-content: flex-start !important;
+        padding: 40px 10vw !important;
+    }
 
-    /* Match "Promise." word to parent title */
-    .mosaic-title .script-word {
-        font-family: inherit !important;
-        font-size: inherit !important;
-        font-weight: inherit !important;
-        color: inherit !important;
-        text-transform: none !important;
-        letter-spacing: inherit !important;
-        padding-left: 0 !important;
-        display: inline !important;
-        vertical-align: baseline !important;
-    }
+    .loc-card {
+        flex: 0 0 80vw !important; /* Mobile card width */
+        min-height: 420px !important; /* Flexible min-height prevents CTA clipping */
+        height: auto !important;
+        scroll-snap-align: center;
+        margin: 0 10px !important;
+        touch-action: pan-x pan-y !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 24px 0 !important;
+    }
 
-    /* Icon Bar Mobile */
-    .icon-item {
-        text-align: center;
-        color: #5C546B;
-        flex: 1;
-        cursor: pointer;
-        transition: .3s;
-        pointer-events: auto; 
-        -webkit-tap-highlight-color: transparent;
-        user-select: none;
-    }
+    .loc-card img {
+        height: 180px !important; /* Mobile image height */
+        width: 100% !important;
+        object-fit: cover !important;
+        margin: 12px 0 !important;
+    }
 
-    /* Locations Gallery Mobile Swiping & Vertical Scroll */
-    .locations-gallery {
-        display: flex !important;
-        flex-direction: row !important;
-        overflow-x: auto !important;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        touch-action: pan-x pan-y !important; /* Allows horizontal swipe + vertical page scrolling */
-        justify-content: flex-start !important;
-        padding: 40px 10vw !important;
-    }
+    /* CTA Button & Reveal Styling Fix for Mobile */
+    .loc-card .card-reveal {
+        display: none;
+        padding: 0 20px !important;
+        width: 100%;
+        text-align: center;
+    }
 
-    .loc-card {
-        flex: 0 0 80vw !important; /* Mobile card width */
-        min-height: 420px !important; /* Flexible min-height prevents CTA clipping */
-        height: auto !important;
-        scroll-snap-align: center;
-        margin: 0 10px !important;
-        touch-action: pan-x pan-y !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 24px 0 !important;
-    }
+    .loc-card.active .card-reveal {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
 
-    .loc-card img {
-        height: 180px !important; /* Mobile image height */
-        width: 100% !important;
-        object-fit: cover !important;
-        margin: 12px 0 !important;
-    }
+    /* Ensures CTA buttons remain tap-ready and visible */
+    .loc-card .card-btn,
+    .loc-card .cta-button,
+    .loc-card a {
+        display: inline-block !important;
+        position: relative !important;
+        z-index: 10 !important;
+        margin-top: 10px !important;
+        padding: 12px 24px !important;
+        font-size: 10px !important;
+        letter-spacing: 2px !important;
+        pointer-events: auto !important;
+        -webkit-tap-highlight-color: transparent;
+    }
 
-    /* CTA Button & Reveal Styling Fix for Mobile */
-    .loc-card .card-reveal {
-        display: none;
-        padding: 0 20px !important;
-        width: 100%;
-        text-align: center;
-    }
 
-    .loc-card.active .card-reveal {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 12px !important;
-    }
+    /* ===================================================
+   COMPACT MOBILE FOOTER (MINIATURE DESKTOP SPLIT)
+   =================================================== */
 
-    /* Ensures CTA buttons remain tap-ready and visible */
-    .loc-card .card-btn,
-    .loc-card .cta-button,
-    .loc-card a {
-        display: inline-block !important;
-        position: relative !important;
-        z-index: 10 !important;
-        margin-top: 10px !important;
-        padding: 12px 24px !important;
-        font-size: 10px !important;
-        letter-spacing: 2px !important;
-        pointer-events: auto !important;
-        -webkit-tap-highlight-color: transparent;
-    }
+    .site-footer {
+        padding: 25px 4% 15px !important;
+    }
 
-    /* ===================================================
-       TEXT REVEAL SECTION (MOBILE DISPLAY FIX)
-       =================================================== */
-    .text-reveal-section {
-        padding: 60px 20px !important;
-        min-height: auto !important;
-    }
+    /* Keep top row horizontal on mobile */
+    .footer-top-row {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 12px !important;
+        margin-bottom: 14px !important;
+    }
 
-    .text-reveal-section .sub-title {
-        color: #6E6280 !important; /* Dark Slate Purple for high contrast on light background */
-        font-size: 0.85rem !important;
-        letter-spacing: 2px !important;
-        margin-bottom: 12px !important;
-    }
+    /* Scale down left logo block */
+    .footer-brand {
+        flex-shrink: 0;
+    }
 
-    .text-reveal-section .main-title {
-        font-size: 2.2rem !important;
-        line-height: 1.15 !important;
-        margin-bottom: 18px !important;
-    }
+    .footer-brand .logo-top-row {
+        gap: 6px !important;
+    }
 
-    .text-reveal-section .body-text {
-        font-size: 1rem !important;
-        line-height: 1.6 !important;
-        margin-bottom: 24px !important;
-    }
+    .footer-brand .strong-title {
+        font-size: 18px !important;
+        letter-spacing: 4px !important;
+    }
 
-    .text-reveal-section .cta-button {
-        padding: 14px 28px !important;
-        font-size: 0.85rem !important;
-    }
+    .footer-brand .hero-logo-icon {
+        width: 16px !important;
+        height: 16px !important;
+    }
 
-    /* ===================================================
-       COMPACT MOBILE FOOTER (MINIATURE DESKTOP SPLIT)
-       =================================================== */
-    .site-footer {
-        padding: 25px 4% 15px !important;
-    }
+    .footer-brand .script-subtitle {
+        font-size: 14px !important;
+        margin-top: -3px !important;
+        padding-left: 6px !important;
+    }
 
-    /* Keep top row horizontal on mobile */
-    .footer-top-row {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        gap: 12px !important;
-        margin-bottom: 14px !important;
-    }
+    /* Retain vertical divider on mobile */
+    .footer-vertical-divider {
+        display: block !important;
+        height: 36px !important;
+        width: 1px !important;
+        background: rgba(255, 255, 255, 0.2) !important;
+        flex-shrink: 0 !important;
+    }
 
-    /* Scale down left logo block */
-    .footer-brand {
-        flex-shrink: 0;
-    }
+    /* Compact right contact block */
+    .footer-contact-block {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+        flex-wrap: nowrap !important;
+    }
 
-    .footer-brand .logo-top-row {
-        gap: 6px !important;
-    }
+    .contact-item {
+        gap: 6px !important;
+    }
 
-    .footer-brand .strong-title {
-        font-size: 18px !important;
-        letter-spacing: 4px !important;
-    }
+    .contact-icon {
+        width: 11px !important;
+        height: 11px !important;
+    }
 
-    .footer-brand .hero-logo-icon {
-        width: 16px !important;
-        height: 16px !important;
-    }
+    .contact-label {
+        font-size: 7px !important;
+        letter-spacing: 0.5px !important;
+    }
 
-    .footer-brand .script-subtitle {
-        font-size: 14px !important;
-        margin-top: -3px !important;
-        padding-left: 6px !important;
-    }
+    .contact-value {
+        font-size: 10px !important;
+    }
+.hide-mobile {
+        display: none !important;
+    }
+    /* --- HIDE ENTIRE 3RD CONTACT ITEM (CLINICAL DESK / CLOCK ICON / 24/7 STAFFING) ON MOBILE --- */
+    .footer-contact-block .contact-item:nth-child(3) {
+        display: none !important;
+    }
 
-    /* Retain vertical divider on mobile */
-    .footer-vertical-divider {
-        display: block !important;
-        height: 36px !important;
-        width: 1px !important;
-        background: rgba(255, 255, 255, 0.2) !important;
-        flex-shrink: 0 !important;
-    }
+    /* Compact subtext */
+    .footer-subtext {
+        font-size: 10px !important;
+        line-height: 1.4 !important;
+        margin-bottom: 12px !important;
+    }
 
-    /* Compact right contact block */
-    .footer-contact-block {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 6px !important;
-        flex-wrap: nowrap !important;
-    }
+    .footer-horizontal-line {
+        margin-bottom: 12px !important;
+    }
 
-    .contact-item {
-        gap: 6px !important;
-    }
+    /* Navigation & Socials row */
+    .footer-nav-row {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 10px !important;
+        margin-bottom: 12px !important;
+    }
 
-    .contact-icon {
-        width: 11px !important;
-        height: 11px !important;
-    }
+    .footer-links {
+        gap: 12px !important;
+    }
 
-    .contact-label {
-        font-size: 7px !important;
-        letter-spacing: 0.5px !important;
-    }
+    .footer-links a {
+        font-size: 8.5px !important;
+        letter-spacing: 1px !important;
+    }
 
-    .contact-value {
-        font-size: 10px !important;
-    }
+    .footer-social {
+        gap: 12px !important;
+    }
 
-    .hide-mobile {
-        display: none !important;
-    }
+    .footer-social a {
+        font-size: 12px !important;
+    }
 
-    /* --- HIDE ENTIRE 3RD CONTACT ITEM (CLINICAL DESK / CLOCK ICON / 24/7 STAFFING) ON MOBILE --- */
-    .footer-contact-block .contact-item:nth-child(3) {
-        display: none !important;
-    }
-
-    /* Compact subtext */
-    .footer-subtext {
-        font-size: 10px !important;
-        line-height: 1.4 !important;
-        margin-bottom: 12px !important;
-    }
-
-    .footer-horizontal-line {
-        margin-bottom: 12px !important;
-    }
-
-    /* Navigation & Socials row */
-    .footer-nav-row {
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        gap: 10px !important;
-        margin-bottom: 12px !important;
-    }
-
-    .footer-links {
-        gap: 12px !important;
-    }
-
-    .footer-links a {
-        font-size: 8.5px !important;
-        letter-spacing: 1px !important;
-    }
-
-    .footer-social {
-        gap: 12px !important;
-    }
-
-    .footer-social a {
-        font-size: 12px !important;
-    }
-
-    /* Copyright */
-    .footer-bottom {
-        font-size: 8px !important;
-        letter-spacing: 1px !important;
-        padding-top: 10px !important;
-    }
+    /* Copyright */
+    .footer-bottom {
+        font-size: 8px !important;
+        letter-spacing: 1px !important;
+        padding-top: 10px !important;
+    }
 }
