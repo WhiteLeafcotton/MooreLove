@@ -1,255 +1,1632 @@
-/* Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+/*==================================================
+HBCR Senior333 jkjkj444Living - Final CSS
+==================================================*/
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
+body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
+
+:root { --gold: #5C546B; --transition: .4s ease; }
+
+/* TOP BjhfeaccjAR */
+.top-bar { position: absolute; top: 0; left: 0; width: 100%; padding: 28px 8%; z-index: 1000; display: flex; justify-content: flex-end; }
+.top-links { display: flex; gap: 34px; }
+.top-links a { text-decoration: none; color: white; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: .9; transition: var(--transition); }
+.top-links a:hover { color: var(--gold); }
+
+/* HERO - Video Integrated */
+.hero { 
+    position: relative; 
+    height: 70vh; 
+    min-height: 500px; 
+    display: flex; 
+    align-items: center; 
+    padding-left: 8%; 
+    overflow: hidden; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #080808;
+}
+#heroVideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 250px; background: linear-gradient(to top,#080808,transparent); z-index: 2; }
+.hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.4); z-index: 1; } 
+
+/* CONTENT */
+.hero-content { position: relative; z-index: 5; max-width: 700px; margin-top: -40px; animation: fadeUp 1s ease; }
+
+
+
+
+/* Dual Background Cross-Fade Layers */
+.hero-bg-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: 0;
+    /* Heavy, cinematic easing curve */
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 1.6s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: scale(1.03); /* Subtle zoom out effect during transition */
+    will-change: opacity, transform;
 }
 
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #0b0b0b;
-    color: #ffffff;
-    overflow-x: hidden;
+.hero-bg-layer.active {
+    opacity: 1;
+    transform: scale(1); /* Settles to normal scale */
 }
 
-/* Navigation */
-#mainNav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px 60px;
-    position: fixed;
+/* Slower, Heavier Sliding Line Under Icons */
+.active-line {
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    z-index: 100;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0));
-    transition: background 0.3s ease;
+    height: 1px;
+    background: #fff;
+    /* Heavy magnetic slide transition */
+    transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+                left 0.7s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-#mainNav.sticky {
-    background: rgba(11, 11, 11, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.nav-logo {
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 4px;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 32px;
-}
-
-.nav-links a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: #ffffff;
-}
-
-/* Locations Header */
-.locations-header {
-    padding-top: 140px;
-    padding-bottom: 40px;
-    text-align: center;
-    background: #0b0b0b;
-}
-
-.sub-heading {
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
-    display: block;
-    margin-bottom: 12px;
-}
-
-.locations-header h1 {
-    font-size: 32px;
+/* Smooth Headline Text Reveal Adjustment */
+.hero-content h1 {
+    font-family: "Cormorant Garamond", serif;
     font-weight: 300;
-    letter-spacing: 6px;
-    margin-bottom: 40px;
+    font-size: clamp(30px, 3.5vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.2px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    /* Slow text fade */
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+/* Hero Logo Wrapper */
+/* Hero Logo with Delicate Wedding Font */
+/* Container Wrapper */
+/* Hero Logo Layout */
+/* Stacked & Overlapping Hero Logo Wrapper */
+/* Container set to relative block so children can layer over each other */
+/* Stacked Logo Container - Flex Layout */
+
+/* Smooth fade out for the hero logo when clicking a tab */
+/* Container holds both the icon and the name */
+.hero-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.locations-header h1 span {
-    font-weight: 700;
+/* Give the business name text smooth fade capabilities */
+.hero-logo .brand-name {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
-/* Region Tabs Bar */
-.region-tabs {
-    display: inline-flex;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.02);
-    padding: 6px;
-    gap: 6px;
+/* Hidden state: slow fade out */
+.hero-logo.hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    display: none !important; 
 }
 
-.region-tab {
-    background: transparent;
-    border: none;
-    color: rgba(255, 255, 255, 0.6);
-    padding: 12px 24px;
-    font-size: 10px;
-    letter-spacing: 2px;
-    font-weight: 600;
+
+.hero-logo.stacked-logo {
+    position: relative;
+    display: inline-flex;          /* Flex container to place MOORE & SVG side-by-side */
+    align-items: center;           /* Center SVG vertically with MOORE */
+    gap: 24px;                     /* Spacing between MOORE and the SVG icon */
+    margin-bottom: 45px;
+}
+
+/* "MOORE" - Main Heading */
+.hero-logo .strong-title {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 300 !important;
+    font-size: 64px !important;
+    letter-spacing: 12px !important;
+    text-transform: uppercase;
+    color: #ffffff;
+    display: block;
+    line-height: 0.85;
+    margin: 0;
+}
+
+/* SVG Logo Icon (Scaled to match MOORE height & placed on right) */
+.hero-logo-icon {
+    position: static !important;   /* Removes absolute positioning so flexbox handles placement */
+    width: 54px !important;        /* Matches visual height of MOORE */
+    height: 54px !important;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+    flex-shrink: 0;
+    color: #5C546B;
+}
+
+/* "love and care" - Overlay Subtitle */
+.hero-logo .script-subtitle {
+    font-family: 'WindSong', cursive !important;
+    font-size: 44px !important;
+    font-weight: 400;
+    color: #ffffff !important;
+    position: absolute;
+    bottom: -38px !important;
+    left: 20% !important;
+    z-index: 2;
+    text-transform: lowercase;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+
+.hero-content h1 { font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: clamp(30px, 3.5vw, 48px); line-height: 1.1; letter-spacing: -0.2px; margin-bottom: 30px; text-transform: uppercase; transition: opacity 0.3s ease; }
+.hero-button { display: inline-block; padding: 12px 30px; border: 1px solid rgba(255,255,255,.4); text-decoration: none; color: white; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); }
+.hero-button:hover { background: #fff; color: #000; }
+
+
+/* ICON BAR */
+.icon-bar-container { position: absolute; bottom: 40px; left: 4%; right: 4%; z-index: 10; }
+.icon-bar-line { width: 100%; height: 1px; background: rgba(255,255,255,0.15); margin-bottom: 25px; position: relative; }
+.active-line { position: absolute; top: 0; left: 0; height: 1px; background: #fff; transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), left 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.icon-wrapper { display: flex; justify-content: space-between; position: relative; }
+
+/* Container for each icon + label pair */
+/* Container for each icon + label pair */
+/* Container for each icon + label pair */
+/* Container for each icon + label pair */
+.icon-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px;
     cursor: pointer;
+    color: #ffffff !important; /* Keeps the text label pure white */
     transition: all 0.3s ease;
 }
 
-.region-tab:hover {
-    color: #ffffff;
+/* Lucide SVGs & Tags - Forced Display & Sizing */
+.icon-item i,
+.icon-item svg {
+    display: block !important;
+    width: 22px !important;
+    height: 22px !important;
+    stroke-width: 0.85; 
+    stroke: rgba(255, 255, 255, 0.7); /* Default unselected icon color */
+    fill: none;
+    transition: all 0.3s ease;
 }
 
-.region-tab.active {
-    background: #ffffff;
-    color: #0b0b0b;
+/* Text Labels */
+.icon-item span {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ffffff !important; /* Ensures text stays white */
+    transition: color 0.3s ease;
 }
 
-/* Locations Gallery */
-.locations-gallery {
-    min-height: 70vh;
+/* Hover & Active States */
+.icon-item:hover,
+.icon-item.active {
+    color: #ffffff !important; /* Keep container/text white */
+    transform: translateY(-2px);
+}
+
+/* ONLY the icon changes to dark purple on selected/hover */
+.icon-item:hover svg,
+.icon-item.active svg,
+.icon-item:hover i,
+.icon-item.active i {
+    color: #5C546B !important;
+    stroke: #5C546B !important; /* Dark purple icon */
+    stroke-width: 1.1;
+}
+
+/* STICKY NAV */
+/* STICKY NAV */
+/* Update your CSS to target the ID specifically */
+#mainNav { 
+    position: fixed; 
+    top: -120px; 
+    left: 0; 
+    width: 100%; 
+    z-index: 99999 !important; /* Force above all mosaic layers */
+    background: rgba(8, 8, 8, 0.95); 
+    backdrop-filter: blur(10px); 
+    transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+#mainNav.sticky { 
+    top: 0; 
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5); 
+}
+.nav-inner { display: flex; align-items: center; justify-content: center; gap: 40px; padding: 15px 20px; position: relative; }
+.nav-link, .nav-link:visited, .nav-link:link { text-decoration: none !important; color: #fff !important; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; transition: var(--transition); }
+.nav-link:hover, .nav-link:active { color: var(--gold) !important; }
+.nav-icon { width: 24px; height: 24px; filter: brightness(0) invert(1); transition: var(--transition); }
+.nav-logo:hover .nav-icon { filter: invert(72%) sepia(21%) saturate(1478%) hue-rotate(345deg) brightness(90%) contrast(88%); }
+
+/* SECTIONS */
+.section { padding: 100px 4%; background: #080808; }
+.section.dark { background: #050505; }
+.container { max-width: 1300px; margin: auto; }
+.container h2 { font-family: "Cormorant Garamond", serif; font-size: 48px; font-weight: 300; margin-bottom: 25px; }
+.container p { font-size: 16px; line-height: 1.7; color: #aaa; max-width: 550px; }
+
+/* FEATURED CARD STYLE */
+/*==================================================
+  HIGH-END FEATURED CARD & TEXT ANIMATIONS
+==================================================*/
+
+/* 1. Card Container & Ambient Glow */
+/*==================================================
+  FEATURED CARD - OPTION 6: MONOLITH ELEVATION & SHIMMER
+==================================================*/
+/* FEATURED CARD STYLE */
+.featured-card-wrapper { 
+    padding: 60px 4%; 
+    background: #080808; 
+    display: flex; 
+    justify-content: center; 
+}
+
+.featured-card { 
+    position: relative; 
+    width: 100%; 
+    max-width: 1600px; 
+    height: 300px; 
+    background: linear-gradient(to right, rgba(8,8,8,0.85) 0%, transparent 50%, transparent 100%), url('banner.jpg') center/cover no-repeat; 
+    display: flex; 
+    align-items: center; 
+    padding: 0 5%; 
+    border: 0.5px solid rgba(255, 255, 255, 0.2); 
+    overflow: hidden; 
+}
+
+.card-content { 
+    position: relative; 
+    z-index: 2; 
+    max-width: 450px; 
+    color: #fff; 
+}
+
+/* Base Initial States for Entry Reveal */
+.card-content i,
+.card-content h3,
+.card-content p,
+.card-content .card-btn {
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: opacity, transform;
+}
+
+.card-content i { 
+    font-family: "Cormorant Garamond", serif; 
+    font-style: italic; 
+    font-size: 18px; 
+    margin-bottom: 15px; 
+    display: block; 
+}
+
+.card-content h3 { 
+    font-family: "Inter", sans-serif; 
+    font-size: 14px; 
+    text-transform: uppercase; 
+    letter-spacing: 4px; 
+    margin-bottom: 20px; 
+    font-weight: 500; 
+}
+
+.card-content p { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: 24px; 
+    line-height: 1.3; 
+    margin-bottom: 30px; 
+    color: #fff; 
+}
+
+/* STRICT FIXED BUTTON SIZE */
+.card-btn { 
     position: relative;
-    padding: 60px;
+    display: inline-flex !important; 
+    align-items: center;
+    justify-content: center;
+    width: 220px !important;       /* Fixed Width */
+    max-width: 100%;               
+    height: 48px !important;      /* Fixed Height */
+    text-decoration: none; 
+    font-family: "Inter", sans-serif;
+    font-size: 10px; 
+    letter-spacing: 3px; 
+    text-transform: uppercase; 
+    font-weight: 600; 
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    overflow: hidden !important;   
+    background: #ffffff;
+    box-sizing: border-box;
+}
+
+/* SLIDING BLOCK OVERLAY */
+.btn-slide-block {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transform: translateX(-101%);
+    pointer-events: none;
+}
+
+/* RELATIVE WRAPPER FOR PERFECT CENTERED STACKING */
+.btn-text-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;                  /* Higher Z-Index guarantees visibility over slider */
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* ABSOLUTE POSITIONING FOR TEXT PHRASES */
+.btn-text {
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-size: cover;
-    background-position: center;
-    transition: background 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.cards-container {
-    display: flex;
-    gap: 24px;
     width: 100%;
-    max-width: 1200px;
-    justify-content: center;
-}
-
-/* Location Card */
-.loc-card {
-    flex: 1;
-    height: 420px;
-    background: rgba(18, 18, 18, 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    border-radius: 4px;
-
-    /* Cascading Entrance Initial State */
+    height: 100%;
+    text-align: center;
+    white-space: nowrap;
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease, flex 0.5s ease, border-color 0.3s ease;
+    transform: translateX(100%);
+    will-change: transform, opacity;
 }
 
-.loc-card.is-visible {
+/* Initial state for first phrase */
+.text-1 {
+    transform: translateX(0);
     opacity: 1;
+    color: #000000;
+}
+
+/* KEYFRAMES */
+
+/* Card text entry */
+@keyframes fadeUp { 
+    from { opacity: 0; transform: translateY(20px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+/* Background Color Switching */
+@keyframes btnBaseBgLoop {
+    0%, 30% { background-color: #ffffff; }
+    33%, 63% { background-color: #1e1e24; } /* Dark Slate */
+    66%, 96% { background-color: #DCD6EC; } /* Light Lavender */
+    100% { background-color: #ffffff; }
+}
+
+/* Slide Block Motion */
+@keyframes slideBlockWipe {
+    0%, 28% {
+        transform: translateX(-101%);
+        background-color: #1e1e24;
+    }
+    33% {
+        transform: translateX(0%);
+    }
+    34%, 61% {
+        transform: translateX(-101%);
+        background-color: #DCD6EC;
+    }
+    66% {
+        transform: translateX(0%);
+    }
+    67%, 94% {
+        transform: translateX(-101%);
+        background-color: #ffffff;
+    }
+    99%, 100% {
+        transform: translateX(0%);
+    }
+}
+
+/* Text Slide Motion */
+@keyframes text1Slide {
+    0%, 28% { transform: translateX(0); opacity: 1; color: #000; }
+    30% { transform: translateX(-100%); opacity: 0; color: #000; }
+    94% { transform: translateX(100%); opacity: 0; color: #000; }
+    98%, 100% { transform: translateX(0); opacity: 1; color: #000; }
+}
+
+@keyframes text2Slide {
+    0%, 28% { transform: translateX(100%); opacity: 0; color: #fff; }
+    33%, 61% { transform: translateX(0); opacity: 1; color: #fff; }
+    63% { transform: translateX(-100%); opacity: 0; color: #fff; }
+    100% { transform: translateX(100%); opacity: 0; color: #fff; }
+}
+
+@keyframes text3Slide {
+    0%, 61% { transform: translateX(100%); opacity: 0; color: #111; }
+    66%, 94% { transform: translateX(0); opacity: 1; color: #111; }
+    96% { transform: translateX(-100%); opacity: 0; color: #111; }
+    100% { transform: translateX(100%); opacity: 0; color: #111; }
+}
+
+/* TRIGGER ANIMATIONS (Added back i, h3, p triggers) */
+.featured-card.is-visible .card-content i {
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.1s;
+}
+
+.featured-card.is-visible .card-content h3 {
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.25s;
+}
+
+.featured-card.is-visible .card-content p {
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
+}
+
+.featured-card.is-visible .card-content .card-btn {
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards,
+               btnBaseBgLoop 9s step-end 1.5s infinite;
+}
+
+.featured-card.is-visible .btn-slide-block {
+    animation: slideBlockWipe 9s cubic-bezier(0.77, 0, 0.175, 1) 1.5s infinite;
+}
+
+.featured-card.is-visible .text-1 {
+    animation: text1Slide 9s cubic-bezier(0.77, 0, 0.175, 1) 1.5s infinite;
+}
+
+.featured-card.is-visible .text-2 {
+    animation: text2Slide 9s cubic-bezier(0.77, 0, 0.175, 1) 1.5s infinite;
+}
+
+.featured-card.is-visible .text-3 {
+    animation: text3Slide 9s cubic-bezier(0.77, 0, 0.175, 1) 1.5s infinite;
+}
+/* MOSAIC SECTION */
+/* MOSAIC SECTION - UPDATED FOR SIZE AND SPACING */
+/* MOSAIC SECTION */
+/* ==================================================
+   MOSAIC SECTION - CLEANED & CONSOLIDATED
+   ================================================== */
+/* ==================================================
+   MOSAIC SECTION - UPDATED FOR 2x3 LAYOUT
+   ================================================== */
+/* ==================================================
+/* ==================================================
+   MOSAIC SECTION - UPDATED 2x3 LAYOUT & BLURS
+   ================================================== */
+/* ==================================================
+   COMPACT MOSAIC SECTION
+   ================================================== */
+.mosaic-section {
+    position: relative;
+    padding: 30px 4%; /* REDUCED from 60px */
+    background: url('final2.jpg') center/cover no-repeat fixed; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Base dark overlay */
+.mosaic-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 8, 8, 0.7);
+    z-index: 1;
+}
+
+/* Top Edge Blur */
+.mosaic-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* REDUCED height for a tighter section */
+    background: linear-gradient(to bottom, #080808, transparent);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Bottom Edge Blur */
+.mosaic-bottom-blur {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* REDUCED height */
+    background: linear-gradient(to top, #080808, transparent);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* 2 Row x 3 Column Grid */
+.mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);    
+    gap: 12px; /* Slight tightening of grid gap */
+    width: 100%;
+    max-width: 1600px;
+    z-index: 3;
+    margin: 15px auto; /* REDUCED from 30px */
+}
+
+/* Compact Tile Interior */
+.tile-card {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 18px 15px; /* REDUCED from 30px 20px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px; 
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    cursor: pointer;
+    opacity: 0; 
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tile-card.is-active {
+    opacity: 1; 
     transform: translateY(0);
 }
 
-.loc-card:hover,
-.loc-card.active {
-    flex: 1.5;
-    border-color: rgba(255, 255, 255, 0.5);
-    background: rgba(0, 0, 0, 0.7);
+.tile-card i { font-size: 20px; color: #fff; transition: var(--transition); }
+.tile-card span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+
+/* --- Web / Desktop Only Override --- */
+@media (min-width: 1024px) {
+    .mosaic-section {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    .mosaic-grid { 
+        width: 100%;
+        max-width: 1600px; 
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
 }
 
-.card-details {
-    padding: 40px;
-    height: 100%;
+/* Compact Mosaic Footer */
+.mosaic-footer {
+    position: relative;
+    z-index: 3;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    position: relative;
-    z-index: 2;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 1.5rem 0 0.5rem 0; /* REDUCED from 4rem 0 */
+    gap: 1.25rem; /* REDUCED from 1.75rem */
+    width: 100%;             
+    max-width: 1600px;  
+    margin: 0 auto;     
 }
 
-.card-number {
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: rgba(255, 255, 255, 0.4);
-    margin-bottom: auto;
+/* Typography Adjustments */
+.mosaic-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem); /* Slightly tighter font bounds */
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -0.2px;
+    max-width: 950px;
+    margin: 0;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+    text-align: left;
 }
 
-.card-details h3 {
-    font-size: 22px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
+.mosaic-title .script-word {
+    font-family: inherit;      
+    font-size: inherit;        
+    font-weight: inherit;      
+    color: inherit;            
+    text-transform: none;      
+    letter-spacing: inherit;   
+    padding-left: 0;          
+    display: inline;          
+    vertical-align: baseline;  
 }
 
-.card-location {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: rgba(255, 255, 255, 0.7);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 16px;
-    text-transform: uppercase;
-}
-
-.card-location svg {
-    width: 14px;
-    height: 14px;
-}
-
-.card-desc {
-    font-size: 12px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 24px;
-    max-width: 320px;
-}
-
-.card-link {
+/* Frameless CTA Link */
+.cta-arrow {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 0.75rem;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0.25rem 0;
+    cursor: pointer;
+    position: relative;
+    opacity: 0.95;
+    transition: opacity 0.3s ease;
+}
+
+.cta-arrow::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+}
+
+.cta-arrow:hover { opacity: 1; }
+.cta-arrow:hover::after { width: 100%; }
+
+.cta-arrow svg,
+.cta-arrow i {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.2;
+    transition: transform 0.3s ease;
+}
+
+.cta-arrow:hover svg,
+.cta-arrow:hover i {
+    transform: translateX(6px);
+}
+
+
+
+/* Tile Card Styling */
+.tile-card {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 30px 20px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; 
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    cursor: pointer;
+    opacity: 0; 
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tile-card.is-active {
+    opacity: 1; 
+    transform: translateY(0);
+}
+
+.tile-card i { font-size: 24px; color: #fff; transition: var(--transition); }
+.tile-card span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+/* ==================================================
+   LOCATIONS GALLERY
+   ================================================== */
+/* ==================================================
+/* ==================================================
+   LOCATIONS GALLERY
+   ================================================== */
+/* ==================================================
+   LOCATIONS GALLERY (Frameless Full-Bleed Image)
+   ================================================== */
+.locations-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 60px 4%;
+    background: #000;
+    transition: background 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.loc-card {
+    flex: 0 0 320px;
+    height: 480px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0; /* Padding top/bottom only */
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.loc-card.active { 
+    background: #ffffff; 
+    color: #000000; 
+    border-color: #ffffff; 
+}
+
+/* Header title with side padding */
+.card-title { 
+    letter-spacing: 2px; 
+    font-size: 14px; 
+    color: #ffffff; 
+    transition: color 0.3s ease; 
+    padding: 0 20px;
+}
+
+.loc-card.active .card-title { 
+    color: #000000; 
+}
+
+/* Full-Bleed Image (Spans 100% card width) */
+.loc-card img { 
+    display: none; 
+    width: 100% !important; /* Full edge-to-edge width */
+    height: 230px;
+    object-fit: cover;
+    margin: 20px 0;
+    border: none;
+}
+
+.loc-card.active img { 
+    display: block; 
+}
+
+/* Lower text content block with side padding */
+.card-reveal { 
+    display: none; 
+    padding: 0 25px; /* Side padding kept strictly for paragraph & button */
+}
+
+.loc-card.active .card-reveal { 
+    display: block; 
+}
+
+.view-btn { 
+    display: inline-block; 
+    margin-top: 15px; 
+    padding: 12px 24px; 
+    background: #000000;
+    color: #ffffff; 
+    border: 1px solid #000000; 
+    text-decoration: none; 
+    font-size: 10px; 
+    letter-spacing: 2px; 
+    text-transform: uppercase; 
+    transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+    background: transparent;
+    color: #000000;
+}
+
+
+
+
+
+
+/* ===================================================
+   SPLIT LAYOUT FOOTER - MOORE BRANDING
+   =================================================== */
+/* ===================================================
+   COMPACT FOOTER WITH HERO BRANDING ALIGNMENT
+   =================================================== */
+.site-footer {
+    padding: 35px 4% 20px; /* Highly compact vertical padding */
+    background: #050505;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.footer-wrapper {
+    max-width: 1600px; /* Aligned with featured-card & mosaic width */
+    margin: 0 auto;
+}
+
+/* --- Top Main Row (Same Line Split) --- */
+.footer-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 18px;
+}
+
+/* Left: Exact Hero Logo Styling */
+.footer-brand .stacked-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+.footer-brand .logo-top-row {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between MOORE and heart SVG */
+}
+
+.footer-brand .strong-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.footer-brand .hero-logo-icon {
+    width: 20px;
+    height: auto;
+    display: block;
+}
+
+.footer-brand .script-subtitle {
+    font-family: 'WindSong', cursive;
+    font-size: 16px;
+    color: #ffffff;
+    opacity: 0.85;
+    margin-top: -4px; /* Slight overlap below MOORE text */
+    padding-left: 2px;
+}
+
+/* Center: Thin Vertical Divider Line (|) */
+.footer-vertical-divider {
+    width: 1px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+}
+
+/* Right: Contact Information Block */
+.footer-contact-block {
+    display: flex;
+    gap: 35px;
+    align-items: center;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-icon {
+    width: 15px;
+    height: 15px;
+    color: #6E6280; /* Dark Slate Purple Accent */
+    flex-shrink: 0;
+}
+
+.contact-label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1;
+    margin-bottom: 3px;
+}
+
+.contact-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
     color: #ffffff;
     text-decoration: none;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+a.contact-value:hover {
+    color: #6E6280;
+}
+
+/* --- Subtext Below Main Split --- */
+.footer-subtext {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.5);
+    max-width: 800px;
+    margin: 0 0 18px 0;
+}
+
+/* Subtle Horizontal Divider */
+.footer-horizontal-line {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin-bottom: 18px;
+}
+
+/* --- Navigation & Socials Row --- */
+.footer-nav-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+/* 4 Quick Links */
+.footer-links {
+    display: flex;
+    gap: 28px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
     font-size: 10px;
-    letter-spacing: 2px;
     text-transform: uppercase;
-    font-weight: 600;
-    transition: gap 0.3s ease;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
 }
 
-.card-link svg {
-    width: 14px;
-    height: 14px;
+.footer-links a:hover {
+    color: #6E6280; /* Dark Slate Purple */
 }
 
-.card-link:hover {
-    gap: 14px;
+/* 4 Social Icons */
+.footer-social {
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-    .cards-container {
-        flex-direction: column;
+.footer-social a {
+    color: rgba(255, 255, 255, 0.4);
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 14px;
+}
+
+.footer-social a:hover {
+    color: #6E6280; /* Dark Slate Purple */
+    transform: translateY(-2px);
+}
+
+/* --- Copyright Bar --- */
+.footer-bottom {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.25);
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+
+    }
+
+
+
+
+
+
+
+
+
+/* ===================================================
+   TEXT REVEAL SECTION (Height Locked & Larger Text)
+/* ===================================================
+   TEXT REVEAL SECTION
+   =================================================== */
+
+.text-reveal-section {
+  position: relative;
+  background-color: #ffffff;
+  padding: 100px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  min-height: 560px;
+}
+
+.message-wrapper {
+  position: relative;
+  max-width: 960px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.message-block {
+  width: 100%;
+}
+
+/* ===================================================
+   LARGER & BOLDER TYPOGRAPHY
+   =================================================== */
+
+.sub-title {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;               /* Bolder weight */
+  letter-spacing: 4px;            /* Slightly wider spacing */
+  color: #E5E0EA;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.main-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.2rem, 6.5vw, 5.2rem); /* Significantly larger */
+  font-weight: 600;               /* Increased weight */
+  color: #1a1a1a;
+  line-height: 1.08;
+  margin-bottom: 28px;
+}
+
+.body-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;             /* Larger body font */
+  font-weight: 400;
+  line-height: 1.8;
+  color: #333333;                 /* Darker, richer tone for readability */
+  max-width: 760px;
+  margin: 0 auto 36px auto;
+}
+
+/* ===================================================
+   CALL TO ACTION (CTA)
+   =================================================== */
+
+.cta-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.cta-button {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  
+  /* Text & Border: Dark Slate Purple */
+  color: #6E6280;
+  background-color: transparent; /* Gold fill removed */
+  border: 1px solid #6E6280; /* Thin dark slate purple outline */
+  
+  padding: 18px 40px;
+  border-radius: 2px;
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover state (keeps dark purple styling) */
+.cta-button:hover {
+  background-color: rgba(110, 98, 128, 0.05); /* Soft subtle tint on hover */
+  color: #6E6280;
+  border-color: #6E6280;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Pressed state (when clicked) */
+.cta-button:active {
+  color: #E4DFEA; /* Light purple text when pressed */
+  border-color: #E4DFEA; /* Optional: switches border to light purple while pressed */
+  background-color: #6E6280; /* Fills button with dark purple on press for visual feedback */
+  transform: translateY(0); /* Subtle press-down feel */
+}
+
+/* ===================================================
+   SMOOTH STAGGERED REVEAL ANIMATIONS
+   =================================================== */
+
+.sub-title,
+.main-title,
+.body-text,
+.cta-wrapper {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+/* Triggered when `.active` class is present */
+.message-block.active .sub-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.message-block.active .main-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.25s;
+}
+
+.message-block.active .body-text {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+.message-block.active .cta-wrapper {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.55s;
+}
+/* MOBILE RESPONSIVE ADAPTATION */
+/* MOBILE RESPONSIVE ADAPTATION */
+/* ===================================================
+/* =================================================== */
+/*             MOBILE RESPONSIVE ADAPTATION            */
+/* =================================================== */
+@media (max-width: 768px) {
+    /* Top Bar & Navigation */
+    .top-bar { padding: 15px 4%; }
+    .top-links { gap: 12px; }
+    .nav-inner { gap: 15px; padding: 8px; pointer-events: auto !important; position: relative; z-index: 999999; }
+    .nav-link { font-size: 9px; letter-spacing: 1px; }
+
+    /* Mobile Logo Scaling & Positioning */
+    .hero-logo.hidden .strong-title,
+    .hero-logo.hidden .script-subtitle {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+    }
+
+    .hero-logo.hidden .hero-logo-icon {
+        display: block !important;
+        opacity: 0.9 !important;
+        visibility: visible !important;
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .hero-logo.stacked-logo,
+    .hero-logo.stacked-logo:not(.hidden) {
+        display: inline-flex !important;
+        gap: 14px !important;
+        margin-bottom: 20px;
+    }
+
+    .hero-logo .strong-title {
+        font-size: 38px !important;
+        letter-spacing: 6px !important;
+    }
+
+    .hero-logo-icon {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .hero-logo .script-subtitle {
+        font-size: 30px !important;
+        bottom: -24px !important;
+        left: 15% !important;
+        color: #ffffff !important;
+    }
+
+    /* ==========================================
+       FEATURED CARD (MOBILE FIX)
+    ========================================== */
+   .featured-card-wrapper { 
+        padding: 25px 4% !important; 
+    }
+    
+    .featured-card { 
+        height: auto !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        background: none !important; 
+        padding: 0 !important; 
+        border: none !important; 
+    }
+    
+    /* Mobile Card Top Banner Image */
+    .featured-card::before { 
+        content: ""; 
+        display: block !important; 
+        width: 100% !important; 
+        height: 180px !important; 
+        background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), url('banner.jpg') center/cover no-repeat !important; 
+        border: 0.5px solid rgba(255, 255, 255, 0.2) !important; 
+        margin-bottom: 20px !important; 
+    }
+
+    /* Force Card Content Visibility on Mobile */
+    .featured-card .card-content {
+        max-width: 100% !important;
+        padding: 0 10px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
+
+    /* Force Text Elements to Show on Mobile */
+    .featured-card .card-content i,
+    .featured-card .card-content h3,
+    .featured-card .card-content p {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
+
+    .card-content i {
+        font-size: 16px !important;
+        margin-bottom: 8px !important;
+    }
+
+    .card-content h3 {
+        font-size: 12px !important;
+        letter-spacing: 2px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .card-content p {
+        font-size: 18px !important;
+        line-height: 1.4 !important;
+        margin-bottom: 20px !important;
+    }
+    
+    /* Dynamic Button Mobile Width Adjustments */
+    .card-btn {
+        width: 100% !important;
+        max-width: 280px !important;
+        height: 44px !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+  
+    /* ==========================================
+       COMPACT MOSAIC SECTION (MOBILE)
+    ========================================== */
+    .mosaic-section {
+        padding: 20px 4% !important;
+        min-height: auto !important;
+        position: relative !important;
+        background: #080808 !important;
+        clip-path: inset(0 0 0 0) !important;
+        -webkit-clip-path: inset(0 0 0 0) !important;
+    }
+
+    .mosaic-bg-layer {
+        display: block !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: url('final2.jpg') center/cover no-repeat !important;
+        z-index: -1 !important;
+        pointer-events: none !important;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
+
+    .mosaic-section::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 35px !important;
+        background: linear-gradient(to bottom, #080808, transparent);
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .mosaic-bottom-blur {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 35px !important;
+        background: linear-gradient(to top, #080808, transparent);
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .mosaic-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 8px !important;
+        width: 100%;
+        margin: 10px 0 !important;
+        position: relative;
+        z-index: 3;
+    }
+
+    .mosaic-grid .tile-card,
+    .tile-card { 
+        padding: 10px 4px !important;
+        aspect-ratio: 1 / 1 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        gap: 6px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        pointer-events: auto !important; 
+    }
+
+    .tile-card i, 
+    .tile-card svg,
+    .tile-card img { 
+        width: 22px !important; 
+        height: 22px !important; 
+        font-size: 22px !important;
+        margin: 0 !important;
+    }
+
+    .tile-card span,
+    .tile-card p { 
+        font-size: 10px !important; 
+        line-height: 1.15 !important;
+        letter-spacing: 0.3px !important;
+        text-align: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .mosaic-footer {
+        padding: 1.25rem 0 0.5rem 0 !important;
+        gap: 0.75rem !important;
+        width: 100% !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        position: relative;
+        z-index: 3;
+    }
+
+    .mosaic-title {
+        font-size: 1.85rem !important;
+        line-height: 1.2 !important;
+        text-align: left !important;
+    }
+
+    .mosaic-title .script-word {
+        font-family: inherit !important;
+        font-size: inherit !important;
+        font-weight: inherit !important;
+        color: inherit !important;
+        text-transform: none !important;
+        letter-spacing: inherit !important;
+        padding-left: 0 !important;
+        display: inline !important;
+        vertical-align: baseline !important;
+    }
+
+    .icon-item {
+        text-align: center;
+        color: #5C546B;
+        flex: 1;
+        cursor: pointer;
+        transition: .3s;
+        pointer-events: auto; 
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+    }
+
+    /* Locations Gallery Mobile Swiping & Vertical Scroll */
+    .locations-gallery {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x pan-y !important;
+        justify-content: flex-start !important;
+        padding: 40px 10vw !important;
     }
 
     .loc-card {
-        height: 300px;
+        flex: 0 0 80vw !important;
+        min-height: 420px !important;
+        height: auto !important;
+        scroll-snap-align: center;
+        margin: 0 10px !important;
+        touch-action: pan-x pan-y !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 24px 0 !important;
     }
 
-    .region-tabs {
-        flex-direction: column;
-        width: 90%;
+    .loc-card img {
+        height: 180px !important;
+        width: 100% !important;
+        object-fit: cover !important;
+        margin: 12px 0 !important;
+    }
+
+    .loc-card .card-reveal {
+        display: none;
+        padding: 0 20px !important;
+        width: 100%;
+        text-align: center;
+    }
+
+    .loc-card.active .card-reveal {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+
+    .loc-card .card-btn,
+    .loc-card .cta-button,
+    .loc-card a {
+        display: inline-block !important;
+        position: relative !important;
+        z-index: 10 !important;
+        margin-top: 10px !important;
+        padding: 12px 24px !important;
+        font-size: 10px !important;
+        letter-spacing: 2px !important;
+        pointer-events: auto !important;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* COMPACT MOBILE FOOTER */
+    .site-footer {
+        padding: 25px 4% 15px !important;
+    }
+
+    .footer-top-row {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 12px !important;
+        margin-bottom: 14px !important;
+    }
+
+    .footer-brand {
+        flex-shrink: 0;
+    }
+
+    .footer-brand .logo-top-row {
+        gap: 6px !important;
+    }
+
+    .footer-brand .strong-title {
+        font-size: 18px !important;
+        letter-spacing: 4px !important;
+    }
+
+    .footer-brand .hero-logo-icon {
+        width: 16px !important;
+        height: 16px !important;
+    }
+
+    .footer-brand .script-subtitle {
+        font-size: 14px !important;
+        margin-top: -3px !important;
+        padding-left: 6px !important;
+    }
+
+    .footer-vertical-divider {
+        display: block !important;
+        height: 36px !important;
+        width: 1px !important;
+        background: rgba(255, 255, 255, 0.2) !important;
+        flex-shrink: 0 !important;
+    }
+
+    .footer-contact-block {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .contact-item {
+        gap: 6px !important;
+    }
+
+    .contact-icon {
+        width: 11px !important;
+        height: 11px !important;
+    }
+
+    .contact-label {
+        font-size: 7px !important;
+        letter-spacing: 0.5px !important;
+    }
+
+    .contact-value {
+        font-size: 10px !important;
+    }
+
+    .hide-mobile {
+        display: none !important;
+    }
+
+    .footer-contact-block .contact-item:nth-child(3) {
+        display: none !important;
+    }
+
+    .footer-subtext {
+        font-size: 10px !important;
+        line-height: 1.4 !important;
+        margin-bottom: 12px !important;
+    }
+
+    .footer-horizontal-line {
+        margin-bottom: 12px !important;
+    }
+
+    .footer-nav-row {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 10px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .footer-links {
+        gap: 12px !important;
+    }
+
+    .footer-links a {
+        font-size: 8.5px !important;
+        letter-spacing: 1px !important;
+    }
+
+    .footer-social {
+        gap: 12px !important;
+    }
+
+    .footer-social a {
+        font-size: 12px !important;
+    }
+
+    .footer-bottom {
+        font-size: 8px !important;
+        letter-spacing: 1px !important;
+        padding-top: 10px !important;
     }
 }
