@@ -470,7 +470,18 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* ==================================================
    LOCATIONS GALLERY (Frameless Full-Bleed Image)
    ================================================== */
-/* Container padding top/bottom only */
+.locations-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 60px 4%;
+    background: #000;
+    transition: background 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
 .loc-card {
     flex: 0 0 320px;
     height: 480px;
@@ -479,7 +490,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 30px 0; /* No horizontal padding on card container */
+    padding: 30px 0; /* Padding top/bottom only */
     background: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     transition: all 0.4s ease;
@@ -489,7 +500,13 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     overflow: hidden;
 }
 
-/* Title text with padding */
+.loc-card.active { 
+    background: #ffffff; 
+    color: #000000; 
+    border-color: #ffffff; 
+}
+
+/* Header title with side padding */
 .card-title { 
     letter-spacing: 2px; 
     font-size: 14px; 
@@ -498,13 +515,17 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     padding: 0 20px;
 }
 
-/* Frameless image spanning 100% width */
+.loc-card.active .card-title { 
+    color: #000000; 
+}
+
+/* Full-Bleed Image (Spans 100% card width) */
 .loc-card img { 
     display: none; 
-    width: 100% !important; 
-    height: 220px;
+    width: 100% !important; /* Full edge-to-edge width */
+    height: 230px;
     object-fit: cover;
-    margin: 15px 0;
+    margin: 20px 0;
     border: none;
 }
 
@@ -512,14 +533,33 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     display: block; 
 }
 
-/* Lower text & button container with side padding */
+/* Lower text content block with side padding */
 .card-reveal { 
     display: none; 
-    padding: 0 25px;
+    padding: 0 25px; /* Side padding kept strictly for paragraph & button */
 }
 
 .loc-card.active .card-reveal { 
     display: block; 
+}
+
+.view-btn { 
+    display: inline-block; 
+    margin-top: 15px; 
+    padding: 12px 24px; 
+    background: #000000;
+    color: #ffffff; 
+    border: 1px solid #000000; 
+    text-decoration: none; 
+    font-size: 10px; 
+    letter-spacing: 2px; 
+    text-transform: uppercase; 
+    transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+    background: transparent;
+    color: #000000;
 }
 
 
