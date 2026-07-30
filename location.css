@@ -1,7 +1,4 @@
-Here is the updated CSS code. It removes the footer's background, makes the footer stretch to the full width of the screen (`100vw`), and includes fully optimized mobile styling so everything scales neatly and cleanly on smaller screens (fixing tab-nav wrapping, spacing, and grid elements).
 
-```css
-/* =================================================== */
 /*                    GLOBAL BASE                      */
 /* =================================================== */
 * {
@@ -557,4 +554,4 @@ a.contact-value:hover {
     }
 }
 
-```
+
