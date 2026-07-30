@@ -145,7 +145,7 @@ body {
 
 /* Generic Card Base */
 .grid-item {
-    background: #E5E0EA;
+    background: #F7F5F9;
     padding: 24px;
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -156,6 +156,7 @@ body {
     height: 320px;
     object-fit: cover;
     margin-bottom: 16px;
+    background: #1F1624;
 }
 
 .photo-card h3 {
