@@ -288,13 +288,13 @@ body {
 }
 
 /* =================================================== */
-/*                         FOOTER                      */
+/*                         FOOTER (LIGHT THEME)        */
 /* =================================================== */
 .site-footer {
     padding: 35px 4% 20px;
-    background: #050505;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    background: #F7F5F9;
+    border-top: 1px solid rgba(31, 22, 36, 0.08);
+    color: #1F1624;
 }
 
 .footer-wrapper {
@@ -327,7 +327,7 @@ body {
     font-size: 24px;
     font-weight: 300;
     letter-spacing: 6px;
-    color: #ffffff;
+    color: #1F1624;
     line-height: 1;
 }
 
@@ -339,7 +339,7 @@ body {
 
 .footer-brand .script-subtitle {
     font-size: 16px;
-    color: #ffffff;
+    color: #5A5060;
     opacity: 0.85;
     margin-top: -4px;
     padding-left: 2px;
@@ -348,7 +348,7 @@ body {
 .footer-vertical-divider {
     width: 1px;
     height: 48px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(31, 22, 36, 0.15);
     flex-shrink: 0;
 }
 
@@ -376,14 +376,14 @@ body {
     font-size: 9px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: rgba(255, 255, 255, 0.4);
+    color: #7A6E82;
     line-height: 1;
     margin-bottom: 3px;
 }
 
 .contact-value {
     font-size: 12px;
-    color: #ffffff;
+    color: #1F1624;
     text-decoration: none;
     transition: color 0.3s ease;
     line-height: 1;
@@ -397,7 +397,7 @@ a.contact-value:hover {
     font-size: 11px;
     line-height: 1.5;
     letter-spacing: 0.5px;
-    color: rgba(255, 255, 255, 0.5);
+    color: #5A5060;
     max-width: 800px;
     margin: 0 0 18px 0;
 }
@@ -405,7 +405,7 @@ a.contact-value:hover {
 .footer-horizontal-line {
     width: 100%;
     height: 1px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(31, 22, 36, 0.08);
     margin-bottom: 18px;
 }
 
@@ -423,7 +423,7 @@ a.contact-value:hover {
 
 .footer-links a {
     text-decoration: none;
-    color: #ffffff;
+    color: #1F1624;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -441,7 +441,7 @@ a.contact-value:hover {
 }
 
 .footer-social a {
-    color: rgba(255, 255, 255, 0.4);
+    color: #5A5060;
     transition: color 0.3s ease, transform 0.3s ease;
     font-size: 14px;
 }
@@ -456,9 +456,9 @@ a.contact-value:hover {
     font-size: 9px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.25);
+    color: #7A6E82;
     padding-top: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    border-top: 1px solid rgba(31, 22, 36, 0.06);
 }
 
 @media (max-width: 768px) {
