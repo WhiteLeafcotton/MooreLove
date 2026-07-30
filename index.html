@@ -3,321 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locations</title>
+    <link rel="stylesheet" href="locations.css">
     
-    <!-- Open Graph Meta Tags for Social Sharing -->
-    <meta property="og:title" content="HBCR Senior Living | Unparalleled Elegance" />
-    <meta property="og:description" content="Discover a masterpiece of sophisticated design, highly-personalized service, and world-class amenities at HBCR Senior Living." />
-    <meta property="og:image" content="https://github.com/WhiteLeafcotton/MooreLove/blob/main/tag.jpg?raw=true" />
-    <meta property="og:url" content="https://whiteleafcotton.github.io/MooreLove/" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <title>HBCR Senior Living</title>
-
-    <!-- Fonts -->
-    <!-- Google Fonts for Wedding & Luxury Typography -->
-
-<!-- Montserrat + WindSong Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=WindSong:wght@400;500&display=swap" rel="stylesheet">    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <link rel="stylesheet" href="style.css">
+    <!-- GSAP for smooth animated reveals -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <!-- FontAwesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
-
-
 <body>
 
-    <header class="top-bar">
-        <div class="top-links">
-            <a href="#">Explore</a>
-            <a href="apply.html">Apply</a>
-            <a href="tel:+12629510165">Connect</a>
-        </div>
-    </header>
-<section class="hero" id="hero">
-    <!-- Video Background -->
-    <video id="heroVideo" autoplay loop muted playsinline poster="home-poster.jpg">
-        <source src="vidz.mp4" type="video/mp4">
-    </video>
-    
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-        <!-- Brand Logo (Always visible) -->
-        <div class="hero-logo stacked-logo">
-            <span class="strong-title">MOORE</span>
-            <img class="hero-logo-icon" src="heart.svg" alt="Heart Icon">
-            <span class="script-subtitle">love and care</span>
-        </div>
-
-        <!-- Title Container: Hidden on initial hero state, visible for sub-categories -->
-        <h1 class="hero-title" id="heroTitle"></h1>
-
-        <!-- Button Wrapper -->
-        <div class="hero-btn-wrapper">
-            <a href="#" class="hero-button" id="heroButton">Discover Our Story</a>
-        </div>
-    </div>
-
-    <!-- Interactive Icon Bar -->
-    <div class="icon-bar-container">
-        <!-- Horizontal track line for the animated active bar -->
-        <div class="icon-bar-line">
-            <div class="active-line" id="activeLine"></div>
-        </div>
-
-        <div class="icon-wrapper">
-            <div class="icon-item" data-image="folk.jpg" data-title="ELEVATED <span>LIFESTYLE</span> EXPERIENCES" data-cta="Explore Lifestyle">
-                <i data-lucide="footprints"></i>
-                <span>Lifestyle</span>
-            </div>
-
-            <div class="icon-item" data-image="lifestyle.jpg" data-title="PERSONALIZED <span>WELLNESS</span> CARE" data-cta="Explore Wellness">
-                <i data-lucide="pill"></i>
-                <span>Wellness</span>
-            </div>
-
-            <div class="icon-item" 
-     data-image="chair.jpg" 
-     data-title="WARM RESIDENTIAL <span>COMMUNITY</span>" 
-     data-cta="Explore Community" 
-     data-href="locations.html">
-    <i data-lucide="house"></i>
-    <span>Community</span>
-</div>
-
-            <div class="icon-item" data-image="hand.jpg" data-title="DEDICATED <span>SUPPORT</span> SERVICES" data-cta="Explore Support">
-                <i data-lucide="hand-heart"></i>
-                <span>Support</span>
-            </div>
-        </div>
-    </div>
-</section>
-    <!-- Navigation -->
-    <nav class="main-nav" id="mainNav">
-        <div class="nav-inner">
-            <a href="#" class="nav-logo">
-                <img src="heart.svg" alt="Logo" class="nav-icon">
-            </a>
-            <a href="#" class="nav-link">Lifestyle</a>
-            <a href="#" class="nav-link">Wellness</a>
-            <a href="location.html" class="nav-link">Community</a>
-            <a href="#" class="nav-link">Support</a>
+    <!-- Fixed Header Navigation Tabs -->
+    <nav class="tab-nav">
+        <div class="tab-container">
+            <button class="nav-tab active" data-section="0">01 / NORTH AMERICA</button>
+            <button class="nav-tab" data-section="1">02 / EUROPE</button>
+            <button class="nav-tab" data-section="2">03 / ASIA PACIFIC</button>
+            <button class="nav-tab" data-section="3">04 / LATIN AMERICA</button>
         </div>
     </nav>
 
-    <!-- Content Sections -->
-    <section class="featured-card-wrapper">
-        <div class="featured-card">
-            <div class="card-content">
-    <i>Around The Clock Care</i>
-    <h3>Expert Care Day And Night</h3>
-    <p>Experience continuous peace of mind daily, where skilled clinical staff deliver tailored wellness.</p>
-    
-    <a href="#" class="card-btn">
-        <!-- Sliding Color Block Overlay -->
-        <span class="btn-slide-block"></span>
-        
-        <!-- Text Container -->
-        <span class="btn-text-wrapper">
-            <span class="btn-text text-1">DISCOVER SUPPORT</span>
-            <span class="btn-text text-2">CONTINUOUS CARE</span>
-            <span class="btn-text text-3">LEARN MORE</span>
-        </span>
-    </a>
-</div>
-        </div>
-    </section>
+    <!-- Main Content Container (Horizontal Swipe / Scroll Snap) -->
+    <main class="locations-wrapper">
 
+        <!-- ================= SECTION 1 ================= -->
+        <section class="location-section" id="section-0">
+            <div class="section-header">
+                <div class="tab-anchor"></div>
+                <div class="connecting-line"></div>
+                <h1 class="section-title">North America</h1>
+                <p class="section-subtitle">Urban sanctuaries and coastal retreats</p>
+            </div>
 
+            <div class="content-grid">
+                <!-- Singular Photo with Subtext -->
+                <div class="grid-item photo-card plop-item">
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="New York Haven">
+                    </div>
+                    <h3>Manhattan Flagship</h3>
+                    <p>Designed with natural marble and quiet architecture.</p>
+                </div>
 
+                <!-- Quote Block -->
+                <div class="grid-item quote-card plop-item">
+                    <blockquote>
+                        “A quiet sanctuary amidst the rhythm of the modern metropolis.”
+                    </blockquote>
+                    <cite>— ARCHITECTURAL DIGEST</cite>
+                </div>
 
-    <!-- MOSAIC SECTION -->
-    <section class="mosaic-section" id="mosaicSection">
-        <div class="mosaic-bg-layer"></div>
-        
-      <div class="mosaic-grid" id="mosaicGrid">
-    <div class="tile-card"><i data-lucide="brain"></i><span>Memory Care</span></div>
-    <div class="tile-card"><i data-lucide="wind"></i><span>Family Partnership</span></div>
-    <div class="tile-card"><i data-lucide="hand-heart"></i><span>Respite Services</span></div>
-    <div class="tile-card"><i data-lucide="shield-alert"></i><span>Behavioral Support</span></div>
-    <div class="tile-card"><i data-lucide="heart-handshake"></i><span>Terminally Ill</span></div>
-    <div class="tile-card"><i data-lucide="accessibility"></i><span>Specialized Care</span></div>
-</div>
-        
-    <div class="mosaic-footer">
-    <h2 class="mosaic-title">
-        Compassion is Our Calling <br><span class="script-word">Care is Our Promise.</span>
-    </h2>
-    <a href="#about-section" class="cta-arrow">
-        <span>Read More</span>
-        <i data-lucide="arrow-right"></i>
-    </a>
-</div>
-        
-        <div class="mosaic-bottom-blur"></div>
-    </section>
+                <!-- Thinly Spaced Collage -->
+                <div class="grid-item collage-card plop-item">
+                    <div class="collage-grid">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=500&q=80" alt="Detail 1">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=500&q=80" alt="Detail 2">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80" alt="Detail 3">
+                    </div>
+                    <span class="caption">Interior Materiality & Light</span>
+                </div>
 
-<section class="text-reveal-section" id="about-section">
+                <!-- Video Card -->
+                <div class="grid-item video-card plop-item">
+                    <div class="video-wrapper">
+                        <video autoplay loop muted playsinline>
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-architecture-41558-large.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <h3>Pacific Heights</h3>
+                    <p>San Francisco, CA</p>
+                </div>
+            </div>
+        </section>
 
+        <!-- ================= SECTION 2 ================= -->
+        <section class="location-section" id="section-1">
+            <div class="section-header">
+                <div class="tab-anchor"></div>
+                <div class="connecting-line"></div>
+                <h1 class="section-title">Europe</h1>
+                <p class="section-subtitle">Historic elegance blended with minimalist craft</p>
+            </div>
 
-  <div class="message-wrapper">
-    <div class="message-block">
-      <span class="sub-title">A NEW STANDARD IN CARE</span>
-      <h2 class="main-title">Designed for timeless living, where sanctuary meets sophistication.</h2>
-      <p class="body-text">
-        Every detail is crafted with intention—blending world-class hospitality, personalized wellness, and an environment tailored completely to your lifestyle.
-      </p>
-      <div class="cta-wrapper">
-        <a href="#explore" class="cta-button">Schedule a Private Tour</a>
-      </div>
-    </div>
-  </div>
-</section>
+            <div class="content-grid">
+                <div class="grid-item quote-card plop-item">
+                    <blockquote>
+                        “Restoring heritage with subtle modern refinements.”
+                    </blockquote>
+                    <cite>— MONOCLE</cite>
+                </div>
 
+                <div class="grid-item photo-card plop-item">
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Paris Studio">
+                    </div>
+                    <h3>Le Marais Atelier</h3>
+                    <p>Paris, France</p>
+                </div>
 
+                <div class="grid-item collage-card plop-item">
+                    <div class="collage-grid">
+                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=500&q=80" alt="Spa Detail">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=500&q=80" alt="Courtyard">
+                        <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=500&q=80" alt="Lounge">
+                    </div>
+                    <span class="caption">Atelier Spaces</span>
+                </div>
+            </div>
+        </section>
 
-    
+        <!-- ================= SECTION 3 ================= -->
+        <section class="location-section" id="section-2">
+            <div class="section-header">
+                <div class="tab-anchor"></div>
+                <div class="connecting-line"></div>
+                <h1 class="section-title">Asia Pacific</h1>
+                <p class="section-subtitle">Harmonious spaces rooted in local tradition</p>
+            </div>
 
+            <div class="content-grid">
+                <div class="grid-item photo-card plop-item">
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80" alt="Kyoto Sanctuary">
+                    </div>
+                    <h3>Kyoto Gardens</h3>
+                    <p>Kyoto, Japan</p>
+                </div>
 
-    
+                <div class="grid-item quote-card plop-item">
+                    <blockquote>
+                        “Where nature and structure existing in continuous dialogue.”
+                    </blockquote>
+                </div>
+            </div>
+        </section>
 
-<!-- LOCATIONS GALLERY -->
-<section class="locations-gallery" id="locationsGallery">
-    <div class="loc-card" data-bg="san-fran.jpg">
-        <h3 class="card-title">WAUKESHA</h3>
-        <img src="san-fran.jpg" alt="San Francisco">
-        <div class="card-reveal">
-            <p>Description text here...</p>
-            <a href="#" class="view-btn">VIEW PROPERTY</a>
-        </div>
-    </div>
+        <!-- ================= SECTION 4 ================= -->
+        <section class="location-section" id="section-3">
+            <div class="section-header">
+                <div class="tab-anchor"></div>
+                <div class="connecting-line"></div>
+                <h1 class="section-title">Latin America</h1>
+                <p class="section-subtitle">Earthy palettes and open air living</p>
+            </div>
 
-    <div class="loc-card active" data-bg="home.jpg">
-        <h3 class="card-title">MILWAUKEE</h3>
-        <img src="home.jpg" alt="Bahrain Bay">
-        <div class="card-reveal">
-            <p>Arrive home to a masterpiece of sophisticated design, highly-personalized service and world-class amenities...</p>
-            <a href="#" class="view-btn">VIEW PROPERTY</a>
-        </div>
-    </div>
+            <div class="content-grid">
+                <div class="grid-item photo-card plop-item">
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=800&q=80" alt="Tulum Villa">
+                    </div>
+                    <h3>Tulum Retreat</h3>
+                    <p>Quintana Roo, Mexico</p>
+                </div>
+            </div>
+        </section>
 
-    <div class="loc-card" data-bg="deer-valley.jpg">
-        <h3 class="card-title">WAUWATOSA</h3>
-        <img src="deer-valley.jpg" alt="Deer Valley">
-        <div class="card-reveal">
-            <p>Description text here...</p>
-            <a href="#" class="view-btn">VIEW PROPERTY</a>
-        </div>
-    </div>
+    </main>
 
-    <div class="loc-card" data-bg="deer-valley.jpg">
-        <h3 class="card-title">ELM GROVE</h3>
-        <img src="deer-valley.jpg" alt="Deer Valley">
-        <div class="card-reveal">
-            <p>Description text here...</p>
-            <a href="#" class="view-btn">VIEW PROPERTY</a>
-        </div>
-    </div>
-</section>
-
-    <!-- FOOTER -->
-   <footer class="site-footer">
-    <div class="footer-wrapper">
-        
-        <!-- Top Main Row: Brand (Left) | Vertical Divider | Contact Info (Right) -->
-        <div class="footer-top-row">
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-wrapper">
             
-            <!-- Left: Hero-Style Stacked Logo -->
-            <div class="footer-brand">
-                <div class="hero-logo stacked-logo">
-                    <div class="logo-top-row">
-                        <span class="strong-title">MOORE</span>
-                        <img class="hero-logo-icon" src="heart.svg" alt="Heart Icon">
-                    </div>
-                    <span class="script-subtitle">love and care</span>
-                </div>
-            </div>
-
-            <!-- Center: Thin Vertical Divider Line -->
-            <div class="footer-vertical-divider"></div>
-
-            <!-- Right: Compact Contact Info -->
-            <div class="footer-contact-block">
-                <div class="contact-item">
-                    <i data-lucide="phone" class="contact-icon"></i>
-                    <div>
-                        <span class="contact-label">Admissions</span>
-                        <a href="tel:+12629510165" class="contact-value">(262) 951-0165</a>
+            <!-- Top Main Row: Brand (Left) | Vertical Divider | Contact Info (Right) -->
+            <div class="footer-top-row">
+                
+                <!-- Left: Hero-Style Stacked Logo -->
+                <div class="footer-brand">
+                    <div class="hero-logo stacked-logo">
+                        <div class="logo-top-row">
+                            <span class="strong-title">MOORE</span>
+                            <img class="hero-logo-icon" src="heart.svg" alt="Heart Icon">
+                        </div>
+                        <span class="script-subtitle">love and care</span>
                     </div>
                 </div>
 
-                <div class="contact-item">
-                    <i data-lucide="mail" class="contact-icon"></i>
-                    <div>
-                        <span class="contact-label">Inquiries</span>
-                        <a href="mailto:inquiries@moorecare.com" class="contact-value">inquiries@moorecare.com</a>
+                <!-- Center: Thin Vertical Divider Line -->
+                <div class="footer-vertical-divider"></div>
+
+                <!-- Right: Compact Contact Info -->
+                <div class="footer-contact-block">
+                    <div class="contact-item">
+                        <i data-lucide="phone" class="contact-icon"></i>
+                        <div>
+                            <span class="contact-label">Admissions</span>
+                            <a href="tel:+12629510165" class="contact-value">(262) 951-0165</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i data-lucide="mail" class="contact-icon"></i>
+                        <div>
+                            <span class="contact-label">Inquiries</span>
+                            <a href="mailto:inquiries@moorecare.com" class="contact-value">inquiries@moorecare.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item hide-mobile">
+                        <i data-lucide="clock" class="contact-icon"></i>
+                        <div>
+                            <span class="contact-label">Clinical Desk</span>
+                            <span class="contact-value">24/7 Staffing</span>
+                        </div>
                     </div>
                 </div>
 
-               
-
-
-            <!-- ADDED 'hide-mobile' CLASS HERE -->
-    <div class="contact-item hide-mobile">
-        <i data-lucide="clock" class="contact-icon"></i>
-        <div>
-            <span class="contact-label">Clinical Desk</span>
-            <span class="contact-value">24/7 Staffing</span>
-        </div>
-    </div>
-</div>
-
-        </div>
-
-        <!-- Subtext / Tagline Below Main Split -->
-        <p class="footer-subtext">
-            Unparalleled elegance, defined by care. Dedicated to creating timeless sanctuary, continuous clinical support, and personalized wellness across Wisconsin campuses.
-        </p>
-
-        <!-- Divider Line -->
-        <div class="footer-horizontal-line"></div>
-
-        <!-- Bottom Row: 4 Links (Left) & 4 Socials (Right) -->
-        <div class="footer-nav-row">
-            <div class="footer-links">
-                <a href="#">Privacy</a>
-                <a href="#">Legal</a>
-                <a href="#">Contact</a>
-                <a href="#">Careers</a>
             </div>
 
-            <div class="footer-social">
-                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <!-- Subtext / Tagline Below Main Split -->
+            <p class="footer-subtext">
+                Unparalleled elegance, defined by care. Dedicated to creating timeless sanctuary, continuous clinical support, and personalized wellness across Wisconsin campuses.
+            </p>
+
+            <!-- Divider Line -->
+            <div class="footer-horizontal-line"></div>
+
+            <!-- Bottom Row: 4 Links (Left) & 4 Socials (Right) -->
+            <div class="footer-nav-row">
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Legal</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Careers</a>
+                </div>
+
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
             </div>
+
+            <!-- Copyright Line -->
+            <div class="footer-bottom">
+                &copy; 2026 MOORE. All rights reserved. &bull; Equal Housing Opportunity
+            </div>
+
         </div>
+    </footer>
 
-        <!-- Copyright Line -->
-        <div class="footer-bottom">
-            &copy; 2026 MOORE. All rights reserved. &bull; Equal Housing Opportunity
-        </div>
-
-    </div>
-</footer>
-
-    <!-- Main Site Script -->
-    <script src="script.js"></script>
-    
-    <!-- Lucide Icons Script & Initialization -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        lucide.createIcons();
-    </script>
+    <script src="locations.js"></script>
 </body>
 </html>
