@@ -461,8 +461,29 @@ a.contact-value:hover {
 }
 
 @media (max-width: 768px) {
-    .footer-contact-block .contact-item:nth-child(3) {
+    /* Stack header and contact block on mobile to prevent overflow */
+    .footer-top-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 24px !important;
+    }
+
+    /* Hide the vertical divider when items are stacked */
+    .footer-vertical-divider {
         display: none !important;
+    }
+
+    /* Make contact items wrap nicely in a column or grid */
+    .footer-contact-block {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 14px !important;
+        width: 100% !important;
+    }
+
+    /* Ensure clinical desk item stays visible or gets hidden cleanly based on preference */
+    .footer-contact-block .contact-item:nth-child(3) {
+        display: flex !important;
     }
 
     .footer-subtext {
@@ -476,33 +497,34 @@ a.contact-value:hover {
     }
 
     .footer-nav-row {
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        gap: 10px !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 16px !important;
         margin-bottom: 12px !important;
     }
 
     .footer-links {
+        flex-wrap: wrap !important;
         gap: 12px !important;
     }
 
     .footer-links a {
-        font-size: 8.5px !important;
+        font-size: 9px !important;
         letter-spacing: 1px !important;
     }
 
     .footer-social {
-        gap: 12px !important;
+        gap: 16px !important;
     }
 
     .footer-social a {
-        font-size: 12px !important;
+        font-size: 14px !important;
     }
 
     .footer-bottom {
         font-size: 8px !important;
         letter-spacing: 1px !important;
         padding-top: 10px !important;
+        text-align: left !important;
     }
 }
