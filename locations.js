@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         gsap.fromTo(targets, 
             { opacity: 0, y: -30, scale: 0.97 }, 
-            { opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.1, ease: "power2.out" }
+            { opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.1, ease: "power2.out", overwrite: "auto" }
         );
     }
 
