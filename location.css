@@ -1,5 +1,6 @@
+```css
 /* =================================================== */
-/*                     GLOBAL BASE                     */
+/*                     GLOBAL BASE                   */
 /* =================================================== */
 * {
     box-sizing: border-box;
@@ -82,6 +83,7 @@ body {
 .location-section > .site-footer {
     width: 100%;
     margin-top: 80px;
+    flex-shrink: 0;
 }
 
 /* Hide scrollbars for clean aesthetic */
@@ -91,7 +93,7 @@ body {
 }
 
 /* =================================================== */
-/*        ELEGANT TOP HEADER & DROPPING LINE           */
+/*         ELEGANT TOP HEADER & DROPPING LINE          */
 /* =================================================== */
 .section-header {
     display: flex;
@@ -287,7 +289,7 @@ body {
 }
 
 /* =================================================== */
-/*                        FOOTER                       */
+/*                         FOOTER                      */
 /* =================================================== */
 .site-footer {
     padding: 35px 4% 20px;
@@ -473,7 +475,7 @@ a.contact-value:hover {
         display: none !important;
     }
 
-    /* Make contact items wrap nicely in a column or grid */
+    /* Make contact items wrap nicely in a column */
     .footer-contact-block {
         flex-direction: column !important;
         align-items: flex-start !important;
@@ -481,8 +483,8 @@ a.contact-value:hover {
         width: 100% !important;
     }
 
-    /* Ensure clinical desk item stays visible or gets hidden cleanly based on preference */
-    .footer-contact-block .contact-item:nth-child(3) {
+    /* Ensure all contact items are fully visible on mobile */
+    .footer-contact-block .contact-item {
         display: flex !important;
     }
 
@@ -528,3 +530,5 @@ a.contact-value:hover {
         text-align: left !important;
     }
 }
+
+```
