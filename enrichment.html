@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Life Enrichment | Sanctuary</title>
+    <!-- Insert Global CSS here -->
+    <style>
+      .enrichment-container {
+        padding: 6rem 5%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .enrichment-hero-text {
+        text-align: center;
+        margin-bottom: 6rem;
+      }
+      .enrichment-hero-text h1 {
+        font-size: 3.2rem;
+        margin-bottom: 1.5rem;
+      }
+      .enrichment-hero-text p {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .enrichment-row {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 4rem;
+        align-items: center;
+        margin-bottom: 6rem;
+        padding-bottom: 6rem;
+        border-bottom: 1px solid rgba(247, 245, 240, 0.05);
+      }
+      .enrichment-row.reverse {
+        grid-template-columns: 0.8fr 1.2fr;
+      }
+      .enrichment-row.reverse .enrichment-img {
+        order: -1;
+      }
+      .enrichment-img {
+        height: 400px;
+        background-color: var(--plum-card);
+        border: 1px solid rgba(247, 245, 240, 0.1);
+      }
+      .enrichment-text h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--off-white);
+      }
+      .enrichment-text p {
+        line-height: 1.9;
+      }
+      @media(max-width: 900px) {
+        .enrichment-row, .enrichment-row.reverse { grid-template-columns: 1fr; }
+        .enrichment-row.reverse .enrichment-img { order: 0; }
+        .enrichment-img { height: 250px; }
+      }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">Sanctuary</a>
+        <ul class="nav-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="enrichment.html" class="active">Life Enrichment</a></li>
+            <li><a href="location.html">Location</a></li>
+        </ul>
+    </nav>
+
+    <main class="enrichment-container">
+        <div class="enrichment-hero-text">
+            <h1>Cultivating Vitality & Joy</h1>
+            <p>True luxury encompasses the mind and spirit. Our programs inspire intellectual curiosity, artistic expression, and meaningful connection.</p>
+        </div>
+
+        <div class="enrichment-row">
+            <div class="enrichment-text">
+                <h2>Artistic & Cultural Immersions</h2>
+                <p>Engage with resident artists, attend private gallery previews, and participate in masterclasses ranging from fine ceramics to classical music appreciation. Every day offers a new avenue for creative fulfillment.</p>
+            </div>
+            <div class="enrichment-img"></div>
+        </div>
+
+        <div class="enrichment-row reverse">
+            <div class="enrichment-text">
+                <h2>Mindful Exploration & Nature</h2>
+                <p>Reconnect with the earth through guided horticultural workshops, dawn yoga sessions overlooking private botanical landscapes, and intellectual discussion circles hosted by guest scholars.</p>
+            </div>
+            <div class="enrichment-img"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sanctuary Estate. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
