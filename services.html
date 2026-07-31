@@ -1,6 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <style>
+  :root {
+    --plum-dark: #1E121E;
+    --plum-card: #2A1A2A;
+    --plum-accent: #3D263D;
+    --off-white: #F7F5F0;
+    --off-white-muted: #D3CEC4;
+    --gold-accent: #C5A880; /* Subtle luxury accent */
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: var(--plum-dark);
+    color: var(--off-white);
+    font-family: 'Cormorant Garamond', serif, Georgia, serif; /* High-end editorial feel */
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  p, span, a, li {
+    font-family: 'Plus Jakarta Sans', sans-serif, system-ui, sans-serif; /* Clean readable body font */
+    font-weight: 300;
+    font-size: 0.95rem;
+    color: var(--off-white-muted);
+  }
+
+  /* Navigation Bar (Cohesive Across All Pages) */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem 5%;
+    border-bottom: 1px solid rgba(247, 245, 240, 0.1);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.2em;
+    color: var(--off-white);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--off-white-muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: var(--transition);
+  }
+
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--off-white);
+    border-bottom: 1px solid var(--gold-accent);
+    padding-bottom: 2px;
+  }
+
+  /* Footer */
+  footer {
+    padding: 5rem 5% 3rem;
+    border-top: 1px solid rgba(247, 245, 240, 0.1);
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+</style>
+<!-- Importing Google Fonts for Luxury Aesthetic -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Services | Sanctuary</title>
     <!-- Insert Global CSS here -->
