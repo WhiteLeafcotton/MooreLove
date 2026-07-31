@@ -161,6 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
     // 5. Locations Gallery & Swipe Logic
+ // ==========================================
+    // 5. Locations Gallery & Swipe Logic
     // ==========================================
     const gallery = document.getElementById('locationsGallery');
     const locCards = document.querySelectorAll('.loc-card');
