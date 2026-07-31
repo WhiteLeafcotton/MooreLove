@@ -1,159 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-
-    <style>
-  :root {
-    --plum-dark: #1E121E;
-    --plum-card: #2A1A2A;
-    --plum-accent: #3D263D;
-    --off-white: #F7F5F0;
-    --off-white-muted: #D3CEC4;
-    --gold-accent: #C5A880; /* Subtle luxury accent */
-    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    background-color: var(--plum-dark);
-    color: var(--off-white);
-    font-family: 'Cormorant Garamond', serif, Georgia, serif; /* High-end editorial feel */
-    line-height: 1.8;
-    overflow-x: hidden;
-  }
-
-  h1, h2, h3, h4 {
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  p, span, a, li {
-    font-family: 'Plus Jakarta Sans', sans-serif, system-ui, sans-serif; /* Clean readable body font */
-    font-weight: 300;
-    font-size: 0.95rem;
-    color: var(--off-white-muted);
-  }
-
-  /* Navigation Bar (Cohesive Across All Pages) */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2.5rem 5%;
-    border-bottom: 1px solid rgba(247, 245, 240, 0.1);
-  }
-
-  .logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    letter-spacing: 0.2em;
-    color: var(--off-white);
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: var(--off-white-muted);
-    font-size: 0.85rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    transition: var(--transition);
-  }
-
-  .nav-links a:hover, .nav-links a.active {
-    color: var(--off-white);
-    border-bottom: 1px solid var(--gold-accent);
-    padding-bottom: 2px;
-  }
-
-  /* Footer */
-  footer {
-    padding: 5rem 5% 3rem;
-    border-top: 1px solid rgba(247, 245, 240, 0.1);
-    text-align: center;
-  }
-
-  footer p {
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-</style>
-<!-- Importing Google Fonts for Luxury Aesthetic -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Life Enrichment | Sanctuary</title>
-    <!-- Insert Global CSS here -->
+    <!-- Importing Google Fonts for Luxury Aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    
     <style>
+      :root {
+        --plum-dark: #1E121E;
+        --plum-card: #2A1A2A;
+        --plum-accent: #3D263D;
+        --off-white: #F7F5F0;
+        --off-white-muted: #D3CEC4;
+        --gold-accent: #C5A880;
+        --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--plum-dark);
+        color: var(--off-white);
+        font-family: 'Cormorant Garamond', serif, Georgia, serif;
+        line-height: 1.8;
+        overflow-x: hidden;
+      }
+
+      h1, h2, h3, h4 {
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      p, span, a, li {
+        font-family: 'Plus Jakarta Sans', sans-serif, system-ui, sans-serif;
+        font-weight: 300;
+        font-size: 0.95rem;
+        color: var(--off-white-muted);
+      }
+
+      /* Navigation Bar */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2.5rem 5%;
+        border-bottom: 1px solid rgba(247, 245, 240, 0.1);
+      }
+
+      .logo {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.5rem;
+        letter-spacing: 0.2em;
+        color: var(--off-white);
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--off-white-muted);
+        font-size: 0.85rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover, .nav-links a.active {
+        color: var(--off-white);
+        border-bottom: 1px solid var(--gold-accent);
+        padding-bottom: 2px;
+      }
+
+      /* Life Enrichment Specific Styles */
       .enrichment-container {
         padding: 6rem 5%;
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
       }
-      .enrichment-hero-text {
+      .enrichment-header {
         text-align: center;
-        margin-bottom: 6rem;
+        max-width: 700px;
+        margin: 0 auto 5rem;
       }
-      .enrichment-hero-text h1 {
-        font-size: 3.2rem;
-        margin-bottom: 1.5rem;
+      .enrichment-header h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
       }
-      .enrichment-hero-text p {
-        max-width: 600px;
-        margin: 0 auto;
-      }
-      .enrichment-row {
+      .enrichment-grid {
         display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 4rem;
-        align-items: center;
-        margin-bottom: 6rem;
-        padding-bottom: 6rem;
-        border-bottom: 1px solid rgba(247, 245, 240, 0.05);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
       }
-      .enrichment-row.reverse {
-        grid-template-columns: 0.8fr 1.2fr;
-      }
-      .enrichment-row.reverse .enrichment-img {
-        order: -1;
-      }
-      .enrichment-img {
-        height: 400px;
+      .enrichment-card {
         background-color: var(--plum-card);
-        border: 1px solid rgba(247, 245, 240, 0.1);
+        padding: 3.5rem 2.5rem;
+        border: 1px solid rgba(247, 245, 240, 0.05);
+        transition: var(--transition);
+        position: relative;
       }
-      .enrichment-text h2 {
-        font-size: 2rem;
+      .enrichment-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--gold-accent);
+      }
+      .enrichment-card span {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        color: var(--gold-accent);
+        display: block;
         margin-bottom: 1.5rem;
-        color: var(--off-white);
       }
-      .enrichment-text p {
-        line-height: 1.9;
+      .enrichment-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        letter-spacing: 0.1em;
       }
-      @media(max-width: 900px) {
-        .enrichment-row, .enrichment-row.reverse { grid-template-columns: 1fr; }
-        .enrichment-row.reverse .enrichment-img { order: 0; }
-        .enrichment-img { height: 250px; }
+      .enrichment-card p {
+        line-height: 1.8;
+      }
+      @media(max-width: 1024px) {
+        .enrichment-grid { grid-template-columns: 1fr; }
+      }
+
+      /* Footer */
+      footer {
+        padding: 5rem 5% 3rem;
+        border-top: 1px solid rgba(247, 245, 240, 0.1);
+        text-align: center;
+      }
+
+      footer p {
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
       }
     </style>
 </head>
 <body>
     <nav>
-        <a href="#" class="logo">Sanctuary</a>
+        <a href="index.html" class="logo">Sanctuary</a>
         <ul class="nav-links">
             <li><a href="about.html">About Us</a></li>
             <li><a href="services.html">Services</a></li>
@@ -163,25 +159,26 @@
     </nav>
 
     <main class="enrichment-container">
-        <div class="enrichment-hero-text">
-            <h1>Cultivating Vitality & Joy</h1>
-            <p>True luxury encompasses the mind and spirit. Our programs inspire intellectual curiosity, artistic expression, and meaningful connection.</p>
+        <div class="enrichment-header">
+            <h1>Elevated Experiences</h1>
+            <p>Immerse yourself in a vibrant culture of continuous growth, artistic exploration, and meaningful community engagement.</p>
         </div>
-
-        <div class="enrichment-row">
-            <div class="enrichment-text">
-                <h2>Artistic & Cultural Immersions</h2>
-                <p>Engage with resident artists, attend private gallery previews, and participate in masterclasses ranging from fine ceramics to classical music appreciation. Every day offers a new avenue for creative fulfillment.</p>
+        <div class="enrichment-grid">
+            <div class="enrichment-card">
+                <span>01</span>
+                <h3>Cultural & Arts</h3>
+                <p>Private gallery viewings, classical music recitals, and creative workshops designed to inspire the imagination and spirit.</p>
             </div>
-            <div class="enrichment-img"></div>
-        </div>
-
-        <div class="enrichment-row reverse">
-            <div class="enrichment-text">
-                <h2>Mindful Exploration & Nature</h2>
-                <p>Reconnect with the earth through guided horticultural workshops, dawn yoga sessions overlooking private botanical landscapes, and intellectual discussion circles hosted by guest scholars.</p>
+            <div class="enrichment-card">
+                <span>02</span>
+                <h3>Active Engagement</h3>
+                <p>Tailored mobility regimens, mindful movement classes, and outdoor excursions curated for physical vitality and connection.</p>
             </div>
-            <div class="enrichment-img"></div>
+            <div class="enrichment-card">
+                <span>03</span>
+                <h3>Social Sanctuaries</h3>
+                <p>Intimate gatherings, wine tastings, and intellectual salons fostering deep connections among residents and peers.</p>
+            </div>
         </div>
     </main>
 
