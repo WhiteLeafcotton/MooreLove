@@ -64,7 +64,18 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     transform: scale(1.03); /* Subtle zoom out effect during transition */
     will-change: opacity, transform;
 }
+.hero-overlay,
+.hero-bg-layer {
+    pointer-events: none;
+}
 
+.icon-bar-container,
+.icon-wrapper,
+.icon-item {
+    position: relative;
+    z-index: 100;
+    pointer-events: auto;
+}
 .hero-bg-layer.active {
     opacity: 1;
     transform: scale(1); /* Settles to normal scale */
