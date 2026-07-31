@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us | Sanctuary</title>
+    <!-- Insert Global CSS here -->
+    <style>
+      .about-container {
+        padding: 6rem 5%;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .about-container h1 {
+        font-size: 3.5rem;
+        margin-bottom: 2rem;
+      }
+      .manifesto {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.8rem;
+        line-height: 1.6;
+        color: var(--off-white);
+        margin-bottom: 4rem;
+        font-weight: 300;
+      }
+      .about-body {
+        text-align: left;
+        margin-bottom: 6rem;
+      }
+      .about-body p {
+        margin-bottom: 1.5rem;
+        line-height: 2;
+        font-size: 1.05rem;
+      }
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+        text-align: left;
+        border-top: 1px solid rgba(247, 245, 240, 0.1);
+        padding-top: 4rem;
+      }
+      .value-item h3 {
+        color: var(--gold-accent);
+        font-size: 1rem;
+        letter-spacing: 0.15em;
+        margin-bottom: 1rem;
+      }
+      @media(max-width: 768px) {
+        .values-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">Sanctuary</a>
+        <ul class="nav-links">
+            <li><a href="about.html" class="active">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="enrichment.html">Life Enrichment</a></li>
+            <li><a href="location.html">Location</a></li>
+        </ul>
+    </nav>
+
+    <main class="about-container">
+        <h1>Our Philosophy</h1>
+        <div class="manifesto">
+            "To elevate everyday living into an art form, balancing timeless architectural grace with deeply personalized care."
+        </div>
+        
+        <div class="about-body">
+            <p>Founded on the principle that luxury is defined by peace of mind and uncompromising quality, Sanctuary represents a new paradigm in refined lifestyle environments. We believe that true sophistication lies in the details—the gentle transition of light through our spaces, the intuitive nature of our support team, and the profound sense of belonging cultivated within our community.</p>
+        </div>
+
+        <div class="values-grid">
+            <div class="value-item">
+                <h3>01 / Uncompromising Standards</h3>
+                <p>Every facet of our operation is held to the highest benchmarks of excellence, ensuring flawless execution and enduring elegance.</p>
+            </div>
+            <div class="value-item">
+                <h3>02 / Radical Empathy</h3>
+                <p>We listen closely and anticipate intuitively, placing individual well-being and personal autonomy at the very heart of everything we do.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sanctuary Estate. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
