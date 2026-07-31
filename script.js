@@ -106,25 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Tab Listeners (Hover & Click support fixed for navigation routing)
+    // Tab Listeners (Hover & Click support)
     iconItems.forEach((item) => {
         item.addEventListener('mouseenter', () => updateHeroContent(item));
-        
-        item.addEventListener('click', (e) => {
-            const targetUrl = item.getAttribute('data-href');
-            
-            // If the item itself is an anchor link or has a data-href, handle navigation explicitly
-            if (targetUrl) {
-                e.preventDefault();
-                updateHeroContent(item);
-                // Optional small timeout to let the visual transition start before changing pages
-                setTimeout(() => {
-                    window.location.href = targetUrl;
-                }, 150);
-            } else {
-                updateHeroContent(item);
-            }
-        });
+        item.addEventListener('click', () => updateHeroContent(item));
     });
 
     // Initialize active line positioning
