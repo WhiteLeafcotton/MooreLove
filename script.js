@@ -108,15 +108,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Tab Listeners (Hover & Click support)
    // Tab Listeners (Hover & Click support)
-    iconItems.forEach((item) => {
-        item.addEventListener('mouseenter', () => updateHeroContent(item));
-        
-        item.addEventListener('click', (e) => {
-            // If it's an <a> tag, let it navigate naturally to its href
-            // Update the hero content visually first, then let the browser route
-            updateHeroContent(item);
-        });
+   iconItems.forEach((item) => {
+
+    // Desktop hover preview
+    item.addEventListener("mouseenter", () => {
+        updateHeroContent(item);
     });
+
+    // Mobile/Desktop click
+    item.addEventListener("click", () => {
+
+        // Update hero animation
+        updateHeroContent(item);
+
+        // Don't preventDefault().
+        // The browser will follow the href automatically.
+    });
+
+});
 
     // Initialize active line positioning
     setTimeout(() => { 
