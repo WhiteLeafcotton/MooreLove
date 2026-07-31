@@ -107,9 +107,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Tab Listeners (Hover & Click support)
+   // Tab Listeners (Hover & Click support)
     iconItems.forEach((item) => {
         item.addEventListener('mouseenter', () => updateHeroContent(item));
-        item.addEventListener('click', () => updateHeroContent(item));
+        
+        item.addEventListener('click', (e) => {
+            // If it's an <a> tag, let it navigate naturally to its href
+            // Update the hero content visually first, then let the browser route
+            updateHeroContent(item);
+        });
     });
 
     // Initialize active line positioning
