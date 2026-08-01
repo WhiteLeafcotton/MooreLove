@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 2. Heavy & Cinematic Image Cross-Fade & Dynamic CTA Routing Logic
     // ==========================================
+    // ==========================================
+    // 2. Heavy & Cinematic Image Cross-Fade & Dynamic CTA Routing Logic
+    // ==========================================
     const iconItems = document.querySelectorAll('.icon-item');
     const heroVideo = document.getElementById('heroVideo');
     const heroLogo = document.querySelector('.hero-logo');
@@ -88,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heroBtn.innerText = item.dataset.cta;
         }
 
-        currentTargetUrl = item.getAttribute('data-href');
+        currentTargetUrl = item.getAttribute('data-href') || '#';
 
         iconItems.forEach(icon => icon.classList.remove('active'));
         item.classList.add('active');
@@ -109,12 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Icon items setup
+    // Tab Listeners
     iconItems.forEach((item) => {
-        // Hover changes the preview background and title
         item.addEventListener('mouseenter', () => updateHeroContent(item));
         
-        // Click immediately navigates to the assigned subpage
         item.addEventListener('click', (e) => {
             e.preventDefault();
             updateHeroContent(item);
