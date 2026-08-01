@@ -5,35 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life Enrichment | Sanctuary</title>
     
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
       :root {
         --bg-white: #FFFFFF;
         --plum-deep: #1A0B1A;
-        --plum-muted: #4A354A;
-        --text-main: #2C2C2C;
-        --text-light: #777777;
-        --border-color: #EAE6E1;
+        --plum-muted: #523752;
+        --text-main: #2A2A2A;
+        --text-light: #767676;
+        --border-color: #E8E3DC;
         --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
 
       body {
         background-color: var(--bg-white);
         color: var(--text-main);
         font-family: 'Plus Jakarta Sans', sans-serif;
         line-height: 1.8;
-        overflow-x: hidden;
       }
 
-      /* Minimal Back Arrow */
       .back-nav {
         position: fixed;
         top: 2.5rem;
@@ -46,7 +39,6 @@
         font-size: 1.25rem;
         color: var(--plum-deep);
         text-decoration: none;
-        letter-spacing: 0.1em;
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -54,25 +46,20 @@
         opacity: 0.7;
       }
 
-      .back-arrow:hover {
-        opacity: 1;
-        transform: translateX(-4px);
-      }
+      .back-arrow:hover { opacity: 1; transform: translateX(-4px); }
 
-      /* Enrichment Container */
-      .enrichment-container {
-        padding: 10rem 8% 8rem;
-        max-width: 1300px;
+      .enrichment-wrapper {
+        max-width: 1000px;
         margin: 0 auto;
+        padding: 11rem 8% 8rem;
       }
 
-      .enrichment-header {
+      .enrichment-top {
         text-align: center;
-        max-width: 650px;
-        margin: 0 auto 6rem;
+        margin-bottom: 6rem;
       }
 
-      .enrichment-header h1 {
+      .enrichment-top h1 {
         font-family: 'Cormorant Garamond', serif;
         font-size: 3rem;
         font-weight: 300;
@@ -82,76 +69,91 @@
         margin-bottom: 1.5rem;
       }
 
-      .enrichment-header p {
+      .enrichment-top p {
         font-size: 0.95rem;
         color: var(--text-light);
-        font-weight: 300;
+        max-width: 600px;
+        margin: 0 auto;
         line-height: 1.9;
       }
 
-      .enrichment-grid {
+      /* Horizontal Row Layout */
+      .chapter-list {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        border-top: 1px solid var(--border-color);
+        padding-top: 4rem;
+      }
+
+      .chapter-item {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 3rem;
+        grid-template-columns: 120px 1fr;
+        gap: 4rem;
+        align-items: start;
+        padding-bottom: 4rem;
+        border-bottom: 1px solid var(--border-color);
       }
 
-      .enrichment-card {
-        padding: 3rem 2.5rem;
-        border: 1px solid var(--border-color);
-        transition: var(--transition);
-        background: transparent;
+      .chapter-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
       }
 
-      .enrichment-card:hover {
-        border-color: var(--plum-deep);
-        transform: translateY(-4px);
-      }
-
-      .enrichment-card span {
+      .chapter-num {
         font-family: 'Cormorant Garamond', serif;
-        font-size: 1.1rem;
+        font-size: 2.2rem;
         color: var(--plum-muted);
-        display: block;
-        margin-bottom: 2rem;
-        letter-spacing: 0.1em;
+        font-weight: 300;
+        line-height: 1;
       }
 
-      .enrichment-card h3 {
+      .chapter-content h3 {
         font-family: 'Cormorant Garamond', serif;
-        font-size: 1.35rem;
+        font-size: 1.4rem;
         font-weight: 400;
         color: var(--plum-deep);
-        margin-bottom: 1rem;
         letter-spacing: 0.08em;
+        margin-bottom: 0.75rem;
         text-transform: uppercase;
       }
 
-      .enrichment-card p {
+      .chapter-content p {
         font-size: 0.9rem;
         color: var(--text-light);
         line-height: 1.9;
+        margin-bottom: 1.5rem;
       }
 
-      @media(max-width: 1024px) {
+      .tag-list {
+        display: flex;
+        gap: 1rem;
+        list-style: none;
+        flex-wrap: wrap;
+      }
+
+      .tag-list li {
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--plum-deep);
+        background: #FAF8F5;
+        padding: 0.35rem 0.85rem;
+        border: 1px solid var(--border-color);
+      }
+
+      @media(max-width: 768px) {
+        .chapter-item { grid-template-columns: 1fr; gap: 1rem; }
         .back-nav { top: 1.5rem; left: 1.5rem; }
-        .enrichment-container { padding: 8rem 6% 5rem; }
-        .enrichment-grid { grid-template-columns: 1fr; }
-        .enrichment-header h1 { font-size: 2.2rem; }
+        .enrichment-wrapper { padding: 8rem 6% 5rem; }
       }
 
-      /* Minimal Footer */
       footer {
         padding: 4rem 5%;
         text-align: center;
         border-top: 1px solid var(--border-color);
       }
-
-      footer p {
-        font-size: 0.75rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--text-light);
-      }
+      footer p { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-light); }
     </style>
 </head>
 <body>
@@ -160,26 +162,50 @@
         <a href="index.html" class="back-arrow">&larr; Return</a>
     </div>
 
-    <main class="enrichment-container">
-        <div class="enrichment-header">
+    <main class="enrichment-wrapper">
+        <div class="enrichment-top">
             <h1>Elevated Experiences</h1>
-            <p>Immerse yourself in a culture of continuous growth, artistic exploration, and meaningful community connection.</p>
+            <p>Immerse yourself in a dynamic culture of continuous intellectual growth, creative exploration, and authentic community engagement.</p>
         </div>
-        <div class="enrichment-grid">
-            <div class="enrichment-card">
-                <span>01</span>
-                <h3>Cultural & Arts</h3>
-                <p>Private gallery viewings, classical music salons, and intimate creative workshops designed to inspire the imagination and spirit.</p>
+
+        <div class="chapter-list">
+            <div class="chapter-item">
+                <div class="chapter-num">01</div>
+                <div class="chapter-content">
+                    <h3>Cultural & Arts Salon</h3>
+                    <p>Curated private gallery viewings, intimate classical music recitals, and creative studio workshops designed to stimulate thought and artistic appreciation.</p>
+                    <ul class="tag-list">
+                        <li>Gallery Previews</li>
+                        <li>Live Recitals</li>
+                        <li>Studio Arts</li>
+                    </ul>
+                </div>
             </div>
-            <div class="enrichment-card">
-                <span>02</span>
-                <h3>Active Engagement</h3>
-                <p>Tailored mobility regimens, mindful movement sessions, and curated outdoor excursions built around physical vitality.</p>
+
+            <div class="chapter-item">
+                <div class="chapter-num">02</div>
+                <div class="chapter-content">
+                    <h3>Active Vitality</h3>
+                    <p>Tailored mobility regimens, mindful somatic movement classes, and guided nature excursions curated specifically for sustainable physical well-being.</p>
+                    <ul class="tag-list">
+                        <li>Somatic Yoga</li>
+                        <li>Guided Treks</li>
+                        <li>Mobility Training</li>
+                    </ul>
+                </div>
             </div>
-            <div class="enrichment-card">
-                <span>03</span>
-                <h3>Social Sanctuaries</h3>
-                <p>Sophisticated gatherings, wine tastings, and intellectual salons fostering deep connections among residents and peers.</p>
+
+            <div class="chapter-item">
+                <div class="chapter-num">03</div>
+                <div class="chapter-content">
+                    <h3>Social Sanctuaries</h3>
+                    <p>Thoughtfully hosted evening wine tastings, literary lecture series, and intimate salon discussions fostering genuine community bonds.</p>
+                    <ul class="tag-list">
+                        <li>Literary Circles</li>
+                        <li>Sommelier Tastings</li>
+                        <li>Fireside Salons</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </main>
