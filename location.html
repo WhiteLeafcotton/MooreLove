@@ -462,37 +462,5 @@
     </main>
 
    
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-
-        // Demur Notch and Tailing Line Animation Logic
-        const tabs = document.querySelectorAll('.nav-tab');
-        const indicator = document.getElementById('notchIndicator');
-
-        function updateIndicator(activeTab) {
-            if (!activeTab || !indicator) return;
-            indicator.style.width = `${activeTab.offsetWidth}px`;
-            indicator.style.left = `${activeTab.offsetLeft}px`;
-        }
-
-        window.addEventListener('load', () => {
-            const activeTab = document.querySelector('.nav-tab.active');
-            updateIndicator(activeTab);
-        });
-
-        window.addEventListener('resize', () => {
-            const activeTab = document.querySelector('.nav-tab.active');
-            updateIndicator(activeTab);
-        });
-
-        tabs.forEach((tab, index) => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                updateIndicator(tab);
-            });
-        });
-    </script>
 </body>
 </html>
