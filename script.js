@@ -43,6 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 2. Heavy & Cinematic Image Cross-Fade & Dynamic Content Switcher (Video Stays Until Interaction)
     // ==========================================
+  
+    // ==========================================
+    // 2. Heavy & Cinematic Image Cross-Fade & Dynamic Content Switcher (Mobile Friendly Preview)
+    // ==========================================
     const iconItems = document.querySelectorAll('.icon-item');
     const heroVideo = document.getElementById('heroVideo');
     const heroLogo = document.querySelector('.hero-logo');
@@ -58,7 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Track current link target for the main hero CTA button (defaults to first item's link)
     let currentTargetUrl = iconItems[0]?.getAttribute('data-href') || '#';
 
+    // Track whether the user has interacted with the icons yet (keeps video playing initially on mobile/desktop)
+    let hasInteracted = false;
+
     function updateHeroContent(item) {
+        hasInteracted = true;
+
         if (heroLogo) {
             heroLogo.classList.add('hidden');
         }
@@ -130,9 +139,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Icon items ONLY update the preview state on hover/click (do NOT navigate away)
+    // Icon items handle hover (desktop) and touch/clicks (mobile) to switch preview states without navigating
     iconItems.forEach((item) => {
-        item.addEventListener('mouseenter', () => updateHeroContent(item));
+        item.addEventListener('mouseenter', () => {
+            // Only trigger hover on devices that support true hover (prevents ghost triggers on mobile touch)
+            if (window.matchMedia('(hover: hover)').matches) {
+                updateHeroContent(item);
+            }
+        });
+
         item.addEventListener('click', (e) => {
             e.preventDefault();
             updateHeroContent(item);
@@ -146,6 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
             activeLine.style.left = iconItems[0].offsetLeft + "px";
         }
     }, 100);
+
+
     // ==========================================
     // 3. Featured Card Intersection Observer
     // ==========================================
