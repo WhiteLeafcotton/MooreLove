@@ -5,19 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | Sanctuary</title>
     
-    <!-- Importing Google Fonts First -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Plus+Jakarta+Sans:wght@300;400&display=swap" rel="stylesheet">
     
-    <!-- Global & Page-Specific Styles -->
     <style>
       :root {
-        --plum-dark: #1E121E;
-        --plum-card: #2A1A2A;
-        --plum-accent: #3D263D;
-        --off-white: #F7F5F0;
-        --off-white-muted: #D3CEC4;
-        --gold-accent: #C5A880;
-        --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        --bg-white: #FFFFFF;
+        --plum-deep: #1A0B1A;
+        --plum-muted: #4A354A;
+        --text-main: #2C2C2C;
+        --text-light: #777777;
+        --border-color: #EAE6E1;
+        --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       * {
@@ -27,135 +26,137 @@
       }
 
       body {
-        background-color: var(--plum-dark);
-        color: var(--off-white);
-        font-family: 'Cormorant Garamond', serif, Georgia, serif;
+        background-color: var(--bg-white);
+        color: var(--text-main);
+        font-family: 'Plus Jakarta Sans', sans-serif;
         line-height: 1.8;
         overflow-x: hidden;
       }
 
-      h1, h2, h3, h4 {
-        font-weight: 400;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
+      /* Minimal Back Arrow */
+      .back-nav {
+        position: fixed;
+        top: 2.5rem;
+        left: 3rem;
+        z-index: 100;
       }
 
-      p, span, a, li {
-        font-family: 'Plus Jakarta Sans', sans-serif, system-ui, sans-serif;
-        font-weight: 300;
-        font-size: 0.95rem;
-        color: var(--off-white-muted);
-      }
-
-      /* Navigation Bar */
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 2.5rem 5%;
-        border-bottom: 1px solid rgba(247, 245, 240, 0.1);
-      }
-
-      .logo {
+      .back-arrow {
         font-family: 'Cormorant Garamond', serif;
-        font-size: 1.5rem;
-        letter-spacing: 0.2em;
-        color: var(--off-white);
+        font-size: 1.25rem;
+        color: var(--plum-deep);
         text-decoration: none;
-        text-transform: uppercase;
-      }
-
-      .nav-links {
+        letter-spacing: 0.1em;
         display: flex;
-        gap: 2.5rem;
-        list-style: none;
-      }
-
-      .nav-links a {
-        text-decoration: none;
-        color: var(--off-white-muted);
-        font-size: 0.85rem;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
+        align-items: center;
+        gap: 0.5rem;
         transition: var(--transition);
+        opacity: 0.7;
       }
 
-      .nav-links a:hover, .nav-links a.active {
-        color: var(--off-white);
-        border-bottom: 1px solid var(--gold-accent);
-        padding-bottom: 2px;
+      .back-arrow:hover {
+        opacity: 1;
+        transform: translateX(-4px);
       }
 
-      /* About Page Specific Styles */
+      /* About Page Content */
       .about-container {
-        padding: 6rem 5%;
+        padding: 10rem 10% 8rem;
         max-width: 900px;
         margin: 0 auto;
         text-align: center;
       }
+
       .about-container h1 {
-        font-size: 3.5rem;
-        margin-bottom: 2rem;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 3rem;
+        font-weight: 300;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--plum-deep);
+        margin-bottom: 2.5rem;
       }
+
       .manifesto {
         font-family: 'Cormorant Garamond', serif;
-        font-size: 1.8rem;
+        font-style: italic;
+        font-size: 1.65rem;
         line-height: 1.6;
-        color: var(--off-white);
-        margin-bottom: 4rem;
+        color: var(--plum-muted);
+        margin-bottom: 5rem;
         font-weight: 300;
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
       }
+
       .about-body {
-        text-align: left;
+        text-align: center;
         margin-bottom: 6rem;
       }
+
       .about-body p {
-        margin-bottom: 1.5rem;
-        line-height: 2;
-        font-size: 1.05rem;
+        font-size: 1rem;
+        line-height: 2.1;
+        color: var(--text-light);
+        max-width: 700px;
+        margin: 0 auto;
+        font-weight: 300;
       }
+
       .values-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 3rem;
+        gap: 4rem;
         text-align: left;
-        border-top: 1px solid rgba(247, 245, 240, 0.1);
-        padding-top: 4rem;
-      }
-      .value-item h3 {
-        color: var(--gold-accent);
-        font-size: 1rem;
-        letter-spacing: 0.15em;
-        margin-bottom: 1rem;
-      }
-      @media(max-width: 768px) {
-        .values-grid { grid-template-columns: 1fr; }
+        border-top: 1px solid var(--border-color);
+        padding-top: 5rem;
       }
 
-      /* Footer */
+      .value-item h3 {
+        font-family: 'Cormorant Garamond', serif;
+        color: var(--plum-deep);
+        font-size: 1.15rem;
+        font-weight: 400;
+        letter-spacing: 0.12em;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+      }
+
+      .value-item p {
+        font-size: 0.9rem;
+        color: var(--text-light);
+        line-height: 1.9;
+      }
+
+      @media(max-width: 768px) {
+        .back-nav { top: 1.5rem; left: 1.5rem; }
+        .about-container { padding: 8rem 6% 5rem; }
+        .about-container h1 { font-size: 2.2rem; }
+        .manifesto { font-size: 1.35rem; }
+        .values-grid { grid-template-columns: 1fr; gap: 3rem; }
+      }
+
+      /* Minimal Footer */
       footer {
-        padding: 5rem 5% 3rem;
-        border-top: 1px solid rgba(247, 245, 240, 0.1);
+        padding: 4rem 5%;
         text-align: center;
+        border-top: 1px solid var(--border-color);
       }
 
       footer p {
-        font-size: 0.8rem;
-        letter-spacing: 0.1em;
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
         text-transform: uppercase;
+        color: var(--text-light);
       }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="logo">Sanctuary</a>
-        <ul class="nav-links">
-            <li><a href="about.html" class="active">About Us</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="enrichment.html">Life Enrichment</a></li>
-            <li><a href="location.html">Location</a></li>
-        </ul>
-    </nav>
+
+    <div class="back-nav">
+        <a href="index.html" class="back-arrow">&larr; Return</a>
+    </div>
 
     <main class="about-container">
         <h1>Our Philosophy</h1>
@@ -164,17 +165,17 @@
         </div>
         
         <div class="about-body">
-            <p>Founded on the principle that luxury is defined by peace of mind and uncompromising quality, Sanctuary represents a new paradigm in refined lifestyle environments. We believe that true sophistication lies in the details—the gentle transition of light through our spaces, the intuitive nature of our support team, and the profound sense of belonging cultivated within our community.</p>
+            <p>Founded on the principle that true luxury is defined by peace of mind and uncompromising quality, Sanctuary represents a new paradigm in refined lifestyle environments. We believe sophistication lies entirely within the details—the gentle transition of natural light, the intuitive nature of our support, and a profound sense of belonging.</p>
         </div>
 
         <div class="values-grid">
             <div class="value-item">
                 <h3>01 / Uncompromising Standards</h3>
-                <p>Every facet of our operation is held to the highest benchmarks of excellence, ensuring flawless execution and enduring elegance.</p>
+                <p>Every facet of our operation is held to strict benchmarks of excellence, ensuring flawless execution and enduring elegance.</p>
             </div>
             <div class="value-item">
                 <h3>02 / Radical Empathy</h3>
-                <p>We listen closely and anticipate intuitively, placing individual well-being and personal autonomy at the very heart of everything we do.</p>
+                <p>We listen closely and anticipate intuitively, placing individual well-being and personal autonomy at the very heart of daily life.</p>
             </div>
         </div>
     </main>
