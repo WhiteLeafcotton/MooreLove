@@ -28,111 +28,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 2. Heavy & Cinematic Image Cross-Fade & Dynamic CTA Routing Logic
     // ==========================================
-    const iconItems = document.querySelectorAll('.icon-item');
-    const heroVideo = document.getElementById('heroVideo');
-    const heroLogo = document.querySelector('.hero-logo');
-    const heroTitle = document.getElementById('heroTitle') || document.querySelector('.hero-content h1');
-    const heroBtn = document.getElementById('heroButton') || document.querySelector('.hero-button') || document.querySelector('.card-btn');
-    const activeLine = document.getElementById("activeLine");
+    <!-- Interactive Icon Bar (Preview Tabs Only) -->
+<div class="icon-bar-container">
+    <div class="icon-bar-line">
+        <div class="active-line" id="activeLine"></div>
+    </div>
 
-    // Cross-fade dual layers
-    const bgA = document.getElementById('heroBgA');
-    const bgB = document.getElementById('heroBgB');
-    let currentBg = 'A';
+    <div class="icon-wrapper">
+        <div class="icon-item" data-image="folk.jpg" data-title="ELEVATED <span>LIFESTYLE</span> EXPERIENCES" data-cta="Explore Lifestyle" data-href="lifestyle.html">
+            <i data-lucide="footprints"></i>
+            <span>Lifestyle</span>
+        </div>
 
-    let currentTargetUrl = iconItems[0]?.getAttribute('data-href') || '#';
+        <div class="icon-item" data-image="lifestyle.jpg" data-title="PERSONALIZED <span>WELLNESS</span> CARE" data-cta="Explore Wellness" data-href="wellness.html">
+            <i data-lucide="pill"></i>
+            <span>Wellness</span>
+        </div>
 
-    function updateHeroContent(item) {
-        if (heroLogo) {
-            heroLogo.classList.add('hidden');
-        }
+        <div class="icon-item" data-image="chair.jpg" data-title="WARM RESIDENTIAL <span>COMMUNITY</span>" data-cta="Explore Community" data-href="location.html">
+            <i data-lucide="house"></i>
+            <span>Community</span>
+        </div>
 
-        if (heroVideo && heroVideo.style.display !== 'none') {
-            heroVideo.style.transition = 'opacity 1s ease';
-            heroVideo.style.opacity = '0';
-            setTimeout(() => {
-                heroVideo.style.display = 'none';
-                heroVideo.pause();
-            }, 1000);
-        }
-
-        const newImage = item.dataset.image;
-        if (newImage) {
-            const bgUrl = `linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('${newImage}')`;
-
-            if (currentBg === 'A') {
-                if (bgB) {
-                    bgB.style.backgroundImage = bgUrl;
-                    bgB.classList.add('active');
-                }
-                if (bgA) bgA.classList.remove('active');
-                currentBg = 'B';
-            } else {
-                if (bgA) {
-                    bgA.style.backgroundImage = bgUrl;
-                    bgA.classList.add('active');
-                }
-                if (bgB) bgB.classList.remove('active');
-                currentBg = 'A';
-            }
-        }
-
-        if (heroTitle && item.dataset.title && heroTitle.innerHTML !== item.dataset.title) {
-            heroTitle.style.opacity = '0';
-            heroTitle.style.transform = 'translateY(8px)';
-            setTimeout(() => {
-                heroTitle.innerHTML = item.dataset.title;
-                heroTitle.style.opacity = '1';
-                heroTitle.style.transform = 'translateY(0)';
-            }, 400);
-        }
-
-        if (heroBtn && item.dataset.cta) {
-            heroBtn.innerText = item.dataset.cta;
-        }
-
-        currentTargetUrl = item.getAttribute('data-href') || '#';
-
-        iconItems.forEach(icon => icon.classList.remove('active'));
-        item.classList.add('active');
-
-        if (activeLine) {
-            activeLine.style.width = item.offsetWidth + "px";
-            activeLine.style.left = item.offsetLeft + "px";
-        }
-    }
-
-    // Main Hero CTA button click redirection
-    if (heroBtn) {
-        heroBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (currentTargetUrl && currentTargetUrl !== '#') {
-                window.location.href = currentTargetUrl;
-            }
-        });
-    }
-
-    // Tab Listeners
-    iconItems.forEach((item) => {
-        item.addEventListener('mouseenter', () => updateHeroContent(item));
-        
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            updateHeroContent(item);
-            const targetUrl = item.getAttribute('data-href');
-            if (targetUrl && targetUrl !== '#') {
-                window.location.href = targetUrl;
-            }
-        });
-    });
-
-    // Initialize active line positioning & first tab state
-    setTimeout(() => { 
-        if (activeLine && iconItems.length > 0) {
-            activeLine.style.width = iconItems[0].offsetWidth + "px";
-            activeLine.style.left = iconItems[0].offsetLeft + "px";
-        }
-    }, 100);
+        <div class="icon-item" data-image="hand.jpg" data-title="DEDICATED <span>SUPPORT</span> SERVICES" data-cta="Explore Support" data-href="support.html">
+            <i data-lucide="hand-heart"></i>
+            <span>Support</span>
+        </div>
+    </div>
+</div>
     // ==========================================
     // 3. Featured Card Intersection Observer
     // ==========================================
