@@ -90,121 +90,134 @@
         line-height: 1.9;
       }
 
-      /* Cascading Accordion Container */
-      .cascading-container {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
+      /* Notch Navigation Bar with Tailing Line */
+      .notch-nav-wrapper {
+        position: relative;
+        margin-bottom: 3rem;
       }
 
-      .cascade-item {
+      .notch-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        position: relative;
+        z-index: 2;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        scrollbar-width: none;
+      }
+
+      .notch-tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .campus-tab {
+        background: none;
+        border: none;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.25rem;
+        letter-spacing: 0.12em;
+        color: var(--text-light);
+        cursor: pointer;
+        padding: 0.5rem 0;
+        position: relative;
+        transition: var(--transition);
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .campus-tab.active {
+        color: var(--plum-deep);
+        font-weight: 500;
+      }
+
+      /* Demur Demarcation Notch Indicator */
+      .active-notch-indicator {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        background-color: var(--plum-deep);
+        transition: var(--transition);
+      }
+
+      /* Vertical Tailing Line Flowing Downwards */
+      .tailing-line-container {
+        position: relative;
+        width: 100%;
+      }
+
+      .vertical-tail-line {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1px;
+        height: 40px;
+        background: var(--border-color);
+        z-index: 1;
+      }
+
+      /* Cascading Content Panels */
+      .cascade-panels-wrapper {
+        position: relative;
+        margin-top: 2rem;
         border: 1px solid var(--border-color);
         background: var(--bg-white);
-        transition: var(--transition);
-        overflow: hidden;
+        padding: 3rem;
+        opacity: 0;
+        transform: translateY(15px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        display: none;
       }
 
-      .cascade-item.active {
-        border-color: var(--plum-deep);
-        box-shadow: 0 15px 40px rgba(26, 11, 26, 0.04);
+      .cascade-panels-wrapper.active {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+        box-shadow: 0 20px 50px rgba(26, 11, 26, 0.03);
       }
 
-      /* Accordion Header / Notch */
-      .cascade-notch {
-        padding: 2rem 2.5rem;
-        display: flex;
-        justify-content: space-between;
+      .panel-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3.5rem;
         align-items: center;
-        cursor: pointer;
-        user-select: none;
-        background-color: var(--bg-white);
-        transition: var(--transition);
       }
 
-      .cascade-item.active .cascade-notch {
-        background-color: var(--accent-bg);
-        border-bottom: 1px solid var(--border-color);
-      }
-
-      .notch-left {
-        display: flex;
-        align-items: baseline;
-        gap: 2rem;
-      }
-
-      .notch-number {
+      .panel-details h3 {
         font-family: 'Cormorant Garamond', serif;
-        font-size: 1.1rem;
-        color: var(--plum-muted);
-        letter-spacing: 0.1em;
-      }
-
-      .notch-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.6rem;
+        font-size: 2rem;
         font-weight: 400;
         color: var(--plum-deep);
         letter-spacing: 0.08em;
         text-transform: uppercase;
+        margin-bottom: 1.2rem;
       }
 
-      .notch-toggle {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.5rem;
-        color: var(--plum-deep);
-        transition: transform 0.4s ease;
-      }
-
-      .cascade-item.active .notch-toggle {
-        transform: rotate(45deg);
-      }
-
-      /* Accordion Body / Hidden Content */
-      .cascade-content {
-        max-height: 0;
-        opacity: 0;
-        overflow: hidden;
-        transition: max-height 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
-        background: var(--bg-white);
-      }
-
-      .cascade-item.active .cascade-content {
-        max-height: 1200px;
-        opacity: 1;
-      }
-
-      .content-inner {
-        padding: 3rem 2.5rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        align-items: center;
-      }
-
-      .content-details p {
+      .panel-details p {
         font-size: 0.95rem;
         color: var(--text-light);
         line-height: 1.9;
         margin-bottom: 2rem;
       }
 
-      /* Quote styling */
-      .content-quote {
+      .panel-quote {
         border-left: 2px solid var(--plum-deep);
         padding-left: 1.5rem;
         margin-bottom: 2rem;
       }
 
-      .content-quote p {
+      .panel-quote p {
         font-family: 'Cormorant Garamond', serif;
         font-style: italic;
-        font-size: 1.2rem;
+        font-size: 1.15rem;
         color: var(--plum-deep);
         line-height: 1.6;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
       }
 
-      .content-quote span {
+      .panel-quote span {
         font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 0.2em;
@@ -229,17 +242,16 @@
         border-color: var(--plum-muted);
       }
 
-      /* Media Box (Video / Photo display) */
-      .content-media {
+      .panel-media {
         position: relative;
         width: 100%;
-        height: 320px;
+        height: 350px;
         overflow: hidden;
         border-radius: 2px;
       }
 
-      .content-media video, 
-      .content-media img {
+      .panel-media video, 
+      .panel-media img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -248,10 +260,9 @@
       @media(max-width: 900px) {
         .back-nav { top: 1.5rem; left: 1.5rem; }
         .location-container { padding: 8rem 5% 5rem; }
-        .content-inner { grid-template-columns: 1fr; gap: 2rem; padding: 2rem 1.5rem; }
-        .notch-left { gap: 1rem; }
-        .notch-title { font-size: 1.3rem; }
-        .cascade-notch { padding: 1.5rem; }
+        .panel-grid { grid-template-columns: 1fr; gap: 2rem; }
+        .cascade-panels-wrapper { padding: 1.5rem; }
+        .notch-tabs { gap: 1.5rem; justify-content: flex-start; padding-left: 1rem; padding-right: 1rem; }
       }
 
       /* Minimal Footer */
@@ -278,113 +289,95 @@
     <main class="location-container">
         <div class="location-header">
             <h1>Our Campuses</h1>
-            <p>Explore our exclusive Wisconsin residences, crafted with intentional elegance, advanced clinical capabilities, and tranquil surroundings.</p>
+            <p>Select a location below to experience our residential sanctuaries, featuring tailored lifestyle curation and clinical care.</p>
         </div>
         
-        <div class="cascading-container">
+        <!-- Swappable Notch Header with Tailing Line -->
+        <div class="tailing-line-container">
+            <div class="vertical-tail-line"></div>
             
-            <!-- Campus 1: Waukesha -->
-            <div class="cascade-item active">
-                <div class="cascade-notch">
-                    <div class="notch-left">
-                        <span class="notch-number">01</span>
-                        <h3 class="notch-title">Waukesha</h3>
-                    </div>
-                    <span class="notch-toggle">+</span>
+            <div class="notch-nav-wrapper">
+                <div class="notch-tabs" id="notchTabs">
+                    <button class="campus-tab active" data-target="panel-1">01. Waukesha</button>
+                    <button class="campus-tab" data-target="panel-2">02. Milwaukee</button>
+                    <button class="campus-tab" data-target="panel-3">03. Wauwatosa</button>
+                    <button class="campus-tab" data-target="panel-4">04. Elm Grove</button>
+                    <div class="active-notch-indicator" id="notchIndicator"></div>
                 </div>
-                <div class="cascade-content">
-                    <div class="content-inner">
-                        <div class="content-details">
-                            <p>Designed with intentional elegance, Waukesha offers an intimate community atmosphere paired with continuous, customized care and scenic architectural gardens.</p>
-                            <div class="content-quote">
-                                <p>"The peaceful courtyard and specialized support changed our family's perspective on senior living entirely."</p>
-                                <span>— Resident Family Member</span>
-                            </div>
-                            <a href="tel:+12629510165" class="campus-btn">Inquire About Waukesha &rarr;</a>
+            </div>
+
+            <!-- Cascading Content Panels -->
+            
+            <!-- Panel 1: Waukesha -->
+            <div class="cascade-panels-wrapper active" id="panel-1">
+                <div class="panel-grid">
+                    <div class="panel-details">
+                        <h3>Waukesha Campus</h3>
+                        <p>Designed with intentional elegance, Waukesha offers an intimate community atmosphere paired with continuous, customized care and scenic architectural gardens.</p>
+                        <div class="panel-quote">
+                            <p>"The peaceful courtyard and specialized support changed our family's perspective on senior living entirely."</p>
+                            <span>— Resident Family Member</span>
                         </div>
-                        <div class="content-media">
-                            <img src="san-fran.jpg" alt="Waukesha Campus View">
-                        </div>
+                        <a href="tel:+12629510165" class="campus-btn">Inquire About Waukesha &rarr;</a>
+                    </div>
+                    <div class="panel-media">
+                        <img src="san-fran.jpg" alt="Waukesha Campus View">
                     </div>
                 </div>
             </div>
 
-            <!-- Campus 2: Milwaukee -->
-            <div class="cascade-item">
-                <div class="cascade-notch">
-                    <div class="notch-left">
-                        <span class="notch-number">02</span>
-                        <h3 class="notch-title">Milwaukee</h3>
+            <!-- Panel 2: Milwaukee -->
+            <div class="cascade-panels-wrapper" id="panel-2">
+                <div class="panel-grid">
+                    <div class="panel-details">
+                        <h3>Milwaukee Campus</h3>
+                        <p>A masterpiece of urban-proximate refined living, featuring world-class amenities, thoughtful common spaces, and round-the-clock professional hospitality.</p>
+                        <div class="panel-quote">
+                            <p>"Arriving home here feels like stepping into a five-star boutique hotel with the absolute best nursing team."</p>
+                            <span>— Current Resident</span>
+                        </div>
+                        <a href="tel:+12629510165" class="campus-btn">Inquire About Milwaukee &rarr;</a>
                     </div>
-                    <span class="notch-toggle">+</span>
-                </div>
-                <div class="cascade-content">
-                    <div class="content-inner">
-                        <div class="content-details">
-                            <p>A masterpiece of urban-proximate refined living, featuring world-class amenities, thoughtful common spaces, and round-the-clock professional hospitality.</p>
-                            <div class="content-quote">
-                                <p>"Arriving home here feels like stepping into a five-star boutique hotel with the absolute best nursing team."</p>
-                                <span>— Current Resident</span>
-                            </div>
-                            <a href="tel:+12629510165" class="campus-btn">Inquire About Milwaukee &rarr;</a>
-                        </div>
-                        <div class="content-media">
-                            <video autoplay loop muted playsinline>
-                                <source src="vidz.mp4" type="video/mp4">
-                            </video>
-                        </div>
+                    <div class="panel-media">
+                        <video autoplay loop muted playsinline>
+                            <source src="vidz.mp4" type="video/mp4">
+                        </video>
                     </div>
                 </div>
             </div>
 
-            <!-- Campus 3: Wauwatosa -->
-            <div class="cascade-item">
-                <div class="cascade-notch">
-                    <div class="notch-left">
-                        <span class="notch-number">03</span>
-                        <h3 class="notch-title">Wauwatosa</h3>
+            <!-- Panel 3: Wauwatosa -->
+            <div class="cascade-panels-wrapper" id="panel-3">
+                <div class="panel-grid">
+                    <div class="panel-details">
+                        <h3>Wauwatosa Campus</h3>
+                        <p>Blending warm neighborhood charm with clinical excellence. Wauwatosa is engineered completely around fostering independence, social connection, and health security.</p>
+                        <div class="panel-quote">
+                            <p>"The wellness coordination and daily activities keep my father engaged, active, and deeply cared for."</p>
+                            <span>— Visiting Relative</span>
+                        </div>
+                        <a href="tel:+12629510165" class="campus-btn">Inquire About Wauwatosa &rarr;</a>
                     </div>
-                    <span class="notch-toggle">+</span>
-                </div>
-                <div class="cascade-content">
-                    <div class="content-inner">
-                        <div class="content-details">
-                            <p>Blending warm neighborhood charm with clinical excellence. Wauwatosa is engineered completely around fostering independence, social connection, and health security.</p>
-                            <div class="content-quote">
-                                <p>"The wellness coordination and daily activities keep my father engaged, active, and deeply cared for."</p>
-                                <span>— Visiting Relative</span>
-                            </div>
-                            <a href="tel:+12629510165" class="campus-btn">Inquire About Wauwatosa &rarr;</a>
-                        </div>
-                        <div class="content-media">
-                            <img src="deer-valley.jpg" alt="Wauwatosa Campus View">
-                        </div>
+                    <div class="panel-media">
+                        <img src="deer-valley.jpg" alt="Wauwatosa Campus View">
                     </div>
                 </div>
             </div>
 
-            <!-- Campus 4: Elm Grove -->
-            <div class="cascade-item">
-                <div class="cascade-notch">
-                    <div class="notch-left">
-                        <span class="notch-number">04</span>
-                        <h3 class="notch-title">Elm Grove</h3>
+            <!-- Panel 4: Elm Grove -->
+            <div class="cascade-panels-wrapper" id="panel-4">
+                <div class="panel-grid">
+                    <div class="panel-details">
+                        <h3>Elm Grove Campus</h3>
+                        <p>An exclusive, wooded sanctuary setting dedicated to premier memory care, low resident-to-staff ratios, and unmatched peace of mind for families.</p>
+                        <div class="panel-quote">
+                            <p>"The level of compassion and individualized attention shown here is something you simply cannot find anywhere else."</p>
+                            <span>— Estate Director</span>
+                        </div>
+                        <a href="tel:+12629510165" class="campus-btn">Inquire About Elm Grove &rarr;</a>
                     </div>
-                    <span class="notch-toggle">+</span>
-                </div>
-                <div class="cascade-content">
-                    <div class="content-inner">
-                        <div class="content-details">
-                            <p>An exclusive, wooded sanctuary setting dedicated to premier memory care, low resident-to-staff ratios, and unmatched peace of mind for families.</p>
-                            <div class="content-quote">
-                                <p>"The level of compassion and individualized attention shown here is something you simply cannot find anywhere else."</p>
-                                <span>— Estate Director</span>
-                            </div>
-                            <a href="tel:+12629510165" class="campus-btn">Inquire About Elm Grove &rarr;</a>
-                        </div>
-                        <div class="content-media">
-                            <img src="home.jpg" alt="Elm Grove Campus View">
-                        </div>
+                    <div class="panel-media">
+                        <img src="home.jpg" alt="Elm Grove Campus View">
                     </div>
                 </div>
             </div>
@@ -396,28 +389,75 @@
         <p>&copy; 2026 Sanctuary Estate. All Rights Reserved.</p>
     </footer>
 
-    <!-- Cascading Accordion Interaction Script -->
+    <!-- Swappable Notch & Cascading Content Script -->
     <script>
-        const cascadeItems = document.querySelectorAll('.cascade-item');
+        const tabs = document.querySelectorAll('.campus-tab');
+        const panels = document.querySelectorAll('.cascade-panels-wrapper');
+        const indicator = document.getElementById('notchIndicator');
 
-        cascadeItems.forEach(item => {
-            const notch = item.querySelector('.cascade-notch');
-            
-            notch.addEventListener('click', () => {
-                // Check if already active
-                const isActive = item.classList.contains('active');
-                
-                // Optional: Close all other sections to keep it clean (Accordion behavior)
-                cascadeItems.forEach(otherItem => {
-                    otherItem.classList.remove('active');
+        function updateIndicator(activeTab) {
+            indicator.style.width = `${activeTab.offsetWidth}px`;
+            indicator.style.left = `${activeTab.offsetLeft}px`;
+        }
+
+        // Initialize indicator position on load
+        window.addEventListener('load', () => {
+            const activeTab = document.querySelector('.campus-tab.active');
+            if (activeTab) updateIndicator(activeTab);
+        });
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetPanelId = tab.getAttribute('data-target');
+
+                // Update active tab styles
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                updateIndicator(tab);
+
+                // Cascade switch panels with smooth entry
+                panels.forEach(panel => {
+                    if (panel.id === targetPanelId) {
+                        panel.classList.add('active');
+                    } else {
+                        panel.classList.remove('active');
+                    }
                 });
-
-                // If it wasn't active before clicking, open it
-                if (!isActive) {
-                    item.classList.add('active');
-                }
             });
         });
+
+        // Optional support for mobile swipe gestures across panels
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        const container = document.querySelector('.tailing-line-container');
+
+        container.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+
+        container.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, {passive: true});
+
+        function handleSwipe() {
+            const activeTab = document.querySelector('.campus-tab.active');
+            let currentIndex = Array.from(tabs).indexOf(activeTab);
+
+            if (touchendX < touchstartX - 50) {
+                // Swipe Left -> Next Tab
+                if (currentIndex < tabs.length - 1) {
+                    tabs[currentIndex + 1].click();
+                }
+            }
+            if (touchendX > touchstartX + 50) {
+                // Swipe Right -> Previous Tab
+                if (currentIndex > 0) {
+                    tabs[currentIndex - 1].click();
+                }
+            }
+        }
     </script>
 </body>
 </html>
