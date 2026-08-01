@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 2. Heavy & Cinematic Image Cross-Fade & Dynamic CTA Routing Logic
     // ==========================================
+    // ==========================================
+    // 2. Heavy & Cinematic Image Cross-Fade & Dynamic CTA Routing Logic
+    // ==========================================
     const iconItems = document.querySelectorAll('.icon-item');
     const heroVideo = document.getElementById('heroVideo');
     const heroLogo = document.querySelector('.hero-logo');
@@ -30,6 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgA = document.getElementById('heroBgA');
     const bgB = document.getElementById('heroBgB');
     let currentBg = 'A'; // Tracks active layer
+
+    // Keep track of the currently selected/active URL
+    let currentTargetUrl = iconItems[0]?.getAttribute('data-href') || '#';
 
     function updateHeroContent(item) {
         // 1. Hide initial logo block smoothly
@@ -80,21 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 400);
         }
 
-        // 5. Update CTA Button Text & Dynamic Routing
+        // 5. Update CTA Button Text & Capture Destination URL
         if (heroBtn && item.dataset.cta) {
             heroBtn.innerText = item.dataset.cta;
         }
 
-        const targetUrl = item.getAttribute('data-href');
-        if (heroBtn) {
-            if (targetUrl) {
-                heroBtn.onclick = () => { window.location.href = targetUrl; };
-            } else if (item.dataset.cta === "Explore Community") {
-                heroBtn.onclick = () => { window.location.href = "locations.html"; };
-            } else {
-                heroBtn.onclick = null;
-            }
-        }
+        currentTargetUrl = item.getAttribute('data-href');
 
         // 6. Active Tab Styling & Line Sliding
         iconItems.forEach(icon => icon.classList.remove('active'));
@@ -106,10 +103,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Tab Listeners (Hover & Click support)
+    // Global click handler for the Hero CTA button
+    if (heroBtn) {
+        heroBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentTargetUrl && currentTargetUrl !== '#') {
+                window.location.href = currentTargetUrl;
+            }
+        });
+    }
+
+    // Tab Listeners (Hover changes preview, Click sets target & navigates if clicked directly)
     iconItems.forEach((item) => {
         item.addEventListener('mouseenter', () => updateHeroContent(item));
-        item.addEventListener('click', () => updateHeroContent(item));
+        item.addEventListener('click', () => {
+            updateHeroContent(item);
+            const targetUrl = item.getAttribute('data-href');
+            if (targetUrl && targetUrl !== '#') {
+                window.location.href = targetUrl;
+            }
+        });
     });
 
     // Initialize active line positioning
@@ -119,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
             activeLine.style.left = iconItems[0].offsetLeft + "px";
         }
     }, 100);
-
     // ==========================================
     // 3. Featured Card Intersection Observer
     // ==========================================
