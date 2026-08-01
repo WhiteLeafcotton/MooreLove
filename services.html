@@ -5,35 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services | Sanctuary</title>
     
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
       :root {
         --bg-white: #FFFFFF;
         --plum-deep: #1A0B1A;
-        --plum-muted: #4A354A;
-        --text-main: #2C2C2C;
-        --text-light: #777777;
-        --border-color: #EAE6E1;
+        --plum-muted: #523752;
+        --text-main: #2A2A2A;
+        --text-light: #767676;
+        --border-color: #E8E3DC;
         --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
 
       body {
         background-color: var(--bg-white);
         color: var(--text-main);
         font-family: 'Plus Jakarta Sans', sans-serif;
         line-height: 1.8;
-        overflow-x: hidden;
       }
 
-      /* Minimal Back Arrow */
       .back-nav {
         position: fixed;
         top: 2.5rem;
@@ -46,7 +39,6 @@
         font-size: 1.25rem;
         color: var(--plum-deep);
         text-decoration: none;
-        letter-spacing: 0.1em;
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -54,25 +46,20 @@
         opacity: 0.7;
       }
 
-      .back-arrow:hover {
-        opacity: 1;
-        transform: translateX(-4px);
-      }
+      .back-arrow:hover { opacity: 1; transform: translateX(-4px); }
 
-      /* Services Container */
-      .services-container {
-        padding: 10rem 8% 8rem;
-        max-width: 1300px;
+      .services-wrapper {
+        max-width: 950px;
         margin: 0 auto;
+        padding: 11rem 8% 8rem;
       }
 
-      .services-header {
+      .services-top {
         text-align: center;
-        max-width: 650px;
-        margin: 0 auto 6rem;
+        margin-bottom: 6rem;
       }
 
-      .services-header h1 {
+      .services-top h1 {
         font-family: 'Cormorant Garamond', serif;
         font-size: 3rem;
         font-weight: 300;
@@ -82,76 +69,79 @@
         margin-bottom: 1.5rem;
       }
 
-      .services-header p {
+      .services-top p {
         font-size: 0.95rem;
         color: var(--text-light);
-        font-weight: 300;
+        max-width: 600px;
+        margin: 0 auto;
         line-height: 1.9;
       }
 
-      .services-grid {
+      /* Stacked Menu Architecture */
+      .menu-stack {
+        border-top: 1px solid var(--border-color);
+      }
+
+      .menu-row {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 80px 1fr auto;
         gap: 3rem;
-      }
-
-      .service-card {
-        padding: 3rem 2.5rem;
-        border: 1px solid var(--border-color);
+        align-items: baseline;
+        padding: 3rem 0;
+        border-bottom: 1px solid var(--border-color);
         transition: var(--transition);
-        background: transparent;
       }
 
-      .service-card:hover {
+      .menu-row:hover {
+        padding-left: 1rem;
+        background-color: #FAF8F5;
         border-color: var(--plum-deep);
-        transform: translateY(-4px);
       }
 
-      .service-card span {
+      .menu-idx {
         font-family: 'Cormorant Garamond', serif;
-        font-size: 1.1rem;
-        color: var(--plum-muted);
-        display: block;
-        margin-bottom: 2rem;
+        font-size: 1rem;
+        color: var(--text-light);
         letter-spacing: 0.1em;
       }
 
-      .service-card h3 {
+      .menu-details h3 {
         font-family: 'Cormorant Garamond', serif;
         font-size: 1.35rem;
         font-weight: 400;
         color: var(--plum-deep);
-        margin-bottom: 1rem;
         letter-spacing: 0.08em;
         text-transform: uppercase;
+        margin-bottom: 0.5rem;
       }
 
-      .service-card p {
-        font-size: 0.9rem;
+      .menu-details p {
+        font-size: 0.88rem;
         color: var(--text-light);
-        line-height: 1.9;
+        line-height: 1.8;
       }
 
-      @media(max-width: 1024px) {
+      .menu-status {
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--plum-muted);
+        white-space: nowrap;
+      }
+
+      @media(max-width: 768px) {
+        .menu-row { grid-template-columns: 1fr; gap: 1rem; padding: 2.5rem 0; }
+        .menu-row:hover { padding-left: 0; }
         .back-nav { top: 1.5rem; left: 1.5rem; }
-        .services-container { padding: 8rem 6% 5rem; }
-        .services-grid { grid-template-columns: 1fr; }
-        .services-header h1 { font-size: 2.2rem; }
+        .services-wrapper { padding: 8rem 6% 5rem; }
       }
 
-      /* Minimal Footer */
       footer {
         padding: 4rem 5%;
         text-align: center;
         border-top: 1px solid var(--border-color);
       }
-
-      footer p {
-        font-size: 0.75rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--text-light);
-      }
+      footer p { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-light); }
     </style>
 </head>
 <body>
@@ -160,26 +150,38 @@
         <a href="index.html" class="back-arrow">&larr; Return</a>
     </div>
 
-    <main class="services-container">
-        <div class="services-header">
+    <main class="services-wrapper">
+        <div class="services-top">
             <h1>Curated Offerings</h1>
-            <p>Every service is meticulously tailored to provide unmatched convenience, comfort, and personal attention.</p>
+            <p>Every individual service is meticulously tailored to provide absolute convenience, comfort, and uncompromising attention.</p>
         </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <span>01</span>
-                <h3>Concierge Care</h3>
-                <p>24/7 dedicated personal assistance designed to manage your schedule, arrangements, and daily needs with absolute discretion.</p>
+
+        <div class="menu-stack">
+            <div class="menu-row">
+                <span class="menu-idx">01</span>
+                <div class="menu-details">
+                    <h3>Concierge Care</h3>
+                    <p>Dedicated personal assistance available around the clock to manage scheduling, specialized arrangements, and personal needs with absolute discretion.</p>
+                </div>
+                <span class="menu-status">Available 24/7</span>
             </div>
-            <div class="service-card">
-                <span>02</span>
-                <h3>Wellness & Renewal</h3>
-                <p>Private holistic health suites, restorative body therapies, and custom fitness regimens overseen by elite practitioners.</p>
+
+            <div class="menu-row">
+                <span class="menu-idx">02</span>
+                <div class="menu-details">
+                    <h3>Wellness & Renewal Suites</h3>
+                    <p>Private holistic health spaces, customized body therapeutics, and supervised restorative fitness regimens directed by elite practitioners.</p>
+                </div>
+                <span class="menu-status">By Appointment</span>
             </div>
-            <div class="service-card">
-                <span>03</span>
-                <h3>Culinary Excellence</h3>
-                <p>Private dining experiences crafted daily by master chefs utilizing hyper-local, seasonal, and organic ingredients.</p>
+
+            <div class="menu-row">
+                <span class="menu-idx">03</span>
+                <div class="menu-details">
+                    <h3>Culinary Excellence</h3>
+                    <p>Bespoke private dining experiences crafted daily by resident master chefs using hyper-local, seasonal, and organic ingredients.</p>
+                </div>
+                <span class="menu-status">Daily Menus</span>
             </div>
         </div>
     </main>
