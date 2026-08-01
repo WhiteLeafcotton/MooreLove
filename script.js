@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 2. Heavy & Cinematic Image Cross-Fade & Dynamic CTA Routing Logic
     // ==========================================
+    // ==========================================
+    // 2. Heavy & Cinematic Image Cross-Fade & Dynamic Content Switcher (No Auto-Navigation on Icons)
+    // ==========================================
     const iconItems = document.querySelectorAll('.icon-item');
     const heroVideo = document.getElementById('heroVideo');
     const heroLogo = document.querySelector('.hero-logo');
@@ -46,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgB = document.getElementById('heroBgB');
     let currentBg = 'A';
 
-    // Track active target URL for the main hero button
+    // Track current link target for the main hero CTA button
     let currentTargetUrl = iconItems[0]?.getAttribute('data-href') || '#';
 
     function updateHeroContent(item) {
@@ -98,9 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
             heroBtn.innerText = item.dataset.cta;
         }
 
-        // Update target URL based on current hovered/clicked tab
+        // Update the URL that the MAIN button will lead to
         currentTargetUrl = item.getAttribute('data-href') || '#';
 
+        // Update active tab & underline position
         iconItems.forEach(icon => icon.classList.remove('active'));
         item.classList.add('active');
 
@@ -110,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Main Hero CTA button click redirection to subpages
+    // MAIN Hero button handles the navigation when clicked
     if (heroBtn) {
         heroBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -120,19 +124,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Tab Listeners (Hover & Click update preview, content, and active line)
+    // Icon items ONLY update the preview state (hover and click do NOT navigate away)
     iconItems.forEach((item) => {
         item.addEventListener('mouseenter', () => updateHeroContent(item));
         item.addEventListener('click', (e) => {
             e.preventDefault();
             updateHeroContent(item);
-            if (currentTargetUrl && currentTargetUrl !== '#') {
-                window.location.href = currentTargetUrl;
-            }
         });
     });
 
-    // Initialize active line positioning & first tab state on load
+    // Initialize first tab state & underline positioning on load
     setTimeout(() => { 
         if (iconItems.length > 0) {
             updateHeroContent(iconItems[0]);
