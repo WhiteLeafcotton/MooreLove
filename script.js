@@ -31,6 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 2. Heavy & Cinematic Image Cross-Fade Logic (Preview Tabs Only)
     // ==========================================
+    // ==========================================
+    // 2. Heavy & Cinematic Image Cross-Fade & Dynamic CTA Routing Logic
+    // ==========================================
     const iconItems = document.querySelectorAll('.icon-item');
     const heroVideo = document.getElementById('heroVideo');
     const heroLogo = document.querySelector('.hero-logo');
@@ -42,6 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgA = document.getElementById('heroBgA');
     const bgB = document.getElementById('heroBgB');
     let currentBg = 'A';
+
+    // Track active target URL for the main hero button
+    let currentTargetUrl = iconItems[0]?.getAttribute('data-href') || '#';
 
     function updateHeroContent(item) {
         if (heroLogo) {
@@ -92,6 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
             heroBtn.innerText = item.dataset.cta;
         }
 
+        // Update target URL based on current hovered/clicked tab
+        currentTargetUrl = item.getAttribute('data-href') || '#';
+
         iconItems.forEach(icon => icon.classList.remove('active'));
         item.classList.add('active');
 
@@ -101,20 +110,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Tab Listeners (Hover & Click ONLY update the preview tabs; they do NOT navigate anywhere)
+    // Main Hero CTA button click redirection to subpages
+    if (heroBtn) {
+        heroBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentTargetUrl && currentTargetUrl !== '#') {
+                window.location.href = currentTargetUrl;
+            }
+        });
+    }
+
+    // Tab Listeners (Hover & Click update preview, content, and active line)
     iconItems.forEach((item) => {
         item.addEventListener('mouseenter', () => updateHeroContent(item));
         item.addEventListener('click', (e) => {
             e.preventDefault();
             updateHeroContent(item);
+            if (currentTargetUrl && currentTargetUrl !== '#') {
+                window.location.href = currentTargetUrl;
+            }
         });
     });
 
-    // Initialize active line positioning & first tab state
+    // Initialize active line positioning & first tab state on load
     setTimeout(() => { 
-        if (activeLine && iconItems.length > 0) {
-            activeLine.style.width = iconItems[0].offsetWidth + "px";
-            activeLine.style.left = iconItems[0].offsetLeft + "px";
+        if (iconItems.length > 0) {
+            updateHeroContent(iconItems[0]);
         }
     }, 100);
     // ==========================================
