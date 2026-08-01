@@ -3,461 +3,496 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Campuses | Sanctuary</title>
+    <title>Locations</title>
+    <link rel="stylesheet" href="location.css">
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    
-    <style>
-      :root {
-        --bg-white: #FFFFFF;
-        --plum-deep: #1A0B1A;
-        --plum-muted: #4A354A;
-        --text-main: #2C2C2C;
-        --text-light: #777777;
-        --border-color: #EAE6E1;
-        --accent-bg: #FBF9F7;
-        --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        background-color: var(--bg-white);
-        color: var(--text-main);
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        line-height: 1.8;
-        overflow-x: hidden;
-      }
-
-      /* Minimal Back Navigation */
-      .back-nav {
-        position: fixed;
-        top: 2.5rem;
-        left: 3rem;
-        z-index: 100;
-      }
-
-      .back-arrow {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.25rem;
-        color: var(--plum-deep);
-        text-decoration: none;
-        letter-spacing: 0.1em;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: var(--transition);
-        opacity: 0.7;
-      }
-
-      .back-arrow:hover {
-        opacity: 1;
-        transform: translateX(-4px);
-      }
-
-      /* Page Container */
-      .location-container {
-        padding: 9rem 8% 8rem;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .location-header {
-        text-align: center;
-        max-width: 650px;
-        margin: 0 auto 5rem;
-      }
-
-      .location-header h1 {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 3rem;
-        font-weight: 300;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: var(--plum-deep);
-        margin-bottom: 1.5rem;
-      }
-
-      .location-header p {
-        font-size: 0.95rem;
-        color: var(--text-light);
-        font-weight: 300;
-        line-height: 1.9;
-      }
-
-      /* Notch Navigation Bar with Tailing Line */
-      .notch-nav-wrapper {
-        position: relative;
-        margin-bottom: 3rem;
-      }
-
-      .notch-tabs {
-        display: flex;
-        justify-content: center;
-        gap: 3rem;
-        position: relative;
-        z-index: 2;
-        overflow-x: auto;
-        padding-bottom: 1rem;
-        scrollbar-width: none;
-      }
-
-      .notch-tabs::-webkit-scrollbar {
-        display: none;
-      }
-
-      .campus-tab {
-        background: none;
-        border: none;
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.25rem;
-        letter-spacing: 0.12em;
-        color: var(--text-light);
-        cursor: pointer;
-        padding: 0.5rem 0;
-        position: relative;
-        transition: var(--transition);
-        text-transform: uppercase;
-        white-space: nowrap;
-      }
-
-      .campus-tab.active {
-        color: var(--plum-deep);
-        font-weight: 500;
-      }
-
-      /* Demur Demarcation Notch Indicator */
-      .active-notch-indicator {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 2px;
-        background-color: var(--plum-deep);
-        transition: var(--transition);
-      }
-
-      /* Vertical Tailing Line Flowing Downwards */
-      .tailing-line-container {
-        position: relative;
-        width: 100%;
-      }
-
-      .vertical-tail-line {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 1px;
-        height: 40px;
-        background: var(--border-color);
-        z-index: 1;
-      }
-
-      /* Cascading Content Panels */
-      .cascade-panels-wrapper {
-        position: relative;
-        margin-top: 2rem;
-        border: 1px solid var(--border-color);
-        background: var(--bg-white);
-        padding: 3rem;
-        opacity: 0;
-        transform: translateY(15px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-        display: none;
-      }
-
-      .cascade-panels-wrapper.active {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-        box-shadow: 0 20px 50px rgba(26, 11, 26, 0.03);
-      }
-
-      .panel-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3.5rem;
-        align-items: center;
-      }
-
-      .panel-details h3 {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 2rem;
-        font-weight: 400;
-        color: var(--plum-deep);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        margin-bottom: 1.2rem;
-      }
-
-      .panel-details p {
-        font-size: 0.95rem;
-        color: var(--text-light);
-        line-height: 1.9;
-        margin-bottom: 2rem;
-      }
-
-      .panel-quote {
-        border-left: 2px solid var(--plum-deep);
-        padding-left: 1.5rem;
-        margin-bottom: 2rem;
-      }
-
-      .panel-quote p {
-        font-family: 'Cormorant Garamond', serif;
-        font-style: italic;
-        font-size: 1.15rem;
-        color: var(--plum-deep);
-        line-height: 1.6;
-        margin-bottom: 0.4rem;
-      }
-
-      .panel-quote span {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        color: var(--text-light);
-      }
-
-      .campus-btn {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1rem;
-        color: var(--plum-deep);
-        text-decoration: none;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        border-bottom: 1px solid var(--plum-deep);
-        padding-bottom: 2px;
-        display: inline-block;
-        transition: var(--transition);
-      }
-
-      .campus-btn:hover {
-        color: var(--plum-muted);
-        border-color: var(--plum-muted);
-      }
-
-      .panel-media {
-        position: relative;
-        width: 100%;
-        height: 350px;
-        overflow: hidden;
-        border-radius: 2px;
-      }
-
-      .panel-media video, 
-      .panel-media img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      @media(max-width: 900px) {
-        .back-nav { top: 1.5rem; left: 1.5rem; }
-        .location-container { padding: 8rem 5% 5rem; }
-        .panel-grid { grid-template-columns: 1fr; gap: 2rem; }
-        .cascade-panels-wrapper { padding: 1.5rem; }
-        .notch-tabs { gap: 1.5rem; justify-content: flex-start; padding-left: 1rem; padding-right: 1rem; }
-      }
-
-      /* Minimal Footer */
-      footer {
-        padding: 4rem 5%;
-        text-align: center;
-        border-top: 1px solid var(--border-color);
-      }
-
-      footer p {
-        font-size: 0.75rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--text-light);
-      }
-    </style>
+    <!-- GSAP for smooth animated reveals -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <!-- FontAwesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Lucide Icons for Contact Items -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
-    <div class="back-nav">
-        <a href="index.html" class="back-arrow">&larr; Return</a>
-    </div>
-
-    <main class="location-container">
-        <div class="location-header">
-            <h1>Our Campuses</h1>
-            <p>Select a location below to experience our residential sanctuaries, featuring tailored lifestyle curation and clinical care.</p>
+    <!-- Fixed Header Navigation Tabs with Demur Notch & Tailing Line Style -->
+    <nav class="tab-nav">
+        <div class="tab-container" id="notchTabs">
+            <button class="nav-tab active" data-section="0">01 / WAUKESHA</button>
+            <button class="nav-tab" data-section="1">02 / WAUWATOSA</button>
+            <button class="nav-tab" data-section="2">03 / ELM GROVE</button>
+            <button class="nav-tab" data-section="3">04 / MILWAUKEE</button>
+            <div class="active-notch-indicator" id="notchIndicator"></div>
         </div>
-        
-        <!-- Swappable Notch Header with Tailing Line -->
-        <div class="tailing-line-container">
-            <div class="vertical-tail-line"></div>
-            
-            <div class="notch-nav-wrapper">
-                <div class="notch-tabs" id="notchTabs">
-                    <button class="campus-tab active" data-target="panel-1">01. Waukesha</button>
-                    <button class="campus-tab" data-target="panel-2">02. Milwaukee</button>
-                    <button class="campus-tab" data-target="panel-3">03. Wauwatosa</button>
-                    <button class="campus-tab" data-target="panel-4">04. Elm Grove</button>
-                    <div class="active-notch-indicator" id="notchIndicator"></div>
-                </div>
-            </div>
+    </nav>
 
-            <!-- Cascading Content Panels -->
-            
-            <!-- Panel 1: Waukesha -->
-            <div class="cascade-panels-wrapper active" id="panel-1">
-                <div class="panel-grid">
-                    <div class="panel-details">
-                        <h3>Waukesha Campus</h3>
-                        <p>Designed with intentional elegance, Waukesha offers an intimate community atmosphere paired with continuous, customized care and scenic architectural gardens.</p>
-                        <div class="panel-quote">
-                            <p>"The peaceful courtyard and specialized support changed our family's perspective on senior living entirely."</p>
-                            <span>— Resident Family Member</span>
+    <!-- Main Content Container (Horizontal Swipe / Scroll Snap) -->
+    <main class="locations-wrapper">
+
+        <!-- ================= SECTION 1: WAUKESHA ================= -->
+        <section class="location-section" id="section-0">
+            <div class="section-inner-wrapper">
+                <div class="vertical-tail-line"></div>
+                
+                <div class="section-header">
+                    <div class="tab-anchor"></div>
+                    <div class="connecting-line"></div>
+                    <h1 class="section-title">Waukesha Campus</h1>
+                    <p class="section-subtitle">Flagship residential care and community sanctuary</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="grid-item photo-card plop-item">
+                        <div class="img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Waukesha Facility">
                         </div>
-                        <a href="tel:+12629510165" class="campus-btn">Inquire About Waukesha &rarr;</a>
+                        <h3>Rambling Rose Flagship</h3>
+                        <p>Designed with natural light, modern comfort, and quiet architecture.</p>
                     </div>
-                    <div class="panel-media">
-                        <img src="san-fran.jpg" alt="Waukesha Campus View">
-                    </div>
-                </div>
-            </div>
 
-            <!-- Panel 2: Milwaukee -->
-            <div class="cascade-panels-wrapper" id="panel-2">
-                <div class="panel-grid">
-                    <div class="panel-details">
-                        <h3>Milwaukee Campus</h3>
-                        <p>A masterpiece of urban-proximate refined living, featuring world-class amenities, thoughtful common spaces, and round-the-clock professional hospitality.</p>
-                        <div class="panel-quote">
-                            <p>"Arriving home here feels like stepping into a five-star boutique hotel with the absolute best nursing team."</p>
-                            <span>— Current Resident</span>
+                    <div class="grid-item quote-card plop-item">
+                        <blockquote>
+                            “A quiet sanctuary providing five-star care and family-style living.”
+                        </blockquote>
+                        <cite>— CLINICAL CARE REVIEW</cite>
+                    </div>
+
+                    <div class="grid-item collage-card plop-item">
+                        <div class="collage-grid">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=500&q=80" alt="Detail 1">
+                            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=500&q=80" alt="Detail 2">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80" alt="Detail 3">
                         </div>
-                        <a href="tel:+12629510165" class="campus-btn">Inquire About Milwaukee &rarr;</a>
+                        <span class="caption">Interior Materiality & Wellness Spaces</span>
                     </div>
-                    <div class="panel-media">
-                        <video autoplay loop muted playsinline>
-                            <source src="vidz.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Panel 3: Wauwatosa -->
-            <div class="cascade-panels-wrapper" id="panel-3">
-                <div class="panel-grid">
-                    <div class="panel-details">
-                        <h3>Wauwatosa Campus</h3>
-                        <p>Blending warm neighborhood charm with clinical excellence. Wauwatosa is engineered completely around fostering independence, social connection, and health security.</p>
-                        <div class="panel-quote">
-                            <p>"The wellness coordination and daily activities keep my father engaged, active, and deeply cared for."</p>
-                            <span>— Visiting Relative</span>
+                    <div class="grid-item video-card plop-item">
+                        <div class="video-wrapper">
+                            <video autoplay loop muted playsinline>
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-architecture-41558-large.mp4" type="video/mp4">
+                            </video>
                         </div>
-                        <a href="tel:+12629510165" class="campus-btn">Inquire About Wauwatosa &rarr;</a>
-                    </div>
-                    <div class="panel-media">
-                        <img src="deer-valley.jpg" alt="Wauwatosa Campus View">
+                        <h3>Active Living Suite</h3>
+                        <p>Waukesha, WI</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Panel 4: Elm Grove -->
-            <div class="cascade-panels-wrapper" id="panel-4">
-                <div class="panel-grid">
-                    <div class="panel-details">
-                        <h3>Elm Grove Campus</h3>
-                        <p>An exclusive, wooded sanctuary setting dedicated to premier memory care, low resident-to-staff ratios, and unmatched peace of mind for families.</p>
-                        <div class="panel-quote">
-                            <p>"The level of compassion and individualized attention shown here is something you simply cannot find anywhere else."</p>
-                            <span>— Estate Director</span>
+            <!-- Footer Inside Section 1 -->
+            <footer class="site-footer">
+                <div class="footer-wrapper">
+                    <div class="footer-top-row">
+                        <div class="footer-brand">
+                            <div class="hero-logo stacked-logo">
+                                <div class="logo-top-row">
+                                    <span class="strong-title">MOORE</span>
+                                    <img class="hero-logo-icon" src="heart.svg" alt="Heart Icon">
+                                </div>
+                                <span class="script-subtitle">love and care</span>
+                            </div>
                         </div>
-                        <a href="tel:+12629510165" class="campus-btn">Inquire About Elm Grove &rarr;</a>
+
+                        <div class="footer-vertical-divider"></div>
+
+                        <div class="footer-contact-block">
+                            <div class="contact-item">
+                                <i data-lucide="phone" class="contact-icon"></i>
+                                <div>
+                                    <span class="contact-label">Admissions</span>
+                                    <a href="tel:+12629510165" class="contact-value">(262) 951-0165</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <i data-lucide="mail" class="contact-icon"></i>
+                                <div>
+                                    <span class="contact-label">Inquiries</span>
+                                    <a href="mailto:inquiries@moorecare.com" class="contact-value">inquiries@moorecare.com</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-item hide-mobile">
+                                <i data-lucide="clock" class="contact-icon"></i>
+                                <div>
+                                    <span class="contact-label">Clinical Desk</span>
+                                    <span class="contact-value">24/7 Staffing</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="panel-media">
-                        <img src="home.jpg" alt="Elm Grove Campus View">
+
+                    <p class="footer-subtext">
+                        Unparalleled elegance, defined by care. Dedicated to creating timeless sanctuary, continuous clinical support, and personalized wellness across Wisconsin campuses.
+                    </p>
+
+                    <div class="footer-horizontal-line"></div>
+
+                    <div class="footer-nav-row">
+                        <div class="footer-links">
+                            <a href="#">Privacy</a>
+                            <a href="#">Legal</a>
+                            <a href="#">Contact</a>
+                            <a href="#">Careers</a>
+                        </div>
+
+                        <div class="footer-social">
+                            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="footer-bottom">
+                        &copy; 2026 MOORE. All rights reserved. &bull; Equal Housing Opportunity
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <!-- ================= SECTION 2: WAUWATOSA ================= -->
+        <section class="location-section" id="section-1">
+            <div class="section-inner-wrapper">
+                <div class="vertical-tail-line"></div>
+
+                <div class="section-header">
+                    <div class="tab-anchor"></div>
+                    <div class="connecting-line"></div>
+                    <h1 class="section-title">Wauwatosa Campus</h1>
+                    <p class="section-subtitle">Historic elegance blended with specialized care</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="grid-item quote-card plop-item">
+                        <blockquote>
+                            “Restoring community comfort with subtle modern refinements.”
+                        </blockquote>
+                        <cite>— MIDWEST HEALTH</cite>
+                    </div>
+
+                    <div class="grid-item photo-card plop-item">
+                        <div class="img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Wauwatosa Residence">
+                        </div>
+                        <h3>Harwood Residence</h3>
+                        <p>Wauwatosa, WI</p>
+                    </div>
+
+                    <div class="grid-item collage-card plop-item">
+                        <div class="collage-grid">
+                            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=500&q=80" alt="Spa Detail">
+                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=500&q=80" alt="Courtyard">
+                            <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=500&q=80" alt="Lounge">
+                        </div>
+                        <span class="caption">Atelier & Therapy Spaces</span>
                     </div>
                 </div>
             </div>
 
-        </div>
+            <!-- Footer Inside Section 2 -->
+            <footer class="site-footer">
+                <div class="footer-wrapper">
+                    <div class="footer-top-row">
+                        <div class="footer-brand">
+                            <div class="hero-logo stacked-logo">
+                                <div class="logo-top-row">
+                                    <span class="strong-title">MOORE</span>
+                                    <img class="hero-logo-icon" src="heart.svg" alt="Heart Icon">
+                                </div>
+                                <span class="script-subtitle">love and care</span>
+                            </div>
+                        </div>
+
+                        <div class="footer-vertical-divider"></div>
+
+                        <div class="footer-contact-block">
+                            <div class="contact-item">
+                                <i data-lucide="phone" class="contact-icon"></i>
+                                <div>
+                                    <span class="contact-label">Admissions</span>
+                                    <a href="tel:+12629510165" class="contact-value">(262) 951-0165</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <i data-lucide="mail" class="contact-icon"></i>
+                                <div>
+                                    <span class="contact-label">Inquiries</span>
+                                    <a href="mailto:inquiries@moorecare.com" class="contact-value">inquiries@moorecare.com</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-item hide-mobile">
+                                <i data-lucide="clock" class="contact-icon"></i>
+                                <div>
+                                    <span class="contact-label">Clinical Desk</span>
+                                    <span class="contact-value">24/7 Staffing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="footer-subtext">
+                        Unparalleled elegance, defined by care. Dedicated to creating timeless sanctuary, continuous clinical support, and personalized wellness across Wisconsin campuses.
+                    </p>
+
+                    <div class="footer-horizontal-line"></div>
+
+                    <div class="footer-nav-row">
+                        <div class="footer-links">
+                            <a href="#">Privacy</a>
+                            <a href="#">Legal</a>
+                            <a href="#">Contact</a>
+                            <a href="#">Careers</a>
+                        </div>
+
+                        <div class="footer-social">
+                            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="footer-bottom">
+                        &copy; 2026 MOORE. All rights reserved. &bull; Equal Housing Opportunity
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <!-- ================= SECTION 3: ELM GROVE ================= -->
+        <section class="location-section" id="section-2">
+            <div class="section-inner-wrapper">
+                <div class="vertical-tail-line"></div>
+
+                <div class="section-header">
+                    <div class="tab-anchor"></div>
+                    <div class="connecting-line"></div>
+                    <h1 class="section-title">Elm Grove Campus</h1>
+                    <p class="section-subtitle">Harmonious spaces rooted in tranquility</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="grid-item photo-card plop-item">
+                        <div class="img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80" alt="Elm Grove Sanctuary">
+                        </div>
+                        <h3>Westmoor Gardens</h3>
+                        <p>Elm Grove, WI</p>
+                    </div>
+
+                    <div class="grid-item quote-card plop-item">
+                        <blockquote>
+                            “Where nature, structure, and compassionate support exist in continuous dialogue.”
+                        </blockquote>
+                        <cite>— ELM GROVE LIVING</cite>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Inside Section 3 -->
+            <footer class="site-footer">
+                <div class="footer-wrapper">
+                    <div class="footer-top-row">
+                        <div class="footer-brand">
+                            <div class="hero-logo stacked-logo">
+                                <div class="logo-top-row">
+                                    <span class="strong-title">MOORE</span>
+                                    <img class="hero-logo-icon" src="heart.svg" alt="Heart Icon">
+                                </div>
+                                <span class="script-subtitle">love and care</span>
+                            </div>
+                        </div>
+
+                        <div class="footer-vertical-divider"></div>
+
+                        <div class="footer-contact-block">
+                            <div class="contact-item">
+                                <i data-lucide="phone" class="contact-icon"></i>
+                                <div>
+                                    <span class="contact-label">Admissions</span>
+                                    <a href="tel:+12629510165" class="contact-value">(262) 951-0165</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <i data-lucide="mail" class="contact-icon"></i>
+                                <div>
+                                    <span class="contact-label">Inquiries</span>
+                                    <a href="mailto:inquiries@moorecare.com" class="contact-value">inquiries@moorecare.com</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-item hide-mobile">
+                                <i data-lucide="clock" class="contact-icon"></i>
+                                <div>
+                                    <span class="contact-label">Clinical Desk</span>
+                                    <span class="contact-value">24/7 Staffing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="footer-subtext">
+                        Unparalleled elegance, defined by care. Dedicated to creating timeless sanctuary, continuous clinical support, and personalized wellness across Wisconsin campuses.
+                    </p>
+
+                    <div class="footer-horizontal-line"></div>
+
+                    <div class="footer-nav-row">
+                        <div class="footer-links">
+                            <a href="#">Privacy</a>
+                            <a href="#">Legal</a>
+                            <a href="#">Contact</a>
+                            <a href="#">Careers</a>
+                        </div>
+
+                        <div class="footer-social">
+                            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="footer-bottom">
+                        &copy; 2026 MOORE. All rights reserved. &bull; Equal Housing Opportunity
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <!-- ================= SECTION 4: MILWAUKEE ================= -->
+        <section class="location-section" id="section-3">
+            <div class="section-inner-wrapper">
+                <div class="vertical-tail-line"></div>
+
+                <div class="section-header">
+                    <div class="tab-anchor"></div>
+                    <div class="connecting-line"></div>
+                    <h1 class="section-title">Milwaukee Campus</h1>
+                    <p class="section-subtitle">Urban sanctuary and dedicated clinical support</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="grid-item photo-card plop-item">
+                        <div class="img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=800&q=80" alt="Milwaukee Villa">
+                        </div>
+                        <h3>Metropolitan Retreat</h3>
+                        <p>Milwaukee, WI</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Inside Section 4 -->
+            <footer class="site-footer">
+                <div class="footer-wrapper">
+                    <div class="footer-top-row">
+                        <div class="footer-brand">
+                            <div class="hero-logo stacked-logo">
+                                <div class="logo-top-row">
+                                    <span class="strong-title">MOORE</span>
+                                    <img class="hero-logo-icon" src="heart.svg" alt="Heart Icon">
+                                </div>
+                                <span class="script-subtitle">love and care</span>
+                            </div>
+                        </div>
+
+                        <div class="footer-vertical-divider"></div>
+
+                        <div class="footer-contact-block">
+                            <div class="contact-item">
+                                <i data-lucide="phone" class="contact-icon"></i>
+                                <div>
+                                    <span class="contact-label">Admissions</span>
+                                    <a href="tel:+12629510165" class="contact-value">(262) 951-0165</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <i data-lucide="mail" class="contact-icon"></i>
+                                <div>
+                                    <span class="contact-label">Inquiries</span>
+                                    <a href="mailto:inquiries@moorecare.com" class="contact-value">inquiries@moorecare.com</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-item hide-mobile">
+                                <i data-lucide="clock" class="contact-icon"></i>
+                                <div>
+                                    <span class="contact-label">Clinical Desk</span>
+                                    <span class="contact-value">24/7 Staffing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="footer-subtext">
+                        Unparalleled elegance, defined by care. Dedicated to creating timeless sanctuary, continuous clinical support, and personalized wellness across Wisconsin campuses.
+                    </p>
+
+                    <div class="footer-horizontal-line"></div>
+
+                    <div class="footer-nav-row">
+                        <div class="footer-links">
+                            <a href="#">Privacy</a>
+                            <a href="#">Legal</a>
+                            <a href="#">Contact</a>
+                            <a href="#">Careers</a>
+                        </div>
+
+                        <div class="footer-social">
+                            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="footer-bottom">
+                        &copy; 2026 MOORE. All rights reserved. &bull; Equal Housing Opportunity
+                    </div>
+                </div>
+            </footer>
+        </section>
+
     </main>
 
-    <footer>
-        <p>&copy; 2026 Sanctuary Estate. All Rights Reserved.</p>
-    </footer>
-
-    <!-- Swappable Notch & Cascading Content Script -->
+    <script src="location.js"></script>
     <script>
-        const tabs = document.querySelectorAll('.campus-tab');
-        const panels = document.querySelectorAll('.cascade-panels-wrapper');
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Demur Notch and Tailing Line Animation Logic
+        const tabs = document.querySelectorAll('.nav-tab');
         const indicator = document.getElementById('notchIndicator');
 
         function updateIndicator(activeTab) {
+            if (!activeTab || !indicator) return;
             indicator.style.width = `${activeTab.offsetWidth}px`;
             indicator.style.left = `${activeTab.offsetLeft}px`;
         }
 
-        // Initialize indicator position on load
         window.addEventListener('load', () => {
-            const activeTab = document.querySelector('.campus-tab.active');
-            if (activeTab) updateIndicator(activeTab);
+            const activeTab = document.querySelector('.nav-tab.active');
+            updateIndicator(activeTab);
         });
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const targetPanelId = tab.getAttribute('data-target');
+        window.addEventListener('resize', () => {
+            const activeTab = document.querySelector('.nav-tab.active');
+            updateIndicator(activeTab);
+        });
 
-                // Update active tab styles
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
                 tabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
                 updateIndicator(tab);
-
-                // Cascade switch panels with smooth entry
-                panels.forEach(panel => {
-                    if (panel.id === targetPanelId) {
-                        panel.classList.add('active');
-                    } else {
-                        panel.classList.remove('active');
-                    }
-                });
             });
         });
-
-        // Optional support for mobile swipe gestures across panels
-        let touchstartX = 0;
-        let touchendX = 0;
-
-        const container = document.querySelector('.tailing-line-container');
-
-        container.addEventListener('touchstart', e => {
-            touchstartX = e.changedTouches[0].screenX;
-        }, {passive: true});
-
-        container.addEventListener('touchend', e => {
-            touchendX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, {passive: true});
-
-        function handleSwipe() {
-            const activeTab = document.querySelector('.campus-tab.active');
-            let currentIndex = Array.from(tabs).indexOf(activeTab);
-
-            if (touchendX < touchstartX - 50) {
-                // Swipe Left -> Next Tab
-                if (currentIndex < tabs.length - 1) {
-                    tabs[currentIndex + 1].click();
-                }
-            }
-            if (touchendX > touchstartX + 50) {
-                // Swipe Right -> Previous Tab
-                if (currentIndex > 0) {
-                    tabs[currentIndex - 1].click();
-                }
-            }
-        }
     </script>
 </body>
 </html>
