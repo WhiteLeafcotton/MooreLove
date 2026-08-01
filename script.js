@@ -37,6 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 2. Heavy & Cinematic Image Cross-Fade & Dynamic Content Switcher (No Auto-Navigation on Icons)
     // ==========================================
+    // ==========================================
+    // 2. Heavy & Cinematic Image Cross-Fade & Dynamic Content Switcher (Video Stays Until Interaction)
+    // ==========================================
     const iconItems = document.querySelectorAll('.icon-item');
     const heroVideo = document.getElementById('heroVideo');
     const heroLogo = document.querySelector('.hero-logo');
@@ -49,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgB = document.getElementById('heroBgB');
     let currentBg = 'A';
 
-    // Track current link target for the main hero CTA button
+    // Track current link target for the main hero CTA button (defaults to first item's link)
     let currentTargetUrl = iconItems[0]?.getAttribute('data-href') || '#';
 
     function updateHeroContent(item) {
@@ -87,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (heroTitle && item.dataset.title && heroTitle.innerHTML !== item.dataset.title) {
+        if (heroTitle && item.dataset.title) {
             heroTitle.style.opacity = '0';
             heroTitle.style.transform = 'translateY(8px)';
             setTimeout(() => {
@@ -124,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Icon items ONLY update the preview state (hover and click do NOT navigate away)
+    // Icon items ONLY update the preview state on hover/click (do NOT navigate away)
     iconItems.forEach((item) => {
         item.addEventListener('mouseenter', () => updateHeroContent(item));
         item.addEventListener('click', (e) => {
@@ -133,10 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize first tab state & underline positioning on load
+    // Initialize ONLY the active line position on load (Leaves video & logo fully visible until interaction)
     setTimeout(() => { 
-        if (iconItems.length > 0) {
-            updateHeroContent(iconItems[0]);
+        if (activeLine && iconItems.length > 0) {
+            activeLine.style.width = iconItems[0].offsetWidth + "px";
+            activeLine.style.left = iconItems[0].offsetLeft + "px";
         }
     }, 100);
     // ==========================================
