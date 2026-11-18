@@ -1661,98 +1661,121 @@ a.contact-value:hover {
 
 /* FORCE PAGE BACKGROUNDS TO WHITE */
 
-html,
-body,
-main,
-section {
-    background-color: #ffffff;
-}
+/*==================================================
+  HBCR SENIOR LIVING
+  FINAL WHITE LUXURY COLOR CORRECTIONS
+==================================================*/
 
-/* SECTION DIRECTLY BELOW HERO */
+/* 1. FEATURED SECTION BELOW HERO */
 
-.hero + section,
-.hero ~ section,
-.featured-section,
-.featured-content,
-.intro-section,
-.about-section {
+.featured-card-wrapper {
+    background: #ffffff !important;
     background-color: #ffffff !important;
 }
 
-/* REMOVE DARK SECTION OVERLAYS */
+/* Featured card text */
 
-.hero + section::before,
-.hero + section::after,
-.featured-section::before,
-.featured-section::after {
-    background-color: transparent;
+.card-content,
+.card-content h3,
+.card-content p,
+.card-content i {
+    color: #171717 !important;
 }
 
-/* NAVIGATION BACKGROUND */
+/* 2. MAIN NAVIGATION */
 
-header,
-nav,
-.navbar,
-.site-header,
-.header-inner {
+.main-nav {
+    background: #ffffff !important;
     background-color: #ffffff !important;
+    border-color: rgba(0, 0, 0, 0.10) !important;
 }
 
-/* NAVIGATION TEXT */
+.main-nav .nav-inner {
+    background: transparent !important;
+}
 
-header a,
-nav a,
-.navbar a,
-.site-header a,
-.nav-links a,
-.nav-menu a {
+.main-nav .nav-link {
     color: #171717 !important;
 }
 
-/* NAVIGATION ICONS */
+.main-nav .nav-link:hover {
+    color: #a58a58 !important;
+}
 
-header i,
-nav i,
-.navbar i,
-.site-header i,
-header svg,
-nav svg,
-.navbar svg,
-.site-header svg,
-.menu-toggle,
-.hamburger,
-.hamburger span {
+/* Navigation logo icon */
+
+.main-nav .nav-icon {
+    filter: brightness(0) !important;
+}
+
+/* 3. HERO ICON BAR */
+
+.icon-bar-container {
     color: #171717 !important;
-    fill: #171717 !important;
+}
+
+.icon-item {
+    color: #171717 !important;
+}
+
+.icon-item span {
+    color: #171717 !important;
+}
+
+.icon-item i,
+.icon-item svg {
+    color: #171717 !important;
     stroke: #171717 !important;
 }
 
-/* MOBILE NAVIGATION */
+/* Active indicator */
+
+.active-line {
+    background: #171717 !important;
+}
+
+/* 4. MOSAIC SECTION */
+
+.mosaic-section {
+    background-color: #ffffff !important;
+}
+
+.mosaic-section .mosaic-grid,
+.mosaic-section .mosaic-footer {
+    color: #171717 !important;
+}
+
+/* 5. FOLLOWING TEXT SECTION */
+
+.text-reveal-section {
+    background: #ffffff !important;
+    color: #171717 !important;
+}
+
+.text-reveal-section .sub-title,
+.text-reveal-section .main-title,
+.text-reveal-section .body-text {
+    color: #171717 !important;
+}
+
+/* 6. MOBILE CORRECTIONS */
 
 @media (max-width: 768px) {
 
-    header,
-    nav,
-    .navbar,
-    .site-header {
+    .featured-card-wrapper,
+    .main-nav,
+    .text-reveal-section {
         background: #ffffff !important;
     }
 
-    header a,
-    nav a,
-    .navbar a,
-    .site-header a,
-    .nav-links a {
+    .main-nav .nav-link,
+    .icon-item,
+    .icon-item span {
         color: #171717 !important;
     }
 
-    header svg,
-    nav svg,
-    header i,
-    nav i {
-        color: #171717 !important;
-        fill: #171717 !important;
-        stroke: #171717 !important;
+    .main-nav .nav-icon {
+        filter: brightness(0) !important;
     }
 }
 
