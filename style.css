@@ -1653,181 +1653,108 @@ a.contact-value:hover {
   WHITE LUXURY THEME OVERRIDES
 ==================================================*/
 
-/* GLOBAL BACKGROUND */
+
+/*==================================================
+  HBCR SENIOR LIVING
+  WHITE BACKGROUNDS + BLACK NAVIGATION
+==================================================*/
+
+/* FORCE PAGE BACKGROUNDS TO WHITE */
 
 html,
-body {
-    background: #ffffff !important;
-    color: #171717;
-}
-
-/* HERO SECTION */
-
-.hero {
+body,
+main,
+section {
     background-color: #ffffff;
 }
 
-.hero-overlay {
-    background: rgba(255, 255, 255, 0.30) !important;
-}
+/* SECTION DIRECTLY BELOW HERO */
 
-.hero::after {
-    background: linear-gradient(
-        to top,
-        #ffffff 0%,
-        rgba(255, 255, 255, 0.65) 35%,
-        transparent 100%
-    ) !important;
-}
-
-/* FEATURED CARD */
-
-.featured-card {
-    background:
-        linear-gradient(
-            to right,
-            rgba(255, 255, 255, 0.94) 0%,
-            rgba(255, 255, 255, 0.75) 45%,
-            rgba(255, 255, 255, 0.08) 100%
-        ),
-        url('banner.jpg') center/cover no-repeat !important;
-}
-
-.card-content,
-.card-content h3,
-.card-content p,
-.card-content i {
-    color: #171717 !important;
-}
-
-/* MOSAIC SECTION */
-
-.mosaic-section {
+.hero + section,
+.hero ~ section,
+.featured-section,
+.featured-content,
+.intro-section,
+.about-section {
     background-color: #ffffff !important;
-    background-image: url('final2.jpg') !important;
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
 }
 
-.mosaic-section::before {
-    background: rgba(255, 255, 255, 0.82) !important;
+/* REMOVE DARK SECTION OVERLAYS */
+
+.hero + section::before,
+.hero + section::after,
+.featured-section::before,
+.featured-section::after {
+    background-color: transparent;
 }
 
-.mosaic-section::after {
-    background: linear-gradient(
-        to bottom,
-        #ffffff 0%,
-        rgba(255, 255, 255, 0.65) 50%,
-        transparent 100%
-    ) !important;
+/* NAVIGATION BACKGROUND */
+
+header,
+nav,
+.navbar,
+.site-header,
+.header-inner {
+    background-color: #ffffff !important;
 }
 
-.mosaic-bottom-blur {
-    background: linear-gradient(
-        to top,
-        #ffffff 0%,
-        transparent 100%
-    ) !important;
-}
+/* NAVIGATION TEXT */
 
-/* MOSAIC TEXT */
-
-.mosaic-title,
-.mosaic-title .script-word,
-.mosaic-footer .cta-arrow {
-    color: #171717 !important;
-    text-shadow: none !important;
-}
-
-/* MOSAIC TILES */
-
-.tile-card {
-    background: rgba(255, 255, 255, 0.72) !important;
-    border-color: rgba(30, 30, 30, 0.15) !important;
-}
-
-.tile-card i,
-.tile-card span {
+header a,
+nav a,
+.navbar a,
+.site-header a,
+.nav-links a,
+.nav-menu a {
     color: #171717 !important;
 }
 
-/*==================================================
-  MOBILE WHITE THEME
-==================================================*/
+/* NAVIGATION ICONS */
+
+header i,
+nav i,
+.navbar i,
+.site-header i,
+header svg,
+nav svg,
+.navbar svg,
+.site-header svg,
+.menu-toggle,
+.hamburger,
+.hamburger span {
+    color: #171717 !important;
+    fill: #171717 !important;
+    stroke: #171717 !important;
+}
+
+/* MOBILE NAVIGATION */
 
 @media (max-width: 768px) {
 
-    html,
-    body {
+    header,
+    nav,
+    .navbar,
+    .site-header {
         background: #ffffff !important;
     }
 
-    .hero {
-        background-color: #ffffff !important;
-    }
-
-    .hero-overlay {
-        background: rgba(255, 255, 255, 0.30) !important;
-    }
-
-    .hero::after {
-        background: linear-gradient(
-            to top,
-            #ffffff,
-            transparent
-        ) !important;
-    }
-
-    .featured-card {
-        background: #ffffff !important;
-    }
-
-    .featured-card::before {
-        background:
-            linear-gradient(
-                to bottom,
-                rgba(255, 255, 255, 0.05) 35%,
-                rgba(255, 255, 255, 0.96) 100%
-            ),
-            url('banner.jpg') center/cover no-repeat !important;
-    }
-
-    .mosaic-section {
-        background-color: #ffffff !important;
-        background-image: url('final2.jpg') !important;
-        background-attachment: scroll !important;
-    }
-
-    .mosaic-section::before {
-        background: rgba(255, 255, 255, 0.86) !important;
-    }
-
-    .mosaic-section::after {
-        background: linear-gradient(
-            to bottom,
-            #ffffff,
-            transparent
-        ) !important;
-    }
-
-    .mosaic-bottom-blur {
-        background: linear-gradient(
-            to top,
-            #ffffff,
-            transparent
-        ) !important;
-    }
-
-    .mosaic-title,
-    .mosaic-title .script-word,
-    .mosaic-footer .cta-arrow {
+    header a,
+    nav a,
+    .navbar a,
+    .site-header a,
+    .nav-links a {
         color: #171717 !important;
     }
 
-    .tile-card {
-        background: rgba(255, 255, 255, 0.85) !important;
+    header svg,
+    nav svg,
+    header i,
+    nav i {
+        color: #171717 !important;
+        fill: #171717 !important;
+        stroke: #171717 !important;
     }
 }
+
 
 
