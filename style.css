@@ -1648,52 +1648,186 @@ a.contact-value:hover {
    HERO + FIRST TWO CONTENT SECTIONS
 ========================================= */
 
-/* 1. HERO WHITE OVERLAY */
-.hero-overlay {
-    background: rgba(255, 255, 255, 0.40);
+/*==================================================
+  HBCR SENIOR LIVING
+  WHITE LUXURY THEME OVERRIDES
+==================================================*/
+
+/* GLOBAL BACKGROUND */
+
+html,
+body {
+    background: #ffffff !important;
+    color: #171717;
 }
 
-/* Replace the dark bottom fade with a white fade */
+/* HERO SECTION */
+
+.hero {
+    background-color: #ffffff;
+}
+
+.hero-overlay {
+    background: rgba(255, 255, 255, 0.30) !important;
+}
+
 .hero::after {
     background: linear-gradient(
         to top,
-        rgba(255, 255, 255, 0.95),
-        transparent
-    );
+        #ffffff 0%,
+        rgba(255, 255, 255, 0.65) 35%,
+        transparent 100%
+    ) !important;
 }
 
-/* 2. FEATURED CARD WHITE GRADIENT */
+/* FEATURED CARD */
+
 .featured-card {
     background:
         linear-gradient(
             to right,
-            rgba(255, 255, 255, 0.85) 0%,
-            rgba(255, 255, 255, 0.25) 50%,
-            transparent 100%
+            rgba(255, 255, 255, 0.94) 0%,
+            rgba(255, 255, 255, 0.75) 45%,
+            rgba(255, 255, 255, 0.08) 100%
         ),
-        url('banner.jpg') center/cover no-repeat;
+        url('banner.jpg') center/cover no-repeat !important;
 }
 
-/* 3. MOSAIC SECTION WHITE OVERLAY */
+.card-content,
+.card-content h3,
+.card-content p,
+.card-content i {
+    color: #171717 !important;
+}
+
+/* MOSAIC SECTION */
+
+.mosaic-section {
+    background-color: #ffffff !important;
+    background-image: url('final2.jpg') !important;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 .mosaic-section::before {
-    background: rgba(255, 255, 255, 0.70);
+    background: rgba(255, 255, 255, 0.82) !important;
 }
 
-/* White top edge fade */
 .mosaic-section::after {
     background: linear-gradient(
         to bottom,
-        #ffffff,
-        transparent
-    );
+        #ffffff 0%,
+        rgba(255, 255, 255, 0.65) 50%,
+        transparent 100%
+    ) !important;
 }
 
-/* White bottom edge fade */
 .mosaic-bottom-blur {
     background: linear-gradient(
         to top,
-        #ffffff,
-        transparent
-    );
+        #ffffff 0%,
+        transparent 100%
+    ) !important;
 }
+
+/* MOSAIC TEXT */
+
+.mosaic-title,
+.mosaic-title .script-word,
+.mosaic-footer .cta-arrow {
+    color: #171717 !important;
+    text-shadow: none !important;
+}
+
+/* MOSAIC TILES */
+
+.tile-card {
+    background: rgba(255, 255, 255, 0.72) !important;
+    border-color: rgba(30, 30, 30, 0.15) !important;
+}
+
+.tile-card i,
+.tile-card span {
+    color: #171717 !important;
+}
+
+/*==================================================
+  MOBILE WHITE THEME
+==================================================*/
+
+@media (max-width: 768px) {
+
+    html,
+    body {
+        background: #ffffff !important;
+    }
+
+    .hero {
+        background-color: #ffffff !important;
+    }
+
+    .hero-overlay {
+        background: rgba(255, 255, 255, 0.30) !important;
+    }
+
+    .hero::after {
+        background: linear-gradient(
+            to top,
+            #ffffff,
+            transparent
+        ) !important;
+    }
+
+    .featured-card {
+        background: #ffffff !important;
+    }
+
+    .featured-card::before {
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.05) 35%,
+                rgba(255, 255, 255, 0.96) 100%
+            ),
+            url('banner.jpg') center/cover no-repeat !important;
+    }
+
+    .mosaic-section {
+        background-color: #ffffff !important;
+        background-image: url('final2.jpg') !important;
+        background-attachment: scroll !important;
+    }
+
+    .mosaic-section::before {
+        background: rgba(255, 255, 255, 0.86) !important;
+    }
+
+    .mosaic-section::after {
+        background: linear-gradient(
+            to bottom,
+            #ffffff,
+            transparent
+        ) !important;
+    }
+
+    .mosaic-bottom-blur {
+        background: linear-gradient(
+            to top,
+            #ffffff,
+            transparent
+        ) !important;
+    }
+
+    .mosaic-title,
+    .mosaic-title .script-word,
+    .mosaic-footer .cta-arrow {
+        color: #171717 !important;
+    }
+
+    .tile-card {
+        background: rgba(255, 255, 255, 0.85) !important;
+    }
+}
+
 
