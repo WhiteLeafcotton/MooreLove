@@ -1747,6 +1747,40 @@ a.contact-value:hover {
 }
 
 
+/* MOBILE: EDGE-TO-EDGE HERO BACKGROUND */
+
+@media screen and (max-width: 768px) {
+
+    .hero {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        border-radius: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .hero video,
+    .hero-bg-layer {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 0 !important;
+    }
+
+    .hero video {
+        object-position: center center !important;
+    }
+
+    .hero-bg-layer {
+        background-position: center center !important;
+        background-size: cover !important;
+    }
+}
+
 
 
 
