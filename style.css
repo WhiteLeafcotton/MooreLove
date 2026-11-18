@@ -1657,120 +1657,80 @@ a.contact-value:hover {
 /* ================================================
    FINAL MOBILE HERO — TRUE EDGE-TO-EDGE
 ================================================ */
+/* =========================================
+   FORCE HERO TO THE TOP EDGE — MOBILE
+   Place this at the VERY END of your CSS
+========================================= */
 
 @media screen and (max-width: 768px) {
 
-    /* Remove browser/page spacing */
     html,
     body {
         margin: 0 !important;
         padding: 0 !important;
         width: 100% !important;
-        max-width: 100% !important;
+        min-height: 100% !important;
         overflow-x: hidden !important;
     }
 
-    /* TOP BAR FLOATS OVER HERO */
-    .top-bar {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-
-        width: 100% !important;
-        height: auto !important;
-
-        margin: 0 !important;
-        padding: 18px 5% !important;
-
-        display: flex !important;
-        justify-content: flex-end !important;
-        align-items: center !important;
-
-        background: transparent !important;
-        border: none !important;
-
-        z-index: 1000 !important;
+    body {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
     }
 
-    /* TOP LINKS */
-    .top-links {
-        display: flex !important;
-        gap: 14px !important;
+    /* Remove spacing from common page wrappers */
+    main,
+    #main,
+    .main-content,
+    .page-wrapper,
+    .site-wrapper {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
     }
 
-    /* HERO STARTS AT TOP EDGE */
+    /* Hero must begin at the viewport's top edge */
     .hero {
         position: relative !important;
-
+        top: 0 !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
         width: 100% !important;
         max-width: none !important;
-
-        height: 70svh !important;
-        min-height: 500px !important;
-
-        margin: 0 !important;
-        padding: 0 5% !important;
-
-        left: auto !important;
+        left: 0 !important;
         transform: none !important;
-
         border-radius: 0 !important;
         overflow: hidden !important;
-
-        background-size: cover !important;
         background-position: center center !important;
-        background-repeat: no-repeat !important;
+        background-size: cover !important;
     }
 
-    /* VIDEO BACKGROUND */
-    #heroVideo,
-    .hero video {
+    /* Put navigation OVER the hero */
+    .top-bar {
         position: absolute !important;
-        inset: 0 !important;
-
+        top: env(safe-area-inset-top, 0px) !important;
+        left: 0 !important;
+        right: 0 !important;
         width: 100% !important;
-        height: 100% !important;
-
-        object-fit: cover !important;
-        object-position: center center !important;
-
-        transform: none !important;
+        margin: 0 !important;
+        background: transparent !important;
+        z-index: 9999 !important;
     }
 
-    /* BACKGROUND IMAGE LAYERS */
+    /* Make hero media fill its entire container */
+    #heroVideo,
+    .hero video,
     .hero-bg-layer {
         position: absolute !important;
         inset: 0 !important;
-
         width: 100% !important;
         height: 100% !important;
-
+        margin: 0 !important;
+        object-fit: cover !important;
         background-size: cover !important;
         background-position: center center !important;
-        background-repeat: no-repeat !important;
-    }
-
-    /* KEEP OVERLAYS INSIDE HERO */
-    .hero-overlay {
-        position: absolute !important;
-        inset: 0 !important;
-    }
-
-    /* HERO CONTENT */
-    .hero-content {
-        position: relative !important;
-        z-index: 5 !important;
-        max-width: 100% !important;
-    }
-
-    /* ICON BAR */
-    .icon-bar-container {
-        z-index: 10 !important;
-        max-width: 100% !important;
+        transform: none !important;
     }
 }
-
 
 
 
