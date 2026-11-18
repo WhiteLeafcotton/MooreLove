@@ -1662,6 +1662,10 @@ a.contact-value:hover {
    Place this at the VERY END of your CSS
 ========================================= */
 
+/* =========================================
+   MOBILE — TRUE TOP EDGE-TO-EDGE HERO
+========================================= */
+
 @media screen and (max-width: 768px) {
 
     html,
@@ -1669,16 +1673,17 @@ a.contact-value:hover {
         margin: 0 !important;
         padding: 0 !important;
         width: 100% !important;
-        min-height: 100% !important;
+        max-width: 100% !important;
         overflow-x: hidden !important;
     }
 
     body {
-        padding-top: 0 !important;
-        margin-top: 0 !important;
+        position: relative !important;
+        top: 0 !important;
     }
 
-    /* Remove spacing from common page wrappers */
+    /* Remove space before the hero */
+    body > *:first-child,
     main,
     #main,
     .main-content,
@@ -1688,11 +1693,11 @@ a.contact-value:hover {
         padding-top: 0 !important;
     }
 
-    /* Hero must begin at the viewport's top edge */
+    /* Hero touches the top edge */
     .hero {
         position: relative !important;
         top: 0 !important;
-        margin-top: 0 !important;
+        margin: 0 !important;
         padding-top: 0 !important;
         width: 100% !important;
         max-width: none !important;
@@ -1700,23 +1705,29 @@ a.contact-value:hover {
         transform: none !important;
         border-radius: 0 !important;
         overflow: hidden !important;
-        background-position: center center !important;
+
+        height: 70svh !important;
+        min-height: 500px !important;
+
         background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
     }
 
-    /* Put navigation OVER the hero */
+    /* Navigation floats over image */
     .top-bar {
         position: absolute !important;
-        top: env(safe-area-inset-top, 0px) !important;
+        top: 0 !important;
         left: 0 !important;
         right: 0 !important;
         width: 100% !important;
         margin: 0 !important;
+        padding: 18px 5% !important;
         background: transparent !important;
-        z-index: 9999 !important;
+        z-index: 99999 !important;
     }
 
-    /* Make hero media fill its entire container */
+    /* Hero video and background layers */
     #heroVideo,
     .hero video,
     .hero-bg-layer {
@@ -1726,9 +1737,13 @@ a.contact-value:hover {
         height: 100% !important;
         margin: 0 !important;
         object-fit: cover !important;
-        background-size: cover !important;
-        background-position: center center !important;
+        object-position: center center !important;
         transform: none !important;
+    }
+
+    .hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
     }
 }
 
