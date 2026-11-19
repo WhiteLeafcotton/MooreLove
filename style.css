@@ -2238,5 +2238,53 @@ a.contact-value:hover {
 ========================================= */
 
 
+/* FINAL MOBILE HERO TOP-EDGE OVERRIDE */
+@media screen and (max-width: 768px) {
+
+    html,
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    body {
+        position: relative !important;
+        top: 0 !important;
+    }
+
+    .top-bar {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 !important;
+        z-index: 10000 !important;
+    }
+
+    #hero,
+    section.hero,
+    .hero {
+        position: relative !important;
+        top: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    #heroVideo,
+    .hero-bg-layer {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
 
 
