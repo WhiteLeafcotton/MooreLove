@@ -2075,143 +2075,85 @@ body {
   PRESERVES EXISTING HERO DESIGN AND OTHER SECTIONS
 ==================================================*/
 
-@media screen and (max-width: 768px) {
 
-    html,
-    body {
-        margin: 0 !important;
-        padding: 0 !important;
-        width: 100% !important;
-        min-height: 100% !important;
-        overflow-x: hidden !important;
-    }
+/*==================================================
+  HBCR — VIDEO + ROTATING IMAGE FULL-BLEED FIX
+==================================================*/
 
-    body {
-        position: relative !important;
-        padding-top: 0 !important;
-    }
+.hero {
+    position: relative !important;
+    width: 100% !important;
+    max-width: none !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+}
 
-    /* HERO — EXTEND INTO TOP SAFE AREA */
+/* VIDEO BACKGROUND */
+#heroVideo {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    z-index: 0 !important;
+}
+
+/* ROTATING IMAGE BACKGROUNDS */
+.hero-bg-layer {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+/* WHITE FADE */
+.hero-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+}
+
+/* BOTTOM FADE */
+.hero::after {
+    z-index: 3 !important;
+    pointer-events: none !important;
+}
+
+/* HERO CONTENT */
+.hero-content {
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+/* ICON BAR */
+.icon-bar-container {
+    z-index: 10 !important;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
 
     .hero {
-        position: relative !important;
-
-        top: 0 !important;
-        margin-top: calc(-1 * env(safe-area-inset-top, 0px)) !important;
-        margin-bottom: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-
         width: 100% !important;
         max-width: none !important;
-
-        height: calc(75svh + env(safe-area-inset-top, 0px)) !important;
-        min-height: 560px !important;
-
-        padding-top: env(safe-area-inset-top, 0px) !important;
-        padding-left: 5% !important;
-
-        overflow: hidden !important;
-        isolation: isolate !important;
-
-        border: none !important;
-        outline: none !important;
-        box-shadow: none !important;
-        border-radius: 0 !important;
-        transform: none !important;
-
-        background-color: #080808 !important;
-        background-size: cover !important;
-        background-position: center center !important;
-        background-repeat: no-repeat !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 
-    /* VIDEO BACKGROUND */
-
-    #heroVideo {
-        position: absolute !important;
-        inset: 0 !important;
-
-        width: 100% !important;
-        height: 100% !important;
-
-        object-fit: cover !important;
-        object-position: center center !important;
-
-        transform: none !important;
-        z-index: 0 !important;
-    }
-
-    /* CROSSFADE BACKGROUND IMAGES */
-
+    #heroVideo,
     .hero-bg-layer {
-        position: absolute !important;
-        inset: 0 !important;
-
         width: 100% !important;
         height: 100% !important;
-
+        inset: 0 !important;
+        object-fit: cover !important;
         background-size: cover !important;
         background-position: center center !important;
-        background-repeat: no-repeat !important;
-
-        transform: none !important;
-        z-index: 0 !important;
-    }
-
-    /* WHITE FADE */
-
-    .hero-overlay {
-        position: absolute !important;
-        inset: 0 !important;
-        z-index: 1 !important;
-        pointer-events: none !important;
-    }
-
-    .hero::after {
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        width: 100% !important;
-        z-index: 2 !important;
-    }
-
-    /* TOP NAVIGATION */
-
-    .top-bar {
-        position: absolute !important;
-
-        top: env(safe-area-inset-top, 0px) !important;
-        left: 0 !important;
-        right: 0 !important;
-
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 24px 5% !important;
-
-        z-index: 10000 !important;
-    }
-
-    .top-links {
-        gap: 12px !important;
-    }
-
-    .top-links a {
-        font-size: 10px !important;
-        letter-spacing: 1.5px !important;
-    }
-
-    /* HERO CONTENT */
-
-    .hero-content {
-        position: relative !important;
-        z-index: 5 !important;
-        max-width: 100% !important;
-    }
-
-    /* ICON BAR */
-
-    .icon-bar-container {
-        z-index: 10 !important;
     }
 }
