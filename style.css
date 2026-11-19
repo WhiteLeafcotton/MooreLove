@@ -1353,10 +1353,14 @@ a.contact-value:hover {
     }
     
   /* FEATURE CARD — MOBILE TEXT COLORS */
-.featured-card .card-content,
-.featured-card .card-content *,
-.featured-card-wrapper .card-content,
-.featured-card-wrapper .card-content * {
+/* FEATURE CARD — MOBILE TEXT ONLY */
+.featured-card .card-content i,
+.featured-card .card-content .eyebrow,
+.featured-card .card-content .brow,
+.featured-card .card-content h1,
+.featured-card .card-content h2,
+.featured-card .card-content h3,
+.featured-card .card-content p {
     color: #000000 !important;
     -webkit-text-fill-color: #000000 !important;
 }
