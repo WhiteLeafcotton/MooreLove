@@ -3,10 +3,23 @@
 HBCR Senior333 jkjkj444Living - Final CSS
 ==================================================*/
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
-body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
-:root { --gold: #5C546B; --transition: .4s ease; }
+html, body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    background: #080808;
+    font-family: "Inter", sans-serif;
+    color: #fff;
+}
+
+:root {
+    --gold: #5C546B;
+    --transition: .4s ease;
+}
 
 
 /*==================================================
@@ -45,12 +58,18 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 
 /*==================================================
-   HERO — FULL BLEED IMAGE / VIDEO
+   HERO — TRUE FULL-BLEED IMAGE / VIDEO
 ==================================================*/
 
 .hero {
-    position: relative;
-    width: 100%;
+    position: relative !important;
+
+    /* Break out of any constrained parent container */
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+
     height: 70vh;
     min-height: 500px;
 
@@ -59,7 +78,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
     padding-left: 8%;
 
-    overflow: hidden;
+    overflow: hidden !important;
     isolation: isolate;
 
     background-color: #080808;
@@ -71,28 +90,68 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* HERO VIDEO */
 
 #heroVideo {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
 
-    object-fit: cover;
-    object-position: center center;
+    display: block;
+    object-fit: cover !important;
+    object-position: center center !important;
 
     transform: none;
-    z-index: -2;
+    z-index: 0 !important;
+    pointer-events: none;
+}
+
+/* ROTATING BACKGROUND IMAGE LAYERS */
+
+.hero-bg-layer {
+    position: absolute !important;
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+
+    opacity: 0;
+    z-index: 1 !important;
+
+    pointer-events: none;
+
+    transition:
+        opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+        transform 1.6s cubic-bezier(0.25, 1, 0.5, 1);
+
+    transform: scale(1.03);
+    will-change: opacity, transform;
+}
+
+.hero-bg-layer.active {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* HERO OVERLAY */
 
 .hero-overlay {
-    position: absolute;
-    inset: 0;
+    position: absolute !important;
+    inset: 0 !important;
 
-    background: rgba(0, 0, 0, 0.12);
+    background: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 255, 255, 0.65) 18%,
+        rgba(255, 255, 255, 0.30) 38%,
+        rgba(255, 255, 255, 0.08) 60%,
+        rgba(255, 255, 255, 0) 78%
+    ) !important;
 
-    z-index: -1;
-    pointer-events: none;
+    z-index: 2 !important;
+    pointer-events: none !important;
 }
 
 /* WHITE FADE — BOTTOM OF HERO */
@@ -108,14 +167,12 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
     background: linear-gradient(
         to top,
-        #ffffff 0%,
-        rgba(255, 255, 255, 0.75) 20%,
-        rgba(255, 255, 255, 0.35) 50%,
-        rgba(255, 255, 255, 0.10) 75%,
-        transparent 100%
+        rgba(255, 255, 255, 0.75) 0%,
+        rgba(255, 255, 255, 0.25) 30%,
+        transparent 65%
     );
 
-    z-index: 1;
+    z-index: 3;
     pointer-events: none;
 }
 
@@ -129,57 +186,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     animation: fadeUp 1s ease;
 }
 
-
-
-
-
-/* Dual Background Cross-Fade Layers */
-.hero-bg-layer {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0;
-    z-index: 0;
-    /* Heavy, cinematic easing curve */
-    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
-                transform 1.6s cubic-bezier(0.25, 1, 0.5, 1);
-    transform: scale(1.03); /* Subtle zoom out effect during transition */
-    will-change: opacity, transform;
-}
-.hero-overlay,
-.hero-bg-layer {
-    pointer-events: none;
-}
-
-.icon-bar-container,
-.icon-wrapper,
-.icon-item {
-    position: relative;
-    z-index: 100;
-    pointer-events: auto;
-}
-.hero-bg-layer.active {
-    opacity: 1;
-    transform: scale(1); /* Settles to normal scale */
-}
-
-/* Slower, Heavier Sliding Line Under Icons */
-.active-line {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 1px;
-    background: #fff;
-    /* Heavy magnetic slide transition */
-    transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
-                left 0.7s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-/* Smooth Headline Text Reveal Adjustment */
 .hero-content h1 {
     font-family: "Cormorant Garamond", serif;
     font-weight: 300;
@@ -188,50 +194,58 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     letter-spacing: -0.2px;
     margin-bottom: 30px;
     text-transform: uppercase;
-    /* Slow text fade */
-    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
-/* Hero Logo Wrapper */
-/* Hero Logo with Delicate Wedding Font */
-/* Container Wrapper */
-/* Hero Logo Layout */
-/* Stacked & Overlapping Hero Logo Wrapper */
-/* Container set to relative block so children can layer over each other */
-/* Stacked Logo Container - Flex Layout */
 
-/* Smooth fade out for the hero logo when clicking a tab */
-/* Container holds both the icon and the name */
+.hero-button {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid rgba(255,255,255,.4);
+    text-decoration: none;
+    color: white;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.hero-button:hover {
+    background: #fff;
+    color: #000;
+}
+
+
+/*==================================================
+   HERO LOGO
+==================================================*/
+
 .hero-logo {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-/* Give the business name text smooth fade capabilities */
 .hero-logo .brand-name {
     opacity: 1;
     visibility: visible;
     transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
-/* Hidden state: slow fade out */
 .hero-logo.hidden {
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
-    display: none !important; 
+    display: none !important;
 }
-
 
 .hero-logo.stacked-logo {
     position: relative;
-    display: inline-flex;          /* Flex container to place MOORE & SVG side-by-side */
-    align-items: center;           /* Center SVG vertically with MOORE */
-    gap: 24px;                     /* Spacing between MOORE and the SVG icon */
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
     margin-bottom: 45px;
 }
 
-/* "MOORE" - Main Heading */
 .hero-logo .strong-title {
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 300 !important;
@@ -244,10 +258,9 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     margin: 0;
 }
 
-/* SVG Logo Icon (Scaled to match MOORE height & placed on right) */
 .hero-logo-icon {
-    position: static !important;   /* Removes absolute positioning so flexbox handles placement */
-    width: 54px !important;        /* Matches visual height of MOORE */
+    position: static !important;
+    width: 54px !important;
     height: 54px !important;
     filter: brightness(0) invert(1);
     opacity: 0.9;
@@ -255,7 +268,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     color: #5C546B;
 }
 
-/* "love and care" - Overlay Subtitle */
 .hero-logo .script-subtitle {
     font-family: 'WindSong', cursive !important;
     font-size: 44px !important;
@@ -271,63 +283,87 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 
-.hero-content h1 { font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: clamp(30px, 3.5vw, 48px); line-height: 1.1; letter-spacing: -0.2px; margin-bottom: 30px; text-transform: uppercase; transition: opacity 0.3s ease; }
-.hero-button { display: inline-block; padding: 12px 30px; border: 1px solid rgba(255,255,255,.4); text-decoration: none; color: white; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); }
-.hero-button:hover { background: #fff; color: #000; }
+/*==================================================
+   ICON BAR
+==================================================*/
 
+.icon-bar-container {
+    position: absolute;
+    bottom: 40px;
+    left: 4%;
+    right: 4%;
+    z-index: 10;
+}
 
-/* ICON BAR */
-.icon-bar-container { position: absolute; bottom: 40px; left: 4%; right: 4%; z-index: 10; }
-.icon-bar-line { width: 100%; height: 1px; background: rgba(255,255,255,0.15); margin-bottom: 25px; position: relative; }
-.active-line { position: absolute; top: 0; left: 0; height: 1px; background: #5C546B; transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), left 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-.icon-wrapper { display: flex; justify-content: space-between; position: relative; }
+.icon-bar-line {
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.15);
+    margin-bottom: 25px;
+    position: relative;
+}
 
-/* Container for each icon + label pair */
-/* Container for each icon + label pair */
-/* Container for each icon + label pair */
-/* Container for each icon + label pair */
+.active-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1px;
+    background: #5C546B;
+    transition:
+        width 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.icon-wrapper {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.icon-bar-container,
+.icon-wrapper,
 .icon-item {
+    pointer-events: auto;
+}
+
+.icon-item {
+    position: relative;
+    z-index: 100;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 8px;
     cursor: pointer;
-    color: #000000 !important; /* Keeps the text label pure white */
+    color: #000000 !important;
     transition: all 0.3s ease;
 }
 
-/* Lucide SVGs & Tags - Forced Display & Sizing */
 .icon-item i,
 .icon-item svg {
     display: block !important;
     width: 22px !important;
     height: 22px !important;
-    stroke-width: 0.85; 
-    stroke: #5C546B !important; /* Default unselected icon color */
+    stroke-width: 0.85;
+    stroke: #5C546B !important;
     fill: none;
     transition: all 0.3s ease;
 }
 
-/* Text Labels */
 .icon-item span {
     font-size: 0.75rem;
     font-weight: 400;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #5C546B !important; /* Ensures text stays white */
+    color: #5C546B !important;
     transition: color 0.3s ease;
 }
 
-
-
-/* HOVER & ACTIVE STATES */
 .icon-item:hover,
 .icon-item.active {
     transform: translateY(-2px);
 }
 
-/* PURPLE FILL WITH WHITE OUTLINE */
 .icon-item:hover svg,
 .icon-item.active svg {
     fill: #5C546B !important;
@@ -335,84 +371,134 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     color: #ffffff !important;
 }
 
-/* ICON FONT COLOR */
 .icon-item:hover i,
 .icon-item.active i {
     color: #5C546B !important;
 }
-/* HOUSE — keep the door outline unfilled */
-/* SUPPORT — fill only the heart */
 
-/* STICKY NAV */
-/* STICKY NAV */
-/* Update your CSS to target the ID specifically */
-#mainNav { 
-    position: fixed; 
-    top: -120px; 
-    left: 0; 
-    width: 100%; 
-    z-index: 99999 !important; /* Force above all mosaic layers */
-    background: rgba(8, 8, 8, 0.95); 
-    backdrop-filter: blur(10px); 
-    transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
-}
 
-#mainNav.sticky { 
-    top: 0; 
-    box-shadow: 0 5px 20px rgba(0,0,0,0.5); 
-}
-.nav-inner { display: flex; align-items: center; justify-content: center; gap: 40px; padding: 15px 20px; position: relative; }
-.nav-link, .nav-link:visited, .nav-link:link { text-decoration: none !important; color: #ffffff !important; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; transition: var(--transition); }
-.nav-link:hover, .nav-link:active { color: var(--gold) !important; }
-.nav-icon { width: 24px; height: 24px; filter: brightness(0) invert(1); transition: var(--transition); }
-.nav-logo:hover .nav-icon { filter: invert(72%) sepia(21%) saturate(1478%) hue-rotate(345deg) brightness(90%) contrast(88%); }
-
-/* SECTIONS */
-.section { padding: 100px 4%; background: #080808; }
-.section.dark { background: #050505; }
-.container { max-width: 1300px; margin: auto; }
-.container h2 { font-family: "Cormorant Garamond", serif; font-size: 48px; font-weight: 300; margin-bottom: 25px; }
-.container p { font-size: 16px; line-height: 1.7; color: #aaa; max-width: 550px; }
-
-/* FEATURED CARD STYLE */
 /*==================================================
-  HIGH-END FEATURED CARD & TEXT ANIMATIONS
+   STICKY NAVIGATION
 ==================================================*/
 
-/* 1. Card Container & Ambient Glow */
+#mainNav {
+    position: fixed;
+    top: -120px;
+    left: 0;
+    width: 100%;
+    z-index: 99999 !important;
+    background: rgba(8, 8, 8, 0.95);
+    backdrop-filter: blur(10px);
+    transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#mainNav.sticky {
+    top: 0;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 15px 20px;
+    position: relative;
+}
+
+.nav-link,
+.nav-link:visited,
+.nav-link:link {
+    text-decoration: none !important;
+    color: #ffffff !important;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link:active {
+    color: var(--gold) !important;
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: var(--transition);
+}
+
+.nav-logo:hover .nav-icon {
+    filter: invert(72%) sepia(21%) saturate(1478%) hue-rotate(345deg) brightness(90%) contrast(88%);
+}
+
+
 /*==================================================
-  FEATURED CARD - OPTION 6: MONOLITH ELEVATION & SHIMMER
+   SECTIONS
 ==================================================*/
-/* FEATURED CARD STYLE */
-.featured-card-wrapper { 
-    padding: 60px 4%; 
-    background: #ffffff; 
-    display: flex; 
-    justify-content: center; 
+
+.section {
+    padding: 100px 4%;
+    background: #080808;
 }
 
-.featured-card { 
-    position: relative; 
-    width: 100%; 
-    max-width: 1600px; 
-    height: 300px; 
-    background: linear-gradient(to right, rgba(8,8,8,0.85) 0%, transparent 50%, transparent 100%), url('banner.jpg') center/cover no-repeat; 
-    display: flex; 
-    align-items: center; 
-    padding: 0 5%; 
-    border: 0.5px solid rgba(255, 255, 255, 0.2); 
-    overflow: hidden; 
+.section.dark {
+    background: #050505;
 }
 
-.card-content { 
-    position: relative; 
-    z-index: 2; 
-    max-width: 450px; 
-    color: #fff; 
+.container {
+    max-width: 1300px;
+    margin: auto;
 }
 
-/* Base Initial States for Entry Reveal */
+.container h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 48px;
+    font-weight: 300;
+    margin-bottom: 25px;
+}
+
+.container p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #aaa;
+    max-width: 550px;
+}
+
+
+/*==================================================
+   FEATURED CARD
+==================================================*/
+
+.featured-card-wrapper {
+    padding: 60px 4%;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+}
+
+.featured-card {
+    position: relative;
+    width: 100%;
+    max-width: 1600px;
+    height: 300px;
+    background: linear-gradient(to right, rgba(8,8,8,0.85) 0%, transparent 50%, transparent 100%), url('banner.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+    max-width: 450px;
+    color: #fff;
+}
+
 .card-content i,
 .card-content h3,
 .card-content p,
@@ -422,53 +508,51 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     will-change: opacity, transform;
 }
 
-.card-content i { 
-    font-family: "Cormorant Garamond", serif; 
-    font-style: italic; 
-    font-size: 18px; 
-    margin-bottom: 15px; 
-    display: block; 
+.card-content i {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 18px;
+    margin-bottom: 15px;
+    display: block;
 }
 
-.card-content h3 { 
-    font-family: "Inter", sans-serif; 
-    font-size: 14px; 
-    text-transform: uppercase; 
-    letter-spacing: 4px; 
-    margin-bottom: 20px; 
-    font-weight: 500; 
+.card-content h3 {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    font-weight: 500;
 }
 
-.card-content p { 
-    font-family: "Cormorant Garamond", serif; 
-    font-size: 24px; 
-    line-height: 1.3; 
-    margin-bottom: 30px; 
-    color: #fff; 
+.card-content p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 24px;
+    line-height: 1.3;
+    margin-bottom: 30px;
+    color: #fff;
 }
 
-/* STRICT FIXED BUTTON SIZE */
-.card-btn { 
+.card-btn {
     position: relative;
-    display: inline-flex !important; 
+    display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    width: 220px !important;       /* Fixed Width */
-    max-width: 100%;               
-    height: 48px !important;      /* Fixed Height */
-    text-decoration: none; 
+    width: 220px !important;
+    max-width: 100%;
+    height: 48px !important;
+    text-decoration: none;
     font-family: "Inter", sans-serif;
-    font-size: 10px; 
-    letter-spacing: 3px; 
-    text-transform: uppercase; 
-    font-weight: 600; 
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
     border: 1px solid rgba(255, 255, 255, 0.4);
-    overflow: hidden !important;   
+    overflow: hidden !important;
     background: #ffffff;
     box-sizing: border-box;
 }
 
-/* SLIDING BLOCK OVERLAY */
 .btn-slide-block {
     position: absolute;
     inset: 0;
@@ -479,18 +563,16 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     pointer-events: none;
 }
 
-/* RELATIVE WRAPPER FOR PERFECT CENTERED STACKING */
 .btn-text-wrapper {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    z-index: 10;                  /* Higher Z-Index guarantees visibility over slider */
+    z-index: 10;
     overflow: hidden;
     pointer-events: none;
 }
 
-/* ABSOLUTE POSITIONING FOR TEXT PHRASES */
 .btn-text {
     position: absolute;
     inset: 0;
@@ -506,30 +588,35 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     will-change: transform, opacity;
 }
 
-/* Initial state for first phrase */
 .text-1 {
     transform: translateX(0);
     opacity: 1;
     color: #000000;
 }
 
-/* KEYFRAMES */
 
-/* Card text entry */
-@keyframes fadeUp { 
-    from { opacity: 0; transform: translateY(20px); } 
-    to { opacity: 1; transform: translateY(0); } 
+/*==================================================
+   KEYFRAMES
+==================================================*/
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Background Color Switching */
 @keyframes btnBaseBgLoop {
-    0%, 30% { background-color: #EDE9E2 }
-    33%, 63% { background-color: #1e1e24; } /* Dark Slate */
-    66%, 96% { background-color: #DCD6EC; } /* Light Lavender */
+    0%, 30% { background-color: #EDE9E2; }
+    33%, 63% { background-color: #1e1e24; }
+    66%, 96% { background-color: #DCD6EC; }
     100% { background-color: #ffffff; }
 }
 
-/* Slide Block Motion */
 @keyframes slideBlockWipe {
     0%, 28% {
         transform: translateX(-101%);
@@ -554,7 +641,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     }
 }
 
-/* Text Slide Motion */
 @keyframes text1Slide {
     0%, 28% { transform: translateX(0); opacity: 1; color: #000; }
     30% { transform: translateX(-100%); opacity: 0; color: #000; }
@@ -576,7 +662,11 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     100% { transform: translateX(100%); opacity: 0; color: #111; }
 }
 
-/* TRIGGER ANIMATIONS (Added back i, h3, p triggers) */
+
+/*==================================================
+   FEATURED CARD ANIMATION TRIGGERS
+==================================================*/
+
 .featured-card.is-visible .card-content i {
     animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.1s;
 }
@@ -590,8 +680,9 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 .featured-card.is-visible .card-content .card-btn {
-    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards,
-               btnBaseBgLoop 9s step-end 1.5s infinite;
+    animation:
+        fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards,
+        btnBaseBgLoop 9s step-end 1.5s infinite;
 }
 
 .featured-card.is-visible .btn-slide-block {
@@ -609,26 +700,16 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .featured-card.is-visible .text-3 {
     animation: text3Slide 9s cubic-bezier(0.77, 0, 0.175, 1) 1.5s infinite;
 }
-/* MOSAIC SECTION */
-/* MOSAIC SECTION - UPDATED FOR SIZE AND SPACING */
-/* MOSAIC SECTION */
-/* ==================================================
-   MOSAIC SECTION - CLEANED & CONSOLIDATED
-   ================================================== */
-/* ==================================================
-   MOSAIC SECTION - UPDATED FOR 2x3 LAYOUT
-   ================================================== */
-/* ==================================================
-/* ==================================================
-   MOSAIC SECTION - UPDATED 2x3 LAYOUT & BLURS
-   ================================================== */
-/* ==================================================
-   COMPACT MOSAIC SECTION
-   ================================================== */
+
+
+/*==================================================
+   MOSAIC SECTION
+==================================================*/
+
 .mosaic-section {
     position: relative;
-    padding: 30px 4%; /* REDUCED from 60px */
-    background: url('final2.jpg') center/cover no-repeat fixed; 
+    padding: 30px 4%;
+    background: url('final2.jpg') center/cover no-repeat fixed;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -636,7 +717,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     overflow: hidden;
 }
 
-/* Base dark overlay */
 .mosaic-section::before {
     content: "";
     position: absolute;
@@ -645,83 +725,87 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     z-index: 1;
 }
 
-/* Top Edge Blur */
 .mosaic-section::after {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px; /* REDUCED height for a tighter section */
+    height: 60px;
     background: linear-gradient(to bottom, #080808, transparent);
     z-index: 2;
     pointer-events: none;
 }
 
-/* Bottom Edge Blur */
 .mosaic-bottom-blur {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 60px; /* REDUCED height */
+    height: 60px;
     background: linear-gradient(to top, #080808, transparent);
     z-index: 2;
     pointer-events: none;
 }
 
-/* 2 Row x 3 Column Grid */
 .mosaic-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, auto);    
-    gap: 12px; /* Slight tightening of grid gap */
+    grid-template-rows: repeat(2, auto);
+    gap: 12px;
     width: 100%;
     max-width: 1600px;
     z-index: 3;
-    margin: 15px auto; /* REDUCED from 30px */
+    margin: 15px auto;
 }
 
-/* Compact Tile Interior */
 .tile-card {
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 18px 15px; /* REDUCED from 30px 20px */
+    padding: 30px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px; 
+    gap: 10px;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(12px);
     cursor: pointer;
-    opacity: 0; 
+    opacity: 0;
     transform: translateY(20px);
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tile-card.is-active {
-    opacity: 1; 
+    opacity: 1;
     transform: translateY(0);
 }
 
-.tile-card i { font-size: 20px; color: #fff; transition: var(--transition); }
-.tile-card span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+.tile-card i {
+    font-size: 24px;
+    color: #fff;
+    transition: var(--transition);
+}
 
-/* --- Web / Desktop Only Override --- */
+.tile-card span {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
 @media (min-width: 1024px) {
     .mosaic-section {
         padding-top: 25px;
         padding-bottom: 25px;
     }
 
-    .mosaic-grid { 
+    .mosaic-grid {
         width: 100%;
-        max-width: 1600px; 
+        max-width: 1600px;
         margin-top: 15px;
         margin-bottom: 15px;
     }
 }
 
-/* Compact Mosaic Footer */
 .mosaic-footer {
     position: relative;
     z-index: 3;
@@ -730,17 +814,16 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     align-items: flex-start;
     justify-content: flex-start;
     text-align: left;
-    padding: 1.5rem 0 0.5rem 0; /* REDUCED from 4rem 0 */
-    gap: 1.25rem; /* REDUCED from 1.75rem */
-    width: 100%;             
-    max-width: 1600px;  
-    margin: 0 auto;     
+    padding: 1.5rem 0 0.5rem 0;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
 }
 
-/* Typography Adjustments */
 .mosaic-title {
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(2rem, 3.5vw, 3.2rem); /* Slightly tighter font bounds */
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
     font-weight: 300;
     color: #ffffff;
     line-height: 1.2;
@@ -752,18 +835,17 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 .mosaic-title .script-word {
-    font-family: inherit;      
-    font-size: inherit;        
-    font-weight: inherit;      
-    color: inherit;            
-    text-transform: none;      
-    letter-spacing: inherit;   
-    padding-left: 0;          
-    display: inline;          
-    vertical-align: baseline;  
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    text-transform: none;
+    letter-spacing: inherit;
+    padding-left: 0;
+    display: inline;
+    vertical-align: baseline;
 }
 
-/* Frameless CTA Link */
 .cta-arrow {
     display: inline-flex;
     align-items: center;
@@ -813,40 +895,10 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 
-
-/* Tile Card Styling */
-.tile-card {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 30px 20px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px; 
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(12px);
-    cursor: pointer;
-    opacity: 0; 
-    transform: translateY(20px);
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tile-card.is-active {
-    opacity: 1; 
-    transform: translateY(0);
-}
-
-.tile-card i { font-size: 24px; color: #fff; transition: var(--transition); }
-.tile-card span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
-/* ==================================================
+/*==================================================
    LOCATIONS GALLERY
-   ================================================== */
-/* ==================================================
-/* ==================================================
-   LOCATIONS GALLERY
-   ================================================== */
-/* ==================================================
-   LOCATIONS GALLERY (Frameless Full-Bleed Image)
-   ================================================== */
+==================================================*/
+
 .locations-gallery {
     display: flex;
     justify-content: center;
@@ -867,7 +919,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 30px 0; /* Padding top/bottom only */
+    padding: 30px 0;
     background: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     transition: all 0.4s ease;
@@ -877,60 +929,57 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     overflow: hidden;
 }
 
-.loc-card.active { 
-    background: #ffffff; 
-    color: #000000; 
-    border-color: #ffffff; 
+.loc-card.active {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
 }
 
-/* Header title with side padding */
-.card-title { 
-    letter-spacing: 2px; 
-    font-size: 14px; 
-    color: #ffffff; 
-    transition: color 0.3s ease; 
+.card-title {
+    letter-spacing: 2px;
+    font-size: 14px;
+    color: #ffffff;
+    transition: color 0.3s ease;
     padding: 0 20px;
 }
 
-.loc-card.active .card-title { 
-    color: #000000; 
+.loc-card.active .card-title {
+    color: #000000;
 }
 
-/* Full-Bleed Image (Spans 100% card width) */
-.loc-card img { 
-    display: none; 
-    width: 100% !important; /* Full edge-to-edge width */
+.loc-card img {
+    display: none;
+    width: 100% !important;
     height: 230px;
     object-fit: cover;
     margin: 20px 0;
     border: none;
 }
 
-.loc-card.active img { 
-    display: block; 
+.loc-card.active img {
+    display: block;
 }
 
-/* Lower text content block with side padding */
-.card-reveal { 
-    display: none; 
-    padding: 0 25px; /* Side padding kept strictly for paragraph & button */
+.card-reveal {
+    display: none;
+    padding: 0 25px;
 }
 
-.loc-card.active .card-reveal { 
-    display: block; 
+.loc-card.active .card-reveal {
+    display: block;
 }
 
-.view-btn { 
-    display: inline-block; 
-    margin-top: 15px; 
-    padding: 12px 24px; 
+.view-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 24px;
     background: #000000;
-    color: #ffffff; 
-    border: 1px solid #000000; 
-    text-decoration: none; 
-    font-size: 10px; 
-    letter-spacing: 2px; 
-    text-transform: uppercase; 
+    color: #ffffff;
+    border: 1px solid #000000;
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     transition: all 0.3s ease;
 }
 
@@ -940,29 +989,22 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 }
 
 
+/*==================================================
+   FOOTER
+==================================================*/
 
-
-
-
-/* ===================================================
-   SPLIT LAYOUT FOOTER - MOORE BRANDING
-   =================================================== */
-/* ===================================================
-   COMPACT FOOTER WITH HERO BRANDING ALIGNMENT
-   =================================================== */
 .site-footer {
-    padding: 35px 4% 20px; /* Highly compact vertical padding */
+    padding: 35px 4% 20px;
     background: #050505;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: #ffffff;
 }
 
 .footer-wrapper {
-    max-width: 1600px; /* Aligned with featured-card & mosaic width */
+    max-width: 1600px;
     margin: 0 auto;
 }
 
-/* --- Top Main Row (Same Line Split) --- */
 .footer-top-row {
     display: flex;
     align-items: center;
@@ -971,7 +1013,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     margin-bottom: 18px;
 }
 
-/* Left: Exact Hero Logo Styling */
 .footer-brand .stacked-logo {
     display: flex;
     flex-direction: column;
@@ -982,7 +1023,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .footer-brand .logo-top-row {
     display: flex;
     align-items: center;
-    gap: 8px; /* Space between MOORE and heart SVG */
+    gap: 8px;
 }
 
 .footer-brand .strong-title {
@@ -1005,11 +1046,10 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     font-size: 16px;
     color: #ffffff;
     opacity: 0.85;
-    margin-top: -4px; /* Slight overlap below MOORE text */
+    margin-top: -4px;
     padding-left: 2px;
 }
 
-/* Center: Thin Vertical Divider Line (|) */
 .footer-vertical-divider {
     width: 1px;
     height: 48px;
@@ -1017,7 +1057,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     flex-shrink: 0;
 }
 
-/* Right: Contact Information Block */
 .footer-contact-block {
     display: flex;
     gap: 35px;
@@ -1033,7 +1072,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .contact-icon {
     width: 15px;
     height: 15px;
-    color: #6E6280; /* Dark Slate Purple Accent */
+    color: #6E6280;
     flex-shrink: 0;
 }
 
@@ -1061,7 +1100,6 @@ a.contact-value:hover {
     color: #6E6280;
 }
 
-/* --- Subtext Below Main Split --- */
 .footer-subtext {
     font-family: 'Inter', sans-serif;
     font-size: 11px;
@@ -1072,7 +1110,6 @@ a.contact-value:hover {
     margin: 0 0 18px 0;
 }
 
-/* Subtle Horizontal Divider */
 .footer-horizontal-line {
     width: 100%;
     height: 1px;
@@ -1080,7 +1117,6 @@ a.contact-value:hover {
     margin-bottom: 18px;
 }
 
-/* --- Navigation & Socials Row --- */
 .footer-nav-row {
     display: flex;
     justify-content: space-between;
@@ -1088,7 +1124,6 @@ a.contact-value:hover {
     margin-bottom: 18px;
 }
 
-/* 4 Quick Links */
 .footer-links {
     display: flex;
     gap: 28px;
@@ -1105,10 +1140,9 @@ a.contact-value:hover {
 }
 
 .footer-links a:hover {
-    color: #6E6280; /* Dark Slate Purple */
+    color: #6E6280;
 }
 
-/* 4 Social Icons */
 .footer-social {
     display: flex;
     gap: 20px;
@@ -1122,11 +1156,10 @@ a.contact-value:hover {
 }
 
 .footer-social a:hover {
-    color: #6E6280; /* Dark Slate Purple */
+    color: #6E6280;
     transform: translateY(-2px);
 }
 
-/* --- Copyright Bar --- */
 .footer-bottom {
     text-align: center;
     font-family: 'Inter', sans-serif;
@@ -1136,180 +1169,213 @@ a.contact-value:hover {
     color: rgba(255, 255, 255, 0.25);
     padding-top: 15px;
     border-top: 1px solid rgba(255, 255, 255, 0.04);
-
-    }
-
+}
 
 
-
-
-
-
-
-
-/* ===================================================
-   TEXT REVEAL SECTION (Height Locked & Larger Text)
-/* ===================================================
+/*==================================================
    TEXT REVEAL SECTION
-   =================================================== */
+==================================================*/
 
 .text-reveal-section {
-  position: relative;
-  background-color: #ffffff;
-  padding: 100px 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  min-height: 560px;
+    position: relative;
+    background-color: #ffffff;
+    padding: 100px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    min-height: 560px;
 }
 
 .message-wrapper {
-  position: relative;
-  max-width: 960px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+    position: relative;
+    max-width: 960px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .message-block {
-  width: 100%;
+    width: 100%;
 }
 
-/* ===================================================
-   LARGER & BOLDER TYPOGRAPHY
-   =================================================== */
-
 .sub-title {
-  display: block;
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;               /* Bolder weight */
-  letter-spacing: 4px;            /* Slightly wider spacing */
-  color: #E5E0EA;
-  margin-bottom: 20px;
-  text-transform: uppercase;
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #E5E0EA;
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 .main-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3.2rem, 6.5vw, 5.2rem); /* Significantly larger */
-  font-weight: 600;               /* Increased weight */
-  color: #1a1a1a;
-  line-height: 1.08;
-  margin-bottom: 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 6.5vw, 5.2rem);
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1.08;
+    margin-bottom: 28px;
 }
 
 .body-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.25rem;             /* Larger body font */
-  font-weight: 400;
-  line-height: 1.8;
-  color: #333333;                 /* Darker, richer tone for readability */
-  max-width: 760px;
-  margin: 0 auto 36px auto;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #333333;
+    max-width: 760px;
+    margin: 0 auto 36px auto;
 }
 
-/* ===================================================
-   CALL TO ACTION (CTA)
-   =================================================== */
-
 .cta-wrapper {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .cta-button {
-  display: inline-block;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-  
-  /* Text & Border: Dark Slate Purple */
-  color: #6E6280;
-  background-color: transparent; /* Gold fill removed */
-  border: 1px solid #6E6280; /* Thin dark slate purple outline */
-  
-  padding: 18px 40px;
-  border-radius: 2px;
-  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #6E6280;
+    background-color: transparent;
+    border: 1px solid #6E6280;
+    padding: 18px 40px;
+    border-radius: 2px;
+    transition:
+        background-color 0.4s ease,
+        border-color 0.4s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-/* Hover state (keeps dark purple styling) */
 .cta-button:hover {
-  background-color: rgba(110, 98, 128, 0.05); /* Soft subtle tint on hover */
-  color: #6E6280;
-  border-color: #6E6280;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    background-color: rgba(110, 98, 128, 0.05);
+    color: #6E6280;
+    border-color: #6E6280;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* Pressed state (when clicked) */
 .cta-button:active {
-  color: #E4DFEA; /* Light purple text when pressed */
-  border-color: #E4DFEA; /* Optional: switches border to light purple while pressed */
-  background-color: #6E6280; /* Fills button with dark purple on press for visual feedback */
-  transform: translateY(0); /* Subtle press-down feel */
+    color: #E4DFEA;
+    border-color: #E4DFEA;
+    background-color: #6E6280;
+    transform: translateY(0);
 }
-
-/* ===================================================
-   SMOOTH STAGGERED REVEAL ANIMATIONS
-   =================================================== */
 
 .sub-title,
 .main-title,
 .body-text,
 .cta-wrapper {
-  opacity: 0;
-  transform: translateY(35px);
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity;
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
 }
 
-/* Triggered when `.active` class is present */
 .message-block.active .sub-title {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.1s;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
 }
 
 .message-block.active .main-title {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.25s;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.25s;
 }
 
 .message-block.active .body-text {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.4s;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
 }
 
 .message-block.active .cta-wrapper {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.55s;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.55s;
 }
-/* MOBILE RESPONSIVE ADAPTATION */
-/* MOBILE RESPONSIVE ADAPTATION */
-/* ===================================================
-/* =================================================== */
-/*             MOBILE RESPONSIVE ADAPTATION            */
-/* =================================================== */
-@media (max-width: 768px) {
-    /* Top Bar & Navigation */
-    .top-bar { padding: 15px 4%; }
-    .top-links { gap: 12px; }
-    .nav-inner { gap: 15px; padding: 8px; pointer-events: auto !important; position: relative; z-index: 999999; }
-    .nav-link { font-size: 9px; letter-spacing: 1px; }
 
-    /* Mobile Logo Scaling & Positioning */
+
+/*==================================================
+   MOBILE RESPONSIVE ADAPTATION
+==================================================*/
+
+@media (max-width: 768px) {
+
+    /* TOP BAR & NAVIGATION */
+
+    .top-bar {
+        padding: 15px 4%;
+    }
+
+    .top-links {
+        gap: 12px;
+    }
+
+    .nav-inner {
+        gap: 15px;
+        padding: 8px;
+        pointer-events: auto !important;
+        position: relative;
+        z-index: 999999;
+    }
+
+    .nav-link {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    /* MOBILE HERO FULL BLEED */
+
+    .hero {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin-left: calc(50% - 50vw) !important;
+        margin-right: calc(50% - 50vw) !important;
+
+        height: 75vh;
+        height: 75svh;
+        min-height: 480px;
+
+        padding-left: 5%;
+        padding-right: 5%;
+
+        overflow: hidden !important;
+    }
+
+    #heroVideo,
+    .hero-bg-layer {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    #heroVideo {
+        object-fit: cover !important;
+        object-position: center center !important;
+    }
+
+    .hero-bg-layer {
+        background-size: cover !important;
+        background-position: center center !important;
+    }
+
+    /* MOBILE LOGO */
+
     .hero-logo.hidden .strong-title,
     .hero-logo.hidden .script-subtitle {
         display: none !important;
@@ -1349,34 +1415,33 @@ a.contact-value:hover {
         color: #ffffff !important;
     }
 
-    /* ==========================================
-       FEATURED CARD (MOBILE FIX)
-    ========================================== */
-   .featured-card-wrapper { 
-        padding: 25px 4% !important; 
-    }
-    
-    .featured-card { 
-        height: auto !important; 
-        display: flex !important;
-        flex-direction: column !important;
-        background: none !important; 
-        padding: 0 !important; 
-        border: none !important; 
-    }
-    
-    /* Mobile Card Top Banner Image */
-    .featured-card::before { 
-        content: ""; 
-        display: block !important; 
-        width: 100% !important; 
-        height: 180px !important; 
-        background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), url('banner.jpg') center/cover no-repeat !important; 
-        border: 0.5px solid rgba(255, 255, 255, 0.2) !important; 
-        margin-bottom: 20px !important; 
+    /* FEATURED CARD MOBILE */
+
+    .featured-card-wrapper {
+        padding: 25px 4% !important;
     }
 
-    /* Force Card Content Visibility on Mobile */
+    .featured-card {
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        background: none !important;
+        padding: 0 !important;
+        border: none !important;
+    }
+
+    .featured-card::before {
+        content: "";
+        display: block !important;
+        width: 100% !important;
+        height: 180px !important;
+        background:
+            linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%),
+            url('banner.jpg') center/cover no-repeat !important;
+        border: 0.5px solid rgba(255, 255, 255, 0.2) !important;
+        margin-bottom: 20px !important;
+    }
+
     .featured-card .card-content {
         max-width: 100% !important;
         padding: 0 10px !important;
@@ -1385,7 +1450,6 @@ a.contact-value:hover {
         transform: none !important;
     }
 
-    /* Force Text Elements to Show on Mobile */
     .featured-card .card-content i,
     .featured-card .card-content h3,
     .featured-card .card-content p {
@@ -1410,8 +1474,7 @@ a.contact-value:hover {
         line-height: 1.4 !important;
         margin-bottom: 20px !important;
     }
-    
-    /* Dynamic Button Mobile Width Adjustments */
+
     .card-btn {
         width: 100% !important;
         max-width: 280px !important;
@@ -1419,22 +1482,22 @@ a.contact-value:hover {
         opacity: 1 !important;
         transform: none !important;
     }
-    
-  /* FEATURE CARD — MOBILE TEXT COLORS */
-/* FEATURE CARD — MOBILE TEXT ONLY */
-.featured-card .card-content i,
-.featured-card .card-content .eyebrow,
-.featured-card .card-content .brow,
-.featured-card .card-content h1,
-.featured-card .card-content h2,
-.featured-card .card-content h3,
-.featured-card .card-content p {
-    color: #000000 !important;
-    -webkit-text-fill-color: #000000 !important;
-}
-    /* ==========================================
-       COMPACT MOSAIC SECTION (MOBILE)
-    ========================================== */
+
+    /* FEATURE CARD — MOBILE TEXT COLORS */
+
+    .featured-card .card-content i,
+    .featured-card .card-content .eyebrow,
+    .featured-card .card-content .brow,
+    .featured-card .card-content h1,
+    .featured-card .card-content h2,
+    .featured-card .card-content h3,
+    .featured-card .card-content p {
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+    }
+
+    /* COMPACT MOSAIC SECTION */
+
     .mosaic-section {
         padding: 20px 4% !important;
         min-height: auto !important;
@@ -1492,7 +1555,7 @@ a.contact-value:hover {
     }
 
     .mosaic-grid .tile-card,
-    .tile-card { 
+    .tile-card {
         padding: 10px 4px !important;
         aspect-ratio: 1 / 1 !important;
         height: auto !important;
@@ -1502,21 +1565,21 @@ a.contact-value:hover {
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
-        pointer-events: auto !important; 
+        pointer-events: auto !important;
     }
 
-    .tile-card i, 
+    .tile-card i,
     .tile-card svg,
-    .tile-card img { 
-        width: 22px !important; 
-        height: 22px !important; 
+    .tile-card img {
+        width: 22px !important;
+        height: 22px !important;
         font-size: 22px !important;
         margin: 0 !important;
     }
 
     .tile-card span,
-    .tile-card p { 
-        font-size: 10px !important; 
+    .tile-card p {
+        font-size: 10px !important;
         line-height: 1.15 !important;
         letter-spacing: 0.3px !important;
         text-align: center !important;
@@ -1558,12 +1621,13 @@ a.contact-value:hover {
         flex: 1;
         cursor: pointer;
         transition: .3s;
-        pointer-events: auto; 
+        pointer-events: auto;
         -webkit-tap-highlight-color: transparent;
         user-select: none;
     }
 
-    /* Locations Gallery Mobile Swiping & Vertical Scroll */
+    /* LOCATIONS GALLERY MOBILE */
+
     .locations-gallery {
         display: flex !important;
         flex-direction: row !important;
@@ -1625,6 +1689,7 @@ a.contact-value:hover {
     }
 
     /* COMPACT MOBILE FOOTER */
+
     .site-footer {
         padding: 25px 4% 15px !important;
     }
@@ -1744,246 +1809,8 @@ a.contact-value:hover {
         letter-spacing: 1px !important;
         padding-top: 10px !important;
     }
-}
 
-
-
-
-
-
-
-
-/*==================================================
-  HBCR SENIOR LIVING
-  MOBILE FULL-BLEED TOP LAYOUT
-==================================================*/
-
-
-
-
-
-
-
-
-
-
-
-/* =========================================
-   WHITE OVERLAY THEME
-   HERO + FIRST TWO CONTENT SECTIONS
-========================================= */
-
-/*==================================================
-  HBCR SENIOR LIVING
-  WHITE LUXURY THEME OVERRIDES
-==================================================*/
-
-
-/*==================================================
-  HBCR SENIOR LIVING
-  WHITE BACKGROUNDS + BLACK NAVIGATION
-==================================================*/
-
-/* FORCE PAGE BACKGROUNDS TO WHITE */
-
-/*==================================================
-  HBCR SENIOR LIVING
-  FINAL WHITE LUXURY COLOR CORRECTIONS
-==================================================*/
-
-/* 1. FEATURED SECTION BELOW HERO */
-/*==================================================
-   HERO — ELEGANT WHITE BOTTOM FADE
-==================================================*/
-
-/* Remove the full black overlay and replace with white fade */
-.hero-overlay {
-    background: linear-gradient(
-        to top,
-        rgba(255, 255, 255, 0.95) 0%,
-        rgba(255, 255, 255, 0.65) 15%,
-        rgba(255, 255, 255, 0.30) 35%,
-        rgba(255, 255, 255, 0.08) 60%,
-        transparent 80%
-    ) !important;
-
-    z-index: 1 !important;
-}
-
-/* White fade at the bottom edge of the hero */
-.hero::after {
-    background: linear-gradient(
-        to top,
-        #ffffff 0%,
-        rgba(255, 255, 255, 0.65) 20%,
-        rgba(255, 255, 255, 0.20) 55%,
-        transparent 100%
-    ) !important;
-
-    height: 250px;
-    z-index: 2 !important;
-}
-
-
-
-
-
-
-/* ================================================
-   HBCR SENIOR LIVING
-   MOBILE TRUE EDGE-TO-EDGE HERO FIX
-   ================================================ */
-
-/* ==================================================
-   MOBILE EDGE-TO-EDGE HERO FIX
-   Full bleed to the very top of the screen
-================================================== */
-
-/* ==================================================
-   IPHONE SAFARI — TRUE TOP EDGE-TO-EDGE HERO
-================================================== */
-
-/* ==========================================
-   FORCE HERO BEHIND IPHONE STATUS BAR
-========================================== */
-
-/*==================================================
-  HBCR SENIOR LIVING
-  IPHONE — TRUE EDGE-TO-EDGE HERO
-==================================================*/
-
-
-/* ==================================================
-   HBCR SENIOR LIVING
-   TRUE MOBILE EDGE-TO-EDGE HERO
-   IPHONE SAFARI + ANDROID
-================================================== */
-
-/* GLOBAL RESET */
-html {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100%;
-    min-height: 100%;
-    background: #080808;
-    overflow-x: hidden !important;
-}
-
-body {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100%;
-    min-height: 100%;
-    background: #080808;
-    overflow-x: hidden !important;
-}
-
-/* ==========================================
-   MOBILE EDGE-TO-EDGE HERO
-========================================== */
-
-/* ==================================================
-   HBCR SENIOR LIVING
-   TRUE MOBILE EDGE-TO-EDGE HERO
-   IPHONE SAFARI + ANDROID
-================================================== */
-
-/* GLOBAL RESET */
-html {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100%;
-    min-height: 100%;
-    background: #080808;
-    overflow-x: hidden !important;
-}
-
-body {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100%;
-    min-height: 100%;
-    background: #080808;
-    overflow-x: hidden !important;
-}
-
-
-
-/*==================================================
-   HERO — SOFT WHITE FADE
-==================================================*/
-
-.hero-overlay {
-    background: linear-gradient(
-        to top,
-        rgba(255, 255, 255, 0.95) 0%,
-        rgba(255, 255, 255, 0.65) 18%,
-        rgba(255, 255, 255, 0.30) 38%,
-        rgba(255, 255, 255, 0.08) 60%,
-        rgba(255, 255, 255, 0) 78%
-    ) !important;
-}
-
-/* Remove any additional black gradient */
-.hero::after {
-    background: linear-gradient(
-        to top,
-        rgba(255, 255, 255, 0.75) 0%,
-        rgba(255, 255, 255, 0.25) 30%,
-        transparent 65%
-    ) !important;
-}
-
-
-/* FEATURE CARD — BLACK TEXT ON MOBILE ONLY */
-/* MOBILE — FEATURE CARD TITLE & EYEBROW BLACK */
-/* MOBILE — FEATURE CARD ALL TEXT BLACK */
-/* MOBILE — FEATURE CARD ALL TEXT BLACK */
-
-/* ==========================================
-   FEATURED CARD — BLACK TEXT ON MOBILE ONLY
-========================================== */
-@media screen and (max-width: 768px) {
-
-    /* Card text container */
-    .featured-card-wrapper .featured-card .card-content {
-        color: #000000 !important;
-    }
-
-    /* Brow / Eyebrow line */
-    .featured-card-wrapper .featured-card .card-content i,
-    .featured-card-wrapper .featured-card .card-content .eyebrow,
-    .featured-card-wrapper .featured-card .card-content .brow,
-    .featured-card-wrapper .featured-card .card-content .feature-eyebrow {
-        color: #000000 !important;
-        -webkit-text-fill-color: #000000 !important;
-    }
-
-    /* Feature card title */
-    .featured-card-wrapper .featured-card .card-content h3,
-    .featured-card-wrapper .featured-card .card-content h2,
-    .featured-card-wrapper .featured-card .card-content h1,
-    .featured-card-wrapper .featured-card .card-content .feature-title {
-        color: #000000 !important;
-        -webkit-text-fill-color: #000000 !important;
-    }
-
-    /* Feature card body text */
-    .featured-card-wrapper .featured-card .card-content p,
-    .featured-card-wrapper .featured-card .card-content span {
-        color: #000000 !important;
-        -webkit-text-fill-color: #000000 !important;
-    }
-
-}
-
-
-
-
-/* ==========================================
-   MOBILE FEATURE CARD BUTTON — WHITE TEXT
-   ========================================== */
-@media screen and (max-width: 768px) {
+    /* MOBILE FEATURE CARD BUTTON — WHITE TEXT */
 
     .featured-card-wrapper .featured-card .card-btn .btn-text,
     .featured-card-wrapper .featured-card .card-btn .text-1,
@@ -1993,63 +1820,8 @@ body {
         -webkit-text-fill-color: #FFFFFF !important;
     }
 
-}
+    /* REMOVE PURPLE HERO BOTTOM EDGE */
 
-
-
-/* ==========================================
-   DESKTOP — ICON BAR 3X LARGER
-
-
-
-
-/* ==========================================
-   DESKTOP ONLY — LIFESTYLE ICON BAR 3X SIZE
-   ========================================== */
-
-/* ==========================================
-   DESKTOP ONLY — ICON BAR 5X SIZE
-   ========================================== */
-
-/* ==========================================
-   DESKTOP — FORCE LARGE HERO ICONS & TITLES
-
-/* ==========================================
-   DESKTOP — REFINED HERO ICON BAR SIZE
-   ========================================== */
-@media screen and (min-width: 769px) {
-
-    .icon-bar-container .icon-wrapper .icon-item {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 12px !important;
-    }
-
-    /* ICONS */
-    .icon-bar-container .icon-wrapper .icon-item svg {
-        width: 37px !important;
-        height: 37px !important;
-        min-width: 37px !important;
-        min-height: 37px !important;
-        max-width: none !important;
-        max-height: none !important;
-        flex-shrink: 0 !important;
-    }
-
-    /* TITLES */
-    .icon-bar-container .icon-wrapper .icon-item span {
-        font-size: 17px !important;
-        line-height: 1.2 !important;
-        white-space: nowrap !important;
-    }
-
-}
-
-
-/* MOBILE — REMOVE PURPLE HERO BOTTOM EDGE */
-@media screen and (max-width: 768px) {
     .hero {
         border: none !important;
         outline: none !important;
@@ -2066,92 +1838,130 @@ body {
 
 
 /*==================================================
-  IPHONE — TRUE EDGE-TO-EDGE HERO
-  IMAGE EXTENDS BEHIND STATUS BAR
+   DESKTOP — REFINED HERO ICON BAR SIZE
 ==================================================*/
+
+@media screen and (min-width: 769px) {
+
+    .icon-bar-container .icon-wrapper .icon-item {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 12px !important;
+    }
+
+    .icon-bar-container .icon-wrapper .icon-item svg {
+        width: 37px !important;
+        height: 37px !important;
+        min-width: 37px !important;
+        min-height: 37px !important;
+        max-width: none !important;
+        max-height: none !important;
+        flex-shrink: 0 !important;
+    }
+
+    .icon-bar-container .icon-wrapper .icon-item span {
+        font-size: 17px !important;
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
+    }
+}
+
 
 /*==================================================
-  FINAL FIX — IPHONE MOBILE HERO TOP EDGE
-  PRESERVES EXISTING HERO DESIGN AND OTHER SECTIONS
+   FINAL GLOBAL EDGE-TO-EDGE SAFETY
 ==================================================*/
+
+html {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    min-height: 100%;
+    background: #080808;
+    overflow-x: hidden !important;
+}
+
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    min-height: 100%;
+    background: #080808;
+    overflow-x: hidden !important;
+}
 
 
 /*==================================================
-  HBCR — VIDEO + ROTATING IMAGE FULL-BLEED FIX
+   FINAL MOBILE FEATURE CARD TEXT COLORS
 ==================================================*/
 
-.hero {
-    position: relative !important;
-    width: 100% !important;
-    max-width: none !important;
-    overflow: hidden !important;
-    isolation: isolate !important;
-}
+@media screen and (max-width: 768px) {
 
-/* VIDEO BACKGROUND */
-#heroVideo {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center center !important;
-    z-index: 0 !important;
-}
+    .featured-card-wrapper .featured-card .card-content {
+        color: #000000 !important;
+    }
 
-/* ROTATING IMAGE BACKGROUNDS */
-.hero-bg-layer {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background-size: cover !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
-    pointer-events: none !important;
-    z-index: 1 !important;
-}
+    .featured-card-wrapper .featured-card .card-content i,
+    .featured-card-wrapper .featured-card .card-content .eyebrow,
+    .featured-card-wrapper .featured-card .card-content .brow,
+    .featured-card-wrapper .featured-card .card-content .feature-eyebrow {
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+    }
 
-/* WHITE FADE */
-.hero-overlay {
-    position: absolute !important;
-    inset: 0 !important;
-    z-index: 2 !important;
-    pointer-events: none !important;
-}
+    .featured-card-wrapper .featured-card .card-content h3,
+    .featured-card-wrapper .featured-card .card-content h2,
+    .featured-card-wrapper .featured-card .card-content h1,
+    .featured-card-wrapper .featured-card .card-content .feature-title {
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+    }
 
-/* BOTTOM FADE */
-.hero::after {
-    z-index: 3 !important;
-    pointer-events: none !important;
+    .featured-card-wrapper .featured-card .card-content p,
+    .featured-card-wrapper .featured-card .card-content span {
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+    }
 }
+/* ==========================================
+   IPHONE SAFARI — TRUE TOP EDGE-TO-EDGE HERO
+========================================== */
 
-/* HERO CONTENT */
-.hero-content {
-    position: relative !important;
-    z-index: 5 !important;
-}
+@media screen and (max-width: 768px) {
 
-/* ICON BAR */
-.icon-bar-container {
-    z-index: 10 !important;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
+    html,
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        overflow-x: hidden !important;
+    }
 
     .hero {
-        width: 100% !important;
-        max-width: none !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+        position: relative !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+
+        /* Extend hero behind the status bar */
+        margin-top: calc(-1 * env(safe-area-inset-top, 0px)) !important;
+
+        /* Preserve hero height while extending upward */
+        height: calc(75svh + env(safe-area-inset-top, 0px)) !important;
+        min-height: 500px !important;
+
+        padding-top: env(safe-area-inset-top, 0px) !important;
+
+        overflow: hidden !important;
     }
 
     #heroVideo,
     .hero-bg-layer {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
         width: 100% !important;
         height: 100% !important;
-        inset: 0 !important;
         object-fit: cover !important;
         background-size: cover !important;
         background-position: center center !important;
