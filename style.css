@@ -920,12 +920,13 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     vertical-align: baseline;
 }
 
-.mosaic-section::before {
-        background: linear-gradient(to bottom, #000 0%, transparent 100%) !important;
+
+    .mosaic-section::before {
+        background: linear-gradient(to bottom, #fff 0%, transparent 100%) !important;
     }
 
     .mosaic-section::after {
-        background: linear-gradient(to top, #000 0%, transparent 100%) !important;
+        background: linear-gradient(to top, #fff 0%, transparent 100%) !important;
     }
 }
 
