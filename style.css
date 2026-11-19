@@ -2067,3 +2067,21 @@ body {
 
 }
 
+
+
+
+/* ==========================================
+   MOBILE FEATURE CARD BUTTON — WHITE TEXT
+   ========================================== */
+@media screen and (max-width: 768px) {
+
+    .featured-card-wrapper .featured-card .card-btn .btn-text,
+    .featured-card-wrapper .featured-card .card-btn .text-1,
+    .featured-card-wrapper .featured-card .card-btn .text-2,
+    .featured-card-wrapper .featured-card .card-btn .text-3 {
+        color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important;
+    }
+
+}
+
