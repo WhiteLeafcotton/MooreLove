@@ -1,4 +1,33 @@
 
+/*==================================================
+HBCR Senior Living - Final CSS
+FULL-BLEED HERO FIX
+==================================================*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background: #080808;
+    font-family: "Inter", sans-serif;
+    color: #fff;
+}
+
+:root {
+    --gold: #5C546B;
+    --transition: .4s ease;
+}
 
 /*==================================================
 TOP BAR - FLOATS OVER HERO
@@ -2110,13 +2139,3 @@ a.contact-value:hover {
 /* =========================================
    MOBILE — TRUE EDGE-TO-EDGE HERO
 ========================================= */
-
-
-
-/*==================================================
-  MOBILE HERO — CLEAN FULL-BLEED LAYOUT
-
-
-
-
-
