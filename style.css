@@ -920,16 +920,6 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     vertical-align: baseline;
 }
 
-
-    .mosaic-section::before {
-        background: linear-gradient(to bottom, #fff 0%, transparent 100%) !important;
-    }
-
-    .mosaic-section::after {
-        background: linear-gradient(to top, #fff 0%, transparent 100%) !important;
-    }
-}
-
 /* Frameless CTA Link */
 
 .cta-arrow {
@@ -2247,7 +2237,7 @@ body {
     /* TITLES */
 
     .icon-bar-container .icon-wrapper .icon-item span {
-        font-size: 15px !important;
+        font-size: 17px !important;
         line-height: 1.2 !important;
         white-space: nowrap !important;
     }
@@ -2591,18 +2581,6 @@ body {
 }
 
 
-
-
-
-@media screen and (max-width: 768px) {
-    .mosaic-section::before {
-        background: linear-gradient(to bottom, #fff 0%, transparent 100%) !important;
-    }
-
-    .mosaic-section::after {
-        background: linear-gradient(to top, #fff 0%, transparent 100%) !important;
-    }
-}
 /*==================================================
    END — FULL-BLEED HERO FIX
 ==================================================*/
