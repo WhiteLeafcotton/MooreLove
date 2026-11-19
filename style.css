@@ -655,10 +655,10 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Background Color Switching */
 
 @keyframes btnBaseBgLoop {
-    0%, 30% { background-color: #EDE9E2 }
-    33%, 63% { background-color: #1e1e24; }
-    66%, 96% { background-color: #DCD6EC; }
-    100% { background-color: #ffffff; }
+0%, 30%  { background-color: #C8C1B8; } /* Warm taupe */
+33%, 63% { background-color: #1e1e24; } /* Deep charcoal */
+66%, 96% { background-color: #B8B0C2; } /* Muted lavender gray */
+100%    { background-color: #D2CCC3; } /* Soft warm greige */
 }
 
 /* Slide Block Motion */
