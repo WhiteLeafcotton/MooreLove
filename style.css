@@ -655,10 +655,10 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* Background Color Switching */
 
 @keyframes btnBaseBgLoop {
-0%, 30%  { background-color: #C8C1B8; } /* Warm taupe */
-33%, 63% { background-color: #1e1e24; } /* Deep charcoal */
-66%, 96% { background-color: #B8B0C2; } /* Muted lavender gray */
-100%    { background-color: #D2CCC3; } /* Soft warm greige */
+    0%, 30% { background-color: #EDE9E2 }
+    33%, 63% { background-color: #1e1e24; }
+    66%, 96% { background-color: #DCD6EC; }
+    100% { background-color: #ffffff; }
 }
 
 /* Slide Block Motion */
@@ -2602,46 +2602,5 @@ body {
 
     .icon-bar-container {
         z-index: 10 !important;
-    }
-}
-
-
-/* ==========================================
-   MOSAIC — BLACK TOP & BOTTOM FADES
-   MOBILE ONLY
-========================================== */
-
-@media screen and (max-width: 768px) {
-
-    /* Preserve the dark background overlay */
-    .mosaic-section::before {
-        background: rgba(8, 8, 8, 0.7) !important;
-        z-index: 1 !important;
-    }
-
-    /* BLACK TOP FADE */
-    .mosaic-section::after {
-        background: linear-gradient(
-            to bottom,
-            #080808 0%,
-            rgba(8, 8, 8, 0.7) 35%,
-            transparent 100%
-        ) !important;
-
-        height: 60px !important;
-        z-index: 2 !important;
-    }
-
-    /* BLACK BOTTOM FADE */
-    .mosaic-bottom-blur {
-        background: linear-gradient(
-            to top,
-            #080808 0%,
-            rgba(8, 8, 8, 0.7) 35%,
-            transparent 100%
-        ) !important;
-
-        height: 60px !important;
-        z-index: 2 !important;
     }
 }
