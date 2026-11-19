@@ -1005,7 +1005,32 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     text-transform: uppercase;
     color: #fff;
 }
+/* Top Edge Blur */
 
+.mosaic-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(to bottom, #fff, transparent);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Bottom Edge Blur */
+
+.mosaic-bottom-blur {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(to top, #fff, transparent);
+    z-index: 2;
+    pointer-events: none;
+}
 
 /* ==================================================
    LOCATIONS GALLERY
