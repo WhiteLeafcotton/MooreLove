@@ -8,53 +8,104 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 :root { --gold: #5C546B; --transition: .4s ease; }
 
-/* TOP BjhfeaccjAR */
-.top-bar { position: absolute; top: 0; left: 0; width: 100%; padding: 28px 8%; z-index: 1000; display: flex; justify-content: flex-end; }
-.top-links { display: flex; gap: 34px; }
-.top-links a { text-decoration: none; color: white; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: .9; transition: var(--transition); }
-.top-links a:hover { color: var(--gold); }
 
-/* HERO - Video Integrated */
-.hero { 
-    position: relative; 
-    height: 70vh; 
-    min-height: 500px; 
-    display: flex; 
-    align-items: center; 
-    padding-left: 8%; 
-    overflow: hidden; 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #080808;
+/*==================================================
+   TOP NAVIGATION
+==================================================*/
+
+.top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 28px 8%;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
 }
+
+.top-links {
+    display: flex;
+    gap: 34px;
+}
+
+.top-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: .9;
+    transition: var(--transition);
+}
+
+.top-links a:hover {
+    color: var(--gold);
+}
+
+
+/*==================================================
+   HERO — FULL BLEED IMAGE / VIDEO
+==================================================*/
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    min-height: 500px;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 8%;
+
+    overflow: hidden;
+    isolation: isolate;
+
+    background-color: #080808;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/* HERO VIDEO */
+
 #heroVideo {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; 
-    transform: translate(-50%, -50%);
-    z-index: 0;
+
+    object-fit: cover;
+    object-position: center center;
+
+    transform: none;
+    z-index: -2;
 }
-/* HERO OVERLAY — SUBTLE IMAGE DARKENING */
+
+/* HERO OVERLAY */
+
 .hero-overlay {
     position: absolute;
     inset: 0;
+
     background: rgba(0, 0, 0, 0.12);
-    z-index: 1;
+
+    z-index: -1;
     pointer-events: none;
 }
 
-/* WHITE FADE — BOTTOM OF HERO ONLY */
+/* WHITE FADE — BOTTOM OF HERO */
+
 .hero::after {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
+
     height: 250px;
+
     background: linear-gradient(
         to top,
         #ffffff 0%,
@@ -63,12 +114,128 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
         rgba(255, 255, 255, 0.10) 75%,
         transparent 100%
     );
-    z-index: 2;
+
+    z-index: 1;
     pointer-events: none;
 }
-/* CONTENT */
-.hero-content { position: relative; z-index: 5; max-width: 700px; margin-top: -40px; animation: fadeUp 1s ease; }
 
+/* HERO CONTENT */
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    max-width: 700px;
+    margin-top: -40px;
+    animation: fadeUp 1s ease;
+}
+
+
+/*==================================================
+   MOBILE — IMAGE EXTENDS BEHIND IPHONE STATUS BAR
+==================================================*/
+
+@media screen and (max-width: 768px) {
+
+    html,
+    body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    /*
+       The hero starts at the very top of the viewport.
+       Do not add top padding to the hero itself.
+    */
+
+    .hero {
+        position: relative !important;
+
+        width: 100vw !important;
+        max-width: none !important;
+
+        height: calc(75svh + env(safe-area-inset-top, 0px)) !important;
+        min-height: 560px !important;
+
+        margin-top: 0 !important;
+        margin-left: calc(50% - 50vw) !important;
+        margin-right: calc(50% - 50vw) !important;
+
+        padding-top: 0 !important;
+        padding-left: 5% !important;
+
+        overflow: hidden !important;
+
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+
+        border: none !important;
+        border-radius: 0 !important;
+        transform: none !important;
+    }
+
+    /* IMAGE / VIDEO FILLS THE ENTIRE HERO */
+
+    #heroVideo {
+        position: absolute !important;
+        inset: 0 !important;
+
+        width: 100% !important;
+        height: 100% !important;
+
+        object-fit: cover !important;
+        object-position: center center !important;
+
+        transform: none !important;
+    }
+
+    .hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+    }
+
+    .hero::after {
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+    }
+
+    /* NAVIGATION STAYS BELOW STATUS BAR */
+
+    .top-bar {
+        position: absolute !important;
+
+        top: env(safe-area-inset-top, 0px) !important;
+        left: 0 !important;
+
+        width: 100% !important;
+
+        padding: 24px 5% !important;
+
+        z-index: 1000 !important;
+    }
+
+    .top-links {
+        gap: 22px;
+    }
+
+    .top-links a {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    /* HERO TEXT */
+
+    .hero-content {
+        position: relative;
+        z-index: 5;
+        max-width: 100%;
+    }
+}
 
 
 
