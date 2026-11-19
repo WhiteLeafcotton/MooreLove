@@ -2005,3 +2005,14 @@ body {
         transparent 65%
     ) !important;
 }
+
+
+/* FEATURE CARD — BLACK TEXT ON MOBILE ONLY */
+@media (max-width: 768px) {
+    .featured-card .eyebrow,
+    .featured-card .feature-title,
+    .featured-card .feature-text,
+    .featured-card p {
+        color: #000000 !important;
+    }
+}
