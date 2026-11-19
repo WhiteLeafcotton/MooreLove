@@ -2605,13 +2605,44 @@ body {
     }
 }
 
-/* MOSAIC — WHITE TOP & BOTTOM FADE ON MOBILE */
+
+/* ==========================================
+   MOSAIC — BLACK TOP & BOTTOM FADES
+   MOBILE ONLY
+========================================== */
+
 @media screen and (max-width: 768px) {
+
+    /* Preserve the dark background overlay */
     .mosaic-section::before {
-        background: linear-gradient(to bottom, #fff 0%, transparent 100%) !important;
+        background: rgba(8, 8, 8, 0.7) !important;
+        z-index: 1 !important;
     }
 
+    /* BLACK TOP FADE */
     .mosaic-section::after {
-        background: linear-gradient(to top, #fff 0%, transparent 100%) !important;
+        background: linear-gradient(
+            to bottom,
+            #080808 0%,
+            rgba(8, 8, 8, 0.7) 35%,
+            transparent 100%
+        ) !important;
+
+        height: 60px !important;
+        z-index: 2 !important;
+    }
+
+    /* BLACK BOTTOM FADE */
+    .mosaic-bottom-blur {
+        background: linear-gradient(
+            to top,
+            #080808 0%,
+            rgba(8, 8, 8, 0.7) 35%,
+            transparent 100%
+        ) !important;
+
+        height: 60px !important;
+        z-index: 2 !important;
     }
 }
+
