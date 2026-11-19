@@ -2096,27 +2096,32 @@ body {
 /* ==========================================
    DESKTOP ONLY — LIFESTYLE ICON BAR 3X SIZE
    ========================================== */
+
+/* ==========================================
+   DESKTOP ONLY — ICON BAR 5X SIZE
+   ========================================== */
 @media screen and (min-width: 769px) {
 
     /* ICONS */
     .icon-bar-container .icon-item i,
     .icon-bar-container .icon-item svg {
-        width: 66px !important;
-        height: 66px !important;
-        font-size: 66px !important;
+        width: 110px !important;
+        height: 110px !important;
+        font-size: 110px !important;
         stroke-width: 1.2 !important;
     }
 
     /* TITLES */
     .icon-bar-container .icon-item span {
-        font-size: 30px !important;
-        line-height: 1.2 !important;
+        font-size: 50px !important;
+        line-height: 1.1 !important;
     }
 
-    /* SPACE BETWEEN ICON AND TITLE */
+    /* ICON-TO-TITLE SPACING */
     .icon-bar-container .icon-item {
-        gap: 14px !important;
+        gap: 20px !important;
     }
 
 }
+
 
