@@ -1816,7 +1816,15 @@ a.contact-value:hover {
    Full bleed to the very top of the screen
 ================================================== */
 
+/* ==================================================
+   IPHONE SAFARI — TRUE TOP EDGE-TO-EDGE HERO
+================================================== */
+
 @media screen and (max-width: 768px) {
+
+    :root {
+        --hero-top-bleed: max(env(safe-area-inset-top), 44px);
+    }
 
     html,
     body {
@@ -1827,15 +1835,10 @@ a.contact-value:hover {
         overflow-x: hidden !important;
     }
 
-    body {
-        position: relative !important;
-        padding-top: 0 !important;
-    }
-
-    /* HEADER FLOATS OVER THE HERO */
+    /* Keep the header floating above the hero */
     body > .top-bar {
         position: absolute !important;
-        top: env(safe-area-inset-top, 0px) !important;
+        top: 0 !important;
         left: 0 !important;
         right: 0 !important;
         width: 100% !important;
@@ -1844,24 +1847,23 @@ a.contact-value:hover {
         background: transparent !important;
     }
 
-    /* HERO STARTS AT THE VERY TOP */
-    #hero.hero {
+    /* Pull hero upward behind the iPhone status bar */
+    body > #hero.hero {
         position: relative !important;
-        top: 0 !important;
-        left: 0 !important;
-
-        display: flex !important;
 
         width: 100% !important;
         max-width: 100% !important;
 
-        margin: 0 !important;
+        margin-top: calc(-1 * var(--hero-top-bleed)) !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+
+        height: calc(75svh + var(--hero-top-bleed)) !important;
+        min-height: calc(500px + var(--hero-top-bleed)) !important;
+
         padding-top: 0 !important;
 
-        height: 75svh !important;
-        min-height: 500px !important;
-
-        border: none !important;
+        border: 0 !important;
         border-radius: 0 !important;
 
         overflow: hidden !important;
@@ -1869,10 +1871,9 @@ a.contact-value:hover {
 
         background-size: cover !important;
         background-position: center center !important;
-        background-repeat: no-repeat !important;
     }
 
-    /* FULL-BLEED VIDEO */
+    /* Video fills the entire hero */
     #hero #heroVideo {
         position: absolute !important;
         inset: 0 !important;
@@ -1890,34 +1891,28 @@ a.contact-value:hover {
         margin: 0 !important;
     }
 
-    /* CROSSFADE BACKGROUND IMAGES */
+    /* Background crossfade images */
     #hero .hero-bg-layer {
         position: absolute !important;
         inset: 0 !important;
-
         width: 100% !important;
         height: 100% !important;
-
         background-size: cover !important;
         background-position: center center !important;
-        background-repeat: no-repeat !important;
     }
 
-    /* HERO OVERLAY */
+    /* Hero content and overlays */
     #hero .hero-overlay {
         position: absolute !important;
         inset: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
     }
 
-    /* HERO CONTENT */
     #hero .hero-content {
         position: relative !important;
         z-index: 5 !important;
     }
 
-    /* ICON BAR */
+    /* Bottom icon navigation */
     #hero .icon-bar-container {
         position: absolute !important;
         left: 4% !important;
@@ -1925,5 +1920,5 @@ a.contact-value:hover {
         bottom: 25px !important;
         z-index: 10 !important;
     }
-
 }
+
