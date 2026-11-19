@@ -232,7 +232,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     justify-content: center !important;
     gap: 8px;
     cursor: pointer;
-    color: #ffffff !important; /* Keeps the text label pure white */
+    color: #000000 !important; /* Keeps the text label pure white */
     transition: all 0.3s ease;
 }
 
@@ -265,14 +265,18 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     transform: translateY(-2px);
 }
 
-/* ONLY the icon changes to dark purple on selected/hover */
+/* ICON FILLS IN ON HOVER & ACTIVE */
 .icon-item:hover svg,
-.icon-item.active svg,
+.icon-item.active svg {
+    fill: #5C546B !important;
+    stroke: #5C546B !important;
+    color: #5C546B !important;
+}
+
+/* Keep icon fonts dark purple */
 .icon-item:hover i,
 .icon-item.active i {
     color: #5C546B !important;
-    stroke: #5C546B !important; /* Dark purple icon */
-    stroke-width: 1.1;
 }
 
 /* STICKY NAV */
