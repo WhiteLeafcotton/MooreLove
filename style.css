@@ -2085,3 +2085,27 @@ body {
 
 }
 
+
+
+/* ==========================================
+   DESKTOP — ICON BAR 3X LARGER
+   ========================================== */
+@media screen and (min-width: 769px) {
+
+    /* Enlarge the icons */
+    .icon-item i,
+    .icon-item svg {
+        width: 66px !important;
+        height: 66px !important;
+        font-size: 66px !important;
+    }
+
+    /* Enlarge the titles */
+    .icon-item,
+    .icon-item span,
+    .icon-item p {
+        font-size: 3em !important;
+    }
+
+}
+
