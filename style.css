@@ -1688,118 +1688,37 @@ a.contact-value:hover {
 ==================================================*/
 
 /* 1. FEATURED SECTION BELOW HERO */
+/*==================================================
+   HERO — ELEGANT WHITE BOTTOM FADE
+==================================================*/
 
-.featured-card-wrapper {
-    background: #ffffff !important;
-    background-color: #ffffff !important;
+/* Remove the full black overlay and replace with white fade */
+.hero-overlay {
+    background: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 255, 255, 0.65) 15%,
+        rgba(255, 255, 255, 0.30) 35%,
+        rgba(255, 255, 255, 0.08) 60%,
+        transparent 80%
+    ) !important;
+
+    z-index: 1 !important;
 }
 
-/* Featured card text */
+/* White fade at the bottom edge of the hero */
+.hero::after {
+    background: linear-gradient(
+        to top,
+        #ffffff 0%,
+        rgba(255, 255, 255, 0.65) 20%,
+        rgba(255, 255, 255, 0.20) 55%,
+        transparent 100%
+    ) !important;
 
-.card-content,
-.card-content h3,
-.card-content p,
-.card-content i {
-    color: #171717 !important;
+    height: 250px;
+    z-index: 2 !important;
 }
-
-/* 2. MAIN NAVIGATION */
-
-.main-nav {
-    background: #ffffff !important;
-    background-color: #ffffff !important;
-    border-color: rgba(0, 0, 0, 0.10) !important;
-}
-
-.main-nav .nav-inner {
-    background: transparent !important;
-}
-
-.main-nav .nav-link {
-    color: #171717 !important;
-}
-
-.main-nav .nav-link:hover {
-    color: #a58a58 !important;
-}
-
-/* Navigation logo icon */
-
-.main-nav .nav-icon {
-    filter: brightness(0) !important;
-}
-
-/* 3. HERO ICON BAR */
-
-.icon-bar-container {
-    color: #171717 !important;
-}
-
-.icon-item {
-    color: #171717 !important;
-}
-
-.icon-item span {
-    color: #171717 !important;
-}
-
-.icon-item i,
-.icon-item svg {
-    color: #171717 !important;
-    stroke: #171717 !important;
-}
-
-/* Active indicator */
-
-.active-line {
-    background: #171717 !important;
-}
-
-/* 4. MOSAIC SECTION */
-
-.mosaic-section {
-    background-color: #ffffff !important;
-}
-
-.mosaic-section .mosaic-grid,
-.mosaic-section .mosaic-footer {
-    color: #171717 !important;
-}
-
-/* 5. FOLLOWING TEXT SECTION */
-
-.text-reveal-section {
-    background: #ffffff !important;
-    color: #171717 !important;
-}
-
-.text-reveal-section .sub-title,
-.text-reveal-section .main-title,
-.text-reveal-section .body-text {
-    color: #171717 !important;
-}
-
-/* 6. MOBILE CORRECTIONS */
-
-@media (max-width: 768px) {
-
-    .featured-card-wrapper,
-    .main-nav,
-    .text-reveal-section {
-        background: #ffffff !important;
-    }
-
-    .main-nav .nav-link,
-    .icon-item,
-    .icon-item span {
-        color: #171717 !important;
-    }
-
-    .main-nav .nav-icon {
-        filter: brightness(0) !important;
-    }
-}
-
 
 
 
