@@ -254,7 +254,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     font-weight: 400;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #000000 !important; /* Ensures text stays white */
+    color: #5C546B !important; /* Ensures text stays white */
     transition: color 0.3s ease;
 }
 
