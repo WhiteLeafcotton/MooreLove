@@ -1995,4 +1995,17 @@ body {
     ) !important;
 }
 
+/*==================================================
+   FIX — KEEP SECTION AFTER HERO WHITE
+==================================================*/
 
+.featured-card-wrapper {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+}
+
+.featured-card-wrapper *,
+.featured-card-wrapper::before,
+.featured-card-wrapper::after {
+    /* Do not apply a black background to the section */
+}
