@@ -2605,7 +2605,13 @@ body {
     }
 }
 
+/* MOSAIC — WHITE TOP & BOTTOM FADE ON MOBILE */
+@media screen and (max-width: 768px) {
+    .mosaic-section::before {
+        background: linear-gradient(to bottom, #fff 0%, transparent 100%) !important;
+    }
 
-/*==================================================
-   END — FULL-BLEED HERO FIX
-==================================================*/
+    .mosaic-section::after {
+        background: linear-gradient(to top, #fff 0%, transparent 100%) !important;
+    }
+}
