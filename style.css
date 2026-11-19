@@ -455,7 +455,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* Background Color Switching */
 @keyframes btnBaseBgLoop {
-    0%, 30% { background-color: #ffffff; }
+    0%, 30% { background-color: #F4F1EB; }
     33%, 63% { background-color: #1e1e24; } /* Dark Slate */
     66%, 96% { background-color: #DCD6EC; } /* Light Lavender */
     100% { background-color: #ffffff; }
@@ -2008,11 +2008,16 @@ body {
 
 
 /* FEATURE CARD — BLACK TEXT ON MOBILE ONLY */
-@media (max-width: 768px) {
-    .featured-card .eyebrow,
-    .featured-card .feature-title,
-    .featured-card .feature-text,
-    .featured-card p {
+/* MOBILE — FEATURE CARD TITLE & EYEBROW BLACK */
+@media screen and (max-width: 768px) {
+    .featured-card-wrapper .eyebrow,
+    .featured-card-wrapper .brow,
+    .featured-card-wrapper .feature-eyebrow,
+    .featured-card-wrapper h1,
+    .featured-card-wrapper h2,
+    .featured-card-wrapper h3,
+    .featured-card-wrapper .feature-title {
         color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
     }
 }
