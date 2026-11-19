@@ -38,22 +38,8 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     transform: translate(-50%, -50%);
     z-index: 0;
 }
-.hero-overlay {
-    background: rgba(0, 0, 0, 0.08) !important;
-}
-
-.hero::after {
-    content: "";
-    background: linear-gradient(
-        to top,
-        #ffffff 0%,
-        rgba(255, 255, 255, 0.85) 15%,
-        rgba(255, 255, 255, 0.45) 35%,
-        rgba(255, 255, 255, 0.12) 65%,
-        transparent 100%
-    ) !important;
-    height: 250px;
-}
+.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 250px; background: linear-gradient(to top,#080808,transparent); z-index: 2; }
+.hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.4); z-index: 1; } 
 
 /* CONTENT */
 .hero-content { position: relative; z-index: 5; max-width: 700px; margin-top: -40px; animation: fadeUp 1s ease; }
@@ -308,7 +294,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* FEATURED CARD STYLE */
 .featured-card-wrapper { 
     padding: 60px 4%; 
-    background: #ffffff; 
+    background: #080808; 
     display: flex; 
     justify-content: center; 
 }
@@ -1292,7 +1278,7 @@ a.contact-value:hover {
         display: block !important; 
         width: 100% !important; 
         height: 180px !important; 
-        background: linear-gradient(to bottom, rgba(#ffffff) 50%, rgba(#ffffff) 100%), url('banner.jpg') center/cover no-repeat !important; 
+        background: linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.8) 100%), url('banner.jpg') center/cover no-repeat !important; 
         border: 0.5px solid rgba(255, 255, 255, 0.2) !important; 
         margin-bottom: 20px !important; 
     }
@@ -1993,19 +1979,4 @@ body {
         rgba(255, 255, 255, 0.25) 30%,
         transparent 65%
     ) !important;
-}
-
-/*==================================================
-   FIX — KEEP SECTION AFTER HERO WHITE
-==================================================*/
-
-.featured-card-wrapper {
-    background: #ffffff !important;
-    background-color: #ffffff !important;
-}
-
-.featured-card-wrapper *,
-.featured-card-wrapper::before,
-.featured-card-wrapper::after {
-    /* Do not apply a black background to the section */
 }
