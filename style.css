@@ -1891,3 +1891,152 @@ a.contact-value:hover {
         filter: brightness(0) !important;
     }
 }
+
+
+
+/*==================================================
+  FINAL MOBILE FIX
+  EDGE-TO-EDGE HERO + REMOVE SECTION GAP
+==================================================*/
+
+@media screen and (max-width: 768px) {
+
+    /* RESET MOBILE PAGE EDGES */
+    html,
+    body {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow-x: hidden !important;
+    }
+
+    /* HEADER FLOATS OVER THE HERO */
+    .top-bar {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding:
+            calc(env(safe-area-inset-top, 0px) + 15px)
+            4% 15px !important;
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        background: transparent !important;
+        border: none !important;
+        z-index: 1000 !important;
+    }
+
+    .top-links {
+        display: flex !important;
+        gap: 12px !important;
+    }
+
+    /* HERO TOUCHES THE TOP AND SIDE EDGES */
+    #hero.hero {
+        position: relative !important;
+        top: 0 !important;
+        left: auto !important;
+        transform: none !important;
+
+        display: flex !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 70svh !important;
+        min-height: 500px !important;
+
+        margin: 0 !important;
+        padding: 0 5% !important;
+
+        border: none !important;
+        border-radius: 0 !important;
+        overflow: hidden !important;
+
+        background-position: center center !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+    }
+
+    /* HERO VIDEO */
+    #heroVideo {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-width: 100% !important;
+        max-width: none !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 0 !important;
+    }
+
+    /* HERO BACKGROUND CROSSFADE IMAGES */
+    #hero .hero-bg-layer {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+    }
+
+    /* KEEP HERO CONTENT ABOVE IMAGE */
+    .hero-content {
+        position: relative !important;
+        z-index: 5 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .icon-bar-container {
+        position: absolute !important;
+        left: 4% !important;
+        right: 4% !important;
+        bottom: 25px !important;
+        z-index: 10 !important;
+    }
+
+    /* REMOVE WHITE GAP BELOW HERO */
+    .featured-card-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 4% 25px !important;
+        background: #ffffff !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    /* KEEP FEATURED IMAGE ALIGNED */
+    .featured-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+    }
+
+    .featured-card::before {
+        width: 100% !important;
+        margin: 0 !important;
+        display: block !important;
+    }
+
+    /* PREVENT HORIZONTAL PAGE MOVEMENT */
+    .main-nav,
+    .mosaic-section,
+    .text-reveal-section,
+    .locations-gallery,
+    .site-footer {
+        max-width: 100% !important;
+    }
+}
+
