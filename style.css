@@ -2007,6 +2007,29 @@ body {
         top: 0 !important;
     }
 }
+/*==================================================
+   HERO — SOFT WHITE FADE
+==================================================*/
 
+.hero-overlay {
+    background: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 255, 255, 0.65) 18%,
+        rgba(255, 255, 255, 0.30) 38%,
+        rgba(255, 255, 255, 0.08) 60%,
+        rgba(255, 255, 255, 0) 78%
+    ) !important;
+}
+
+/* Remove any additional black gradient */
+.hero::after {
+    background: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0.75) 0%,
+        rgba(255, 255, 255, 0.25) 30%,
+        transparent 65%
+    ) !important;
+}
 
 
