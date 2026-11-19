@@ -243,7 +243,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     width: 22px !important;
     height: 22px !important;
     stroke-width: 0.85; 
-    stroke: rgba(255, 255, 255, 0.7); /* Default unselected icon color */
+    stroke: #5C546B !important; /* Default unselected icon color */
     fill: none;
     transition: all 0.3s ease;
 }
