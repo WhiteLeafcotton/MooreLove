@@ -2606,43 +2606,5 @@ body {
 }
 
 
-/* ==========================================
-   MOSAIC — BLACK TOP & BOTTOM FADES
-   MOBILE ONLY
-========================================== */
 
-@media screen and (max-width: 768px) {
-
-    /* Preserve the dark background overlay */
-    .mosaic-section::before {
-        background: rgba(8, 8, 8, 0.7) !important;
-        z-index: 1 !important;
-    }
-
-    /* BLACK TOP FADE */
-    .mosaic-section::after {
-        background: linear-gradient(
-            to bottom,
-            #080808 0%,
-            rgba(8, 8, 8, 0.7) 35%,
-            transparent 100%
-        ) !important;
-
-        height: 60px !important;
-        z-index: 2 !important;
-    }
-
-    /* BLACK BOTTOM FADE */
-    .mosaic-bottom-blur {
-        background: linear-gradient(
-            to top,
-            #080808 0%,
-            rgba(8, 8, 8, 0.7) 35%,
-            transparent 100%
-        ) !important;
-
-        height: 60px !important;
-        z-index: 2 !important;
-    }
-}
 
