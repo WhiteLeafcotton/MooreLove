@@ -1,33 +1,130 @@
 
 /*==================================================
-HBCR Senior Living - Final CSS
-FULL-BLEED HERO FIX
+  HBCR SENIOR LIVING
+  FINAL MOBILE FULL-BLEED HERO
 ==================================================*/
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@media screen and (max-width: 768px) {
+
+    html,
+    body {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow-x: hidden !important;
+    }
+
+    body {
+        padding-top: 0 !important;
+    }
+
+    /* HERO STARTS AT THE VERY TOP OF THE PAGE */
+    #hero,
+    .hero {
+        position: relative !important;
+        display: flex !important;
+
+        top: 0 !important;
+        left: 0 !important;
+
+        width: 100% !important;
+        max-width: none !important;
+
+        margin: 0 !important;
+
+        height: 75svh !important;
+        min-height: 500px !important;
+
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+
+        overflow: hidden !important;
+
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+
+        isolation: isolate;
+    }
+
+    /* VIDEO FILLS THE HERO */
+    #heroVideo {
+        position: absolute !important;
+        inset: 0 !important;
+
+        width: 100% !important;
+        height: 100% !important;
+
+        object-fit: cover !important;
+        object-position: center center !important;
+
+        z-index: 0 !important;
+    }
+
+    /* SLIDESHOW IMAGES */
+    .hero-bg-layer {
+        position: absolute !important;
+        inset: 0 !important;
+
+        width: 100% !important;
+        height: 100% !important;
+
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+
+        z-index: 1 !important;
+    }
+
+    /* FLOATING HEADER OVER IMAGE */
+    .top-bar {
+        position: absolute !important;
+
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+
+        width: 100% !important;
+        margin: 0 !important;
+
+        padding-top: calc(18px + env(safe-area-inset-top)) !important;
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+
+        background: transparent !important;
+
+        z-index: 10000 !important;
+    }
+
+    /* HERO CONTENT */
+    .hero-content {
+        position: relative !important;
+        z-index: 5 !important;
+        max-width: 100% !important;
+    }
+
+    /* OVERLAY */
+    .hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        z-index: 2 !important;
+    }
+
+    /* BOTTOM FADE */
+    .hero::after {
+        z-index: 3 !important;
+    }
+
+    /* ICON NAVIGATION */
+    .icon-bar-container {
+        position: absolute !important;
+        bottom: 25px !important;
+        left: 4% !important;
+        right: 4% !important;
+        z-index: 10 !important;
+    }
 }
 
-html,
-body {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    width: 100%;
-    min-height: 100%;
-}
-
-body {
-    background: #080808;
-    font-family: "Inter", sans-serif;
-    color: #fff;
-}
-
-:root {
-    --gold: #5C546B;
-    --transition: .4s ease;
-}
 
 /*==================================================
 TOP BAR - FLOATS OVER HERO
