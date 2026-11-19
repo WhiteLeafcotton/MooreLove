@@ -2246,7 +2246,7 @@ body {
     /* TITLES */
 
     .icon-bar-container .icon-wrapper .icon-item span {
-        font-size: 17px !important;
+        font-size: 15px !important;
         line-height: 1.2 !important;
         white-space: nowrap !important;
     }
@@ -2593,14 +2593,13 @@ body {
 
 
 
-/* MOSAIC — BLACK TOP & BOTTOM FADE ON MOBILE */
 @media screen and (max-width: 768px) {
     .mosaic-section::before {
-        background: linear-gradient(to bottom, #000 0%, transparent 100%) !important;
+        background: linear-gradient(to bottom, #fff 0%, transparent 100%) !important;
     }
 
     .mosaic-section::after {
-        background: linear-gradient(to top, #000 0%, transparent 100%) !important;
+        background: linear-gradient(to top, #fff 0%, transparent 100%) !important;
     }
 }
 /*==================================================
