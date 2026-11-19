@@ -295,7 +295,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     box-shadow: 0 5px 20px rgba(0,0,0,0.5); 
 }
 .nav-inner { display: flex; align-items: center; justify-content: center; gap: 40px; padding: 15px 20px; position: relative; }
-.nav-link, .nav-link:visited, .nav-link:link { text-decoration: none !important; color: #fff !important; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; transition: var(--transition); }
+.nav-link, .nav-link:visited, .nav-link:link { text-decoration: none !important; color: #000000 !important; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; transition: var(--transition); }
 .nav-link:hover, .nav-link:active { color: var(--gold) !important; }
 .nav-icon { width: 24px; height: 24px; filter: brightness(0) invert(1); transition: var(--transition); }
 .nav-logo:hover .nav-icon { filter: invert(72%) sepia(21%) saturate(1478%) hue-rotate(345deg) brightness(90%) contrast(88%); }
