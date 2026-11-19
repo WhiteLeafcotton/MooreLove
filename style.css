@@ -1802,188 +1802,33 @@ a.contact-value:hover {
 
 
 
-/*==================================================
-  FINAL MOBILE HERO FIX
-  TRUE EDGE-TO-EDGE / FULL-BLEED
-==================================================*/
+
+
+
+
+/* ================================================
+   HBCR SENIOR LIVING
+   MOBILE TRUE EDGE-TO-EDGE HERO FIX
+   ================================================ */
 
 @media screen and (max-width: 768px) {
 
-    /* MOBILE VIEWPORT RESET */
+    /* RESET MOBILE PAGE */
     html,
     body {
-        width: 100%;
-        max-width: 100%;
+        width: 100% !important;
+        max-width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
-        overflow-x: clip !important;
+        overflow-x: hidden !important;
     }
 
     body {
-        background: #080808;
-    }
-
-    /* HEADER FLOATS OVER THE HERO */
-    .top-bar {
-        position: fixed !important;
-        top: env(safe-area-inset-top, 0px) !important;
-        left: 0 !important;
-        right: 0 !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        margin: 0 !important;
-        padding: 15px 5% !important;
-        display: flex !important;
-        justify-content: flex-end !important;
-        align-items: center !important;
-        background: transparent !important;
-        border: 0 !important;
-        z-index: 100000 !important;
-        box-sizing: border-box !important;
-    }
-
-    .top-links {
-        display: flex !important;
-        gap: 12px !important;
-    }
-
-    /* HERO BREAKS OUT OF ANY RESTRICTED PARENT */
-    #hero.hero {
-        position: relative !important;
-
-        width: 100vw !important;
-        max-width: none !important;
-
-        /* Centers hero against the actual viewport */
-        margin-left: calc(50% - 50vw) !important;
-        margin-right: 0 !important;
-
-        left: auto !important;
-        right: auto !important;
-        transform: none !important;
-
-        top: 0 !important;
-
-        height: 70svh !important;
-        min-height: 500px !important;
-
-        padding: 0 5% !important;
-
-        border: 0 !important;
-        border-radius: 0 !important;
-
-        overflow: hidden !important;
-        isolation: isolate !important;
-
-        background-position: center center !important;
-        background-size: cover !important;
-        background-repeat: no-repeat !important;
-    }
-
-    /* HERO VIDEO */
-    #hero #heroVideo {
-        position: absolute !important;
-        inset: 0 !important;
-
-        width: 100% !important;
-        height: 100% !important;
-
-        min-width: 0 !important;
-        min-height: 0 !important;
-        max-width: none !important;
-
-        object-fit: cover !important;
-        object-position: center center !important;
-
-        transform: none !important;
-        z-index: 0 !important;
-    }
-
-    /* CROSSFADE BACKGROUND IMAGES */
-    #hero .hero-bg-layer {
-        position: absolute !important;
-        inset: 0 !important;
-
-        width: 100% !important;
-        height: 100% !important;
-
-        background-size: cover !important;
-        background-position: center center !important;
-        background-repeat: no-repeat !important;
-
-        pointer-events: none !important;
-    }
-
-    /* HERO OVERLAY */
-    #hero .hero-overlay {
-        position: absolute !important;
-        inset: 0 !important;
-        z-index: 1 !important;
-    }
-
-    /* HERO CONTENT */
-    #hero .hero-content {
-        position: relative !important;
-        z-index: 5 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        margin-top: 0 !important;
-    }
-
-    /* BOTTOM ICON BAR */
-    #hero .icon-bar-container {
-        position: absolute !important;
-        left: 4% !important;
-        right: 4% !important;
-        bottom: 25px !important;
-        width: auto !important;
-        z-index: 10 !important;
-    }
-
-    /* FULL-WIDTH SECTIONS */
-    .featured-card-wrapper,
-    .main-nav,
-    .mosaic-section,
-    .text-reveal-section,
-    .locations-gallery,
-    .site-footer {
-        box-sizing: border-box !important;
-        max-width: 100% !important;
-    }
-
-}
-
-
-/*==================================================
-  FINAL FIX — REMOVE TOP GAP ON MOBILE
-  TRUE EDGE-TO-EDGE HERO
-==================================================*/
-
-@media screen and (max-width: 768px) {
-
-    html {
-        margin: 0 !important;
-        padding: 0 !important;
-        width: 100% !important;
-        min-height: 100% !important;
-    }
-
-    body {
-        margin: 0 !important;
-        padding: 0 !important;
-        width: 100% !important;
-        min-height: 100% !important;
         position: relative !important;
     }
 
-    /* REMOVE ANY TOP SPACING FROM PAGE WRAPPERS */
-    body > *:first-child {
-        margin-top: 0 !important;
-    }
-
-    /* HERO MUST START AT THE TOP EDGE */
-    #hero.hero {
+    /* REMOVE TOP SPACING FROM HERO */
+    .hero {
         position: relative !important;
         top: 0 !important;
 
@@ -1991,44 +1836,72 @@ a.contact-value:hover {
         max-width: 100vw !important;
 
         margin-top: 0 !important;
-        margin-bottom: 0 !important;
         margin-left: calc(50% - 50vw) !important;
+        margin-right: 0 !important;
 
-        padding-top: env(safe-area-inset-top, 0px) !important;
+        padding-top: 0 !important;
 
-        height: 70svh !important;
+        height: 75svh !important;
         min-height: 500px !important;
 
-        overflow: hidden !important;
         border: none !important;
         border-radius: 0 !important;
+
+        overflow: hidden !important;
+        transform: none !important;
     }
 
-    /* VIDEO AND BACKGROUND FILL HERO */
-    #hero #heroVideo,
-    #hero .hero-bg-layer {
+    /* VIDEO FULL BLEED */
+    .hero #heroVideo {
         position: absolute !important;
         inset: 0 !important;
+
         width: 100% !important;
         height: 100% !important;
+
         object-fit: cover !important;
+        object-position: center center !important;
+
+        transform: none !important;
     }
 
-    /* FLOAT NAVIGATION OVER HERO */
-    .top-bar {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
+    /* BACKGROUND IMAGE LAYERS */
+    .hero .hero-bg-layer {
+        position: absolute !important;
+        inset: 0 !important;
 
-        padding-top: calc(15px + env(safe-area-inset-top, 0px)) !important;
+        width: 100% !important;
+        height: 100% !important;
+
+        background-size: cover !important;
+        background-position: center center !important;
+    }
+
+    /* TOP NAVIGATION FLOATS OVER IMAGE */
+    .top-bar {
+        position: absolute !important;
+        top: env(safe-area-inset-top, 0px) !important;
+        left: 0 !important;
+
+        width: 100% !important;
+        padding: 15px 5% !important;
 
         background: transparent !important;
         z-index: 100000 !important;
     }
 
+    /* HERO CONTENT */
+    .hero .hero-content {
+        position: relative !important;
+        z-index: 5 !important;
+    }
+
+    /* HERO ICON BAR */
+    .hero .icon-bar-container {
+        position: absolute !important;
+        left: 4% !important;
+        right: 4% !important;
+        bottom: 25px !important;
+        z-index: 10 !important;
+    }
 }
-
-
-
-
