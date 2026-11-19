@@ -455,7 +455,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
 /* Background Color Switching */
 @keyframes btnBaseBgLoop {
-    0%, 30% { background-color: #F4F1EB; }
+    0%, 30% { background-color: #EDE9E2 }
     33%, 63% { background-color: #1e1e24; } /* Dark Slate */
     66%, 96% { background-color: #DCD6EC; } /* Light Lavender */
     100% { background-color: #ffffff; }
