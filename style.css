@@ -2009,7 +2009,12 @@ body {
 
 /* FEATURE CARD — BLACK TEXT ON MOBILE ONLY */
 /* MOBILE — FEATURE CARD TITLE & EYEBROW BLACK */
+/* MOBILE — FEATURE CARD ALL TEXT BLACK */
 @media screen and (max-width: 768px) {
+
+    .featured-card-wrapper,
+    .featured-card-wrapper p,
+    .featured-card-wrapper span,
     .featured-card-wrapper .eyebrow,
     .featured-card-wrapper .brow,
     .featured-card-wrapper .feature-eyebrow,
@@ -2020,4 +2025,5 @@ body {
         color: #000000 !important;
         -webkit-text-fill-color: #000000 !important;
     }
+
 }
