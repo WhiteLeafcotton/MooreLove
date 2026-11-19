@@ -2138,4 +2138,18 @@ body {
 }
 
 
+/* MOBILE — REMOVE PURPLE HERO BOTTOM EDGE */
+@media screen and (max-width: 768px) {
+    .hero {
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
 
+    .hero::before,
+    .hero::after {
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+}
