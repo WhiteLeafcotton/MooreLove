@@ -2011,20 +2011,41 @@ body {
 /* MOBILE — FEATURE CARD TITLE & EYEBROW BLACK */
 /* MOBILE — FEATURE CARD ALL TEXT BLACK */
 /* MOBILE — FEATURE CARD ALL TEXT BLACK */
+
+/* ==========================================
+   FEATURED CARD — BLACK TEXT ON MOBILE ONLY
+========================================== */
 @media screen and (max-width: 768px) {
 
-    .featured-card-wrapper,
-    .featured-card-wrapper p,
-    .featured-card-wrapper span,
-    .featured-card-wrapper .eyebrow,
-    .featured-card-wrapper .brow,
-    .featured-card-wrapper .feature-eyebrow,
-    .featured-card-wrapper h1,
-    .featured-card-wrapper h2,
-    .featured-card-wrapper h3,
-    .featured-card-wrapper .feature-title {
+    /* Card text container */
+    .featured-card-wrapper .featured-card .card-content {
+        color: #000000 !important;
+    }
+
+    /* Brow / Eyebrow line */
+    .featured-card-wrapper .featured-card .card-content i,
+    .featured-card-wrapper .featured-card .card-content .eyebrow,
+    .featured-card-wrapper .featured-card .card-content .brow,
+    .featured-card-wrapper .featured-card .card-content .feature-eyebrow {
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+    }
+
+    /* Feature card title */
+    .featured-card-wrapper .featured-card .card-content h3,
+    .featured-card-wrapper .featured-card .card-content h2,
+    .featured-card-wrapper .featured-card .card-content h1,
+    .featured-card-wrapper .featured-card .card-content .feature-title {
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+    }
+
+    /* Feature card body text */
+    .featured-card-wrapper .featured-card .card-content p,
+    .featured-card-wrapper .featured-card .card-content span {
         color: #000000 !important;
         -webkit-text-fill-color: #000000 !important;
     }
 
 }
+
