@@ -2089,22 +2089,33 @@ body {
 
 /* ==========================================
    DESKTOP — ICON BAR 3X LARGER
+
+
+
+
+/* ==========================================
+   DESKTOP ONLY — LIFESTYLE ICON BAR 3X SIZE
    ========================================== */
 @media screen and (min-width: 769px) {
 
-    /* Enlarge the icons */
-    .icon-item i,
-    .icon-item svg {
+    /* ICONS */
+    .icon-bar-container .icon-item i,
+    .icon-bar-container .icon-item svg {
         width: 66px !important;
         height: 66px !important;
         font-size: 66px !important;
+        stroke-width: 1.2 !important;
     }
 
-    /* Enlarge the titles */
-    .icon-item,
-    .icon-item span,
-    .icon-item p {
-        font-size: 3em !important;
+    /* TITLES */
+    .icon-bar-container .icon-item span {
+        font-size: 30px !important;
+        line-height: 1.2 !important;
+    }
+
+    /* SPACE BETWEEN ICON AND TITLE */
+    .icon-bar-container .icon-item {
+        gap: 14px !important;
     }
 
 }
