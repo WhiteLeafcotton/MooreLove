@@ -1,197 +1,99 @@
 
 /*==================================================
-HBCR Senior Living - Final CSS
-FULL-BLEED HERO FIX
+HBCR Senior333 jkjkj444Living - Final CSS
 ==================================================*/
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
+body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+:root { --gold: #5C546B; --transition: .4s ease; }
 
-html,
-body {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    width: 100%;
-    min-height: 100%;
-}
+/* TOP BjhfeaccjAR */
+.top-bar { position: absolute; top: 0; left: 0; width: 100%; padding: 28px 8%; z-index: 1000; display: flex; justify-content: flex-end; }
+.top-links { display: flex; gap: 34px; }
+.top-links a { text-decoration: none; color: white; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: .9; transition: var(--transition); }
+.top-links a:hover { color: var(--gold); }
 
-body {
-    background: #080808;
-    font-family: "Inter", sans-serif;
-    color: #fff;
-}
-
-:root {
-    --gold: #5C546B;
-    --transition: .4s ease;
-}
-
-/*==================================================
-TOP BAR - FLOATS OVER HERO
-==================================================*/
-
-.top-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    margin: 0;
-    padding: 28px 8%;
-    z-index: 1000;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.top-links {
-    display: flex;
-    gap: 34px;
-}
-
-.top-links a {
-    text-decoration: none;
-    color: white;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    opacity: .9;
-    transition: var(--transition);
-}
-
-.top-links a:hover {
-    color: var(--gold);
-}
-
-/*==================================================
-HERO - EDGE-TO-EDGE / FULL BLEED
-==================================================*/
-
-.hero {
-    position: relative;
-
-    /* Full browser width */
-    width: 100%;
-    max-width: none;
-    margin: 0;
-
-    /* Hero height */
-    height: 70vh;
-    min-height: 500px;
-
-    display: flex;
-    align-items: center;
-
-    /* Preserve content alignment */
-    padding: 0 0 0 8%;
-
-    overflow: hidden;
-
+/* HERO - Video Integrated */
+.hero { 
+    position: relative; 
+    height: 70vh; 
+    min-height: 500px; 
+    display: flex; 
+    align-items: center; 
+    padding-left: 8%; 
+    overflow: hidden; 
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     background-repeat: no-repeat;
     background-color: #080808;
-
-    isolation: isolate;
 }
-
-/* Video background */
-
 #heroVideo {
     position: absolute;
-    inset: 0;
-
+    top: 50%;
+    left: 50%;
     width: 100%;
     height: 100%;
-
-    object-fit: cover;
-    object-position: center center;
-
-    transform: none;
+    object-fit: cover; 
+    transform: translate(-50%, -50%);
     z-index: 0;
 }
+.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 250px; background: linear-gradient(to top,#080808,transparent); z-index: 2; }
+.hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.4); z-index: 1; } 
 
-/* Background image crossfade layers */
+/* CONTENT */
+.hero-content { position: relative; z-index: 5; max-width: 700px; margin-top: -40px; animation: fadeUp 1s ease; }
 
+
+
+
+/* Dual Background Cross-Fade Layers */
 .hero-bg-layer {
     position: absolute;
     inset: 0;
-
     width: 100%;
     height: 100%;
-
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     background-repeat: no-repeat;
-
     opacity: 0;
-    z-index: 1;
-
-    transition:
-        opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1),
-        transform 1.6s cubic-bezier(0.25, 1, 0.5, 1);
-
-    transform: scale(1.03);
+    z-index: 0;
+    /* Heavy, cinematic easing curve */
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 1.6s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: scale(1.03); /* Subtle zoom out effect during transition */
     will-change: opacity, transform;
-
+}
+.hero-overlay,
+.hero-bg-layer {
     pointer-events: none;
 }
 
+.icon-bar-container,
+.icon-wrapper,
+.icon-item {
+    position: relative;
+    z-index: 100;
+    pointer-events: auto;
+}
 .hero-bg-layer.active {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1); /* Settles to normal scale */
 }
 
-/* Dark overlay */
-
-.hero-overlay {
+/* Slower, Heavier Sliding Line Under Icons */
+.active-line {
     position: absolute;
-    inset: 0;
-
-    background: rgba(0, 0, 0, .4);
-
-    z-index: 2;
-    pointer-events: none;
-}
-
-/* Bottom cinematic fade */
-
-.hero::after {
-    content: "";
-    position: absolute;
-
+    top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-
-    height: 250px;
-
-    background: linear-gradient(
-        to top,
-        #080808,
-        transparent
-    );
-
-    z-index: 3;
-    pointer-events: none;
+    height: 1px;
+    background: #fff;
+    /* Heavy magnetic slide transition */
+    transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+                left 0.7s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/*==================================================
-HERO CONTENT
-==================================================*/
-
-.hero-content {
-    position: relative;
-    z-index: 5;
-
-    max-width: 700px;
-    margin-top: -40px;
-
-    animation: fadeUp 1s ease;
-}
-
+/* Smooth Headline Text Reveal Adjustment */
 .hero-content h1 {
     font-family: "Cormorant Garamond", serif;
     font-weight: 300;
@@ -200,413 +102,185 @@ HERO CONTENT
     letter-spacing: -0.2px;
     margin-bottom: 30px;
     text-transform: uppercase;
-
-    transition:
-        opacity 0.6s ease,
-        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Slow text fade */
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
+/* Hero Logo Wrapper */
+/* Hero Logo with Delicate Wedding Font */
+/* Container Wrapper */
+/* Hero Logo Layout */
+/* Stacked & Overlapping Hero Logo Wrapper */
+/* Container set to relative block so children can layer over each other */
+/* Stacked Logo Container - Flex Layout */
 
-.hero-button {
-    display: inline-block;
-    padding: 12px 30px;
-
-    border: 1px solid rgba(255, 255, 255, .4);
-
-    text-decoration: none;
-    color: white;
-
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    transition: var(--transition);
-}
-
-.hero-button:hover {
-    background: #fff;
-    color: #000;
-}
-
-/*==================================================
-HERO LOGO
-==================================================*/
-
+/* Smooth fade out for the hero logo when clicking a tab */
+/* Container holds both the icon and the name */
 .hero-logo {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
+/* Give the business name text smooth fade capabilities */
 .hero-logo .brand-name {
     opacity: 1;
     visibility: visible;
-
-    transition:
-        opacity 0.8s ease,
-        visibility 0.8s ease;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
+/* Hidden state: slow fade out */
 .hero-logo.hidden {
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
-    display: none !important;
+    display: none !important; 
 }
+
 
 .hero-logo.stacked-logo {
     position: relative;
-
-    display: inline-flex;
-    align-items: center;
-
-    gap: 24px;
+    display: inline-flex;          /* Flex container to place MOORE & SVG side-by-side */
+    align-items: center;           /* Center SVG vertically with MOORE */
+    gap: 24px;                     /* Spacing between MOORE and the SVG icon */
     margin-bottom: 45px;
 }
 
+/* "MOORE" - Main Heading */
 .hero-logo .strong-title {
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 300 !important;
     font-size: 64px !important;
     letter-spacing: 12px !important;
-
     text-transform: uppercase;
     color: #ffffff;
-
     display: block;
-    line-height: .85;
+    line-height: 0.85;
     margin: 0;
 }
 
+/* SVG Logo Icon (Scaled to match MOORE height & placed on right) */
 .hero-logo-icon {
-    position: static !important;
-
-    width: 54px !important;
+    position: static !important;   /* Removes absolute positioning so flexbox handles placement */
+    width: 54px !important;        /* Matches visual height of MOORE */
     height: 54px !important;
-
     filter: brightness(0) invert(1);
-    opacity: .9;
-
+    opacity: 0.9;
     flex-shrink: 0;
     color: #5C546B;
 }
 
+/* "love and care" - Overlay Subtitle */
 .hero-logo .script-subtitle {
     font-family: 'WindSong', cursive !important;
     font-size: 44px !important;
     font-weight: 400;
-
     color: #ffffff !important;
-
     position: absolute;
     bottom: -38px !important;
     left: 20% !important;
-
     z-index: 2;
-
     text-transform: lowercase;
     white-space: nowrap;
     pointer-events: none;
 }
 
-/*==================================================
-ICON BAR
-==================================================*/
 
-.icon-bar-container {
-    position: absolute;
+.hero-content h1 { font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: clamp(30px, 3.5vw, 48px); line-height: 1.1; letter-spacing: -0.2px; margin-bottom: 30px; text-transform: uppercase; transition: opacity 0.3s ease; }
+.hero-button { display: inline-block; padding: 12px 30px; border: 1px solid rgba(255,255,255,.4); text-decoration: none; color: white; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); }
+.hero-button:hover { background: #fff; color: #000; }
 
-    bottom: 40px;
-    left: 4%;
-    right: 4%;
 
-    z-index: 10;
-}
+/* ICON BAR */
+.icon-bar-container { position: absolute; bottom: 40px; left: 4%; right: 4%; z-index: 10; }
+.icon-bar-line { width: 100%; height: 1px; background: rgba(255,255,255,0.15); margin-bottom: 25px; position: relative; }
+.active-line { position: absolute; top: 0; left: 0; height: 1px; background: #fff; transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), left 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.icon-wrapper { display: flex; justify-content: space-between; position: relative; }
 
-.icon-bar-line {
-    width: 100%;
-    height: 1px;
-
-    background: rgba(255, 255, 255, .15);
-
-    margin-bottom: 25px;
-    position: relative;
-}
-
-.active-line {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    height: 1px;
-    background: #fff;
-
-    transition:
-        width .7s cubic-bezier(0.16, 1, 0.3, 1),
-        left .7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.icon-wrapper {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-}
-
+/* Container for each icon + label pair */
+/* Container for each icon + label pair */
+/* Container for each icon + label pair */
+/* Container for each icon + label pair */
 .icon-item {
     display: flex !important;
     flex-direction: column !important;
-
     align-items: center !important;
     justify-content: center !important;
-
     gap: 8px;
-
-    position: relative;
-    z-index: 100;
-
     cursor: pointer;
-    color: #ffffff !important;
-
-    transition: all .3s ease;
-    pointer-events: auto;
+    color: #ffffff !important; /* Keeps the text label pure white */
+    transition: all 0.3s ease;
 }
 
+/* Lucide SVGs & Tags - Forced Display & Sizing */
 .icon-item i,
 .icon-item svg {
     display: block !important;
-
     width: 22px !important;
     height: 22px !important;
-
-    stroke-width: .85;
-    stroke: rgba(255, 255, 255, .7);
+    stroke-width: 0.85; 
+    stroke: rgba(255, 255, 255, 0.7); /* Default unselected icon color */
     fill: none;
-
-    transition: all .3s ease;
+    transition: all 0.3s ease;
 }
 
+/* Text Labels */
 .icon-item span {
-    font-size: .75rem;
+    font-size: 0.75rem;
     font-weight: 400;
     letter-spacing: 1px;
-
     text-transform: uppercase;
-    color: #ffffff !important;
-
-    transition: color .3s ease;
+    color: #ffffff !important; /* Ensures text stays white */
+    transition: color 0.3s ease;
 }
 
+/* Hover & Active States */
 .icon-item:hover,
 .icon-item.active {
-    color: #ffffff !important;
+    color: #ffffff !important; /* Keep container/text white */
     transform: translateY(-2px);
 }
 
+/* ONLY the icon changes to dark purple on selected/hover */
 .icon-item:hover svg,
 .icon-item.active svg,
 .icon-item:hover i,
 .icon-item.active i {
     color: #5C546B !important;
-    stroke: #5C546B !important;
+    stroke: #5C546B !important; /* Dark purple icon */
     stroke-width: 1.1;
 }
 
-/*==================================================
-STICKY NAVIGATION
-==================================================*/
-
-#mainNav {
-    position: fixed;
-
-    top: -120px;
-    left: 0;
-
-    width: 100%;
-
-    z-index: 99999 !important;
-
-    background: rgba(8, 8, 8, .95);
-    backdrop-filter: blur(10px);
-
-    transition:
-        top .4s cubic-bezier(0.16, 1, 0.3, 1);
-
-    border-bottom: 1px solid rgba(255, 255, 255, .1);
+/* STICKY NAV */
+/* STICKY NAV */
+/* Update your CSS to target the ID specifically */
+#mainNav { 
+    position: fixed; 
+    top: -120px; 
+    left: 0; 
+    width: 100%; 
+    z-index: 99999 !important; /* Force above all mosaic layers */
+    background: rgba(8, 8, 8, 0.95); 
+    backdrop-filter: blur(10px); 
+    transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
 }
 
-#mainNav.sticky {
-    top: 0;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, .5);
+#mainNav.sticky { 
+    top: 0; 
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5); 
 }
+.nav-inner { display: flex; align-items: center; justify-content: center; gap: 40px; padding: 15px 20px; position: relative; }
+.nav-link, .nav-link:visited, .nav-link:link { text-decoration: none !important; color: #fff !important; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; transition: var(--transition); }
+.nav-link:hover, .nav-link:active { color: var(--gold) !important; }
+.nav-icon { width: 24px; height: 24px; filter: brightness(0) invert(1); transition: var(--transition); }
+.nav-logo:hover .nav-icon { filter: invert(72%) sepia(21%) saturate(1478%) hue-rotate(345deg) brightness(90%) contrast(88%); }
 
-.nav-inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 40px;
-    padding: 15px 20px;
-
-    position: relative;
-}
-
-.nav-link,
-.nav-link:visited,
-.nav-link:link {
-    text-decoration: none !important;
-    color: #fff !important;
-
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-
-    transition: var(--transition);
-}
-
-.nav-link:hover,
-.nav-link:active {
-    color: var(--gold) !important;
-}
-
-.nav-icon {
-    width: 24px;
-    height: 24px;
-
-    filter: brightness(0) invert(1);
-    transition: var(--transition);
-}
-
-.nav-logo:hover .nav-icon {
-    filter: invert(72%) sepia(21%) saturate(1478%)
-        hue-rotate(345deg) brightness(90%) contrast(88%);
-}
-
-/*==================================================
-SECTIONS
-==================================================*/
-
-.section {
-    padding: 100px 4%;
-    background: #080808;
-}
-
-.section.dark {
-    background: #050505;
-}
-
-.container {
-    max-width: 1300px;
-    margin: auto;
-}
-
-.container h2 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 48px;
-    font-weight: 300;
-    margin-bottom: 25px;
-}
-
-.container p {
-    font-size: 16px;
-    line-height: 1.7;
-    color: #aaa;
-    max-width: 550px;
-}
-
-/*==================================================
-MOBILE - EDGE-TO-EDGE HERO
-==================================================*/
-
-@media screen and (max-width: 768px) {
-
-    html,
-    body {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-    }
-
-    .hero,
-    #hero.hero {
-        position: relative;
-
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-
-        height: 70vh;
-        min-height: 500px;
-
-        padding-left: 5%;
-        padding-right: 5%;
-
-        overflow: hidden;
-
-        background-size: cover;
-        background-position: center center;
-    }
-
-    #heroVideo {
-        position: absolute;
-        inset: 0;
-
-        width: 100%;
-        height: 100%;
-
-        min-width: 100%;
-        min-height: 100%;
-
-        object-fit: cover;
-        object-position: center center;
-
-        transform: none;
-    }
-
-    .hero-bg-layer {
-        position: absolute;
-        inset: 0;
-
-        width: 100%;
-        height: 100%;
-
-        background-size: cover;
-        background-position: center center;
-    }
-
-    .hero-content {
-        position: relative;
-        z-index: 5;
-        max-width: 100%;
-    }
-
-    /* Keep icon bar anchored to the bottom */
-    .icon-bar-container {
-        position: absolute !important;
-
-        left: 4% !important;
-        right: 4% !important;
-        bottom: 25px !important;
-
-        z-index: 10 !important;
-    }
-
-    .top-bar {
-        position: absolute !important;
-
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-
-        width: 100% !important;
-        margin: 0 !important;
-
-        padding: 22px 5% !important;
-
-        z-index: 1000 !important;
-        background: transparent !important;
-    }
-}
+/* SECTIONS */
+.section { padding: 100px 4%; background: #080808; }
+.section.dark { background: #050505; }
+.container { max-width: 1300px; margin: auto; }
+.container h2 { font-family: "Cormorant Garamond", serif; font-size: 48px; font-weight: 300; margin-bottom: 25px; }
+.container p { font-size: 16px; line-height: 1.7; color: #aaa; max-width: 550px; }
 
 /* FEATURED CARD STYLE */
 /*==================================================
@@ -1992,6 +1666,86 @@ a.contact-value:hover {
    MOBILE — TRUE TOP EDGE-TO-EDGE HERO
 ========================================= */
 
+@media screen and (max-width: 768px) {
+
+    html,
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    body {
+        position: relative !important;
+        top: 0 !important;
+    }
+
+    /* Remove space before the hero */
+    body > *:first-child,
+    main,
+    #main,
+    .main-content,
+    .page-wrapper,
+    .site-wrapper {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    /* Hero touches the top edge */
+    .hero {
+        position: relative !important;
+        top: 0 !important;
+        margin: 0 !important;
+        padding-top: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+        left: 0 !important;
+        transform: none !important;
+        border-radius: 0 !important;
+        overflow: hidden !important;
+
+        height: 70svh !important;
+        min-height: 500px !important;
+
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+    }
+
+    /* Navigation floats over image */
+    .top-bar {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 18px 5% !important;
+        background: transparent !important;
+        z-index: 99999 !important;
+    }
+
+    /* Hero video and background layers */
+    #heroVideo,
+    .hero video,
+    .hero-bg-layer {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+        transform: none !important;
+    }
+
+    .hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+    }
+}
 
 
 
@@ -2139,3 +1893,186 @@ a.contact-value:hover {
 /* =========================================
    MOBILE — TRUE EDGE-TO-EDGE HERO
 ========================================= */
+
+@media screen and (max-width: 768px) {
+
+    html,
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    body {
+        position: relative !important;
+        top: 0 !important;
+    }
+
+    /* Remove spacing from common wrappers */
+    body > header,
+    body > nav,
+    body > .header,
+    body > .site-header,
+    body > .page-header {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    main,
+    #main,
+    .main-content,
+    .page-wrapper,
+    .site-wrapper {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    /* Hero must begin at the top edge */
+    .hero {
+        position: relative !important;
+        top: 0 !important;
+        margin: 0 !important;
+        padding-top: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+        left: 0 !important;
+        transform: none !important;
+        border-radius: 0 !important;
+        overflow: hidden !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+    }
+
+    /* Navigation overlays the hero */
+    .top-bar {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        background: transparent !important;
+        z-index: 99999 !important;
+    }
+
+    /* Hero image and video layers */
+    #heroVideo,
+    .hero video,
+    .hero-bg-layer {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+        transform: none !important;
+    }
+
+    .hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+    }
+}
+
+/* ==========================================
+   MOORE — MOBILE TRUE FULL-BLEED HERO FIX
+   ========================================== */
+
+@media screen and (max-width: 768px) {
+
+    html {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        min-height: 100% !important;
+    }
+
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        min-height: 100% !important;
+        position: relative !important;
+        overflow-x: hidden !important;
+    }
+
+    /* Hero begins at the very top of the page */
+    body > #hero,
+    body > section.hero,
+    #hero.hero {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: 100svh !important;
+        min-height: 650px !important;
+        transform: none !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        overflow: hidden !important;
+        background-position: center center !important;
+        background-size: cover !important;
+    }
+
+    /* Video background */
+    #heroVideo {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-width: 100% !important;
+        min-height: 100% !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+        transform: none !important;
+        margin: 0 !important;
+        z-index: 0 !important;
+    }
+
+    /* Crossfade image layers */
+    #heroBgA,
+    #heroBgB,
+    .hero-bg-layer {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        transform: none !important;
+    }
+
+    .hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        z-index: 2 !important;
+    }
+
+    /* Navigation sits over the image */
+    .top-bar {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        z-index: 20 !important;
+        background: transparent !important;
+    }
+
+    .hero-content,
+    .icon-bar-container {
+        position: relative;
+        z-index: 3;
+    }
+}
