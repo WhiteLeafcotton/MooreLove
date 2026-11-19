@@ -1352,7 +1352,14 @@ a.contact-value:hover {
         transform: none !important;
     }
     
-  
+  /* FEATURE CARD — MOBILE TEXT COLORS */
+.featured-card .card-content,
+.featured-card .card-content *,
+.featured-card-wrapper .card-content,
+.featured-card-wrapper .card-content * {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+}
     /* ==========================================
        COMPACT MOSAIC SECTION (MOBILE)
     ========================================== */
