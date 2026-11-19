@@ -2100,28 +2100,39 @@ body {
 /* ==========================================
    DESKTOP ONLY — ICON BAR 5X SIZE
    ========================================== */
+
+/* ==========================================
+   DESKTOP — FORCE LARGE HERO ICONS & TITLES
+   ========================================== */
 @media screen and (min-width: 769px) {
 
-    /* ICONS */
-    .icon-bar-container .icon-item i,
-    .icon-bar-container .icon-item svg {
+    .icon-bar-container .icon-wrapper .icon-item {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 18px !important;
+    }
+
+    /* ACTUAL LUCIDE SVG ICONS */
+    .icon-bar-container .icon-wrapper .icon-item svg {
         width: 110px !important;
         height: 110px !important;
-        font-size: 110px !important;
-        stroke-width: 1.2 !important;
+        min-width: 110px !important;
+        min-height: 110px !important;
+        max-width: none !important;
+        max-height: none !important;
+        flex-shrink: 0 !important;
     }
 
-    /* TITLES */
-    .icon-bar-container .icon-item span {
+    /* CATEGORY TITLES */
+    .icon-bar-container .icon-wrapper .icon-item span {
         font-size: 50px !important;
         line-height: 1.1 !important;
-    }
-
-    /* ICON-TO-TITLE SPACING */
-    .icon-bar-container .icon-item {
-        gap: 20px !important;
+        white-space: nowrap !important;
     }
 
 }
+
 
 
