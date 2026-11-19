@@ -1829,23 +1829,36 @@ a.contact-value:hover {
   IPHONE — TRUE EDGE-TO-EDGE HERO
 ==================================================*/
 
-/* Let the page background extend behind the safe area */
-html {
-    background: #080808 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
 
-body {
-    background: transparent !important;
+/* ==================================================
+   HBCR SENIOR LIVING
+   TRUE MOBILE EDGE-TO-EDGE HERO
+   IPHONE SAFARI + ANDROID
+================================================== */
+
+/* GLOBAL RESET */
+html {
     margin: 0 !important;
     padding: 0 !important;
     width: 100%;
     min-height: 100%;
+    background: #080808;
     overflow-x: hidden !important;
 }
 
-/* MOBILE / IPHONE */
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    min-height: 100%;
+    background: #080808;
+    overflow-x: hidden !important;
+}
+
+/* ==========================================
+   MOBILE EDGE-TO-EDGE HERO
+========================================== */
+
 @media screen and (max-width: 768px) {
 
     html,
@@ -1857,49 +1870,57 @@ body {
         overflow-x: hidden !important;
     }
 
-    /* Extend the hero behind the iPhone top safe area */
+    /* HERO FULL BLEED */
+    body > .hero,
     .hero {
         position: relative !important;
-        top: auto !important;
 
-        width: 100% !important;
-        max-width: 100% !important;
+        width: 100vw !important;
+        max-width: none !important;
 
+        margin: 0 !important;
         margin-top: calc(-1 * env(safe-area-inset-top, 0px)) !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        margin-bottom: 0 !important;
 
         height: calc(75svh + env(safe-area-inset-top, 0px)) !important;
         min-height: 560px !important;
 
         padding-top: env(safe-area-inset-top, 0px) !important;
 
-        overflow: hidden !important;
-        border: 0 !important;
-        border-radius: 0 !important;
-        transform: none !important;
+        left: 0 !important;
+        right: 0 !important;
 
-        background-color: #080808 !important;
-        background-position: center center !important;
+        overflow: hidden !important;
+
+        border: none !important;
+        border-radius: 0 !important;
+
+        background: #080808 !important;
         background-size: cover !important;
+        background-position: center center !important;
+
+        transform: none !important;
     }
 
-    /* Video fills the entire hero, including the safe area */
-    .hero #heroVideo {
+    /* VIDEO — EDGE TO EDGE */
+    #heroVideo {
         position: absolute !important;
-        inset: 0 !important;
+
+        top: 0 !important;
+        left: 0 !important;
 
         width: 100% !important;
         height: 100% !important;
 
         object-fit: cover !important;
         object-position: center center !important;
+
         transform: none !important;
+
+        z-index: 0 !important;
     }
 
-    /* Background slideshow layers */
-    .hero .hero-bg-layer {
+    /* CROSSFADE IMAGE LAYERS */
+    .hero-bg-layer {
         position: absolute !important;
         inset: 0 !important;
 
@@ -1909,48 +1930,83 @@ body {
         background-size: cover !important;
         background-position: center center !important;
         background-repeat: no-repeat !important;
+
+        transform: none;
+        z-index: 0 !important;
     }
 
-    /* Transparent header over the hero */
+    /* DARK OVERLAY */
+    .hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        z-index: 1 !important;
+        pointer-events: none !important;
+    }
+
+    .hero::after {
+        z-index: 2 !important;
+        pointer-events: none !important;
+    }
+
+    /* TOP LINKS — FLOAT ABOVE HERO */
     .top-bar {
         position: absolute !important;
+
         top: env(safe-area-inset-top, 0px) !important;
         left: 0 !important;
+        right: 0 !important;
 
         width: 100% !important;
-        margin: 0 !important;
 
-        padding-top: 15px !important;
-        padding-left: 4% !important;
-        padding-right: 4% !important;
+        margin: 0 !important;
+        padding: 15px 4% !important;
 
         background: transparent !important;
+
         z-index: 10000 !important;
     }
 
-    /* Keep hero content above the video */
+    .top-links {
+        display: flex !important;
+        justify-content: flex-end !important;
+        gap: 16px !important;
+    }
+
+    /* HERO CONTENT */
     .hero-content {
         position: relative !important;
         z-index: 5 !important;
     }
 
-    .hero-overlay {
-        position: absolute !important;
-        inset: 0 !important;
-        z-index: 1 !important;
-    }
-
-    .hero::after {
-        z-index: 2 !important;
-    }
-
+    /* BOTTOM ICON BAR */
     .icon-bar-container {
         position: absolute !important;
+
         left: 4% !important;
         right: 4% !important;
         bottom: 25px !important;
+
         z-index: 10 !important;
     }
+
+    /* STICKY NAVIGATION */
+    #mainNav {
+        position: fixed !important;
+
+        top: -120px !important;
+        left: 0 !important;
+
+        width: 100% !important;
+
+        z-index: 99999 !important;
+
+        transition: top 0.4s ease !important;
+    }
+
+    #mainNav.sticky {
+        top: 0 !important;
+    }
 }
+
 
 
