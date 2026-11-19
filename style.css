@@ -258,12 +258,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
     transition: color 0.3s ease;
 }
 
-/* Hover & Active States */
-.icon-item:hover,
-.icon-item.active {
-    color: #ffffff !important; /* Keep container/text white */
-    transform: translateY(-2px);
-}
+
 
 /* ICON FILLS IN ON HOVER & ACTIVE */
 .icon-item:hover svg,
@@ -278,6 +273,16 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 .icon-item.active i {
     color: #5C546B !important;
 }
+
+/* HOVER & ACTIVE ICON COLORS */
+.icon-item:hover svg,
+.icon-item.active svg {
+    stroke: #5C546B !important;
+    color: #5C546B !important;
+}
+
+/* HOUSE — keep the door outline unfilled */
+/* SUPPORT — fill only the heart */
 
 /* STICKY NAV */
 /* STICKY NAV */
