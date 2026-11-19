@@ -218,7 +218,7 @@ body { background: #080808; font-family: "Inter", sans-serif; color: #fff; }
 /* ICON BAR */
 .icon-bar-container { position: absolute; bottom: 40px; left: 4%; right: 4%; z-index: 10; }
 .icon-bar-line { width: 100%; height: 1px; background: rgba(255,255,255,0.15); margin-bottom: 25px; position: relative; }
-.active-line { position: absolute; top: 0; left: 0; height: 1px; background: #fff; transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), left 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.active-line { position: absolute; top: 0; left: 0; height: 1px; background: #5C546B; transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), left 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
 .icon-wrapper { display: flex; justify-content: space-between; position: relative; }
 
 /* Container for each icon + label pair */
