@@ -2103,6 +2103,9 @@ body {
 
 /* ==========================================
    DESKTOP — FORCE LARGE HERO ICONS & TITLES
+
+/* ==========================================
+   DESKTOP — REFINED HERO ICON BAR SIZE
    ========================================== */
 @media screen and (min-width: 769px) {
 
@@ -2111,24 +2114,24 @@ body {
         flex-direction: column !important;
         align-items: center !important;
         justify-content: center !important;
-        gap: 18px !important;
+        gap: 12px !important;
     }
 
-    /* ACTUAL LUCIDE SVG ICONS */
+    /* ICONS */
     .icon-bar-container .icon-wrapper .icon-item svg {
-        width: 110px !important;
-        height: 110px !important;
-        min-width: 110px !important;
-        min-height: 110px !important;
+        width: 37px !important;
+        height: 37px !important;
+        min-width: 37px !important;
+        min-height: 37px !important;
         max-width: none !important;
         max-height: none !important;
         flex-shrink: 0 !important;
     }
 
-    /* CATEGORY TITLES */
+    /* TITLES */
     .icon-bar-container .icon-wrapper .icon-item span {
-        font-size: 50px !important;
-        line-height: 1.1 !important;
+        font-size: 17px !important;
+        line-height: 1.2 !important;
         white-space: nowrap !important;
     }
 
